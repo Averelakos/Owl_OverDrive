@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "Owl_Overdrive_UI"
+  "cli": {
+    "analytics": false
+  }
 }
