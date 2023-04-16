@@ -1,0 +1,20 @@
+$bg-color: #424242;
+$hl-color: #2196F3;
+$muted-color: mix(white, $bg-color, 70%);
+$trans-time: 300ms;
+$width: 320px;
+
+.birthdate-selectors-label{
+    color: $muted-color;
+    padding-left: 0.3rem;
+}
+.birthdate-selectors{
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
+}
+
+.birthdate-selectors > .form-group{
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}

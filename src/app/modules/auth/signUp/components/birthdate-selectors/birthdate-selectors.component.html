@@ -1,0 +1,41 @@
+<label class="birthdate-selectors-label">
+    Birthdate
+    <span class="errorLabel" *ngIf="raiseError()">
+        This is a required field.
+    </span>
+</label>
+<div [formGroup]="this.parentFormGroup"  class="birthdate-selectors" style="width: 100%; display: flex;">
+    <ng-container [formGroupName]="'dateOfBirth'">
+        <app-mat-select 
+        class="form-group" 
+        [formControlName]="'year'"
+        [label]="'Year'"
+        [parentForm]="this.parentFormGroup"
+        [fieldName]="'dateOfBirth.year'"
+        [type]="'text'"
+        [optionsList]="this.years"
+        >
+    </app-mat-select>
+    <app-mat-select 
+        class="form-group" 
+        [formControlName]="'month'"
+        [label]="'Month'"
+        [parentForm]="this.parentFormGroup"
+        [fieldName]="'dateOfBirth.month'"
+        [type]="'text'"
+        [optionsList]="this.months"
+        (onValueChange)="onMonthValueChange($event)"
+        >
+    </app-mat-select>
+    <app-mat-select 
+        class="form-group" 
+        [formControlName]="'day'"
+        [label]="'Day'"
+        [parentForm]="this.parentFormGroup"
+        [fieldName]="'dateOfBirth.day'"
+        [type]="'text'"
+        [optionsList]="this.days"
+        >
+    </app-mat-select>
+    </ng-container>
+</div>

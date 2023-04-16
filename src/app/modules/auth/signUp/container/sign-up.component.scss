@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_button {
+    border-radius: 20px;
+    width: 40%;
+    border: none;
+    margin-top: 1rem;
+    padding: 0.4rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.login_button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.register_link {
+    // border: 2px solid red;
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.register_link > p {
+    // border: 2px solid red;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.register_link > a {
+    width: 300px;
+    color: rgb(223, 33, 223);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.register_link > a:hover {
+    letter-spacing: 2px;
+    padding:0px 2px;
+    border-radius: 20px;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.test {
+    border: 2px solid red;
+    
+}
+
+
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }

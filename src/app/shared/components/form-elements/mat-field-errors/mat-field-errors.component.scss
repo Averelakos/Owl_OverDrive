@@ -1,0 +1,14 @@
+.errorLabel{
+    color: #d00;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.errorLabel:before{
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: -7px;
+}

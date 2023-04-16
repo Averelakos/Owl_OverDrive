@@ -1,0 +1,15 @@
+<input class="mat-select" 
+    [ngClass]="{'selected-option': value!==null}" 
+    readonly 
+    [value]="value" 
+    (click)="openOptionsList()" 
+    (clickOutside)="closeOptionList()"
+    >
+<span class="bar"></span>
+<label> {{label}} </label>
+<div class="mat-select-option" [ngClass]="{'active':this.listIsOpen}">
+    <ul>
+        <li *ngFor="let option of optionsList" (click)="setOptionValue(option)">{{option}}</li>
+    </ul>
+</div>
+

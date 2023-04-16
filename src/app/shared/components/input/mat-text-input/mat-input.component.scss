@@ -1,0 +1,99 @@
+$bg-color: #424242;
+$hl-color: #2196F3;
+$muted-color: mix(white, $bg-color, 70%);
+$trans-time: 300ms;
+$width: 320px;
+
+.invalid-input{
+
+}
+
+#mat-input{
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $muted-color
+}
+
+#mat-input:focus{
+    outline: none;
+}
+
+#mat-input:focus ~label{
+    top: -14px;
+    font-size: 12px;
+    color: $hl-color;
+}
+
+#mat-input:focus ~.bar:before {
+    width: 100%;
+}
+
+#mat-input ~label{
+    color: $muted-color;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: $trans-time ease all;
+} 
+
+// #mat-input ~label>span {
+//     color: red;
+//     font-size: 12px;
+//     margin-left: 10px;
+// }
+
+#mat-input ~.bar {
+        position: relative;
+        display: block;
+        width: 100%;
+}
+
+#mat-input ~.bar:before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: $hl-color;
+    transition: $trans-time ease all;
+    left: 0%;
+}
+
+#mat-input.valid-input~label{
+    top: -14px;
+    font-size: 12px;
+    color: $hl-color;
+}
+
+#mat-input.valid-input ~.bar:before {
+    width: 100%;
+}
+
+#mat-input.has-error ~ label{
+    top: -14px;
+    font-size: 12px;
+    color: red;
+}
+
+#mat-input.has-error ~ label{
+    top: -14px;
+    font-size: 12px;
+    color: red;
+}
+
+#mat-input.has-error ~.bar:before {
+    width: 100%;
+    background: red;
+}

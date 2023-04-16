@@ -1,0 +1,15 @@
+    <input 
+        id="mat-input"
+        [type]="type"
+        [value]="value" 
+        [disabled]="isDisabled" 
+        (input)="onChanged($event)" 
+        (blur)="onTouched()"
+        [ngClass]="displayFieldCss()"
+    >
+    <!-- <span class="highlight"></span> -->
+    <span class="bar"></span>
+    <label>
+        {{label}} 
+        <app-mat-field-errors [formField]="formField"></app-mat-field-errors>
+    </label>

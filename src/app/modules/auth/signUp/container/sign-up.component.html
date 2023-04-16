@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Register</h1>
+    <p>Create your account here!</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        
+        <app-mat-input 
+            class="form-group" 
+            [formControlName]="'email'"
+            [parentForm]="registerForm"
+            fieldName="email"
+            [type]="'email'"
+            [label]="'Email'"
+            >
+        </app-mat-input>
+
+        <app-mat-input 
+            class="form-group" 
+            [formControlName]="'name'"
+            [parentForm]="registerForm"
+            fieldName="name"
+            [type]="'text'"
+            [label]="'User Name'"
+            >
+        </app-mat-input>
+
+        <app-mat-input 
+            class="form-group" 
+            [formControlName]="'password'"
+            [parentForm]="registerForm"
+            fieldName="password"
+            [type]="'password'"
+            [label]="'Password'"
+            >
+        </app-mat-input>
+        
+            <app-birthdate-selectors 
+        style="margin-top: 1rem;"
+        [parentFormGroup]="this.registerForm"
+        >
+        </app-birthdate-selectors>
+        
+        <button class="login_button" type="submit">Create</button>
+    </form>
+    <div class="register_link">
+        <a (click)="redirectToLoginPage()">Have an account already?</a>
+    </div>
+</div>
