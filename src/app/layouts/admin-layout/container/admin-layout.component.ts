@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  sidebarIsToggled = true;
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+  }
+
+  toggleSideBar(){
+    this.sidebarIsToggled = !this.sidebarIsToggled;
   }
 
 }

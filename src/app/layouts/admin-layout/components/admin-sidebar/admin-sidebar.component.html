@@ -1,0 +1,55 @@
+<div id="sidebar_container" class="sidebar_container">
+    <!-- Sidebar Logo -->
+    <div class="sidebar_logo">
+        <div class="sidebar_logo_img">
+            <img src="../../../../../assets/img/owl_logo.png" alt="Owl_img">
+        </div>
+        <span *ngIf="this.sideBarOpen" class="sidebar_logo_title" style="color: azure;">Owl Overdrive</span>
+    </div>
+
+    <div class="sidebar_menu">
+        <ul class="SidebarMenu_Container">
+            <ng-container *ngFor="let menu_item of menuItems">
+            
+                <!-- Main button without sub menu -->
+                <li *ngIf="menu_item.subMenu?.length === 0" class="Sidebar_MainButton" [routerLinkActive]="['active']">
+                    
+                    <a class="MainButton" [routerLink]="menu_item.route" (click)="openSubMenuItems(menu_item)" [ngClass]="{'closed':!this.sideBarOpen}">
+                        <i class="{{menu_item.icon}}"></i>
+                        <p *ngIf="this.sideBarOpen">{{menu_item.mainPageLabel}}</p>
+                    </a>
+
+                </li>
+
+                <!-- Main button with sub menu -->
+                <li *ngIf="menu_item.subMenu?.length !== 0" class="Sidebar_MainButton" [routerLinkActive]="['sub_active']" (clickOutside)="clickOutside()">
+                    <a class="MainButton subMenu_dropdown" (click)="openSubMenuItems(menu_item)" [ngClass]="{'closed':!this.sideBarOpen, 'subMenuActive':isThisSubMenuActive(menu_item)}">
+                        <i class="{{menu_item.icon}}"></i>
+                        <p *ngIf="this.sideBarOpen">{{menu_item.mainPageLabel}}</p>
+                    </a>
+
+                    <ul *ngIf="this.sideBarOpen && menu_item.subMenu?.length !== 0" [ngClass]="{'Open_SubMenu': isThisSubMenuActive(menu_item)}">
+                        <li *ngFor="let subMenu_item of menu_item.subMenu" class="Sidebar_SubButton" [routerLinkActive]="['active']">
+                            <a class="SubButton" [routerLink]="subMenu_item.route">
+                                <i class="{{subMenu_item.icon}}"></i>
+                                <p>{{subMenu_item.subPagelabel}}</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul *ngIf="!this.sideBarOpen && menu_item.subMenu?.length !== 0" class="Sidebar_SubButton_Side_Container" [ngClass]="{'Open_SubMenu_Side': isThisSubMenuActive(menu_item)}">
+                        <li *ngFor="let subMenu_item of menu_item.subMenu" class="Sidebar_SubButton_Side" [routerLinkActive]="['active']">
+                            <a class="SubButton_Side" [routerLink]="subMenu_item.route">
+                                <i class="{{subMenu_item.icon}}"></i>
+                                <p>{{subMenu_item.subPagelabel}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </li>
+
+        </ng-container>
+        </ul>
+
+    </div>
+</div>

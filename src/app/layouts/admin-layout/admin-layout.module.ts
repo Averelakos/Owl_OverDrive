@@ -2,16 +2,25 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./container/admin-layout.component";
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
+// import { ClickOutsideDirective } from "src/app/shared/directives/outside.directive";
+import { SharedComponentsModule } from "src/app/shared/shared.module";
+// import { SharedComponentsModule } from "src/app/shared/shared.module";
 
 
 @NgModule({
     imports:[
         BrowserModule,
-        RouterModule
+        RouterModule,
+        SharedComponentsModule
     ],
     providers:[],
     declarations:[
-        AdminLayoutComponent
+        AdminLayoutComponent,
+        AdminHeaderComponent,
+        AdminSidebarComponent,
+        // ClickOutsideDirective
     ],
     exports:[
        AdminLayoutComponent
