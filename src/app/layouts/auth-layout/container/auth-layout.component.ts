@@ -1,6 +1,5 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgControlStatus } from 'src/app/shared/directives/bsformcontrol.directive';
 
 @Component({
   selector: 'app-auth-layout',
