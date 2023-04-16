@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Welcome back!</h1>
+    <p>We're so excited to see you again!</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <app-mat-input 
+            class="form-group" 
+            [formControlName]="'email'"
+            [parentForm]="loginForm"
+            fieldName="email"
+            [type]="'email'"
+            [label]="'Email'"
+            >
+        </app-mat-input>
+
+        <app-mat-input 
+            class="form-group" 
+            [formControlName]="'password'"
+            [parentForm]="loginForm"
+            fieldName="password"
+            [type]="'password'"
+            [label]="'Password'"
+            >
+        </app-mat-input>
+
+        <div class="auth_checkbox">
+            <input id="rememberMe" type="checkbox">
+            <label>Remember me</label>
+        </div>
+
+        <button class="login_button" type="submit">Sign In</button>
+    </form>
+    <div class="register_link">
+        <p>Don't have an account?</p>
+        <a (click)="redirectToRegisterPage()">Create an account.</a>
+    </div>
+</div>

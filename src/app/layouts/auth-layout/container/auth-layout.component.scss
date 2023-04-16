@@ -1,0 +1,266 @@
+
+h1 {
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+// .section-auth{
+//     outline: none;
+//     font-family: "Poppins", sans-serif;
+//     background-image: url("/assets/img/chill_mario_2023_ver.gif");
+//     background-size:cover;
+//     background-repeat:no-repeat;
+//     background-position: center;
+//     display: flex;
+//     height: 100vh;
+//     width: 100vw;
+// }
+
+// .auth_header {
+//     color: #fff;
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//     position: fixed;
+//     z-index: 2;
+//     padding: 3rem;
+// }
+
+// .auth_header > h4 {
+//     font-size: 1.8rem;
+// }
+
+// .auth_header > span {
+//     font-size: 1.5rem;
+// }
+
+// .auth-left {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     justify-content: flex-end;
+//     width: 60%;
+//     padding: 5rem;
+//     color: #fff;
+// }
+
+// .auth-left > button {
+//     background: #9b0806;
+//     color: #fff;
+//     border-radius: 20px;
+//     border: 2px solid #9b0806;
+//     padding: 0.4rem 1rem;
+//     margin-top: 1rem;
+//     cursor: pointer;
+//     transition: all 0.2s ease-in-out;
+// }
+
+// .auth-left > button:hover {
+//    background: transparent;
+//    border: 2px solid #fff;
+//    letter-spacing: 2px;
+// }
+
+// .auth-right {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 4rem;
+//     width: 40%;
+//     height: 100%;
+//     position: absolute;
+//     right: 0;
+//     color: #fff;
+//     background: rgba(10, 10, 10, 0.05);
+//     backdrop-filter: blur(10px);
+// }
+
+// .auth-right > p {
+//     padding-top: 1rem;
+// }
+
+// .auth-right > form {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     margin: 1rem 0;
+// }
+
+// .auth_group {
+//     display: flex;
+//     position: relative;
+//     flex-direction: column;
+//     margin: 0.5rem 0rem;
+//     width: 100%;
+// }
+
+// .auth_group > input {
+//     background: transparent;
+//     color: #fff;
+//     padding: 0.4rem 1.7rem;
+//     margin-bottom: 10px;
+//     border: none;
+//     border-bottom: 2px solid #fff;
+// }
+
+// .auth_group > input::placeholder {
+//     color: #fff;
+//     font-size: 0.8rem;
+// }
+
+// .auth_group > input:focus {
+//     outline: none;
+//     border-bottom: 2px solid #0b283e;
+// }
+
+// .auth_group > label {
+//     position: absolute;
+//     font-size: 1.2rem;
+//     color: #fff;
+
+// }
+
+// .auth_checkbox {
+//     display: flex;
+//     align-items: center;
+//     width: 100%;
+// }
+
+// .auth_checkbox > label {
+//     font-size: 0.8rem;
+//     padding-left: 5px;
+//     padding-top: 2px;
+//     color: #fff;
+// }
+
+// .login_button {
+//     background: transparent;
+//     border-radius: 20px;
+//     width: 40%;
+//     border: 2px solid #fff;
+//     margin-top: 1rem;
+//     padding: 0.4rem;
+//     font-weight: 600;
+//     color: #fff;
+//     transition: all 0.2s ease-in-out;
+// }
+
+// .login_button:hover {
+//     background:  #0b283e;
+//     border:  2px solid #0b283e;
+//     letter-spacing: 2px;
+// }
+
+
+// .login_mobile {
+//     display: none;
+//     text-align: center;
+//     margin-top: 30px;
+// }
+
+// .login_mobile > a {
+//     margin-top: 0.5rem;
+//     color: #fff;
+// }
+
+// @media screen and (max-width: 700px) {
+//     .auth-left {
+//         display: none;
+//     }
+
+//     .auth-right {
+//         width: 100%;
+//     }
+
+//     .login_mobile {
+//         display: block;
+//     }
+// }
+
+
+///////////////////////////////////////////////
+
+.auth_layout {
+    outline: none;
+    background-image: url("/assets/img/chill_mario_2023_ver.gif");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.auth_header {
+    color: #fff;
+    position: fixed;
+    padding: 2rem;
+    z-index: 2;
+    width: 100%;
+}
+
+.auth_header > h4 {
+    font-size: 1.6rem;
+}
+
+.auth_container {
+    // border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signIn_container {
+    color: #fff;
+    background: rgba(10, 10, 10, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    width: 720px;
+    padding: 32px;
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .auth_container {
+        width: 100%;
+    }
+
+    .signIn_container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+// @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+//     .auth_container {
+//         width: 80%;
+//         height: 100%;
+//     }
+
+//     .signIn_container {
+//         height: 50%;
+//     }
+// }
+
+
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 4rem;
+//     width: 40%;
+//     height: 100%;
+//     position: absolute;
+//     right: 0;
+//     color: #fff;
+//     background: rgba(10, 10, 10, 0.05);
+//     backdrop-filter: blur(10px);
