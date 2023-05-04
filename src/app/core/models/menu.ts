@@ -31,6 +31,13 @@ export const Test: Menu = {
     ]
 }
 
+export const Company: Menu = {
+    mainPageLabel:'Companies',
+    route:'Company',
+    icon: 'fa-solid fa-building',
+    subMenu: []
+}
+
 
 export const Home: Menu = {
     mainPageLabel: 'Home',
@@ -43,4 +50,5 @@ export const Home: Menu = {
 export const menu: Array<Menu> = [
     Home,
     Test,
+    Company,
 ]

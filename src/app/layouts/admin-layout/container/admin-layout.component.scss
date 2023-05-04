@@ -1,0 +1,126 @@
+// .wrapper{
+//     background-color: #36393F;
+//     min-width: 100vw;
+//     min-height: 100vh;
+//     overflow: hidden;
+//     display: grid;
+//     grid-template-columns: 260px 1fr;
+//     grid-template-areas: 
+//     "sidebar main-panel"
+//     ;
+
+//     transition: all 0.25s;
+// }
+
+// .wrapper-sidebar-closed{
+
+//     min-width: 100vw;
+//     min-height: 100vh;
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-areas: 
+//     "main-panel"
+//     ;
+// }
+
+// .sidebar{
+//     position: relative;
+//     display: none;
+//     z-index: 2;
+//     height: 100vh;
+//     box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+//     grid-area: sidebar;
+    
+// }
+// .sidebar .sidebar_container{
+//     background: rgba(255, 253, 253, 0.35);
+//     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+//     min-height: 100vh;
+//     position: relative;
+//     z-index: 4;
+// }
+// .sidebar .sidebar-background {
+//     position: absolute;
+//     z-index: 1;
+//     height: 100%;
+//     width: 100%;
+//     display: block;
+//     top: 0;
+//     left: 0;
+//     background-size: cover;
+//     background-position: 50%;
+// }
+
+// .main-panel{
+//     grid-area: main-panel;
+//     position: relative;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// .main_header {
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     position: absolute;
+// }
+
+// .main_container{
+//     margin-top: 5rem;
+//     margin-left: 1rem;
+//     margin-right: 1rem;
+//     overflow-y: auto;
+//     -ms-overflow-style: none;  /* IE and Edge */
+//     scrollbar-width: none;  /* Firefox */
+// }
+
+// .main_container::-webkit-scrollbar {
+//     display: none;
+//   }
+
+// @media (min-width: 769px) {
+
+//     .wrapper-sidebar-closed{
+
+//         display: grid;
+//         grid-template-columns: 80px 1fr;
+//         grid-template-areas: 
+//         "sidebar main-panel"
+//         ;
+//     }
+
+//     .sidebar {
+//         display: block;
+//     }
+// }
+
+
+.app-container{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+}
+
+.app-sidebar{
+    background: red;
+    width: 80px;
+    overflow: hidden;
+    min-width: 80px;
+    transition: all 0.2s;
+}
+
+.app-main_outer{
+    background: blue;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 769px) {
+
+    .app-sidebar{
+        width: 280px;
+        min-width: 280px;
+    }
+
+}

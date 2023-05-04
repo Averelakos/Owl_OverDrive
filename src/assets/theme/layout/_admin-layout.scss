@@ -1,37 +1,3 @@
-// .container{
-//     min-height: 100vh;
-//     min-width: 100vw;
-// }
-
-// .header{
-//     height: 3rem;
-//     background: var(--color-grey-dark-1);
-//     color: var(--color-grey-light-1);
-// }
-
-// .content-wrapper__sidebar{
-//     background-color: palevioletred;
-//     grid-area: sidebar;
-    
-//     border: 1px solid red;
-// }
-
-// .content-wrapper__main{
-//     background-color: yellowgreen;
-//     grid-area: main;
-// }
-
-
-// @media only screen and (min-width: 769px) {
-//     .content{
-//         grid-template-columns: 200px 1fr;
-//         grid-template-areas: 
-//         "sidebar main";
-//         transition: all 0.3s;
-//     }
-
-// }
-
 .wrapper{
     background-color: #eee;
     min-width: 100vw;
@@ -61,7 +27,6 @@
 .sidebar{
     position: relative;
     display: none;
-    // background-color: #191919;
     z-index: 2;
     height: 100vh;
     box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
@@ -69,7 +34,7 @@
     
 }
 .sidebar .sidebar_container{
-    background: rgba(255, 253, 253, 0.35);
+    background: rgba(146, 245, 245, 0.35);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     min-height: 100vh;
     position: relative;
@@ -90,13 +55,11 @@
 .main-panel{
     grid-area: main-panel;
     position: relative;
-    width: 100%;
+    // width: 100%;
     height: 100%;
-    // overflow-y: auto;
 }
 
 .main_header {
-    // background:red;
     left: 0;
     right: 0;
     top: 0;
@@ -104,14 +67,13 @@
 }
 
 .main_container{
-    position: absolute;
-    height: 100%;
     margin-top: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    min-width: calc(100% - 2rem);
 }
 
 .main_container::-webkit-scrollbar {

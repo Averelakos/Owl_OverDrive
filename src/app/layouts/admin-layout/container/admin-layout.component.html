@@ -1,10 +1,23 @@
-<div class="wrapper" [ngClass]="{'wrapper-sidebar-closed': this.sidebarIsToggled}">
+<!-- <div class="wrapper" [ngClass]="{'wrapper-sidebar-closed': this.sidebarIsToggled}">
     <div  class="sidebar">
         <app-admin-sidebar [sideBarOpen]="!this.sidebarIsToggled"></app-admin-sidebar>
         <div class="sidebar-background" style="background-image: url(/assets/img/chill_mario_2023_ver.gif);"></div>
     </div>
     <div class="main-panel">
-        <app-admin-header [isSideBarOpen]="this.sidebarIsToggled" (toggle)="toggleSideBar()"></app-admin-header>
-        <router-outlet></router-outlet>
+        <div class="main_header">
+            <app-admin-header [isSideBarOpen]="this.sidebarIsToggled" (toggle)="toggleSideBar()"></app-admin-header>
+        </div>
+        <div class="main_container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div> -->
+
+<div class="app-container">
+    <div class="app-sidebar">
+        <app-admin-sidebar [sideBarOpen]="!this.sidebarIsToggled"></app-admin-sidebar>
+    </div>
+    <div class="app-main_outer">
+
     </div>
 </div>

@@ -51,11 +51,7 @@
     // border-radius: 3px;
     border-radius: 0.25rem;
     position: relative;
-}
-
-.Sidebar_MainButton.active {
-    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
-    background-color: #fff;
+    color: #fff;
 }
 
 .Sidebar_MainButton .MainButton{
@@ -68,7 +64,7 @@
     padding-left: 1.5rem;
     align-items: center;
     text-align: center;
-    color: #3c4858;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -78,8 +74,17 @@
 }
 
 .Sidebar_MainButton .MainButton:hover{
-    background-color: hsla(0, 0%, 100%, 0.44);
+    background-color: hsla(48, 84%, 54%, 0.44);
     border-radius: 3px;
+}
+
+.Sidebar_MainButton.active {
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    background: #FFD062;
+}
+
+.Sidebar_MainButton.active .MainButton{
+    color: #3c4858;
 }
 
 .Sidebar_MainButton .MainButton.closed {
@@ -91,7 +96,8 @@
 ///                             Sidebar SubMenu 
 /// ///////////////////////////////////////////////////////////////////////////////
 .sub_active .subMenu_dropdown{
-    background-color: hsla(0, 0%, 100%, 0.44);
+    // background-color: hsla(0, 0%, 100%, 0.44);
+    background-color: hsla(48, 84%, 54%, 0.44);
 }
 
 .Sidebar_SubButton {
@@ -109,8 +115,8 @@
 }
 
 .Sidebar_SubButton.active {
-    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
-    background-color: #fff;
+    // box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    // background-color: #fff;
 }
 
 .Sidebar_SubButton .SubButton {
@@ -131,11 +137,13 @@
 }
 
 .Sidebar_SubButton .SubButton:hover{
-    background-color: hsla(0, 0%, 100%, 0.44);
+    // background-color: hsla(0, 0%, 100%, 0.44);
+    background-color: hsla(48, 84%, 54%, 0.44);
 }
 
 .subMenuActive {
-    background-color: hsla(0, 0%, 100%, 0.44);
+    // background-color: hsla(0, 0%, 100%, 0.44);
+    background-color: hsla(48, 84%, 54%, 0.44);
 }
 
 .Sidebar_SubButton_Side_Container {
@@ -177,11 +185,11 @@
 
 .active .SubButton_Side{
     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
-    background-color: #fff;
+    background-color: #FFD062;
 }
 
 .active .SubButton_Side:hover{
-    background-color: #fff;
+    background-color: #FFD062;
 }
 
 .Sidebar_SubButton_Side .SubButton_Side p {
