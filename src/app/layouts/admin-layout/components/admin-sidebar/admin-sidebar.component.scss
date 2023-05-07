@@ -1,0 +1,204 @@
+.sidebar_container {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+/////////////////////////////////////////
+/////////////// Logo ///////////////////
+////////////////////////////////////////  
+.sidebar_logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar_logo_closed {
+    justify-content: center;
+}
+
+.sidebar_logo_img  {
+    margin-left: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.sidebar_logo_img_closed  {
+    margin-top: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.sidebar_logo_title {
+    font-size: 10pt;
+    margin: 0;
+    font-weight: 400;
+    color: #a2a2a2;
+    padding: 0 0 0 0.5rem;
+    height: 47px;
+    line-height: 47px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.8);
+    background-size: 22px 22px;
+}
+
+.Sidebar-menu{
+    width: 100%;
+}
+
+/////////////////////////////////////////
+///////////////////Sidebar//////////////
+//////////////////////////////////////// 
+.Sidebar-container {
+    // background: red;
+    width: 100%;
+    // position: relative;
+    // z-index: 3;
+}
+
+.Sidebar-Divider{
+    width: 80%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-top: 1px solid #fff;
+}
+
+/////////////////////////////////////////
+/////////// Sidebar Main Button ////////
+/////////////////////////////////////// 
+.Sidebar-MainButton {
+    cursor: pointer;
+    list-style: none;
+    color: #fff;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    
+    // z-index: 15;
+}
+
+.MainButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: Open Sans,Lucida Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #fff;
+    padding: 8px 15px;
+}
+
+.MainButton > p {
+    padding-left: 0.3rem;
+}
+
+.Sidebar-MainButton:hover {
+    background: hsla(47, 15%, 75%, 0.177);
+}
+
+.Sidebar-MainButton.active {
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    background: #c15375;
+    // border-left: 2px solid #fff;
+}
+
+a.closed {
+    height: 2.5rem;
+}
+
+i.closed {
+    width: 100%;
+}
+
+// .Sidebar-MainButton.closed{
+//     width: 80px;
+//     height: 40px;
+//     position: relative;
+// }
+
+/////////////////////////////////////////
+/////////// Sidebar Sub Button /////////
+/////////////////////////////////////// 
+.Sidebar-MainButton{
+    position: relative;
+}
+.Sidebar-MainButton.sub-active{
+    background: hsla(47, 15%, 75%, 0.201);
+    
+    // border-left: 2px solid #fff;
+}
+
+.Sub-menu-Dropdown {
+    background: hsla(47, 15%, 75%, 0.088);
+    display: none;
+    // border-left: 2px solid #fff;
+}
+
+.Sidebar-MainButton.sub-active  .Sub-menu-Dropdown{
+    display: block;
+}
+
+.Sidebar-SubButton .SubButton{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: Open Sans,Lucida Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #fff;
+    padding: 6px 25px;
+    text-decoration: none;
+// position: relative;
+    
+}
+
+.Sidebar-SubButton .SubButton:hover{
+    background: hsla(47, 15%, 75%, 0.201);
+}
+
+.Sidebar-SubButton.active{
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    background: #c15375;
+}
+
+.SubButton > p {
+    padding-left: 0.3rem;
+}
+
+
+// sidebar closed
+
+.Sub-menu-Dropdown-Closed {
+    position: absolute;
+    // top: 159px;
+    left: 5rem;
+    // top: 118px;
+    // top: -40px;
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    // background: #1a1a1a;
+    background: red;
+    list-style: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: none;
+    width: 150px;
+    z-index: 100;
+
+}
+
+.Side-Dropdown-Open{
+    display: block;
+}
+.Sub-menu-Dropdown-Closed .Sidebar-SubButton.active{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 100%;
+    height: 30px;
+}

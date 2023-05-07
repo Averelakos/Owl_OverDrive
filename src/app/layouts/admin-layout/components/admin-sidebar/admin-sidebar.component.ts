@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, Directive, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Menu } from 'src/app/core/models/menu';
 import { MenuService } from 'src/app/core/services/menu.service';
+import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 
 
 @Component({
@@ -12,9 +13,20 @@ export class AdminSidebarComponent {
  
   menuItems: Array<Menu>
   activeSubMenu: string = 'Home';
-  @Input()sideBarOpen: boolean = true;
-  constructor(public menuService: MenuService) {
+  responsiveSizes = ResponsizeSize
+  @Input()sideBarClosed: boolean = false;
+  constructor(public menuService: MenuService, public responsiveService: ResponsiveService) {
     this.menuItems = menuService.getMenu();
+  }
+
+
+  sidebarIsClosed(responsive: boolean) : boolean {
+    if (responsive) {
+      return responsive
+    } 
+    else {
+      return this.sideBarClosed
+    }
   }
 
   openSubMenuItems(item) {
@@ -25,14 +37,14 @@ export class AdminSidebarComponent {
     }
   }
 
+
+
   isThisSubMenuActive(item): boolean {
-    console.log(item.mainPageLabel === this.activeSubMenu)
     return item.mainPageLabel === this.activeSubMenu;
   }
 
   clickOutside() {
-    this.activeSubMenu = 'Home';
-    console.log('test')
+    this.activeSubMenu = '';
   }
 
 }

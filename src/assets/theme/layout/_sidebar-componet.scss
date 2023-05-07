@@ -2,34 +2,34 @@
 /////////////////////////////////////////////////////////////////////////////////////
 ///                             Sidebar Logo
 /// ///////////////////////////////////////////////////////////////////////////////
-.sidebar_logo{
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    padding-top: 0.50rem;
-    padding-bottom: 0.40rem;
-    &_img img{
-        width: 2.8rem;
-        height: 2.8rem;
-    }
+// .sidebar_logo{
+//     display: flex;
+//     position: relative;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     text-transform: uppercase;
+//     padding-top: 0.50rem;
+//     padding-bottom: 0.40rem;
+//     &_img img{
+//         width: 2.8rem;
+//         height: 2.8rem;
+//     }
 
-    &_title{
-        margin-left: 1rem;
-    }   
-}
+//     &_title{
+//         margin-left: 1rem;
+//     }   
+// }
 
-.sidebar_logo:after{
-    background: aliceblue;
-    content: " ";
-    position: absolute;
-    bottom: 0;
-    right: 15px;
-    height: 1px;
-    width: calc(100% - 30px);
-}
+// .sidebar_logo:after{
+//     background: aliceblue;
+//     content: " ";
+//     position: absolute;
+//     bottom: 0;
+//     right: 15px;
+//     height: 1px;
+//     width: calc(100% - 30px);
+// }
 /////////////////////////////////////////////////////////////////////////////////////
 ///                             Sidebar Menu
 /// ///////////////////////////////////////////////////////////////////////////////
@@ -38,164 +38,164 @@
     
 }
 
-.SidebarMenu_Container {
-    // margin-top: 15px;
-    margin-top: 1rem;
-    display: block;
-}
+// .SidebarMenu_Container {
+//     // margin-top: 15px;
+//     margin-top: 1rem;
+//     display: block;
+// }
 
-.Sidebar_MainButton {
-    cursor: pointer;
-    list-style: none;
-    margin: 0 1rem;
-    // border-radius: 3px;
-    border-radius: 0.25rem;
-    position: relative;
-    color: #fff;
-}
+// .Sidebar_MainButton {
+//     cursor: pointer;
+//     list-style: none;
+//     margin: 0 1rem;
+//     // border-radius: 3px;
+//     border-radius: 0.25rem;
+//     position: relative;
+//     color: #fff;
+// }
 
-.Sidebar_MainButton .MainButton{
-    margin-top: 10px;
-    width: 100%;
-    height: 46px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding-left: 1.5rem;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    text-decoration: none;
-}
+// .Sidebar_MainButton .MainButton{
+//     margin-top: 10px;
+//     width: 100%;
+//     height: 46px;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     padding-left: 1.5rem;
+//     align-items: center;
+//     text-align: center;
+//     color: #fff;
+//     text-decoration: none;
+// }
 
-.Sidebar_MainButton .MainButton p{
-    padding-left: 5px;
-    padding-top: 5px;
-}
+// .Sidebar_MainButton .MainButton p{
+//     padding-left: 5px;
+//     padding-top: 5px;
+// }
 
-.Sidebar_MainButton .MainButton:hover{
-    background-color: hsla(48, 84%, 54%, 0.44);
-    border-radius: 3px;
-}
+// .Sidebar_MainButton .MainButton:hover{
+//     background-color: hsla(48, 84%, 54%, 0.44);
+//     border-radius: 3px;
+// }
 
-.Sidebar_MainButton.active {
-    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
-    background: #FFD062;
-}
+// .Sidebar_MainButton.active {
+//     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+//     background: #FFD062;
+// }
 
-.Sidebar_MainButton.active .MainButton{
-    color: #3c4858;
-}
+// .Sidebar_MainButton.active .MainButton{
+//     color: #3c4858;
+// }
 
-.Sidebar_MainButton .MainButton.closed {
-    justify-content: center;
-    padding-left: 0;
-}
+// .Sidebar_MainButton .MainButton.closed {
+//     justify-content: center;
+//     padding-left: 0;
+// }
 
 /////////////////////////////////////////////////////////////////////////////////////
 ///                             Sidebar SubMenu 
 /// ///////////////////////////////////////////////////////////////////////////////
-.sub_active .subMenu_dropdown{
-    // background-color: hsla(0, 0%, 100%, 0.44);
-    background-color: hsla(48, 84%, 54%, 0.44);
-}
+// .sub_active .subMenu_dropdown{
+//     // background-color: hsla(0, 0%, 100%, 0.44);
+//     background-color: hsla(48, 84%, 54%, 0.44);
+// }
 
-.Sidebar_SubButton {
-    width: 100%;
-    cursor: pointer;
-    list-style: none;
-    // margin: 0 15px;
-    border-radius: 3px;
-    // margin-top: 10px;
-    display: none;
-}
+// .Sidebar_SubButton {
+//     width: 100%;
+//     cursor: pointer;
+//     list-style: none;
+//     // margin: 0 15px;
+//     border-radius: 3px;
+//     // margin-top: 10px;
+//     display: none;
+// }
 
-.Open_SubMenu .Sidebar_SubButton{
-    display: block;
-}
+// .Open_SubMenu .Sidebar_SubButton{
+//     display: block;
+// }
 
 .Sidebar_SubButton.active {
     // box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
     // background-color: #fff;
 }
 
-.Sidebar_SubButton .SubButton {
-    margin: 7px 0;
-    width: 100%;
-    height: 36px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 1.5rem;
-    color: #3c4858;
-    text-decoration: none;
-}
+// .Sidebar_SubButton .SubButton {
+//     margin: 7px 0;
+//     width: 100%;
+//     height: 36px;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     align-items: center;
+//     padding-left: 1.5rem;
+//     color: #3c4858;
+//     text-decoration: none;
+// }
 
-.Sidebar_SubButton .SubButton p{
-    margin-left: 0.4rem;
-}
+// .Sidebar_SubButton .SubButton p{
+//     margin-left: 0.4rem;
+// }
 
-.Sidebar_SubButton .SubButton:hover{
-    // background-color: hsla(0, 0%, 100%, 0.44);
-    background-color: hsla(48, 84%, 54%, 0.44);
-}
+// .Sidebar_SubButton .SubButton:hover{
+//     // background-color: hsla(0, 0%, 100%, 0.44);
+//     background-color: hsla(48, 84%, 54%, 0.44);
+// }
 
-.subMenuActive {
-    // background-color: hsla(0, 0%, 100%, 0.44);
-    background-color: hsla(48, 84%, 54%, 0.44);
-}
+// .subMenuActive {
+//     // background-color: hsla(0, 0%, 100%, 0.44);
+//     background-color: hsla(48, 84%, 54%, 0.44);
+// }
 
-.Sidebar_SubButton_Side_Container {
-    position: absolute;
-    background: rgba(255, 253, 253, 0.165);
-    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
-    border-radius: 3px;   
-    top: 0.1rem;
-    left: 4rem;
-    width: 12rem;
-    margin: 0;
-    display: none;
-}
+// .Sidebar_SubButton_Side_Container {
+//     position: absolute;
+//     background: rgba(255, 253, 253, 0.165);
+//     box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+//     border-radius: 3px;   
+//     top: 0.1rem;
+//     left: 4rem;
+//     width: 12rem;
+//     margin: 0;
+//     display: none;
+// }
 
-.Sidebar_SubButton_Side {
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-}
+// .Sidebar_SubButton_Side {
+//     cursor: pointer;
+//     list-style: none;
+//     display: flex;
+//     flex-direction: column;
+// }
 
-.Sidebar_SubButton_Side .SubButton_Side{
-    // border: solid blue 1px;
-    margin: 0.5rem 0.5rem;
-    padding-left: 0.5rem;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    border-radius: 3px;
-    color: #3c4858;
-    text-decoration: none;
-}
+// .Sidebar_SubButton_Side .SubButton_Side{
+//     // border: solid blue 1px;
+//     margin: 0.5rem 0.5rem;
+//     padding-left: 0.5rem;
+//     height: 2rem;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     text-align: center;
+//     border-radius: 3px;
+//     color: #3c4858;
+//     text-decoration: none;
+// }
 
-.Sidebar_SubButton_Side .SubButton_Side:hover {
-    background-color: hsla(0, 0%, 100%, 0.44);
-}
+// .Sidebar_SubButton_Side .SubButton_Side:hover {
+//     background-color: hsla(0, 0%, 100%, 0.44);
+// }
 
-.active .SubButton_Side{
-    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
-    background-color: #FFD062;
-}
+// .active .SubButton_Side{
+//     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+//     background-color: #FFD062;
+// }
 
-.active .SubButton_Side:hover{
-    background-color: #FFD062;
-}
+// .active .SubButton_Side:hover{
+//     background-color: #FFD062;
+// }
 
-.Sidebar_SubButton_Side .SubButton_Side p {
-    margin-left: 0.4rem;
-}
+// .Sidebar_SubButton_Side .SubButton_Side p {
+//     margin-left: 0.4rem;
+// }
 
-.Open_SubMenu_Side {
-    display: block;
-}
+// .Open_SubMenu_Side {
+//     display: block;
+// }

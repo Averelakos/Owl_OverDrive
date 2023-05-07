@@ -99,28 +99,39 @@
     display: flex;
     min-height: 100vh;
     flex-direction: row;
+    z-index: 10;
 }
 
 .app-sidebar{
-    background: red;
+    background: #1a1a1a;
     width: 80px;
     overflow: hidden;
     min-width: 80px;
     transition: all 0.2s;
+    z-index: 15;
 }
 
 .app-main_outer{
-    background: blue;
+    background: #fff;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-@media (min-width: 769px) {
+// @media (min-width: 769px) {
+
+//     .app-sidebar{
+//         width: 270px;
+//         min-width: 270px;
+//     }
+
+// }
+
+@media (min-width: 959px) {
 
     .app-sidebar{
-        width: 280px;
-        min-width: 280px;
+        width: 270px;
+        min-width: 270px;
     }
 
 }

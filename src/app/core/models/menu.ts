@@ -31,6 +31,24 @@ export const Test: Menu = {
     ]
 }
 
+export const xesou: Menu = {
+    mainPageLabel:'Developement2',
+    route:'Home',
+    icon: 'fa-solid fa-vial',
+    subMenu: [
+        {
+            subPagelabel:'Test Area2',
+            
+            icon: 'fa-solid fa-vial',
+        },
+        {
+            subPagelabel:'Playground2',
+            
+            icon: 'fa-light fa-vials',
+        }
+    ]
+}
+
 export const Company: Menu = {
     mainPageLabel:'Companies',
     route:'Company',
@@ -49,6 +67,7 @@ export const Home: Menu = {
 
 export const menu: Array<Menu> = [
     Home,
-    Test,
+    // xesou,
     Company,
+    Test,
 ]

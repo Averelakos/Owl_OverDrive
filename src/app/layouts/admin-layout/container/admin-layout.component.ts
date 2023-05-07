@@ -1,4 +1,6 @@
+import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { ResponsiveService } from 'src/app/core/services/responsive.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -8,11 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class AdminLayoutComponent implements OnInit {
 
   sidebarIsToggled = false;
-  constructor() {
+  constructor(private responsiveService: ResponsiveService) {
     
    }
 
   ngOnInit(): void {
+    // console.log(Breakpoints.Tablet)
+    // console.log(this.responsiveService.Desktop)
   }
 
   toggleSideBar(){
