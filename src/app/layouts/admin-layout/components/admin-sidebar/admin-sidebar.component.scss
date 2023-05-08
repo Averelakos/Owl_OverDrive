@@ -1,4 +1,4 @@
-.sidebar_container {
+.Sidebar-Container {
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
     display: flex;
@@ -6,6 +6,9 @@
     align-items: center;
     text-align: center;
     width: 100%;
+    position: static;
+    // position: relative;
+    // z-index: 1;
 }
 
 /////////////////////////////////////////
@@ -54,11 +57,8 @@
 /////////////////////////////////////////
 ///////////////////Sidebar//////////////
 //////////////////////////////////////// 
-.Sidebar-container {
-    // background: red;
+.Sidebar-content {
     width: 100%;
-    // position: relative;
-    // z-index: 3;
 }
 
 .Sidebar-Divider{
@@ -79,7 +79,6 @@
     align-items: center;
     text-align: center;
     
-    // z-index: 15;
 }
 
 .MainButton {
@@ -99,14 +98,13 @@
     padding-left: 0.3rem;
 }
 
-.Sidebar-MainButton:hover {
+.MainButton:hover {
     background: hsla(47, 15%, 75%, 0.177);
 }
 
-.Sidebar-MainButton.active {
+.MainButton.active {
     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
     background: #c15375;
-    // border-left: 2px solid #fff;
 }
 
 a.closed {
@@ -117,31 +115,32 @@ i.closed {
     width: 100%;
 }
 
-// .Sidebar-MainButton.closed{
-//     width: 80px;
-//     height: 40px;
-//     position: relative;
-// }
-
 /////////////////////////////////////////
 /////////// Sidebar Sub Button /////////
 /////////////////////////////////////// 
 .Sidebar-MainButton{
-    position: relative;
+    // position: relative;
+    // z-index: 2;
+    // top: 0;
 }
-.Sidebar-MainButton.sub-active{
+.MainButton.sub-active{
     background: hsla(47, 15%, 75%, 0.201);
-    
-    // border-left: 2px solid #fff;
 }
 
 .Sub-menu-Dropdown {
     background: hsla(47, 15%, 75%, 0.088);
     display: none;
-    // border-left: 2px solid #fff;
 }
 
-.Sidebar-MainButton.sub-active  .Sub-menu-Dropdown{
+.Open-Dropdown{
+    display: block;
+}
+
+.Open{
+    background: hsla(47, 15%, 75%, 0.177);
+}
+
+.MainButton.sub-active+.Sub-menu-Dropdown{
     display: block;
 }
 
@@ -155,8 +154,6 @@ i.closed {
     color: #fff;
     padding: 6px 25px;
     text-decoration: none;
-// position: relative;
-    
 }
 
 .Sidebar-SubButton .SubButton:hover{
@@ -174,23 +171,19 @@ i.closed {
 
 
 // sidebar closed
-
 .Sub-menu-Dropdown-Closed {
     position: absolute;
-    // top: 159px;
     left: 5rem;
-    // top: 118px;
-    // top: -40px;
-    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
-    // background: #1a1a1a;
-    background: red;
+    // top: 0;
+    // box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
     list-style: none;
+    background: #1a1a1a;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    // width: 150px;
+    // z-index: 4;
     display: none;
-    width: 150px;
-    z-index: 100;
-
+    
 }
 
 .Side-Dropdown-Open{

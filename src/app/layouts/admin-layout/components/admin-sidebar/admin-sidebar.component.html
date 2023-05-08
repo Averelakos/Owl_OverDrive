@@ -1,4 +1,4 @@
-<div id="sidebar_container" class="sidebar_container">
+<div id="sidebar_container" class="Sidebar-Container">
     <!-- Sidebar Logo -->
     <div class="sidebar_logo" [ngClass]="{'sidebar_logo_closed' : (this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop}">
         <img 
@@ -14,32 +14,25 @@
     <div class="Sidebar-Divider"></div>
 
     <div class="Sidebar-menu">
-        <ul class="Sidebar-container">
-            <ng-container *ngFor="let item of menuItems">
-
+        <ul class="Sidebar-content" >
                 <!-- Main Button -->
-                <li *ngIf="item.subMenu?.length === 0" class="Sidebar-MainButton" [routerLinkActive]="['active']">
+                <li  *ngFor="let item of menuItems" class="Sidebar-MainButton">
                     <a  class="MainButton" 
+                        *ngIf="item.subMenu?.length === 0"
                         [routerLink]="item.route" 
-                        (click)="openSubMenuItems(item)" 
+                        (click)="openSubMenuItems(null,'')"
+                        [routerLinkActive]="['active']"
                         [ngClass]="{'closed':sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}"
                     >
                         <i class="{{item.icon}}" [ngClass]="{'fa-lg closed': sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}"></i>
                         <p *ngIf="!sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)">{{item.mainPageLabel}}</p>
                     </a>
-                </li>
 
-                
-                <!-- Sub Button -->
-                <li *ngIf="item.subMenu?.length !== 0" 
-                    class="Sidebar-MainButton" 
-                    [routerLinkActive]="['sub-active']" 
-                    (clickOutside)="clickOutside()"
-                >
                     <a  class="MainButton" 
-                        [routerLink]="item.route" 
-                        (click)="openSubMenuItems(item)" 
-                        [ngClass]="{'closed':sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}"
+                        *ngIf="item.subMenu?.length !== 0" 
+                        [routerLinkActive]="['sub-active']"  
+                        (click)="openSubMenuItems($event, item)" 
+                        [ngClass]="{'closed':sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop), 'Open':isThisSubMenuActive(item)}"
                     >
                         <i class="{{item.icon}}" [ngClass]="{'fa-lg closed': sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}"></i>
                         <p *ngIf="!sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)">{{item.mainPageLabel}}</p>
@@ -48,7 +41,7 @@
                     <!-- Sub Menu open sidebar -->
                     <ul class="Sub-menu-Dropdown" 
                         *ngIf="!sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop) && item.subMenu?.length !== 0" 
-                        [ngClass]="{'Open_SubMenu': isThisSubMenuActive(item)}"
+                        [ngClass]="{'Open-Dropdown': isThisSubMenuActive(item)}"
                     >
                         <li *ngFor="let subMenu_item of item.subMenu" class="Sidebar-SubButton" [routerLinkActive]="['active']">
                             <a class="SubButton" [routerLink]="subMenu_item.route">
@@ -70,15 +63,8 @@
                                 <p>{{subMenu_item.subPagelabel}}</p>
                             </a>
                         </li>
-                </ul>
+                    </ul>
                 </li>
-
-                
-
-
-                
-                
-            </ng-container>
         </ul>
     </div>
 </div>

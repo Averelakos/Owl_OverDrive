@@ -1,23 +1,9 @@
-<!-- <div class="wrapper" [ngClass]="{'wrapper-sidebar-closed': this.sidebarIsToggled}">
-    <div  class="sidebar">
-        <app-admin-sidebar [sideBarOpen]="!this.sidebarIsToggled"></app-admin-sidebar>
-        <div class="sidebar-background" style="background-image: url(/assets/img/chill_mario_2023_ver.gif);"></div>
-    </div>
-    <div class="main-panel">
-        <div class="main_header">
-            <app-admin-header [isSideBarOpen]="this.sidebarIsToggled" (toggle)="toggleSideBar()"></app-admin-header>
-        </div>
-        <div class="main_container">
+<div class="app-container">
+    <app-admin-sidebar *ngIf="(this.responsiveService.responsiveSize | async) !== responsiveSizes.Mobile" class="app-sidebar" ></app-admin-sidebar>
+    <div class="app-main_outer">
+        <app-admin-header class="app-header"></app-admin-header>
+        <div>
             <router-outlet></router-outlet>
         </div>
-    </div>
-</div> -->
-
-<div class="app-container">
-    <div class="app-sidebar">
-        <app-admin-sidebar></app-admin-sidebar>
-    </div>
-    <div class="app-main_outer">
-
     </div>
 </div>

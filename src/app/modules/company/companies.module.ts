@@ -4,7 +4,7 @@ import { AddEditCompanyComponent } from './add-edit/add-edit-company.component';
 
 
 const routes: Routes = [
-    {path:'Add', component:AddEditCompanyComponent},
+    {path:'', component:AddEditCompanyComponent},
 ]
 
 @NgModule({

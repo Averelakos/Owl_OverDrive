@@ -99,16 +99,19 @@
     display: flex;
     min-height: 100vh;
     flex-direction: row;
-    z-index: 10;
+    // position: relative;
+    // z-index: 0;
 }
 
 .app-sidebar{
-    background: #1a1a1a;
+    // background: #1a1a1a;
+    background-color: #222;
     width: 80px;
     overflow: hidden;
     min-width: 80px;
     transition: all 0.2s;
-    z-index: 15;
+    // position: sticky;
+    // z-index: 2;
 }
 
 .app-main_outer{
@@ -116,6 +119,13 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    // position: sticky;
+    // z-index: 1;
+}
+
+.app-header{
+    height: 3rem;
+    background: #c15375;
 }
 
 // @media (min-width: 769px) {

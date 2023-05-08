@@ -33,7 +33,7 @@ export const Test: Menu = {
 
 export const xesou: Menu = {
     mainPageLabel:'Developement2',
-    route:'Home',
+    route:'Xesou',
     icon: 'fa-solid fa-vial',
     subMenu: [
         {
@@ -67,7 +67,6 @@ export const Home: Menu = {
 
 export const menu: Array<Menu> = [
     Home,
-    // xesou,
     Company,
     Test,
 ]

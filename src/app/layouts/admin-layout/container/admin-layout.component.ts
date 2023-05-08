@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { ResponsiveService } from 'src/app/core/services/responsive.service';
+import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -10,7 +10,8 @@ import { ResponsiveService } from 'src/app/core/services/responsive.service';
 export class AdminLayoutComponent implements OnInit {
 
   sidebarIsToggled = false;
-  constructor(private responsiveService: ResponsiveService) {
+  responsiveSizes = ResponsizeSize
+  constructor(public responsiveService: ResponsiveService) {
     
    }
 
