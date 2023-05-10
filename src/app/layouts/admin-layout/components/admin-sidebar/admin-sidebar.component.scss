@@ -132,15 +132,15 @@ i.closed {
     display: none;
 }
 
-.Open-Dropdown{
-    display: block;
-}
-
-.Open{
+.MainButton.selected{
     background: hsla(47, 15%, 75%, 0.177);
 }
 
-.MainButton.sub-active+.Sub-menu-Dropdown{
+.MainButton.selected+.Sub-menu-Dropdown{
+    display: block;
+}
+
+.MainButton.selected+.Sub-menu-Dropdown-Closed{
     display: block;
 }
 
@@ -175,7 +175,7 @@ i.closed {
     position: absolute;
     left: 5rem;
     // top: 0;
-    // box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
     list-style: none;
     background: #1a1a1a;
     border-top-right-radius: 8px;

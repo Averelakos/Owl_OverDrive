@@ -1,8 +1,8 @@
 import { Component, Input} from '@angular/core';
+import { Router } from '@angular/router';
 import { Menu } from 'src/app/core/models/menu';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
-import { runInThisContext } from 'vm';
 
 
 @Component({
@@ -13,11 +13,23 @@ import { runInThisContext } from 'vm';
 export class AdminSidebarComponent {
  
   menuItems: Array<Menu>
-  activeSubMenu: string = 'Home';
+  activeSubMenu: string = '';
   responsiveSizes = ResponsizeSize
+
   @Input()sideBarClosed: boolean = false;
-  constructor(public menuService: MenuService, public responsiveService: ResponsiveService) {
+  constructor(public menuService: MenuService, public responsiveService: ResponsiveService , public router: Router) {
     this.menuItems = menuService.getMenu();
+
+    this.menuItems.forEach((item) => {
+      if (item.subMenu?.length !== 0) {
+        item.subMenu?.forEach((x) => {
+          if(x.route === router.url) {
+            this.activeSubMenu = item.mainPageLabel!
+          }
+        })
+      }
+    })
+
   }
 
 
@@ -30,44 +42,6 @@ export class AdminSidebarComponent {
     }
   }
 
-  openSubMenuItems(event: any = null, item: any) {
-
-    if (event != null) {
-      let element = event.target as HTMLElement;
-      if (this.activeSubMenu !== item.mainPageLabel) {
-        this.closeAllSubMenus()
-        element.classList.add('sub-active')
-        this.activeSubMenu = item.mainPageLabel;
-      } 
-      else {
-        this.activeSubMenu = '';
-      }
-    } 
-    else {
-      this.closeAllSubMenus()
-      this.activeSubMenu = ''
-    }
-
-
-    // if (event != null) {
-    //   let element = event.target as HTMLElement;
-    //   if (element.classList.contains('sub-active') && this.activeSubMenu === item.mainPageLabel) {
-    //     element.classList.remove('sub-active')
-    //   } else {
-    //     element.classList.add('sub-active')
-    //   }
-    // } else {
-      
-    // }
-
-    // if (this.activeSubMenu !== item.mainPageLabel) {
-    //   this.activeSubMenu = item.mainPageLabel;
-    // } else {
-    //   this.activeSubMenu = '';
-    // }
-    // console.log(this.activeSubMenu)
-  }
-
   closeAllSubMenus() {
     const parentELement = document.getElementsByClassName('sub-active')
       let count = parentELement.length
@@ -78,13 +52,40 @@ export class AdminSidebarComponent {
       }
   }
 
-  isThisSubMenuActive(item): boolean {
-    return item.mainPageLabel === this.activeSubMenu;
+  toggleSubMenuClick(event: Event) {
+    event.preventDefault();
+
+    const currentTarget = event.currentTarget as HTMLElement;
+
+    // check if parent elment has sub menu items
+    const parentElement = currentTarget.parentElement;
+    const childrenElement = parentElement?.getElementsByTagName('ul');
+
+    if (childrenElement !== undefined && childrenElement?.length > 0) {
+      if (!currentTarget.classList.contains('selected')) {
+        this.closeOpenSubNavs();
+       currentTarget.classList.add('selected');
+      } else {
+        currentTarget.classList.remove('selected');
+      }
+    } else {
+      this.closeOpenSubNavs();
+      this.activeSubMenu = ''
+    }
   }
 
-  clickOutside(item) {
-    console.log(item)
-    this.activeSubMenu = '';
+  closeOpenSubNavs(){
+    let openNav = document.querySelectorAll('.selected');
+
+    openNav.forEach((items) => {
+      if (items.classList.contains('selected')) {
+        items.classList.remove('selected');
+      }
+    });
+  }
+
+  subButtonActive(item: any) {
+    this.activeSubMenu = item.mainPageLabel
   }
 
 }

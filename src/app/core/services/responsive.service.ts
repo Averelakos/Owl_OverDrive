@@ -38,7 +38,6 @@ export class ResponsiveService{
         .subscribe(() => this.responsiveSize.next(ResponsizeSize.Desktop))
 
         this.responsiveSize.subscribe((x) => {
-            console.log(ResponsizeSize[x])
             document.body.className = ResponsizeSize[x]
         })
     }

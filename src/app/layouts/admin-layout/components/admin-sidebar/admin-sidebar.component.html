@@ -1,6 +1,6 @@
 <div id="sidebar_container" class="Sidebar-Container">
     <!-- Sidebar Logo -->
-    <div class="sidebar_logo" [ngClass]="{'sidebar_logo_closed' : (this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop}">
+    <div class="sidebar_logo" [ngClass]="{'sidebar_logo_closed' : sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}">
         <img 
         [ngClass]="{'sidebar_logo_img': !sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop), 'sidebar_logo_img_closed': sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}" 
         src="../../../../../assets/img/owl_logo.png" 
@@ -20,7 +20,7 @@
                     <a  class="MainButton" 
                         *ngIf="item.subMenu?.length === 0"
                         [routerLink]="item.route" 
-                        (click)="openSubMenuItems(null,'')"
+                        (click)="toggleSubMenuClick($event)"
                         [routerLinkActive]="['active']"
                         [ngClass]="{'closed':sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}"
                     >
@@ -30,9 +30,8 @@
 
                     <a  class="MainButton" 
                         *ngIf="item.subMenu?.length !== 0" 
-                        [routerLinkActive]="['sub-active']"  
-                        (click)="openSubMenuItems($event, item)" 
-                        [ngClass]="{'closed':sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop), 'Open':isThisSubMenuActive(item)}"
+                        (click)="toggleSubMenuClick($event)"
+                        [ngClass]="{'closed':sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop), 'sub-active': this.activeSubMenu === item.mainPageLabel}"
                     >
                         <i class="{{item.icon}}" [ngClass]="{'fa-lg closed': sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)}"></i>
                         <p *ngIf="!sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop)">{{item.mainPageLabel}}</p>
@@ -41,10 +40,9 @@
                     <!-- Sub Menu open sidebar -->
                     <ul class="Sub-menu-Dropdown" 
                         *ngIf="!sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop) && item.subMenu?.length !== 0" 
-                        [ngClass]="{'Open-Dropdown': isThisSubMenuActive(item)}"
                     >
                         <li *ngFor="let subMenu_item of item.subMenu" class="Sidebar-SubButton" [routerLinkActive]="['active']">
-                            <a class="SubButton" [routerLink]="subMenu_item.route">
+                            <a class="SubButton" [routerLink]="subMenu_item.route" (click)="subButtonActive(item)">
                                 <i class="{{subMenu_item.icon}}"></i>
                                 <p>{{subMenu_item.subPagelabel}}</p>
                             </a>
@@ -54,11 +52,9 @@
                     <!-- Sub Menu closed sidebar -->
                     <ul class="Sub-menu-Dropdown-Closed"
                         *ngIf="sidebarIsClosed((this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop) && item.subMenu?.length !== 0"  
-                        [ngClass]="{'Side-Dropdown-Open': isThisSubMenuActive(item)}"
-                        
                     >
                         <li *ngFor="let subMenu_item of item.subMenu" class="Sidebar-SubButton" [routerLinkActive]="['active']">
-                            <a class="SubButton" [routerLink]="subMenu_item.route">
+                            <a class="SubButton" [routerLink]="subMenu_item.route" (click)="subButtonActive(item)">
                                 <i class="{{subMenu_item.icon}}"></i>
                                 <p>{{subMenu_item.subPagelabel}}</p>
                             </a>

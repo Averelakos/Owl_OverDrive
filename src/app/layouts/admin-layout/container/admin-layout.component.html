@@ -1,5 +1,5 @@
 <div class="app-container">
-    <app-admin-sidebar *ngIf="(this.responsiveService.responsiveSize | async) !== responsiveSizes.Mobile" class="app-sidebar" ></app-admin-sidebar>
+    <app-admin-sidebar *ngIf="(this.responsiveService.responsiveSize | async) !== responsiveSizes.Mobile" [ngClass]="{ 'app-sidebar': true}" ></app-admin-sidebar>
     <div class="app-main_outer">
         <app-admin-header class="app-header"></app-admin-header>
         <div>

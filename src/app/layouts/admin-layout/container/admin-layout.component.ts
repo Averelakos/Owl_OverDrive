@@ -1,5 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from 'src/app/core/services/layout.service';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 
 @Component({
@@ -11,11 +12,12 @@ export class AdminLayoutComponent implements OnInit {
 
   sidebarIsToggled = false;
   responsiveSizes = ResponsizeSize
-  constructor(public responsiveService: ResponsiveService) {
-    
+  constructor(public responsiveService: ResponsiveService, public layoutService: LayoutService) {
+    this.layoutService.sidebarMenuTrigger.next(false)
    }
 
   ngOnInit(): void {
+    this.layoutService.sidebarMenuTrigger
     // console.log(Breakpoints.Tablet)
     // console.log(this.responsiveService.Desktop)
   }
