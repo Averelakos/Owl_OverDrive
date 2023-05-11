@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AddEditCompanyComponent } from './add-edit/add-edit-company.component';
-
+import { AddEditCompanyComponent } from "./add-edit/container/add-edit-company.component";
+// 
 
 const routes: Routes = [
     {path:'', component:AddEditCompanyComponent},
