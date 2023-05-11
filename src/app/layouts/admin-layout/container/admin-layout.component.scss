@@ -13,6 +13,7 @@
     overflow: hidden;
     min-width: 80px;
     transition: all 0.2s;
+    height: 100vh;
     // position: sticky;
     // z-index: 2;
 }
@@ -30,14 +31,19 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    // position: sticky;
-    // z-index: 1;
+    position: relative;
+    z-index: 0;
 }
 
 .app-header{
     height: 3rem;
-    background: #c15375;
+    position: relative;
+    z-index: 4;
+    // transition: all 0.3s;
+    // animation: slidefromTop 0.6s;
+    // background: #c15375;
 }
+
 
 @media (min-width: 959px) {
 
