@@ -4,6 +4,7 @@
     flex-direction: row;
     // position: relative;
     // z-index: 0;
+    overflow:hidden;
 }
 
 .app-sidebar{
@@ -14,6 +15,7 @@
     min-width: 80px;
     transition: all 0.2s;
     height: 100vh;
+    overflow: hidden;
     // position: sticky;
     // z-index: 2;
 }
@@ -33,6 +35,9 @@
     flex-direction: column;
     position: relative;
     z-index: 0;
+    height: 100vh;
+    overflow:hidden; 
+    // overflow-y:scroll;
 }
 
 .app-header{
@@ -44,6 +49,12 @@
     // background: #c15375;
 }
 
+.main{
+    overflow:hidden; 
+    overflow-y:scroll;
+    height: 100vh;
+    padding-bottom: 2rem;
+}
 
 @media (min-width: 959px) {
 
