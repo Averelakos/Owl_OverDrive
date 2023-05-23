@@ -1,11 +1,20 @@
+<ol class="breadcrumb">
+    <li><a [routerLink]="['/Company']">Companies</a></li>
+    <li>New Company</li>
+</ol>
+
 <div class="page_title">
     <h1>Companies <small>Add new information</small></h1>
 </div>
 
 
 <form class="form_group_add_edit">
-    <div class="form_group">
-        <label>Name</label>
-        <input type="text">
+    <app-company-general-details style="width: inherit;"></app-company-general-details>
+    <div>
+        <app-standar-select-search [label]="'Parent company'"></app-standar-select-search>
+        <div>
+            <app-standar-select-search [label]="'Test'"></app-standar-select-search>
+            <app-standar-datetimepicker></app-standar-datetimepicker>
+        </div>
     </div>
 </form>

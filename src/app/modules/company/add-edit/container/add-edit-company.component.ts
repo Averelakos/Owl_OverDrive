@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-edit-company.component.scss']
 })
 export class AddEditCompanyComponent {
+  imageSrc: string | ArrayBuffer | null;
 
+  readURL(event: any): void {
+    if (event?.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = e => this.imageSrc = reader.result;
+
+        reader.readAsDataURL(file);
+    }
+  }
 }

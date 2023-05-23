@@ -1,6 +1,31 @@
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    font-size: 12.992px;
+    line-height: 1.428571429;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: #34373b;
+    background: #f5f5f5;
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color:#c15375;
+    cursor: pointer;
+}
+
+.breadcrumb>li+li:before {
+    content: "/ ";
+    padding: 0 5px;
+    color: #ccc;
+}
+
 .page_title{
-    border: 1px solid red;
-    width: 100%;
+    margin-left: 1rem;
+    // width: 100%;
 }
 
 .page_title > h1 {
@@ -18,9 +43,11 @@
 }
 
 .form_group_add_edit {
-    border: 1px solid red;
     display: flex;
+    flex-direction: column;
     width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .form_group{
@@ -28,3 +55,5 @@
     flex-direction: column;
     width: 100%;
 }
+
+
