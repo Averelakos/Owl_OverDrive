@@ -1,0 +1,36 @@
+:host {
+    // display: contents;
+}
+
+.standar-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.standar-input > input {
+    background-image: none;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #fff;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.standar-input > label {
+    font-weight: 700;
+    font-size: 14.56px;
+    margin-bottom: 5px;
+    line-height: 1.428571429;
+    color: #34373b;
+}
+
+.standar-input > input:focus {
+    outline: none;
+    border-color: #c15375;
+    box-shadow: #c15375;
+}
