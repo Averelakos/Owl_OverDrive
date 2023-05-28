@@ -1,0 +1,55 @@
+:host{
+    display: contents;
+}
+
+.mat-datetime-picker-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mat-datetime-picker-container > label {
+    font-weight: 700;
+    font-size: 14.56px;
+    margin-bottom: 5px;
+    line-height: 1.428571429;
+    color: #34373b;
+}
+
+.mat-datetime-picker-input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-datetime-picker-container > .mat-datetime-picker-input  {
+    background-image: none;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #fff;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    cursor: pointer;
+    width: 100%;
+}
+
+.mat-datetime-picker-container > .mat-datetime-picker-input.focus  {
+    border: 2px solid #c15375;
+    box-shadow: #c15375;
+}
+
+.mat-datetime-picker-container > .mat-datetime-picker-input > input {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.mat-datetime-picker-container > .mat-datetime-picker-input > input:focus {
+    outline: none;
+}

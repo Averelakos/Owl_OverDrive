@@ -1,0 +1,7 @@
+<div class="mat-datetime-picker-container" (click)="picker.open()" (clickOutside)="clickOutside()">
+    <label>{{label}}</label>
+    <div class="mat-datetime-picker-input" (click)="clickToFocus()" [ngClass]="{'focus':isFocused}">
+        <input matInput readonly [matDatepicker]="picker">
+        <mat-datepicker #picker></mat-datepicker>
+    </div>
+</div>
