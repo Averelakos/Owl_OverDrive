@@ -10,6 +10,7 @@ import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { LocalService } from './core/services/local.service';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ResponsiveService } from './core/services/responsive.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResponsiveService } from './core/services/responsive.service';
     LayoutModule,
     AppRoutingModule,
     AdminLayoutModule,
-    AuthLayoutModule
+    AuthLayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [MenuService, LocalService, ResponsiveService],
   bootstrap: [AppComponent]
