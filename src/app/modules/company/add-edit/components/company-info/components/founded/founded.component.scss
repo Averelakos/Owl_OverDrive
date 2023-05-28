@@ -1,0 +1,32 @@
+:host{
+    display: contents;
+}
+
+.founded-container{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    // flex: 1 1 0px;
+}
+
+.founded-items-left{
+    width: 100%;
+    margin-right: 0.5rem;
+}
+
+
+.founded-items-right{
+    width: 100%;
+    margin-left: 0.5rem;
+}
+
+.mobile{
+    flex-direction: column;
+    margin: 0;
+}
+
+.mobile > .founded-items-left,
+.mobile > .founded-items-right{
+    margin: 0;
+    margin-top: 1rem;
+}

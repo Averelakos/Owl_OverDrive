@@ -1,0 +1,8 @@
+<div class="founded-container" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === responsiveSizes.Mobile}">
+    <div class="founded-items-left">
+        <app-mat-datetime-picker [label]="'Founded in'" ></app-mat-datetime-picker>
+    </div>
+    <div class="founded-items-right">
+        <app-standar-select-search [label]="'Country'"></app-standar-select-search>
+    </div>
+</div>

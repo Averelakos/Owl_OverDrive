@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 
 @Component({
   selector: 'app-add-edit-company',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AddEditCompanyComponent {
   imageSrc: string | ArrayBuffer | null;
+
+  responsiveSizes = ResponsizeSize
+  constructor(public responsiveService: ResponsiveService) {}
 
   readURL(event: any): void {
     if (event?.target.files && event.target.files[0]) {

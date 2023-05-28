@@ -5,11 +5,23 @@ import { MatInputComponent } from './components/input/mat-text-input/mat-input.c
 import { MatFieldErrorsComponent } from './components/form-elements/mat-field-errors/mat-field-errors.component';
 // import { OnValueChangeDirective } from "./directives/onValueChange.directive";
 import { MatSelectComponent } from './components/select/mat-select/mat-select.component';
+import { MatDatetimePickerComponent } from './components/mat-datetime-picker/mat-datetime-picker.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatFormFieldModule } from "@angular/material/form-field";
+
 
 
 @NgModule({
     imports:[
-        CommonModule
+        CommonModule,
+        
+        MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule,
     ],
     providers:[],
     declarations:[
@@ -17,12 +29,14 @@ import { MatSelectComponent } from './components/select/mat-select/mat-select.co
         MatInputComponent,
         MatFieldErrorsComponent,
         // OnValueChangeDirective,
-        MatSelectComponent
+        MatSelectComponent,
+        MatDatetimePickerComponent
     ],
     exports:[
         ClickOutsideDirective,
         MatInputComponent,
         MatSelectComponent,
+        MatDatetimePickerComponent
         // OnValueChangeDirective
     ]
     

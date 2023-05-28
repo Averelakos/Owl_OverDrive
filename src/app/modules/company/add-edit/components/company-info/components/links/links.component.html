@@ -1,0 +1,17 @@
+<div class="status-container" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === responsiveSizes.Mobile}">
+    <div class="status-items-left">
+        <app-standar-link-input 
+            [label]="'Official Website'"
+            [icon]="'fa-solid fa-arrow-up-right-from-square'"
+            [iconStyle]="officialWebsiteStyle"
+            >
+        </app-standar-link-input>
+    </div>
+    <div class="status-items-right">
+        <app-standar-link-input
+            [label]="'Twitter'"
+            [icon]="'fa-brands fa-twitter'"
+            [iconStyle]="twitterStyle">
+        </app-standar-link-input>
+    </div>
+</div>
