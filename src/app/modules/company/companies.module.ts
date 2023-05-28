@@ -5,7 +5,6 @@ import { StandarInputComponent } from "src/app/common/standar-input/standar-inpu
 import { StandarTextareaComponent } from "src/app/common/standar-textarea/standar-textarea.component";
 import { CompanyGeneralDetailsComponent } from './add-edit/components/company-general-details/company-general-details.component';
 import { StandarSelectSearchComponent } from "src/app/common/standar-select-search/standar-select-search.component";
-import { StandarDatetimePickerComponent } from "src/app/common/standar-datetimepicker/standar-datetimepicker.component";
 import { SharedComponentsModule } from "src/app/shared/shared.module";
 import { StandarLinkInputComponent } from "src/app/common/standar-link-input/standar-link-input.component";
 import { CompanyInfoComponent } from './add-edit/components/company-info/container/company-info.component';
@@ -27,7 +26,6 @@ const routes: Routes = [
         StandarInputComponent,
         StandarTextareaComponent,
         StandarSelectSearchComponent,
-        StandarDatetimePickerComponent,
         StandarLinkInputComponent,
         SharedComponentsModule
     ],
