@@ -6,6 +6,7 @@ import { AdminHeaderMobileComponent } from './components/admin-header-mobile/adm
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 // import { ClickOutsideDirective } from "src/app/shared/directives/outside.directive";
 import { SharedComponentsModule } from "src/app/shared/shared.module";
+import { AdminHeaderComponent } from "./components/admin-header/admin-header.component";
 // import { SharedComponentsModule } from "src/app/shared/shared.module";
 
 
@@ -19,6 +20,7 @@ import { SharedComponentsModule } from "src/app/shared/shared.module";
     declarations:[
         AdminLayoutComponent,
         AdminHeaderMobileComponent,
+        AdminHeaderComponent,
         AdminSidebarComponent,
         // ClickOutsideDirective
     ],
