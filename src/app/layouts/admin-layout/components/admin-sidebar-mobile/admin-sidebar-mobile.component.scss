@@ -1,0 +1,227 @@
+:host{
+    display: contents;
+}
+
+.dialog_container{
+    z-index:11; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    // background-color: rgba(100, 100, 100, 0.356); 
+    width: 100vw; 
+    height: 100vh;
+}
+
+.admin-sidebar-mobile-container{
+    z-index:12; 
+    position: absolute; 
+    display: flex;
+    flex-direction: column;
+    top: 0; 
+    left: 0; 
+    background: rgba( 32, 29, 29, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    width: 85%; 
+    height: 100vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transform-origin: left;
+    animation: slide 0.5s;
+    transition: all 0.25s;
+}
+
+.close{
+    transform-origin: right;
+    animation: slide 0.5s;
+    width: 0;
+}
+
+
+.header-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    padding-left: 0.6rem;
+    padding-top: 0.6rem;
+    justify-content: space-between;
+}
+
+.header-title div img{
+    width: 2rem;
+    height: 2rem;
+}
+
+.header-title div h1 {
+    font-size: 10pt;
+    margin: 0;
+    font-weight: 400;
+    // color: #1b1a1afd;
+    color: #a2a2a2;
+    padding: 0 0.5rem 0 0.5rem;
+    line-height: 47px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.8);
+    background-size: 22px 22px;
+}
+
+////////////////////////////////////////////////
+/// Menu
+////////////////////////////////////////////////
+
+.sidebar-mobile-menu {
+    // background: red;
+    padding: 0.2rem;
+}
+
+.mobile-main-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: Open Sans,Lucida Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #fff;
+    padding: 8px 15px;
+    transition: all .2s;
+}
+
+.mobile-main-button > p {
+    padding-left: 0.3rem;
+}
+
+.mobile-main-button:hover {
+    background: hsla(47, 15%, 75%, 0.177);
+}
+
+.mobile-main-button.active {
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    background: #c15375;
+}
+
+.mobile-sub-menu-dropdown{
+    display: none;
+    flex-direction: column;
+    background: hsla(47, 15%, 75%, 0.088);
+}
+
+.open-drop-down{
+    background: hsla(47, 15%, 75%, 0.177);
+}
+
+.open-drop-down+.mobile-sub-menu-dropdown{
+    display: flex;
+}
+
+.mobile-sub-button{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+    padding: 6px 25px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.sub.active{
+    background: hsla(47, 15%, 75%, 0.088);
+}
+
+.mobile-sub-button.active{
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(60 72 88 / 40%);
+    background: #c15375;
+}
+
+.mobile-sub-button > p {
+    padding-left: 0.3rem;
+}
+
+////////////////////////////////////////////////
+/// user
+////////////////////////////////////////////////
+.user-menu-sidebar-mobile {
+    // background-color: red;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    border-bottom-right-radius:20px ;
+    // box-shadow: inset  0 4px 16px -4px black, inset 0 3px 8px -2px black;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.user-menu-sidebar-mobile  .user-img-button{
+    // padding: 0.5em;
+    display: flex;
+    border: none;
+    border-radius: 25px;
+    align-items: center;
+    text-align: center;
+}
+
+.user-menu-sidebar-mobile .user-img-button img{
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+    object-fit:cover;
+}
+
+.user-menu-sidebar-mobile span {
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10pt;
+    margin: 0;
+    font-weight: 400;
+    color: #fff;
+    padding: 0 0.5rem 0 0.5rem;
+} 
+
+.logout {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.logout:hover{
+    background: #c15375;
+}
+
+
+
+
+@keyframes slide{
+    from{
+        transform: scale(0,1);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1,1);
+        opacity: 1;
+    }
+} 

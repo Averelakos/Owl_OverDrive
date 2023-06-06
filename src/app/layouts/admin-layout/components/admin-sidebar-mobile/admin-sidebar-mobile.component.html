@@ -1,0 +1,63 @@
+<div class="dialog_container">
+    <div id="mobile-sidebar-container"  class="admin-sidebar-mobile-container">
+        <div class="header-title">
+            <div style="display: flex; flex-direction: row; align-items: center; text-align: center;">
+                <img src="../../../../../assets/img/owl_logo.png" alt="">
+                <h1 class="sidebar_logo_title">Owl Overdrive</h1>
+            </div>
+            <div (click)="clickToCloseSidebar()" style=" color: #a2a2a2; margin-right: 1rem;"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+
+        <div class="sidebar-mobile-menu">
+            <ul>
+                <li *ngFor="let item of menuItems">
+                    <a class="mobile-main-button"
+                    *ngIf="item.subMenu?.length === 0"
+                    [routerLink]="item.route" 
+                    [routerLinkActive]="['active']"
+                    (click)="clickToCloseSubMenu()"
+                    >
+                        <i class="{{item.icon}}" ></i>
+                        <p>{{item.mainPageLabel}}</p>
+                    </a>
+
+                    <a class="mobile-main-button"
+                    *ngIf="item.subMenu?.length !== 0"
+                    (click)="clickToOpenSubMenu($event)"
+                    >
+                        <i class="{{item.icon}}" ></i>
+                        <p>{{item.mainPageLabel}}</p>
+                    </a>
+
+                    <ul class="mobile-sub-menu-dropdown" *ngIf="item.subMenu?.length !== 0">
+                        <li class="sub" *ngFor="let subMenu_item of item.subMenu">
+                            <a  class="mobile-sub-button"
+                               [routerLink]="subMenu_item.route"
+                               [routerLinkActive]="['active']"
+                               (click)="clickToCloseSidebar()"
+                            >
+                                <i class="{{subMenu_item.icon}}"></i>
+                                <p>{{subMenu_item.subPagelabel}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="user-menu-sidebar-mobile">
+            <div class="user">
+                <button class="user-img-button">
+                    <img src="../../../../../assets/img/userImga.jpg" alt="">
+                </button>
+                <span>
+                    Iraklis Tsikas
+                    <small>ID: #2222</small>
+                </span>
+            </div>
+                <button class="logout">
+                    <i class="fa-lg  fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+        </div>
+    </div>  
+</div>
