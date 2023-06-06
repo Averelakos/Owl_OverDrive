@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 })
 export class AddEditCompanyComponent {
   imageSrc: string | ArrayBuffer | null;
-
+  loading$ = new BehaviorSubject<boolean>(false)
   responsiveSizes = ResponsizeSize
   constructor(public responsiveService: ResponsiveService) {}
 

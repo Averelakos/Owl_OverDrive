@@ -1,4 +1,5 @@
 <div class="app-container">
+    <app-admin-sidebar-mobile *ngIf="(this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop && (this.layoutService.sidebarMobileMenuTrigger | async)"></app-admin-sidebar-mobile>
     <app-admin-sidebar *ngIf="(this.responsiveService.responsiveSize | async) === responsiveSizes.Desktop" [ngClass]="{ 'app-sidebar': true}" ></app-admin-sidebar>
     <div class="app-main_outer">
         <app-admin-header-mobile *ngIf="(this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop" class="app-header"></app-admin-header-mobile>
@@ -6,5 +7,6 @@
         <div class="main">
             <router-outlet></router-outlet>
         </div>
+        <!-- <app-admin-footer class="app-footer"></app-admin-footer> -->
     </div>
 </div>

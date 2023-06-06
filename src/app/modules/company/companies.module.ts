@@ -13,6 +13,7 @@ import { FoundedComponent } from './add-edit/components/company-info/components/
 import { StatusComponent } from './add-edit/components/company-info/components/status/status.component';
 import { CommonModule } from "@angular/common";
 import { LinksComponent } from "./add-edit/components/company-info/components/links/links.component";
+import { StandarLoaderComponent } from "src/app/common/standar-loader/standar-loader.component";
 // 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
         StandarTextareaComponent,
         StandarSelectSearchComponent,
         StandarLinkInputComponent,
-        SharedComponentsModule
+        SharedComponentsModule,
+        StandarLoaderComponent
     ],
     providers:[],
     declarations:[

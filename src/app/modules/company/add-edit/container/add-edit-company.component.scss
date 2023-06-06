@@ -1,5 +1,15 @@
+:host{
+    display: contents;
+}
+
+.company-container{
+    // position: relative;
+    position: relative;
+    // z-index: 0;
+    z-index: 1;
+}
 .breadcrumb {
-    position: sticky;
+    position:sticky;
     top: 0;
     left: 0;
     right: 0;
