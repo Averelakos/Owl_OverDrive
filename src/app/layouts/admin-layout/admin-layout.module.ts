@@ -7,6 +7,8 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
 // import { ClickOutsideDirective } from "src/app/shared/directives/outside.directive";
 import { SharedComponentsModule } from "src/app/shared/shared.module";
 import { AdminHeaderComponent } from "./components/admin-header/admin-header.component";
+import { AdminFooterComponent } from "./components/admin-footer/admin-footer.component";
+import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/admin-sidebar-mobile.component';
 // import { SharedComponentsModule } from "src/app/shared/shared.module";
 
 
@@ -22,6 +24,8 @@ import { AdminHeaderComponent } from "./components/admin-header/admin-header.com
         AdminHeaderMobileComponent,
         AdminHeaderComponent,
         AdminSidebarComponent,
+        AdminFooterComponent,
+        AdminSidebarMobileComponent
         // ClickOutsideDirective
     ],
     exports:[

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { LayoutService } from 'src/app/core/services/layout.service';
 
 @Component({
   selector: 'app-admin-header-mobile',
@@ -10,16 +11,17 @@ export class AdminHeaderMobileComponent implements OnInit {
 
   @Input() isSideBarOpen: boolean;
   @Output() toggle = new EventEmitter<boolean>();
-  constructor() { }
+  constructor(public layoutService: LayoutService) { }
 
   ngOnInit(): void {
   }
 
   @HostListener('toggleSideBar')
   toggleSideBar() {
-    this.isSideBarOpen = !this.isSideBarOpen;
-    this.toggle.emit(this.isSideBarOpen);
-    this.changeTogglerIcon();
+    this.layoutService.sidebarMobileMenuTrigger.next(true)
+    // this.isSideBarOpen = !this.isSideBarOpen;
+    // this.toggle.emit(this.isSideBarOpen);
+    // this.changeTogglerIcon();
   }
 
   changeTogglerIcon(){
