@@ -1,0 +1,12 @@
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\bin\Debug\net7.0\Owl.Overdrive.Data.deps.json
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\bin\Debug\net7.0\Owl.Overdrive.Data.dll
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\bin\Debug\net7.0\Owl.Overdrive.Data.pdb
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.csproj.AssemblyReference.cache
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.AssemblyInfoInputs.cache
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.AssemblyInfo.cs
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.csproj.CoreCompileInputs.cache
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.dll
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\refint\Owl.Overdrive.Data.dll
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\Owl.Overdrive.Data.pdb
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive\Owl.Overdrive.Data\obj\Debug\net7.0\ref\Owl.Overdrive.Data.dll

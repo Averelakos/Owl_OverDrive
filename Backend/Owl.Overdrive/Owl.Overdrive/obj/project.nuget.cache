@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "RdYY0LAt9NuMge7K5FiUGdgAML33ZJJ/f4PqHVx74oBG60SmEDr/yGH354Crtsb8kwS3hbFvC1rtnTYwXC3RcA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive\\Owl.Overdrive\\Owl.Overdrive.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Avere\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
