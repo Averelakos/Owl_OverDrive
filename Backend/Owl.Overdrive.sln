@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owl.Overdrive.API", "Owl.Overdrive.API\Owl.Overdrive.API.csproj", "{39555B21-95CB-4881-BCDD-00E6C27B2F4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owl.Overdrive.API", "Owl.Overdrive.API\Owl.Overdrive.API.csproj", "{39555B21-95CB-4881-BCDD-00E6C27B2F4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owl.Overdrive.Data", "Owl.Overdrive.Data\Owl.Overdrive.Data.csproj", "{74EDD3BB-03C8-4C5C-A975-C4690ACCC58B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owl.Overdrive.Repository", "Owl.Overdrive.Repository\Owl.Overdrive.Repository.csproj", "{74EDD3BB-03C8-4C5C-A975-C4690ACCC58B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owl.Overdrive.Infrastructure", "Owl.Overdrive.Infrastructure\Owl.Overdrive.Infrastructure.csproj", "{A566D308-A775-426A-96D3-87FED3EF8ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owl.Overdrive.Infrastructure", "Owl.Overdrive.Infrastructure\Owl.Overdrive.Infrastructure.csproj", "{A566D308-A775-426A-96D3-87FED3EF8ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owl.Overdrive.Business", "Owl.Overdrive.Business\Owl.Overdrive.Business.csproj", "{D7C5C80B-75BF-4BDE-9DDB-EE23BD9BD445}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Owl.Overdrive.Business", "Owl.Overdrive.Business\Owl.Overdrive.Business.csproj", "{D7C5C80B-75BF-4BDE-9DDB-EE23BD9BD445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owl.Overdrive.Domain", "Owl.Overdrive.Domain\Owl.Overdrive.Domain.csproj", "{CB052AE6-65D2-4771-BC16-9F3CFFA18410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D7C5C80B-75BF-4BDE-9DDB-EE23BD9BD445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7C5C80B-75BF-4BDE-9DDB-EE23BD9BD445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7C5C80B-75BF-4BDE-9DDB-EE23BD9BD445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB052AE6-65D2-4771-BC16-9F3CFFA18410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB052AE6-65D2-4771-BC16-9F3CFFA18410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB052AE6-65D2-4771-BC16-9F3CFFA18410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB052AE6-65D2-4771-BC16-9F3CFFA18410}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

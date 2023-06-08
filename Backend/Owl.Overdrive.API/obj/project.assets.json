@@ -1281,17 +1281,14 @@
           "bin/placeholder/Owl.Overdrive.Business.dll": {}
         }
       },
-      "Owl.Overdrive.Data/1.0.0": {
+      "Owl.Overdrive.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5"
-        },
         "compile": {
-          "bin/placeholder/Owl.Overdrive.Data.dll": {}
+          "bin/placeholder/Owl.Overdrive.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Owl.Overdrive.Data.dll": {}
+          "bin/placeholder/Owl.Overdrive.Domain.dll": {}
         }
       },
       "Owl.Overdrive.Infrastructure/1.0.0": {
@@ -1308,6 +1305,19 @@
         },
         "runtime": {
           "bin/placeholder/Owl.Overdrive.Infrastructure.dll": {}
+        }
+      },
+      "Owl.Overdrive.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5"
+        },
+        "compile": {
+          "bin/placeholder/Owl.Overdrive.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Owl.Overdrive.Repository.dll": {}
         }
       }
     }
@@ -4006,15 +4016,20 @@
       "path": "../Owl.Overdrive.Business/Owl.Overdrive.Business.csproj",
       "msbuildProject": "../Owl.Overdrive.Business/Owl.Overdrive.Business.csproj"
     },
-    "Owl.Overdrive.Data/1.0.0": {
+    "Owl.Overdrive.Domain/1.0.0": {
       "type": "project",
-      "path": "../Owl.Overdrive.Data/Owl.Overdrive.Data.csproj",
-      "msbuildProject": "../Owl.Overdrive.Data/Owl.Overdrive.Data.csproj"
+      "path": "../Owl.Overdrive.Domain/Owl.Overdrive.Domain.csproj",
+      "msbuildProject": "../Owl.Overdrive.Domain/Owl.Overdrive.Domain.csproj"
     },
     "Owl.Overdrive.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../Owl.Overdrive.Infrastructure/Owl.Overdrive.Infrastructure.csproj",
       "msbuildProject": "../Owl.Overdrive.Infrastructure/Owl.Overdrive.Infrastructure.csproj"
+    },
+    "Owl.Overdrive.Repository/1.0.0": {
+      "type": "project",
+      "path": "../Owl.Overdrive.Repository/Owl.Overdrive.Repository.csproj",
+      "msbuildProject": "../Owl.Overdrive.Repository/Owl.Overdrive.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4025,8 +4040,9 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.5",
       "Owl.Overdrive.Business >= 1.0.0",
-      "Owl.Overdrive.Data >= 1.0.0",
+      "Owl.Overdrive.Domain >= 1.0.0",
       "Owl.Overdrive.Infrastructure >= 1.0.0",
+      "Owl.Overdrive.Repository >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -4066,11 +4082,14 @@
             "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Business\\Owl.Overdrive.Business.csproj": {
               "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Business\\Owl.Overdrive.Business.csproj"
             },
-            "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\Owl.Overdrive.Data.csproj": {
-              "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\Owl.Overdrive.Data.csproj"
+            "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Domain\\Owl.Overdrive.Domain.csproj": {
+              "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Domain\\Owl.Overdrive.Domain.csproj"
             },
             "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Infrastructure\\Owl.Overdrive.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Infrastructure\\Owl.Overdrive.Infrastructure.csproj"
+            },
+            "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Repository\\Owl.Overdrive.Repository.csproj": {
+              "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Repository\\Owl.Overdrive.Repository.csproj"
             }
           }
         }

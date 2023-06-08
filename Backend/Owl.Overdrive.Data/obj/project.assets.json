@@ -3185,9 +3185,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\Owl.Overdrive.Data.csproj",
-      "projectName": "Owl.Overdrive.Data",
-      "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\Owl.Overdrive.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\Owl.Overdrive.Repository.csproj",
+      "projectName": "Owl.Overdrive.Repository",
+      "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\Owl.Overdrive.Repository.csproj",
       "packagesPath": "C:\\Users\\Avere\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Data\\obj\\",
       "projectStyle": "PackageReference",

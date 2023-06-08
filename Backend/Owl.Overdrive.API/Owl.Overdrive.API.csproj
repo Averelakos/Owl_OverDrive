@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
@@ -18,8 +20,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Owl.Overdrive.Business\Owl.Overdrive.Business.csproj" />
-    <ProjectReference Include="..\Owl.Overdrive.Data\Owl.Overdrive.Data.csproj" />
+    <ProjectReference Include="..\Owl.Overdrive.Domain\Owl.Overdrive.Domain.csproj" />
     <ProjectReference Include="..\Owl.Overdrive.Infrastructure\Owl.Overdrive.Infrastructure.csproj" />
+    <ProjectReference Include="..\Owl.Overdrive.Repository\Owl.Overdrive.Repository.csproj" />
   </ItemGroup>
 
 </Project>
