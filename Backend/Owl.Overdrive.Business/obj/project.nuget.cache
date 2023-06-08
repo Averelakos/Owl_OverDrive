@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "iQCuTHLy67zWQtsIfxmDxMBdVbEnwev0ocJuV8I3GDh41k+7F/lisK0AoDYSw6oeqN2ubY9S9LXY41ean7VYBA==",
+  "dgSpecHash": "0vsarjiDFc6lHEoBegwpb71hSSzsKlGqA09uDX/58HYQKbgoYI/Ni22ugnnhRgYxFrhmR49PNpUofcAximXNbA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Business\\Owl.Overdrive.Business.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Avere\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Avere\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
