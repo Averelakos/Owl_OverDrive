@@ -1,13 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-standar-input',
   standalone: true,
-  imports:[CommonModule],
+  imports:[CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './standar-input.component.html',
   styleUrls: ['./standar-input.component.scss']
 })
-export class StandarInputComponent {
+export class StandarInputComponent implements OnInit {
+  
   @Input() label:string = ''
+  @Input() controlName = ''
+  @Input() subGroup: string = ''
+  formGroup!: FormGroup
+
+  constructor(public parentForm: FormGroupDirective){}
+
+  ngOnInit(): void {
+    this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
+  }
 }

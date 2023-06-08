@@ -30,13 +30,12 @@ import { MatFormFieldModule } from "@angular/material/form-field";
         MatFieldErrorsComponent,
         // OnValueChangeDirective,
         MatSelectComponent,
-        MatDatetimePickerComponent
     ],
     exports:[
         ClickOutsideDirective,
         MatInputComponent,
         MatSelectComponent,
-        MatDatetimePickerComponent
+        
         // OnValueChangeDirective
     ]
     

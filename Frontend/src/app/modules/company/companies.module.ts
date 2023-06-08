@@ -14,6 +14,9 @@ import { StatusComponent } from './add-edit/components/company-info/components/s
 import { CommonModule } from "@angular/common";
 import { LinksComponent } from "./add-edit/components/company-info/components/links/links.component";
 import { StandarLoaderComponent } from "src/app/common/standar-loader/standar-loader.component";
+import { CompanyService } from "src/app/data/services/company.service";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatDatetimePickerComponent } from "src/app/shared/components/mat-datetime-picker/mat-datetime-picker.component";
 // 
 
 const routes: Routes = [
@@ -29,12 +32,15 @@ const routes: Routes = [
         StandarSelectSearchComponent,
         StandarLinkInputComponent,
         SharedComponentsModule,
-        StandarLoaderComponent
+        StandarLoaderComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        CompanyGeneralDetailsComponent,
+        MatDatetimePickerComponent
     ],
-    providers:[],
+    providers:[CompanyService],
     declarations:[
     AddEditCompanyComponent,
-    CompanyGeneralDetailsComponent,
     CompanyInfoComponent,
     ParentComponent,
     FoundedComponent,

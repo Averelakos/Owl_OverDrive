@@ -1,6 +1,8 @@
 <div class="status-container" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === responsiveSizes.Mobile}">
     <div class="status-items-left">
-        <app-standar-link-input 
+        <app-standar-link-input
+            [subGroup]="'linksDetails'" 
+            [controlName]="'officialWebsite'"  
             [label]="'Official Website'"
             [icon]="'fa-solid fa-arrow-up-right-from-square'"
             [iconStyle]="officialWebsiteStyle"
@@ -9,6 +11,8 @@
     </div>
     <div class="status-items-right">
         <app-standar-link-input
+            [subGroup]="'linksDetails'" 
+            [controlName]="'twitter'"
             [label]="'Twitter'"
             [icon]="'fa-brands fa-twitter'"
             [iconStyle]="twitterStyle">

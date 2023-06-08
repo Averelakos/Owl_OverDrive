@@ -1,7 +1,15 @@
 <div class="general-details-container" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === responsiveSizes.Mobile}">
     <div class="general-details-input">
-        <app-standar-input [label]="'Name'"></app-standar-input>
-        <app-standar-textarea [label]="'Description'"></app-standar-textarea>
+        <app-standar-input 
+            [subGroup]="'generalDetails'" 
+            [controlName]="'name'" 
+            [label]="'Name'">
+        </app-standar-input>
+        <app-standar-textarea 
+            [subGroup]="'generalDetails'" 
+            [controlName]="'description'"  
+            [label]="'Description'">
+        </app-standar-textarea>
     </div>
     <div class="general-details-image-input">
         <div>

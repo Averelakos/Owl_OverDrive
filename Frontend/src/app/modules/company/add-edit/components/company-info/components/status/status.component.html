@@ -1,8 +1,16 @@
 <div class="status-container" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === responsiveSizes.Mobile}">
     <div class="status-items-left">
-        <app-standar-select-search [label]="'Status'"></app-standar-select-search>
+        <app-standar-select-search
+            [subGroup]="'statusDetails'" 
+            [controlName]="'status'" 
+            [label]="'Status'">
+        </app-standar-select-search>
     </div>
     <div class="status-items-right">
-        <app-mat-datetime-picker [label]="'Changed date'" ></app-mat-datetime-picker>
+        <app-mat-datetime-picker 
+            [subGroup]="'statusDetails'" 
+            [controlName]="'changedDate'" 
+            [label]="'Changed date'" >
+        </app-mat-datetime-picker>
     </div>
 </div>

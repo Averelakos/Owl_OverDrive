@@ -1,11 +1,13 @@
 <div class="standar-select-search-container"  (clickOutside)="clickOutSide()">
     <label>{{label}}</label>
-    <div class="select" [ngClass]="{'focused': this.selectIsFocused}" (click)="clickSelectSearchField()">
+    <div [formGroup]="formGroup"  class="select" [ngClass]="{'focused': this.selectIsFocused}" (click)="clickSelectSearchField()">
         <input 
+
         [type]="type" 
         readonly 
         placeholder="Type your selection..." 
         [value]="this.inputValue?.value"
+        [formControlName]="controlName"
         >
         <span class="standar-select-search-icon" *ngIf="this.inputValue != null" (click)="clickToRemoveSelectedOption()">
             <i class="fa-solid fa-xmark"></i>

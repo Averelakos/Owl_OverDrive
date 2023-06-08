@@ -11,6 +11,8 @@ import { LocalService } from './core/services/local.service';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ResponsiveService } from './core/services/responsive.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AdminLayoutModule,
     AuthLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [MenuService, LocalService, ResponsiveService],
   bootstrap: [AppComponent]

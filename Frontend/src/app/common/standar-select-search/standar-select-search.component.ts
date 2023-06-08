@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormGroup, FormGroupDirective, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 
 export interface SelectSearchInputValue {
@@ -12,7 +12,7 @@ export interface SelectSearchInputValue {
 @Component({
   selector: 'app-standar-select-search',
   standalone: true,
-  imports:[CommonModule, SharedComponentsModule],
+  imports:[CommonModule, SharedComponentsModule, ReactiveFormsModule, FormsModule],
   templateUrl: './standar-select-search.component.html',
   styleUrls: ['./standar-select-search.component.scss'],
   providers: [
@@ -25,15 +25,17 @@ export interface SelectSearchInputValue {
     }
   ]
 })
-export class StandarSelectSearchComponent implements ControlValueAccessor {
+export class StandarSelectSearchComponent implements ControlValueAccessor, OnInit {
 
   public value: string | number
   public changed: (value: any) => void
   public onTouched: () => void
   public isDisabled: boolean
 
-  @Input() parentForm: FormGroup
-  @Input() label: string
+  @Input() label:string = ''
+  @Input() controlName = ''
+  @Input() subGroup: string = ''
+  formGroup!: FormGroup
   @Input() type: string = 'text'
   @Input() fieldName: string
   @Input() listOfInputValues: Array<SelectSearchInputValue> = [
@@ -48,8 +50,17 @@ export class StandarSelectSearchComponent implements ControlValueAccessor {
   openSelectField:boolean = false;
   searchValue:string = ''
 
-  constructor(){
+  constructor(public parentForm: FormGroupDirective){
     this.filteredInputValues = this.listOfInputValues
+  }
+
+  ngOnInit(): void {
+    if (this.subGroup === ''){
+      this.formGroup = this.parentForm.form 
+    }
+    else {
+      this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
+    }
   }
 
   // get formField (): FormControl {
@@ -106,12 +117,13 @@ export class StandarSelectSearchComponent implements ControlValueAccessor {
     if (selected != null && selected.length > 1){
       return
     }
-
+    this.formGroup.get(this.controlName)?.setValue(selected[0].id)
     this.inputValue = selected[0]
   }
 
   clickToRemoveSelectedOption(){
     this.inputValue = null
+    this.formGroup.get(this.controlName)?.setValue(null)
   }
 
   clickOutSide(){
