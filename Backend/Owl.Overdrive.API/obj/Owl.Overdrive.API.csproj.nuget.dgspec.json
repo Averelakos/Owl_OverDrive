@@ -259,7 +259,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Domain\\Owl.Overdrive.Domain.csproj": {
+                "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Domain\\Owl.Overdrive.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

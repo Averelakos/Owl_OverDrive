@@ -1120,6 +1120,16 @@
             "rid": "win"
           }
         }
+      },
+      "Owl.Overdrive.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Owl.Overdrive.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Owl.Overdrive.Domain.dll": {}
+        }
       }
     }
   },
@@ -3415,6 +3425,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Owl.Overdrive.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Owl.Overdrive.Domain/Owl.Overdrive.Domain.csproj",
+      "msbuildProject": "../Owl.Overdrive.Domain/Owl.Overdrive.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3423,7 +3438,8 @@
       "Microsoft.EntityFrameworkCore.Abstractions >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Relational >= 7.0.5",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
+      "Owl.Overdrive.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3457,7 +3473,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Domain\\Owl.Overdrive.Domain.csproj": {
+              "projectPath": "C:\\Users\\Avere\\Documents\\Projects\\Owl_OverDrive\\Owl-Overdrive\\Backend\\Owl.Overdrive.Domain\\Owl.Overdrive.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
