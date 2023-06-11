@@ -24,3 +24,6 @@ C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdr
 C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive.Infrastructure\obj\Debug\net7.0\ref\Owl.Overdrive.Infrastructure.dll
 C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive.Infrastructure\bin\Debug\net7.0\Owl.Overdrive.Infrastructure.runtimeconfig.json
 C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive.Infrastructure\obj\Debug\net7.0\Owl.Overdrive.Infrastructure.genruntimeconfig.cache
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive.Infrastructure\bin\Debug\net7.0\Owl.Overdrive.Domain.dll
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive.Infrastructure\bin\Debug\net7.0\Owl.Overdrive.Domain.pdb
+C:\Users\Avere\Documents\Projects\Owl_OverDrive\Owl-Overdrive\Backend\Owl.Overdrive.Infrastructure\obj\Debug\net7.0\Owl.Overdrive.Infrastructure.csproj.CopyComplete
