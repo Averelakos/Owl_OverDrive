@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Owl.Overdrive.API.Extensions;
 
 namespace Owl.Overdrive.API
 {
@@ -15,6 +16,8 @@ namespace Owl.Overdrive.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddUnitOfWork()
+                .AddRepositories();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
         }
