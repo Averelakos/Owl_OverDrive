@@ -1,6 +1,8 @@
-﻿namespace Owl.Overdrive.Domain.Entities.Base
+﻿using Owl.Overdrive.Domain.Contracts;
+
+namespace Owl.Overdrive.Domain.Entities.Base
 {
-    public class BaseEntity
+    public class BaseEntity: IBaseEntity
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }
