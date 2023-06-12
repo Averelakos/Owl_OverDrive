@@ -14,8 +14,4 @@
     <ProjectReference Include="..\Owl.Overdrive.Infrastructure\Owl.Overdrive.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
-
 </Project>

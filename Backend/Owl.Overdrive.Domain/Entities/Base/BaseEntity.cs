@@ -4,11 +4,11 @@ namespace Owl.Overdrive.Domain.Entities.Base
 {
     public class BaseEntity: IBaseEntity
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
-        public long CreatedById { get; set; }
-        public long LastUpdatedById { get; set; }
+        public long? CreatedById { get; set; }
+        public long? LastUpdatedById { get; set; }
 
         // Reference to User Table
         public User? CreatedBy { get; set; }

@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
 {
@@ -12,5 +7,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
     {
         public DbSet<User> Users => Set<User>();
         public DbSet<Company> Companies => Set<Company>();
+        public DbSet<CompanyStatus> CompanyStatuses => Set<CompanyStatus>();
+        public DbSet<CountryCode> CountryCodes => Set<CountryCode>();
     }
 }

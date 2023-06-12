@@ -16,7 +16,8 @@ namespace Owl.Overdrive.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddUnitOfWork()
+            services.AddDatabase(Configuration)
+                .AddUnitOfWork()
                 .AddRepositories();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();

@@ -39,6 +39,6 @@ namespace Owl.Overdrive.Domain.Entities
         /// <summary>
         /// User photo
         /// </summary>
-        public long PhotoId { get; set; }
+        public long? PhotoId { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Owl.Overdrive.Domain.Contracts
         /// <summary>
         /// Entry Identifier
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>
         /// Entry Created date
         /// </summary>
@@ -23,10 +23,10 @@ namespace Owl.Overdrive.Domain.Contracts
         /// <summary>
         /// User identifier who created the entry
         /// </summary>
-        public long CreatedById { get; set; }
+        public long? CreatedById { get; set; }
         /// <summary>
         /// User identifier who last updated the entry
         /// </summary>
-        public long LastUpdatedById { get; set; }
+        public long? LastUpdatedById { get; set; }
     }
 }

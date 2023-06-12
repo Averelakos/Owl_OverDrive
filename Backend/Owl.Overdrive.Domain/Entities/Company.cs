@@ -15,7 +15,7 @@ namespace Owl.Overdrive.Domain.Entities
         /// <summary>
         /// Parent company identifier
         /// </summary>
-        public long ParentCompanyId { get; set; }
+        public long? ParentCompanyId { get; set; }
         /// <summary>
         /// When the company founded
         /// </summary>
@@ -23,11 +23,11 @@ namespace Owl.Overdrive.Domain.Entities
         /// <summary>
         /// In which country founded
         /// </summary>
-        public long CountryId { get; set; }
+        public long? CountryId { get; set; }
         /// <summary>
         /// Current company status
         /// </summary>
-        public long StatusId { get; set; }
+        public long? StatusId { get; set; }
         /// <summary>
         /// Status change
         /// </summary>

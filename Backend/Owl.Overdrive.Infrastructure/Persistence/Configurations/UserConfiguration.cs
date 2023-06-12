@@ -28,7 +28,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             builder.Property(p => p.Email).HasMaxLength(255);
             builder.Property(p => p.Username).HasMaxLength(255);
             builder.Property(p => p.Phone).HasMaxLength(255);
-            builder.Property(p => p.Birthdate).HasColumnType("dateime2(7)");
+            builder.Property(p => p.Birthdate).HasColumnType("datetime2(7)");
 
             Seed(builder);
         }
@@ -39,6 +39,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             {
                 Id = -1,
                 Username = "Admin",
+                Email = "Admin@owlo.gr"
             });
         }
     }

@@ -14,9 +14,9 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public void ModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CompanyConfiguration());
+            modelBuilder.ApplyConfiguration(new CompanyStatusConfiguration());
             modelBuilder.ApplyConfiguration(new CountryCodeConfiguration());
-
-
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
         public static void ApplyConfiguration(EntityTypeBuilder<CountryCode> builder)
         {
             // Table Name
-            builder.ToTable("CountryCodes");
+            builder.ToTable("CountriesCodes");
 
             // Properties parameters
             builder.Property(p => p.CountryName).HasMaxLength(255);

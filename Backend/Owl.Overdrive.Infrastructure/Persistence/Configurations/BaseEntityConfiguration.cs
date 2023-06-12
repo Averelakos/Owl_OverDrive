@@ -23,13 +23,13 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             
             // Created
             entity.Property(e => e.Created)
-                .HasColumnType("dateime2(7)")
+                .HasColumnType("datetime2(7)")
                 .IsRequired()
                 .HasDefaultValueSql("GETUTCDATE()");
 
             // Last Updated
             entity.Property(e => e.LastUpdated)
-                .HasColumnType("dateime2(7)")
+                .HasColumnType("datetime2(7)")
                 .IsRequired()
                 .HasDefaultValueSql("GETUTCDATE()");
 
