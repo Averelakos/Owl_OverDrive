@@ -35,12 +35,12 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
 
         private static void Seed(EntityTypeBuilder<User> builder)
         {
-            builder.HasData(new User()
-            {
-                Id = -1,
-                Username = "Admin",
-                Email = "Admin@owlo.gr"
-            });
+            //builder.HasData(new User()
+            //{
+            //    Id = -1,
+            //    Username = "Admin",
+            //    Email = "Admin@owlo.gr"
+            //});
         }
     }
 }

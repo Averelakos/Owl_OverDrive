@@ -42,32 +42,24 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
                 Id = 1,
                 Name = "Active",
                 Description = "The company exists.",
-                Created = DateTime.Now,
-                CreatedById = -1
             });
             builder.HasData(new CompanyStatus()
             {
                 Id = 2,
                 Name = "Defuct",
                 Description = "No longer existing or functioning.",
-                Created = DateTime.Now,
-                CreatedById = -1
             });
             builder.HasData(new CompanyStatus()
             {
                 Id = 3,
                 Name = "Merged",
                 Description = "Independent companies combine to form a new, singular legal entity.",
-                Created = DateTime.Now,
-                CreatedById = -1
             });
             builder.HasData(new CompanyStatus()
             {
                 Id = 4,
                 Name = "Renamed",
                 Description = "The process of changing the corporate image of an organisation.",
-                Created = DateTime.Now,
-                CreatedById = -1
             });
         }
     }
