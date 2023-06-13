@@ -13,12 +13,20 @@ namespace Owl.Overdrive.Repository.UnitOfWork
         #region Properties
         private readonly OwlOverdriveDbContext _dbContext;
         public ICompanyRepository CompanyRepository { get; }
+        public ICompanyStatusRepository CompanyStatusRepository { get; }
+        public ICountryCodeRepository CountryCodeRepository { get; }
         #endregion Properties
 
-        public RepositoryUnitOfWork(OwlOverdriveDbContext dbContext, ICompanyRepository companyRepository)
+        public RepositoryUnitOfWork(
+            OwlOverdriveDbContext dbContext, 
+            ICompanyRepository companyRepository, 
+            ICompanyStatusRepository companyStatusRepository, 
+            ICountryCodeRepository countryCodeRepository)
         {
             _dbContext = dbContext;
             CompanyRepository = companyRepository;
+            CompanyStatusRepository = companyStatusRepository;
+            CountryCodeRepository = countryCodeRepository;
         }
     }
 }

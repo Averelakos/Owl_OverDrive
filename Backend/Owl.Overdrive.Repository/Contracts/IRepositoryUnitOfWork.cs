@@ -14,6 +14,23 @@ namespace Owl.Overdrive.Repository.Contracts
         /// <summary>
         /// Gets the company repository.
         /// </summary>
+        /// <value>
+        /// The company repository.
+        /// </value>
         ICompanyRepository CompanyRepository { get; }
+        /// <summary>
+        /// Gets the company status repository.
+        /// </summary>
+        /// <value>
+        /// The company status repository.
+        /// </value>
+        ICompanyStatusRepository CompanyStatusRepository { get; }
+        /// <summary>
+        /// Gets the country code repository.
+        /// </summary>
+        /// <value>
+        /// The country code repository.
+        /// </value>
+        ICountryCodeRepository CountryCodeRepository { get; }
     }
 }

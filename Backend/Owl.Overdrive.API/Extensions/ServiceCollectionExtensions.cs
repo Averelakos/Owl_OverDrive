@@ -18,15 +18,26 @@ namespace Owl.Overdrive.API.Extensions
         {
             return services.AddDbContext<OwlOverdriveDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
+        /// <summary>
+        /// Add to the scope the Unit of work repository
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
         {
             return services.AddScoped<IRepositoryUnitOfWork, RepositoryUnitOfWork>();
         }
-
+        /// <summary>
+        /// Adds the repositories.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <returns></returns>
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             return services
                 .AddScoped<ICompanyRepository, CompanyRepository>()
+                .AddScoped<ICompanyStatusRepository, CompanyStatusRepository>()
+                .AddScoped<ICountryCodeRepository, CountryCodeRepository>()
                 ;
         }
     }
