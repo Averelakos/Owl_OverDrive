@@ -1,8 +1,15 @@
-﻿using Owl.Overdrive.Domain.Entities.Base;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Owl.Overdrive.Domain.Entities
+namespace Owl.Overdrive.Business.DTOs.CompanyDtos
 {
-    public class Company: BaseEntity
+    /// <summary>
+    /// Create company Dto
+    /// </summary>
+    public class CreateCompanyDto
     {
         /// <summary>
         /// Company name
@@ -19,7 +26,7 @@ namespace Owl.Overdrive.Domain.Entities
         /// <summary>
         /// When the company founded
         /// </summary>
-        public DateTime FoundedIn { get; set; }
+        public DateTime? FoundedIn { get; set; }
         /// <summary>
         /// In which country founded
         /// </summary>
@@ -40,11 +47,5 @@ namespace Owl.Overdrive.Domain.Entities
         /// Company official twitter page
         /// </summary>
         public string? Twitter { get; set; }
-
-
-        // Refernce table
-        public virtual CountryCode? Country { get; set; }
-        public virtual Company? ParentCompany { get; set; }
-        public virtual CompanyStatus? Status { get; set; }
     }
 }

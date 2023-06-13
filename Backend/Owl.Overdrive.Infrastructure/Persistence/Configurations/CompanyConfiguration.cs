@@ -26,7 +26,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             builder.Property(p => p.Name).HasMaxLength(255);
             builder.Property(p => p.Description).HasMaxLength(255);
             builder.Property(p => p.FoundedIn).HasColumnType("datetime2(7)");
-            builder.Property(p => p.ChangeDate).HasColumnType("datetime2(7)");
+            builder.Property(p => p.ChangedDate).HasColumnType("datetime2(7)");
             builder.Property(p => p.OfficialWebsite).HasMaxLength(255);
             builder.Property(p => p.Twitter).HasMaxLength(255);
             builder.HasOne(e => e.ParentCompany)
