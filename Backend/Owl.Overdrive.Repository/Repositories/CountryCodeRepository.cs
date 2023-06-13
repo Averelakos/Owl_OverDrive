@@ -29,12 +29,11 @@ namespace Owl.Overdrive.Repository.Repositories
         /// Gets the companies status.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<CountryCode>> GetCoutriesCodes()
+        public IQueryable<CountryCode> GetCoutriesCodes()
         {
-            return await _DbSet
+            return _DbSet
                 .AsNoTracking()
-                .OrderBy(x => x.CountryName)
-                .ToListAsync();
+                .OrderBy(x => x.CountryName);
         }
     }
 }

@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Owl.Overdrive.Repository\Owl.Overdrive.Repository.csproj" />
   </ItemGroup>
 

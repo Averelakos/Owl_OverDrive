@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Owl.Overdrive.API.Extensions;
+using Owl.Overdrive.Business.MapperProfiles;
 
 namespace Owl.Overdrive.API
 {
@@ -15,10 +16,12 @@ namespace Owl.Overdrive.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MapperProfile));
             services.AddControllers();
             services.AddDatabase(Configuration)
                 .AddUnitOfWork()
-                .AddRepositories();
+                .AddRepositories()
+                .AddFacades();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
         }

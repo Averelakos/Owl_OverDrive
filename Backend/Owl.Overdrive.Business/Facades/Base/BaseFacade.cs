@@ -1,10 +1,7 @@
-﻿using Owl.Overdrive.Repository.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using AutoMapper;
+using Owl.Overdrive.Repository.Contracts;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 namespace Owl.Overdrive.Business.Facades.Base
 {
     /// <summary>
@@ -12,14 +9,16 @@ namespace Owl.Overdrive.Business.Facades.Base
     /// </summary>
     public class BaseFacade
     {
-        private readonly IRepositoryUnitOfWork _repoUoW;
+        protected readonly IRepositoryUnitOfWork _repoUoW;
+        protected readonly IMapper _mapper;
         /// <summary>
         /// Initialize a new instance of the <see cref="BaseFacade"/> class.
         /// </summary>
         /// <param name="repoUoW"></param>
-        public BaseFacade(IRepositoryUnitOfWork repoUoW)
+        public BaseFacade(IRepositoryUnitOfWork repoUoW, IMapper mapper)
         {
             _repoUoW = repoUoW;
+            _mapper = mapper;
         }
     }
 }

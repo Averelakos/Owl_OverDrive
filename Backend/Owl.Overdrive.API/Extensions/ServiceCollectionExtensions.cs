@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Owl.Overdrive.Business.Contracts;
+using Owl.Overdrive.Business.Facades;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
 using Owl.Overdrive.Repository.Repositories;
@@ -40,5 +42,13 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ICountryCodeRepository, CountryCodeRepository>()
                 ;
         }
+        public static IServiceCollection AddFacades(this IServiceCollection services)
+        {
+            return services
+                .AddScoped<ICompanyFacade, CompanyFacade>()
+                .AddScoped<ILookupFacade, LookupFacade>()
+                ;
+        }
+
     }
 }
