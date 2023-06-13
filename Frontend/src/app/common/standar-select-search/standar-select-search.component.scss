@@ -78,6 +78,7 @@
     top: 3.7rem;
     z-index: 3;
     width: 100%;
+    //max-height: 20rem;
 }
 
 .select-dropdown-search-options div {
@@ -103,6 +104,7 @@
 .select-dropdown-search-options ul {
     list-style: none;
     // height: 200px;
+    max-height: 10rem;
     overflow:hidden; 
     overflow-y:scroll;
 }

@@ -1,4 +1,4 @@
-export interface NewCompany{
+export interface CreateCompanyDto{
     name: string
     description: string
     parentCompany: number

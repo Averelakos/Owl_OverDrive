@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, FormGroupDirective, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 
 export interface SelectSearchInputValue {
   id: number
   value: string
-  isVisible: boolean
 }
 
 @Component({
@@ -15,6 +14,7 @@ export interface SelectSearchInputValue {
   imports:[CommonModule, SharedComponentsModule, ReactiveFormsModule, FormsModule],
   templateUrl: './standar-select-search.component.html',
   styleUrls: ['./standar-select-search.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,11 +38,12 @@ export class StandarSelectSearchComponent implements ControlValueAccessor, OnIni
   formGroup!: FormGroup
   @Input() type: string = 'text'
   @Input() fieldName: string
-  @Input() listOfInputValues: Array<SelectSearchInputValue> = [
-    {id:1,value:'Test',isVisible:true},
-    {id:2,value:'Test2',isVisible:true},
-    {id:3,value:'Test3',isVisible:true}
-  ]
+  @Input() listOfInputValues: Array<SelectSearchInputValue> = []
+  // = [
+  //   {id:1,value:'Test'},
+  //   {id:2,value:'Test2'},
+  //   {id:3,value:'Test3'}
+  // ]
 
   inputValue: SelectSearchInputValue | null = null;
   selectIsFocused: boolean = false;
@@ -51,10 +52,12 @@ export class StandarSelectSearchComponent implements ControlValueAccessor, OnIni
   searchValue:string = ''
 
   constructor(public parentForm: FormGroupDirective){
-    this.filteredInputValues = this.listOfInputValues
+    // this.filteredInputValues = this.listOfInputValues
+    // console.log(this.filteredInputValues)
   }
 
   ngOnInit(): void {
+    this.filteredInputValues = this.listOfInputValues
     if (this.subGroup === ''){
       this.formGroup = this.parentForm.form 
     }

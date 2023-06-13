@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { CompanyService } from 'src/app/data/services/company.service';
-import { NewCompany } from 'src/app/data/types/company/new-company';
+import { CreateCompanyDto } from 'src/app/data/types/company/new-company';
 
 @Component({
   selector: 'app-add-edit-company',
@@ -36,13 +36,13 @@ export class AddEditCompanyComponent {
   }
 
   createCompany() {
-    const newCompany: NewCompany = this.createNewCompanyModel()
+    const newCompany: CreateCompanyDto = this.createNewCompanyModel()
     console.log(newCompany)
     this.companyService.createNewCompany(newCompany).subscribe(x => console.log(x))
   }
 
-  createNewCompanyModel(): NewCompany {
-    let model: NewCompany = {
+  createNewCompanyModel(): CreateCompanyDto {
+    let model: CreateCompanyDto = {
       name: this.companyForm.get('generalDetails')?.get('name')?.value,
       description: this.companyForm.get('generalDetails')?.get('description')?.value,
       parentCompany: this.companyForm.get('parentCompany')?.value,

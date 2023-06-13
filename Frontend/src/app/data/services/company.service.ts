@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { NewCompany } from "../types/company/new-company";
+import { CreateCompanyDto} from "../types/company/new-company";
 import { environment } from "src/environments/environment";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class CompanyService{
-    baseUrl = environment.apiUrl;
+    uri: string = 'Company'
+    baseUrl = environment.apiUrl+this.uri;
     constructor(private readonly formBuilder: FormBuilder, private http: HttpClient){}
 
     initForm(): FormGroup {
@@ -32,8 +33,8 @@ export class CompanyService{
         })
     }
 
-    createNewCompany(newCompany: NewCompany){
+    createNewCompany(createCompany: CreateCompanyDto){
       console.log(this.baseUrl)
-      return this.http.get<any>(this.baseUrl+'WeatherForecast')
+      return this.http.post<any>(this.baseUrl + '/AddCompany',createCompany)
     }
 }
