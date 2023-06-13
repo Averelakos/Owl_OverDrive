@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, FormGroupDirective, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
+
 
 export interface SelectSearchInputValue {
   id: number
@@ -39,11 +40,8 @@ export class StandarSelectSearchComponent implements ControlValueAccessor, OnIni
   @Input() type: string = 'text'
   @Input() fieldName: string
   @Input() listOfInputValues: Array<SelectSearchInputValue> = []
-  // = [
-  //   {id:1,value:'Test'},
-  //   {id:2,value:'Test2'},
-  //   {id:3,value:'Test3'}
-  // ]
+  @Input() apiSearchEnable: boolean = false
+  @Output() searchInput = new EventEmitter<string>()
 
   inputValue: SelectSearchInputValue | null = null;
   selectIsFocused: boolean = false;
@@ -141,9 +139,12 @@ export class StandarSelectSearchComponent implements ControlValueAccessor, OnIni
 
   inputSearchOptions(event: any){
     const searchInput = event.target.value
-
-    this.filteredInputValues = this.listOfInputValues
+    if (this.apiSearchEnable) {
+      this.searchInput.emit(searchInput)
+    } else {
+      this.filteredInputValues = this.listOfInputValues
     .map((option) => option)
     .filter( (x) => x.value.toLowerCase().includes(searchInput.toLowerCase()))
+    }
   }
 }

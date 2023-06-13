@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Newtonsoft.Json;
 using Owl.Overdrive.API.Extensions;
 using Owl.Overdrive.Business.MapperProfiles;
 
@@ -17,7 +18,12 @@ namespace Owl.Overdrive.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MapperProfile));
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    opt.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                });
             services.AddDatabase(Configuration)
                 .AddUnitOfWork()
                 .AddRepositories()

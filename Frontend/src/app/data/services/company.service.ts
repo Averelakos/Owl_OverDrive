@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { CreateCompanyDto} from "../types/company/new-company";
 import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 
 @Injectable()
 export class CompanyService{
@@ -34,7 +34,13 @@ export class CompanyService{
     }
 
     createNewCompany(createCompany: CreateCompanyDto){
-      console.log(this.baseUrl)
       return this.http.post<any>(this.baseUrl + '/AddCompany',createCompany)
+    }
+
+    searchParentCompany(searchInput: string){
+      // console.log(input)
+      const body = JSON.stringify(searchInput)
+      const params = new HttpParams().set('searchInput', searchInput)
+      return this.http.post<any>(this.baseUrl + '/SearchParent', null, { params })
     }
 }

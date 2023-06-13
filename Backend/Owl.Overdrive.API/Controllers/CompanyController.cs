@@ -22,5 +22,12 @@ namespace Owl.Overdrive.Controllers
             await _companyFacade.Create(createCompanyDto);
             return Ok();
         }
+
+        [HttpPost("SearchParent")]
+        public async Task<ActionResult<List<SearchParentCompanyDto>>> SearchParentCompany([FromQuery]string searchInput)
+        {
+            var result = await _companyFacade.Search(searchInput);
+            return Ok(result);
+        }
     }
 }

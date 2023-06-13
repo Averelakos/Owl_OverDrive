@@ -3,8 +3,8 @@ export interface CreateCompanyDto{
     description: string
     parentCompany: number
     foundedIn: Date
-    country: number
-    status: number
+    countryId: number
+    statusId: number
     changedDate: Date
     officialWebsite: string
     twitter: string

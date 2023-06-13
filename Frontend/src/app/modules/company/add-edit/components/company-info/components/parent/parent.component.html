@@ -1,4 +1,8 @@
 <app-standar-select-search
     [controlName]="'parentCompany'" 
-    [label]="title">
+    [label]="title"
+    [apiSearchEnable]="true"
+    (searchInput)="searchParentCompany($event)"
+    [listOfInputValues]="listOfparentCompanies"
+    >
 </app-standar-select-search>

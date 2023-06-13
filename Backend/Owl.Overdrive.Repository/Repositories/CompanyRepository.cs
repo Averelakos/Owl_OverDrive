@@ -1,4 +1,5 @@
-﻿using Owl.Overdrive.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
 
@@ -19,6 +20,19 @@ namespace Owl.Overdrive.Repository.Repositories
         {
             var result =  await base.Insert(company);
             return result;
+        }
+
+        /// <summary>
+        /// Searches the specified input.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns></returns>
+        public async Task<List<Company>> Search(string input)
+        {
+            return await _DbSet
+                .Where(x => x.Name.ToLower().Contains(input.ToLower()))
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

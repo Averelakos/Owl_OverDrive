@@ -20,5 +20,17 @@ namespace Owl.Overdrive.Business.Facades
             //TODO: set createby and lastupdateby
             var result = await _repoUoW.CompanyRepository.Insert(company);
         }
+
+        public async Task<List<SearchParentCompanyDto>> Search(string searchInput)
+        {
+            List<SearchParentCompanyDto> result = new List<SearchParentCompanyDto>();
+            if(!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
+            {
+               var list = await _repoUoW.CompanyRepository.Search(searchInput);
+               result = _mapper.Map<List<SearchParentCompanyDto>>(list);
+            }
+
+            return result;
+        }
     }
 }

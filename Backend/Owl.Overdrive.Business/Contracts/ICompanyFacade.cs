@@ -15,5 +15,11 @@ namespace Owl.Overdrive.Business.Contracts
         /// <param name="createCompanyDto">The create company dto.</param>
         /// <returns></returns>
         Task Create(CreateCompanyDto createCompanyDto);
+        /// <summary>
+        /// Searches the specified search input.
+        /// </summary>
+        /// <param name="searchInput">The search input.</param>
+        /// <returns></returns>
+        Task<List<SearchParentCompanyDto>> Search(string searchInput);
     }
 }
