@@ -9,5 +9,10 @@ namespace Owl.Overdrive.Business.MapperProfiles
 {
     public partial class MapperProfile: Profile
     {
+        public MapperProfile()
+        {
+            MapCompany();
+            MapLookups();
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace Owl.Overdrive.Business.MapperProfiles
 {
     public partial class MapperProfile: Profile
     {
-        public MapperProfile() 
+        public void MapLookups()
         {
             CreateMap<CompanyStatus, CompanyStatusLookupDto>();
             CreateMap<CountryCode, CountryCodeLookupDto>()

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Owl.Overdrive.Business.DTOs.LookupsDtos;
 
 namespace Owl.Overdrive.Business.Contracts
 {
     public interface ILookupFacade
     {
+        Task<LookupsDto> Get();
     }
 }

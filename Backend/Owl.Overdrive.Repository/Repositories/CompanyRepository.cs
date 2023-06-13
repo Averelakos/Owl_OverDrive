@@ -1,11 +1,6 @@
 ﻿using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Owl.Overdrive.Repository.Repositories
 {
@@ -13,6 +8,17 @@ namespace Owl.Overdrive.Repository.Repositories
     {
         public CompanyRepository(OwlOverdriveDbContext dbContext) : base(dbContext)
         {
+        }
+
+        /// <summary>
+        /// Inserts the specified company.
+        /// </summary>
+        /// <param name="company">The company.</param>
+        /// <returns></returns>
+        public async Task<Company> Insert(Company company)
+        {
+            var result =  await base.Insert(company);
+            return result;
         }
     }
 }

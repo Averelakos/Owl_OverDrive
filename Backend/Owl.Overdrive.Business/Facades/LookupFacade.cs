@@ -10,10 +10,19 @@ namespace Owl.Overdrive.Business.Facades
 {
     public class LookupFacade : BaseFacade, ILookupFacade
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LookupFacade"/> class.
+        /// </summary>
+        /// <param name="repoUoW"></param>
+        /// <param name="mapper"></param>
         public LookupFacade(IRepositoryUnitOfWork repoUoW, IMapper mapper) : base(repoUoW, mapper)
         {
         }
 
+        /// <summary>
+        /// Gets the looksup Dto for the UI.
+        /// </summary>
+        /// <returns></returns>
         public async Task<LookupsDto> Get()
         {
             var companyStatus = await GetLookupValues<CompanyStatusLookupDto>();
