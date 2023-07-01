@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
 {
@@ -9,5 +10,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<Company> Companies => Set<Company>();
         public DbSet<CompanyStatus> CompanyStatuses => Set<CompanyStatus>();
         public DbSet<CountryCode> CountryCodes => Set<CountryCode>();
+        public DbSet<ImageDraft> ImageDrafts => Set<ImageDraft>();
+        public DbSet<CompanyLogo> CompanyLogo => Set<CompanyLogo>();
     }
 }

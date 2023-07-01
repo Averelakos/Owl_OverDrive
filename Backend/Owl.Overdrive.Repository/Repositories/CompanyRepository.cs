@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
 
@@ -33,6 +33,16 @@ namespace Owl.Overdrive.Repository.Repositories
                 .Where(x => x.Name.ToLower().Contains(input.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the list of companies.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Company>> GetList()
+        {
+            var result = await base.GetAll();
+            return result.ToList();
         }
     }
 }

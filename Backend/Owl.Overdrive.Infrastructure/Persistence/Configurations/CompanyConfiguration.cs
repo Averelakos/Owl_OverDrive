@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
 {

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Owl.Overdrive.Repository.Contracts;
-using AutoMapper;
 using AutoMapper.QueryableExtensions;
+
 namespace Owl.Overdrive.Business.Facades.Base
 {
     /// <summary>

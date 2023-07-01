@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 using System;
 using System.Collections.Generic;
 using System.Data;

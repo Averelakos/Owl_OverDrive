@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 
 namespace Owl.Overdrive.Business.MapperProfiles
 {
@@ -10,6 +10,7 @@ namespace Owl.Overdrive.Business.MapperProfiles
         {
             CreateMap<CreateCompanyDto, Company>();
             CreateMap<Company, SearchParentCompanyDto>();
+            CreateMap<Company, ListCompanyDto>();
         }
     }
 }

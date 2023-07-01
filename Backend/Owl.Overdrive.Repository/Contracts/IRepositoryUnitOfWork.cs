@@ -32,5 +32,19 @@ namespace Owl.Overdrive.Repository.Contracts
         /// The country code repository.
         /// </value>
         ICountryCodeRepository CountryCodeRepository { get; }
+        /// <summary>
+        /// Gets the image draft repository.
+        /// </summary>
+        /// <value>
+        /// The image draft repository.
+        /// </value>
+        IImageDraftRepository ImageDraftRepository { get; }
+        /// <summary>
+        /// Gets the company logo repository.
+        /// </summary>
+        /// <value>
+        /// The company logo repository.
+        /// </value>
+        ICompanyLogoRepository CompanyLogoRepository { get; }
     }
 }

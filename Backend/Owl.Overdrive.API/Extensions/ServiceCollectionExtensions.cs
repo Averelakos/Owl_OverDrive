@@ -40,13 +40,21 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ICompanyRepository, CompanyRepository>()
                 .AddScoped<ICompanyStatusRepository, CompanyStatusRepository>()
                 .AddScoped<ICountryCodeRepository, CountryCodeRepository>()
+                .AddScoped<IImageDraftRepository, ImageDraftRepository>()
+                .AddScoped<ICompanyLogoRepository, CompanyLogoRepository>()
                 ;
         }
+        /// <summary>
+        /// Adds the facades.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <returns></returns>
         public static IServiceCollection AddFacades(this IServiceCollection services)
         {
             return services
                 .AddScoped<ICompanyFacade, CompanyFacade>()
                 .AddScoped<ILookupFacade, LookupFacade>()
+                .AddScoped<IImageDraftFacade, ImageDraftFacade>()
                 ;
         }
 

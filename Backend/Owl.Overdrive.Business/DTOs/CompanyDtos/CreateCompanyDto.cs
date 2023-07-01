@@ -47,5 +47,7 @@ namespace Owl.Overdrive.Business.DTOs.CompanyDtos
         /// Company official twitter page
         /// </summary>
         public string? Twitter { get; set; }
+
+        public Guid imageGuid { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Owl.Overdrive.Domain.Entities;
+﻿using Owl.Overdrive.Domain.Entities.Company;
 
 namespace Owl.Overdrive.Repository.Contracts
 {
@@ -16,5 +16,10 @@ namespace Owl.Overdrive.Repository.Contracts
         /// <param name="input">The input.</param>
         /// <returns></returns>
         Task<List<Company>> Search(string input);
+        /// <summary>
+        /// Gets the list of companies.
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Company>> GetList();
     }
 }

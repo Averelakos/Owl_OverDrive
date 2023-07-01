@@ -30,6 +30,7 @@ namespace Owl.Overdrive.API
                 .AddFacades();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddHttpContextAccessor();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

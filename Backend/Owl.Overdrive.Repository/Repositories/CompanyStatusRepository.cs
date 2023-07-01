@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
 using System;
@@ -13,7 +13,7 @@ namespace Owl.Overdrive.Repository.Repositories
     /// <summary>
     /// Company reposiroty access database data for the company statuses
     /// </summary>
-    /// <seealso cref="Owl.Overdrive.Repository.Repositories.BaseRepository&lt;Owl.Overdrive.Domain.Entities.CompanyStatus&gt;" />
+    /// <seealso cref="Owl.Overdrive.Repository.Repositories.BaseRepository&lt;CompanyStatus&gt;" />
     /// <seealso cref="Owl.Overdrive.Repository.Contracts.ICompanyStatusRepository" />
     public class CompanyStatusRepository : BaseRepository<CompanyStatus>, ICompanyStatusRepository
     {

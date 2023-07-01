@@ -29,5 +29,12 @@ namespace Owl.Overdrive.Controllers
             var result = await _companyFacade.Search(searchInput);
             return Ok(result);
         }
+
+        [HttpGet("list")]
+        public async Task<ActionResult<List<ListCompanyDto>>> List()
+        {
+            var result = await _companyFacade.GetAll();
+            return Ok(result);
+        }
     }
 }
