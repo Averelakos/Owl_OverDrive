@@ -15,11 +15,22 @@ export class ParentComponent {
   constructor( private readonly companyService: CompanyService) {}
 
   searchParentCompany(input){
-    this.companyService
-    .searchParentCompany(input)
-    .subscribe((response) => {
-      console.log(response)
-      this.listOfparentCompanies = response
-    })
+    if (input.length > 0) {
+      this.companyService
+      .searchParentCompany(input)
+      .subscribe((response) => {
+        this.listOfparentCompanies.length = 0
+        if (response.length > 0) {
+          response.forEach(element => {
+            this.listOfparentCompanies.push({
+              id:element.id,
+              value: element.name
+            })
+          });
+        } 
+      })
+    } else {
+      this.listOfparentCompanies.length = 0
+    }
   }
 }

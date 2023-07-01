@@ -1,6 +1,6 @@
 ﻿using Owl.Overdrive.Domain.Entities.Base;
 
-namespace Owl.Overdrive.Domain.Entities
+namespace Owl.Overdrive.Domain.Entities.Company
 {
     public class CompanyStatus : BaseEntity
     {

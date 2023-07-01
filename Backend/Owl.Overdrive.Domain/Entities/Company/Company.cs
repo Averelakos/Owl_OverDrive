@@ -1,8 +1,8 @@
 ﻿using Owl.Overdrive.Domain.Entities.Base;
 
-namespace Owl.Overdrive.Domain.Entities
+namespace Owl.Overdrive.Domain.Entities.Company
 {
-    public class Company: BaseEntity
+    public class Company : BaseEntity
     {
         /// <summary>
         /// Company name

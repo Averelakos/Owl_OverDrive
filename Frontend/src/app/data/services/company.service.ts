@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { CreateCompanyDto} from "../types/company/new-company";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams } from "@angular/common/http";
+import { ListCompaniesComponent } from "src/app/modules/company/list/container/list-companies.component";
+import { ListCompanyDto } from "../types/company/list-companies";
 
 @Injectable()
 export class CompanyService{
@@ -42,5 +44,9 @@ export class CompanyService{
       const body = JSON.stringify(searchInput)
       const params = new HttpParams().set('searchInput', searchInput)
       return this.http.post<any>(this.baseUrl + '/SearchParent', null, { params })
+    }
+
+    getAllCompanies() {
+      return this.http.get<Array<ListCompanyDto>>(this.baseUrl + '/list')
     }
 }

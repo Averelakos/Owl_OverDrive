@@ -16,7 +16,6 @@ export class FoundedComponent {
   }
 
   convertForSearchSelect() {
-    const start = Date.now()
     this.lookupService.countryCodes.forEach(item => {
       let newItem: SelectSearchInputValue = {
         id: item.id,
@@ -24,8 +23,5 @@ export class FoundedComponent {
       } 
       this.listOfCountries.push(newItem)
     })
-    
-    const end = Date.now()
-    console.log(start, end, this.listOfCountries)
   }
 }

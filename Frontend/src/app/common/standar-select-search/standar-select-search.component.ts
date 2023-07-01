@@ -16,22 +16,10 @@ export interface SelectSearchInputValue {
   templateUrl: './standar-select-search.component.html',
   styleUrls: ['./standar-select-search.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(
-        () => StandarSelectSearchComponent
-      ),
-      multi: true
-    }
-  ]
+  
 })
-export class StandarSelectSearchComponent implements ControlValueAccessor, OnInit {
+export class StandarSelectSearchComponent implements  OnInit {
 
-  public value: string | number
-  public changed: (value: any) => void
-  public onTouched: () => void
-  public isDisabled: boolean
 
   @Input() label:string = ''
   @Input() controlName = ''
@@ -68,42 +56,7 @@ export class StandarSelectSearchComponent implements ControlValueAccessor, OnIni
   //   return this.parentForm?.get(this.fieldName) as FormControl;
   // }
 
-  /**
-   * This Method fires every time 
-   * our value changes
-   * @param value 
-   */
-  writeValue(value: any): void {
-    this.value = value;
-  }
 
-  /**
-   * This method return a function 
-   * every time it detect a change
-   * @param fn 
-   */
-  registerOnChange(fn: any): void {
-    this.changed = fn;
-  }
-
-  /**
-   * This is for focus or when our input is
-   * touched
-   * @param fn 
-   */
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  /**
-   * This is to dissable our component
-   * when the form control is dissabled
-   * or when the input is dissabled
-   * @param isDisabled 
-   */
-  setDisabledState?(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
-  }
 
   clickSelectSearchField(){
     this.openSelectField = !this.openSelectField
@@ -130,11 +83,11 @@ export class StandarSelectSearchComponent implements ControlValueAccessor, OnIni
   clickOutSide(){
     this.openSelectField = false
     this.selectIsFocused = false
-    let inputValue = (<HTMLInputElement>document.getElementById('inputSearchOption'));
-    this.filteredInputValues = this.listOfInputValues
-    if (inputValue != null) {
-      inputValue.value = ''
-    }
+    // let inputValue = (<HTMLInputElement>document.getElementById('inputSearchOption'));
+    // this.filteredInputValues = this.listOfInputValues
+    // if (inputValue != null) {
+    //   inputValue.value = ''
+    // }
   }
 
   inputSearchOptions(event: any){

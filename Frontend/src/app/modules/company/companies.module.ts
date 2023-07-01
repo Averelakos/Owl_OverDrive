@@ -17,10 +17,12 @@ import { StandarLoaderComponent } from "src/app/common/standar-loader/standar-lo
 import { CompanyService } from "src/app/data/services/company.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDatetimePickerComponent } from "src/app/shared/components/mat-datetime-picker/mat-datetime-picker.component";
+import { ListCompaniesComponent } from './list/container/list-companies.component';
 // 
 
 const routes: Routes = [
-    {path:'', component:AddEditCompanyComponent},
+    {path:'', component:ListCompaniesComponent},
+    {path:'add', component:AddEditCompanyComponent},
 ]
 
 @NgModule({
@@ -45,7 +47,8 @@ const routes: Routes = [
     ParentComponent,
     FoundedComponent,
     StatusComponent,
-    LinksComponent
+    LinksComponent,
+    ListCompaniesComponent
   ],
     exports:[
         RouterModule,

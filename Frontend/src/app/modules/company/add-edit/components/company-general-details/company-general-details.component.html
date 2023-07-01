@@ -14,8 +14,8 @@
     <div class="general-details-image-input">
         <div>
             <label>Logo</label>
-            <img [src]="" alt="">
+            <img [src]="imageB64?? 'assets/img/nocover.png'" alt="">
         </div>
-        <input type="file"  >
+        <input type="file"  (change)="fileSelected($event)">
     </div>
 </div>

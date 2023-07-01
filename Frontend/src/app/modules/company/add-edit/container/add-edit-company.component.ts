@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { CompanyService } from 'src/app/data/services/company.service';
@@ -19,7 +20,8 @@ export class AddEditCompanyComponent {
   constructor(
     public responsiveService: ResponsiveService, 
     private readonly companyService: CompanyService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private router: Router
     ) {
       this.companyForm = this.companyService.initForm()
     }
@@ -54,5 +56,9 @@ export class AddEditCompanyComponent {
       twitter: this.companyForm.get('linksDetails')?.get('twitter')?.value,
     }
     return model
+  }
+
+  clickToReturnBack() {
+    this.router.navigate(['Company']);
   }
 }
