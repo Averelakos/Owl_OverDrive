@@ -18,11 +18,15 @@ import { CompanyService } from "src/app/data/services/company.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDatetimePickerComponent } from "src/app/shared/components/mat-datetime-picker/mat-datetime-picker.component";
 import { ListCompaniesComponent } from './list/container/list-companies.component';
+import { CompanyViewComponent } from './view/container/company-view.component';
+import { StandarLinkIconComponent } from "src/app/common/standar-link-icon/standar-link-icon.component";
+import { SecureImgPipe } from "src/app/shared/pipes/secure-img.pipe";
 // 
 
 const routes: Routes = [
     {path:'', component:ListCompaniesComponent},
     {path:'add', component:AddEditCompanyComponent},
+    {path:'view/:company', component: CompanyViewComponent}
 ]
 
 @NgModule({
@@ -38,7 +42,9 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         CompanyGeneralDetailsComponent,
-        MatDatetimePickerComponent
+        MatDatetimePickerComponent,
+        StandarLinkIconComponent,
+        SecureImgPipe
     ],
     providers:[CompanyService],
     declarations:[
@@ -48,7 +54,8 @@ const routes: Routes = [
     FoundedComponent,
     StatusComponent,
     LinksComponent,
-    ListCompaniesComponent
+    ListCompaniesComponent,
+    CompanyViewComponent
   ],
     exports:[
         RouterModule,

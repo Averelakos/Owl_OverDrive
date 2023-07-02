@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.Facades.Base;
@@ -57,6 +58,20 @@ namespace Owl.Overdrive.Business.Facades
         public async Task<List<ListCompanyDto>> GetAll()
         {
             return _mapper.Map<List<ListCompanyDto>>(await _repoUoW.CompanyRepository.GetList());
+        }
+
+        public async Task<SimpleCompanyDto> GetCompanyById(long companyId)
+        {
+            var result =  _mapper.Map<SimpleCompanyDto>( await _repoUoW.CompanyRepository.GetCompanyById(companyId));
+
+            var logoResult = await _repoUoW.CompanyLogoRepository.GetCompanyLogo(companyId);
+            if (logoResult is not null) 
+            {
+                result.ImageTitle = logoResult.ImageTitle;
+                result.ImageData = logoResult.ImageData;
+            }
+
+            return result;
         }
     }
 }

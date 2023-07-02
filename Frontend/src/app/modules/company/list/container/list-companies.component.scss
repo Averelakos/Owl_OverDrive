@@ -72,6 +72,7 @@
 
 .company_list_header > ul {
     list-style: none;
+    width: 100%;
 }
 
 .company_list_item {
@@ -80,6 +81,7 @@
     line-height: 1.428571429;
     border-top: 1px solid #ddd;
     cursor: pointer;
+    width: 100%;
 }
 
 .company_list_item:hover {
@@ -87,6 +89,12 @@
     box-shadow: -5px 3px 5px 0px rgba(0,0,0,0.57);
     color: #f5f5f5;
 }
+
+// .company_list_item > a{
+//     width: 100%;
+//     background: blue;
+//     cursor: pointer;
+// }
 
 .companies-list-toolbar {
     display: flex;

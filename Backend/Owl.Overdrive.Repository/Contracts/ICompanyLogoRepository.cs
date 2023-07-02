@@ -6,5 +6,6 @@ namespace Owl.Overdrive.Repository.Contracts
     public interface ICompanyLogoRepository
     {
         Task Insert(CompanyLogo companyLogo);
+        Task<CompanyLogo?> GetCompanyLogo(long companyId);
     }
 }

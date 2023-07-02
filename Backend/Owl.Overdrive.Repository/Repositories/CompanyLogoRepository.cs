@@ -17,5 +17,20 @@ namespace Owl.Overdrive.Repository.Repositories
             await base.Insert(companyLogo);
         }
 
+        public async Task<CompanyLogo?> GetCompanyLogo(long companyId)
+        {
+            try
+            {
+                return await _DbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.CompanyId == companyId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+            
+        }
+
     }
 }

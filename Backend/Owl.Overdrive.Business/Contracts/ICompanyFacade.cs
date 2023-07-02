@@ -1,4 +1,5 @@
 ﻿using Owl.Overdrive.Business.DTOs.CompanyDtos;
+using Owl.Overdrive.Domain.Entities.Company;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace Owl.Overdrive.Business.Contracts
         /// <returns></returns>
         Task<List<SearchParentCompanyDto>> Search(string searchInput);
         Task<List<ListCompanyDto>> GetAll();
+        Task<SimpleCompanyDto> GetCompanyById(long companyId);
     }
 }

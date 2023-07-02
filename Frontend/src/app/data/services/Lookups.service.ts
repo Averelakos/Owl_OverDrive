@@ -41,4 +41,20 @@ export class LookupsService{
     this.companyStatus = lookups.companyStatus
     this.countryCodes = lookups.countryCode
   }
+
+  getCountryById(countryId: number| undefined) {
+    const country = this.countryCodes.find((obj) => {
+      return obj.id === countryId
+    })
+
+    return country;
+  }
+
+  getStatusById(statusId: number| undefined) {
+    const status = this.companyStatus.find((obj) => {
+      return obj.id === statusId
+    })
+    
+    return status;
+  }
 }

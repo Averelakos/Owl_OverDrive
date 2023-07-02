@@ -1,0 +1,63 @@
+<div class="company-container">
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/Company']">Companies</a></li>
+        <li>{{company?.name}}</li>
+    </ol>
+
+    <div class="page_title">
+        <h1>{{company?.name}} <span>(Company)</span></h1>
+    </div>
+    <div class="company-view-container">
+        <div class="general-details">
+            <div>
+                <img [src]="companyLogo?? 'assets/img/nocover.png'" alt="">
+            </div>
+            <div class="charlimit">
+                <p>{{company?.description}}</p>
+            </div>
+        </div>
+        <div class="links">
+            <div *ngIf="company?.twitter != null">
+                <app-standar-link-icon 
+                [linkName]="'Twitter'"
+                [icon]="'fa-brands fa-twitter'"
+                [iconStyle]="twitterStyle"
+                [link]="company?.twitter"
+                >
+                </app-standar-link-icon>
+            </div>
+            <div *ngIf="company?.twitter != null">
+                <app-standar-link-icon 
+                [linkName]="'Official Website'"
+                [icon]="'fa-solid fa-arrow-up-right-from-square'"
+                [iconStyle]="officialWebsiteStyle"
+                [link]="company?.officialWebsite"
+                >
+                </app-standar-link-icon>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-item" *ngIf="company?.foundedIn != null">
+                <h6>Established:</h6>
+                <span>{{company?.foundedIn | date}}</span>
+            </div>
+            <div class="panel-item" *ngIf="company?.changedDate != null">
+                <h6>Change Date:</h6>
+                <span>{{company?.changedDate | date}}</span>
+            </div>
+            <div class="panel-item" *ngIf="company?.parentCompany != null">
+                <h6>Parent Company:</h6>
+                <span>{{company?.parentCompanyName}}</span>
+            </div>
+            <div class="panel-item" *ngIf="company?.countryId != null">
+                <h6>Country:</h6>
+                <span>{{country}}</span>
+            </div>
+            <div class="panel-item" *ngIf="company?.statusId != null">
+                <h6>Status:</h6>
+                <span>{{status}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -72,6 +72,7 @@ export class CompanyGeneralDetailsComponent implements OnInit {
   }
 
   compressBase64Image = (file: Blob, base64Image: string) => {
+    console.log(base64Image, file)
     const size = file.size
     let ratio = 80
     let quality = 80
@@ -89,6 +90,7 @@ export class CompanyGeneralDetailsComponent implements OnInit {
         data: file,
         fileName: file['name'],
       }
+      console.log(fileParameter)
       this.uploadFile(fileParameter)
       return
     }

@@ -5,6 +5,7 @@ import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ListCompaniesComponent } from "src/app/modules/company/list/container/list-companies.component";
 import { ListCompanyDto } from "../types/company/list-companies";
+import { SimpleCompany } from "../types/company/simple-company";
 
 @Injectable()
 export class CompanyService{
@@ -48,5 +49,9 @@ export class CompanyService{
 
     getAllCompanies() {
       return this.http.get<Array<ListCompanyDto>>(this.baseUrl + '/list')
+    }
+
+    getCompany(companyId: number) {
+      return this.http.get<any>(this.baseUrl + `/ViewCompany?companyId=${companyId}`)
     }
 }

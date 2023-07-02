@@ -25,4 +25,9 @@ export class ListCompaniesComponent implements OnInit {
   clickNewCompany() {
     this.router.navigate(['Company/add']);
   }
+
+  clickToViewCompany(item: ListCompanyDto) {
+    this.router.navigate(['Company/view/' + item.name, {id:item.id} ])
+    
+  }
 }

@@ -1,0 +1,115 @@
+:host{
+    display: contents;
+}
+
+.company-container{
+    position: relative;
+    z-index: 1;
+}
+.breadcrumb {
+    position:sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    font-size: 12.992px;
+    line-height: 1.428571429;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: #34373b;
+    background: #f5f5f5;
+    box-shadow: rgba(29, 33, 47, 0.1) 0px 12px 16px -4px , rgba(29, 33, 47, 0.05) 0px 4px 6px -2px;
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color:#c15375;
+    cursor: pointer;
+}
+
+.breadcrumb>li+li:before {
+    content: "/ ";
+    padding: 0 5px;
+    color: #ccc;
+}
+
+.page_title{
+    margin-left: 1rem;
+}
+
+.page_title > h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.page_title > h1 > span {
+    font-weight: 300;
+    line-height: 1;
+    color: #858585;
+    font-size: 65%;
+}
+
+.company-view-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.general-details> div > img {
+    height: 160px; 
+    width: 120px;
+    object-fit: contain;
+}
+
+.links {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.charlimit {
+    font-size: 12.992px;
+    line-height: 1.42857;
+    color: rgb(52, 55, 59);
+}
+
+.panel {
+    margin-top: 1rem;
+    border-radius: 0px;
+    background-color: #f5f5f5;
+    box-shadow: none;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.panel-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 30%;
+}
+
+.panel-item > h6 {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.panel-item > span {
+    color: #858585;
+    font-size: 12.992px;
+    line-height: 1.428571429;
+}

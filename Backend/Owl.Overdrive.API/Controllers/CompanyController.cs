@@ -36,5 +36,16 @@ namespace Owl.Overdrive.Controllers
             var result = await _companyFacade.GetAll();
             return Ok(result);
         }
+
+        [HttpGet("ViewCompany")]
+        public async Task<ActionResult<SimpleCompanyDto>> GetCompanyInfo([FromQuery]long companyId)
+        {
+            var result = await _companyFacade.GetCompanyById(companyId);
+            if (result.ImageData != null)
+            {
+                result.Image = File(result.ImageData, "image/jpeg");
+            }
+            return Ok(result);
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<CreateCompanyDto, Company>();
             CreateMap<Company, SearchParentCompanyDto>();
             CreateMap<Company, ListCompanyDto>();
+            CreateMap<Company, SimpleCompanyDto>()
+                .ForMember(x => x.ParentCompanyName, opt => opt.MapFrom(x => x.Name));
         }
     }
 }
