@@ -32,5 +32,19 @@ namespace Owl.Overdrive.Repository.Repositories
             
         }
 
+        public async Task<CompanyLogo?> GetLogoByCompanyId(long companyId)
+        {
+            try
+            {
+                return await _DbSet
+                .FirstOrDefaultAsync(x => x.CompanyId == companyId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+
+        }
+
     }
 }

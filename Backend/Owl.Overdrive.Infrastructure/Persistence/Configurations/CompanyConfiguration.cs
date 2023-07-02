@@ -24,7 +24,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
 
             // Properties parameters
             builder.Property(p => p.Name).HasMaxLength(255);
-            builder.Property(p => p.Description).HasMaxLength(255);
+            builder.Property(p => p.Description).HasColumnType("varchar(MAX)");//.HasMaxLength(255);
             builder.Property(p => p.FoundedIn).HasColumnType("datetime2(7)");
             builder.Property(p => p.ChangedDate).HasColumnType("datetime2(7)");
             builder.Property(p => p.OfficialWebsite).HasMaxLength(255);

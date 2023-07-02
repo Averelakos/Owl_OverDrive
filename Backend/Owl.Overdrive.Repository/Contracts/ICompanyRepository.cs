@@ -22,10 +22,16 @@ namespace Owl.Overdrive.Repository.Contracts
         /// <returns></returns>
         Task<List<Company>> GetList();
         /// <summary>
+        /// Gets the company information by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        Task<Company> GetCompanyInfoById(long id);
+        /// <summary>
         /// Gets the company by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        Task<Company> GetCompanyById(long id);
+        Task<Company?> GetCompanyById(long id);
     }
 }

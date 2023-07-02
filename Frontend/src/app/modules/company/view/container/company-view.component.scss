@@ -38,6 +38,11 @@
 
 .page_title{
     margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
 }
 
 .page_title > h1 {
@@ -63,8 +68,8 @@
 }
 
 .general-details> div > img {
-    height: 160px; 
-    width: 120px;
+    max-height: 160px; 
+    max-width: 120px;
     object-fit: contain;
 }
 
@@ -112,4 +117,33 @@
     color: #858585;
     font-size: 12.992px;
     line-height: 1.428571429;
+}
+
+.btn-default {
+    background-color: #f7f8fa;
+    border-color: #dde3e8;
+    color: #4E4E4E;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    // width: 45px;
+    height: 34px;
+}
+
+.extra {
+    margin-top: 5px;
 }

@@ -45,18 +45,28 @@ namespace Owl.Overdrive.Repository.Repositories
             var result = await base.GetAll();
             return result.ToList();
         }
+
         /// <summary>
-        /// Gets the company by identifier.
+        /// Gets the company information by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-
-        public async Task<Company> GetCompanyById(long id)
+        public async Task<Company> GetCompanyInfoById(long id)
         {
             return await _DbSet
                 .Include(x => x.ParentCompany)
                 .AsNoTracking()
                 .FirstAsync(x => x.Id == id);
+        }
+
+        /// <summary>
+        /// Gets the company by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public async Task<Company?> GetCompanyById(long id)
+        {
+            return await base.GetById(id);
         }
     }
 }

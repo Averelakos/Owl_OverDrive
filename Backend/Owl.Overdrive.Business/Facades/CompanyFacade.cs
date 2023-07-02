@@ -34,6 +34,8 @@ namespace Owl.Overdrive.Business.Facades
                     };
 
                     await _repoUoW.CompanyLogoRepository.Insert(logo);
+
+                    await _repoUoW.ImageDraftRepository.DeleteImageDraft(createCompanyDto.imageGuid);
                 }
             }
             catch (Exception ex)
@@ -60,9 +62,9 @@ namespace Owl.Overdrive.Business.Facades
             return _mapper.Map<List<ListCompanyDto>>(await _repoUoW.CompanyRepository.GetList());
         }
 
-        public async Task<SimpleCompanyDto> GetCompanyById(long companyId)
+        public async Task<SimpleCompanyDto> GetCompanyInfoById(long companyId)
         {
-            var result =  _mapper.Map<SimpleCompanyDto>( await _repoUoW.CompanyRepository.GetCompanyById(companyId));
+            var result =  _mapper.Map<SimpleCompanyDto>( await _repoUoW.CompanyRepository.GetCompanyInfoById(companyId));
 
             var logoResult = await _repoUoW.CompanyLogoRepository.GetCompanyLogo(companyId);
             if (logoResult is not null) 
@@ -71,6 +73,18 @@ namespace Owl.Overdrive.Business.Facades
                 result.ImageData = logoResult.ImageData;
             }
 
+            return result;
+        }
+
+        public async Task<UpdateCompanyDto> GetCompanyById(long companyId)
+        {
+            var result = _mapper.Map<UpdateCompanyDto>(await _repoUoW.CompanyRepository.GetCompanyById(companyId));
+            return result;
+        }
+
+        public async Task<UpdateCompanyLogoDto> GetLogoByCompanyId(long companyId)
+        {
+            var result = _mapper.Map<UpdateCompanyLogoDto>(await _repoUoW.CompanyLogoRepository.GetLogoByCompanyId(companyId));
             return result;
         }
     }

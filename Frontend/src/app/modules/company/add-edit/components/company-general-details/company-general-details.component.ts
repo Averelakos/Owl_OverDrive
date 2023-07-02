@@ -5,6 +5,7 @@ import { BehaviorSubject, finalize } from 'rxjs';
 import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
 import { StandarTextareaComponent } from 'src/app/common/standar-textarea/standar-textarea.component';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
+import { CompanyService } from 'src/app/data/services/company.service';
 import { ImageService } from 'src/app/data/services/image.service';
 import { FileParameter } from 'src/app/data/types/image/file-parameter';
 import { ImageCompressService } from 'src/app/shared/lib/image-compress/image-compress.service';
@@ -21,17 +22,33 @@ import { DOC_ORIENTATION } from 'src/app/shared/lib/image-compress/model/DOC_ORI
 export class CompanyGeneralDetailsComponent implements OnInit {
   responsiveSizes = ResponsizeSize
   uploading$ = new BehaviorSubject<boolean>(false)
+  @Input()companyId?: number | null = null
   
   constructor(
     public responsiveService: ResponsiveService, 
     public parentForm: FormGroupDirective, 
     private imageCompress: ImageCompressService, 
-    private imageService: ImageService
+    private imageService: ImageService,
+    private readonly companyService: CompanyService
     ) {}
   
   ngOnInit(): void {
     let generalDetails: FormGroup = this.parentForm.form.controls['generalDetails'] as FormGroup
-    this.imageGuid.subscribe((x) => generalDetails.patchValue({imageId: x}))
+    this.imageGuid.subscribe((x) => generalDetails.patchValue({image: x}))
+
+    if(this.companyId != null) {
+      // this.convertBinaryToImage()
+      this.companyService.getCompanyLogoEdit(this.companyId).subscribe((res) => {
+        if(res != null) {
+          this.convertBinaryToImage(res.imageData)
+        }
+      })
+    }
+    // generalDetails.valueChanges.subscribe((b) => {
+    //   if(this.imageB64 == null) {
+    //     this.convertBinaryToImage()
+    //   }
+    // })
   }
 
   imageB64?: string | null
@@ -72,6 +89,7 @@ export class CompanyGeneralDetailsComponent implements OnInit {
   }
 
   compressBase64Image = (file: Blob, base64Image: string) => {
+    debugger
     console.log(base64Image, file)
     const size = file.size
     let ratio = 80
@@ -125,7 +143,25 @@ export class CompanyGeneralDetailsComponent implements OnInit {
       .uploadImages(fileParameter)
       .pipe(finalize(() => this.uploading$.next(false)))
       .subscribe((response) => {
-        console.log(response)
+        this.imageGuid.emit(response)
       })
+  }
+
+  convertBinaryToImage(imageData) {
+    if (imageData != null) {
+      var binary = atob(imageData)
+      var array: any = [];
+      for (var i = 0; i < binary.length; i++) {
+        var byte = binary.charCodeAt(i)
+          array.push(byte);
+      }
+      var blob =  new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+      var reader = new FileReader
+      reader.onloadend =() => {
+        this.imageB64 = reader.result?.toString()
+      }
+
+      reader.readAsDataURL(blob)
+    }
   }
 }

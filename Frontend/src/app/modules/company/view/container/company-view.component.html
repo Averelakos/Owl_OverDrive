@@ -5,7 +5,7 @@
     </ol>
 
     <div class="page_title">
-        <h1>{{company?.name}} <span>(Company)</span></h1>
+        <h1>{{company?.name}} <span>(Company)</span></h1> <a class="btn btn-default extra" (click)="clickToEdit()">Edit</a>
     </div>
     <div class="company-view-container">
         <div class="general-details">
@@ -45,7 +45,7 @@
                 <h6>Change Date:</h6>
                 <span>{{company?.changedDate | date}}</span>
             </div>
-            <div class="panel-item" *ngIf="company?.parentCompany != null">
+            <div class="panel-item" *ngIf="company?.parentCompanyId != null">
                 <h6>Parent Company:</h6>
                 <span>{{company?.parentCompanyName}}</span>
             </div>

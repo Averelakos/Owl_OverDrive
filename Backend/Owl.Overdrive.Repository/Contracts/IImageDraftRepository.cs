@@ -11,7 +11,7 @@ namespace Owl.Overdrive.Repository.Contracts
         /// <returns></returns>
         Task<Guid> Insert(ImageDraft imageDraft);
         Task<ImageDraft?> GetImageByGuid(Guid guid);
-
+        Task DeleteImageDraft(Guid guid);
 
     }
 }

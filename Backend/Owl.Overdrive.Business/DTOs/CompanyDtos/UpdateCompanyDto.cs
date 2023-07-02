@@ -1,17 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Owl.Overdrive.Business.DTOs.CompanyDtos
+﻿namespace Owl.Overdrive.Business.DTOs.CompanyDtos
 {
     /// <summary>
     /// Simple company Dto
     /// </summary>
-    public class SimpleCompanyDto
+    public class UpdateCompanyDto
     {
         public long Id { get; set; }
         /// <summary>
@@ -55,13 +47,8 @@ namespace Owl.Overdrive.Business.DTOs.CompanyDtos
         /// </summary>
         public string? Twitter { get; set; }
         /// <summary>
-        /// Image File name.
+        /// Gets or sets the image identifier.
         /// </summary>
-        public string ImageTitle { get; set; } = null!;
-        /// <summary>
-        /// Image data.
-        /// </summary>
-        public byte[] ImageData { get; set; } = null!;
-
+        public Guid CompanyLogoId { get; set; }
     }
 }

@@ -54,4 +54,12 @@ export class CompanyService{
     getCompany(companyId: number) {
       return this.http.get<any>(this.baseUrl + `/ViewCompany?companyId=${companyId}`)
     }
+
+    getCompanyForEdit(companyId) {
+      return this.http.get<any>(this.baseUrl + `/GetCompany?companyId=${companyId}`)
+    }
+
+    getCompanyLogoEdit(companyId) {
+      return this.http.get<any>(this.baseUrl + `/GetCompanyLogo?companyId=${companyId}`)
+    }
 }

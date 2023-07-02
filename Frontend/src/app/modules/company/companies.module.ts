@@ -26,7 +26,8 @@ import { SecureImgPipe } from "src/app/shared/pipes/secure-img.pipe";
 const routes: Routes = [
     {path:'', component:ListCompaniesComponent},
     {path:'add', component:AddEditCompanyComponent},
-    {path:'view/:company', component: CompanyViewComponent}
+    {path:'view/:company', component: CompanyViewComponent},
+    {path:'edit/:company', component: AddEditCompanyComponent}
 ]
 
 @NgModule({

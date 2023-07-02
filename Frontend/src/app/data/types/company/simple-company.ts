@@ -1,7 +1,8 @@
 export interface SimpleCompany{
+    id:number
     name: string
     description: string
-    parentCompany: number
+    parentCompanyId: number
     parentCompanyName: string
     foundedIn: Date
     countryId: number
@@ -10,6 +11,5 @@ export interface SimpleCompany{
     officialWebsite: string
     twitter: string
     imageTitle: string
-    imageData: any
-    image: Blob
+    imageData: string
 }

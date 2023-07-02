@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, FormGroupDirective, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 
 
@@ -36,6 +37,7 @@ export class StandarSelectSearchComponent implements  OnInit {
   filteredInputValues: Array<SelectSearchInputValue> = []
   openSelectField:boolean = false;
   searchValue:string = ''
+  private unsubscribe: Subscription | undefined
 
   constructor(public parentForm: FormGroupDirective){
     // this.filteredInputValues = this.listOfInputValues
@@ -50,13 +52,13 @@ export class StandarSelectSearchComponent implements  OnInit {
     else {
       this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
     }
+
+   this.unsubscribe =  this.formGroup.get(this.controlName)?.valueChanges.subscribe((b) => {
+      if (this.inputValue === null && b != null && this.inputValue !== b) {
+        this.clickSelectOption(this.formGroup.get(this.controlName)?.value)
+      }
+    })
   }
-
-  // get formField (): FormControl {
-  //   return this.parentForm?.get(this.fieldName) as FormControl;
-  // }
-
-
 
   clickSelectSearchField(){
     this.openSelectField = !this.openSelectField
@@ -71,6 +73,7 @@ export class StandarSelectSearchComponent implements  OnInit {
     if (selected != null && selected.length > 1){
       return
     }
+    this.unsubscribe?.unsubscribe()
     this.formGroup.get(this.controlName)?.setValue(selected[0].id)
     this.inputValue = selected[0]
   }

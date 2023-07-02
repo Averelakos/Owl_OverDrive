@@ -8,4 +8,5 @@ export interface CreateCompanyDto{
     changedDate: Date
     officialWebsite: string
     twitter: string
+    imageGuid:number
 }

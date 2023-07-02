@@ -38,5 +38,17 @@ namespace Owl.Overdrive.Repository.Repositories
             
         }
 
+        public async Task DeleteImageDraft(Guid guid)
+        {
+            var entry = await _DbSet.FirstOrDefaultAsync(x => x.GuiId == guid);
+
+            if (entry is null)
+                return;
+
+            _dbContext.Remove(entry);
+            await _dbContext.SaveChangesAsync();
+            
+        }
+
     }
 }

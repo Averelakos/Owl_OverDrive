@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.LookupsDtos;
+using System.Reflection.Metadata;
 
 namespace Owl.Overdrive.Controllers
 {
@@ -40,12 +41,29 @@ namespace Owl.Overdrive.Controllers
         [HttpGet("ViewCompany")]
         public async Task<ActionResult<SimpleCompanyDto>> GetCompanyInfo([FromQuery]long companyId)
         {
-            var result = await _companyFacade.GetCompanyById(companyId);
-            if (result.ImageData != null)
-            {
-                result.Image = File(result.ImageData, "image/jpeg");
-            }
+            var result = await _companyFacade.GetCompanyInfoById(companyId);
             return Ok(result);
+        }
+
+        [HttpGet("GetCompany")]
+        public async Task<ActionResult<SimpleCompanyDto>> GetCompany([FromQuery] long companyId)
+        {
+            var result = await _companyFacade.GetCompanyById(companyId);
+            return Ok(result);
+        }
+
+        [HttpGet("GetCompanyLogo")]
+        public async Task<ActionResult<UpdateCompanyDto>> GetCompanyLogo([FromQuery] long companyId)
+        {
+            var result = await _companyFacade.GetLogoByCompanyId(companyId);
+            return Ok(result);
+        }
+
+        [HttpPost("UpdateCompany")]
+        public async Task<ActionResult<UpdateCompanyDto>> UpdateCompany([FromForm] UpdateCompanyDto updateCompanyDto)
+        {
+            //var result = await _companyFacade.GetLogoByCompanyId(companyId);
+            return Ok();
         }
     }
 }
