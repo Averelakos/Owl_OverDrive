@@ -1,0 +1,27 @@
+<div class="result-banner-container">
+    
+    <div class="success-banner" *ngIf="(resultBannerActionService.displaySuccessBanner$ | async)">
+        <div class="banner-content">
+            <i class="fa-solid fa-check"></i>
+            <ng-container *ngIf="(resultBannerActionService.bannerInformation$ | async)?.title != null">
+                <span class="banner-title">{{(resultBannerActionService.bannerInformation$ | async)?.title}}</span>
+            </ng-container>
+            <ng-container *ngIf="(resultBannerActionService.bannerInformation$ | async)?.message != null">
+                <span class="banner-text">{{(resultBannerActionService.bannerInformation$ | async)?.message}}</span>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="error-banner" *ngIf="(resultBannerActionService.displayErrorBanner$ | async)">
+        <div class="banner-content">
+            <i class="fa-solid fa-info"></i>
+            <ng-container *ngIf="(resultBannerActionService.bannerInformation$ | async)?.title != null">
+                <span class="banner-title">{{(resultBannerActionService.bannerInformation$ | async)?.title}}</span>
+            </ng-container>
+            <ng-container *ngIf="(resultBannerActionService.bannerInformation$ | async)?.message != null">
+                <span class="banner-text">{{(resultBannerActionService.bannerInformation$ | async)?.message}}</span>
+            </ng-container>
+        </div>
+    </div>
+
+</div>
