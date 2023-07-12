@@ -1,7 +1,17 @@
-<div class="loader-container" *ngIf="loading">
-    <!-- <div class="loader"> -->
-        <div class='pac-man'></div>
-    <!-- </div> -->
+<div [ngClass]="{'loader': !inner, 'inner-loader' : inner}" *ngIf="loading">
+    <div class="loader-container">
+        <div class="ui-abstergo">
+            <div class="abstergo-loader">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="ui-text">
+              Loading
+              <div class="ui-dot"></div>
+              <div class="ui-dot"></div>
+              <div class="ui-dot"></div>
+            </div>
+          </div>
+    </div>
 </div>
-
-

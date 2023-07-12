@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 })
 export class StandarLoaderComponent {
   @Input() loading!: boolean | null
+  @Input() inner: boolean = false
 }

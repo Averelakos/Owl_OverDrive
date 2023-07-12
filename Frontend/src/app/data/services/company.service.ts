@@ -6,6 +6,8 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { ListCompaniesComponent } from "src/app/modules/company/list/container/list-companies.component";
 import { ListCompanyDto } from "../types/company/list-companies";
 import { SimpleCompany } from "../types/company/simple-company";
+import { UpdateCompanyDto } from "../types/company/update-company";
+import { ServiceResult } from "../types/service-results/service-result";
 
 @Injectable()
 export class CompanyService{
@@ -18,7 +20,8 @@ export class CompanyService{
           generalDetails: this.formBuilder.group({
             name:[null],
             description:[null],
-            image:[null]
+            image:[null],
+            companyLogoId:[null]
           }),
           parentCompany:[null],
           foundedDetails: this.formBuilder.group({
@@ -36,8 +39,11 @@ export class CompanyService{
         })
     }
 
-    createNewCompany(createCompany: CreateCompanyDto){
-      return this.http.post<any>(this.baseUrl + '/AddCompany',createCompany)
+    createNewCompany(model: CreateCompanyDto){
+      return this.http.post<ServiceResult<CreateCompanyDto>>(this.baseUrl + '/AddCompany',model)
+    }
+    updateCompany(model: UpdateCompanyDto){
+      return this.http.post<ServiceResult<UpdateCompanyDto>>(this.baseUrl + '/UpdateCompany',model)
     }
 
     searchParentCompany(searchInput: string){
@@ -51,12 +57,8 @@ export class CompanyService{
       return this.http.get<Array<ListCompanyDto>>(this.baseUrl + '/list')
     }
 
-    getCompany(companyId: number) {
-      return this.http.get<any>(this.baseUrl + `/ViewCompany?companyId=${companyId}`)
-    }
-
-    getCompanyForEdit(companyId) {
-      return this.http.get<any>(this.baseUrl + `/GetCompany?companyId=${companyId}`)
+    getCompany(companyId) {
+      return this.http.get<SimpleCompany>(this.baseUrl + `/GetCompany?companyId=${companyId}`)
     }
 
     getCompanyLogoEdit(companyId) {

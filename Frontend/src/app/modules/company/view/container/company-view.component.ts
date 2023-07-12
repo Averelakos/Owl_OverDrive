@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { resolve } from 'dns';
+import { BehaviorSubject, finalize, first } from 'rxjs';
+import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { CompanyService } from 'src/app/data/services/company.service';
-import { ImageService } from 'src/app/data/services/image.service';
 import { SimpleCompany } from 'src/app/data/types/company/simple-company';
 
 @Component({
@@ -21,19 +20,26 @@ export class CompanyViewComponent {
   status?: string
   companyLogo: any
   imageSize?: string | null
+  loading$ = new BehaviorSubject<boolean>(false)
+  deviceType = ResponsizeSize
 
   constructor(
     private readonly route: ActivatedRoute, 
     private companyService: CompanyService,
     private lookUpService: LookupsService,
-    private readonly router: Router
+    private readonly router: Router,
+    public responsiveService: ResponsiveService
     ){
     const companyId = this.route.snapshot.params['id']
     this.getCompany(companyId)
+    responsiveService.responsiveSize
   }
 
   getCompany(companyId: number) {
-    this.companyService.getCompany(companyId).subscribe((res) => {
+    this.loading$.next(true)
+    this.companyService.getCompany(companyId)
+    .pipe(first(),finalize(()=> this.loading$.next(false)))
+    .subscribe((res) => {
       this.company = res
       this.retrieveExtaInfo()
     })

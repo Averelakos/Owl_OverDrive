@@ -10,6 +10,7 @@ export interface SimpleCompany{
     changedDate: Date
     officialWebsite: string
     twitter: string
+    companyLogoId: number
     imageTitle: string
     imageData: string
 }

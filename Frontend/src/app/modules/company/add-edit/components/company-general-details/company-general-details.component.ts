@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { BehaviorSubject, finalize } from 'rxjs';
 import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
@@ -19,36 +19,28 @@ import { DOC_ORIENTATION } from 'src/app/shared/lib/image-compress/model/DOC_ORI
   imports:[CommonModule, StandarInputComponent, StandarTextareaComponent],
   providers: [ImageCompressService, ImageService]
 })
-export class CompanyGeneralDetailsComponent implements OnInit {
+export class CompanyGeneralDetailsComponent implements OnInit, OnChanges {
   responsiveSizes = ResponsizeSize
   uploading$ = new BehaviorSubject<boolean>(false)
-  @Input()companyId?: number | null = null
+  @Input() companyLogoData?: string | null = null
+  @Input() imageData?: string | null = null
   
   constructor(
     public responsiveService: ResponsiveService, 
     public parentForm: FormGroupDirective, 
     private imageCompress: ImageCompressService, 
     private imageService: ImageService,
-    private readonly companyService: CompanyService
     ) {}
   
   ngOnInit(): void {
     let generalDetails: FormGroup = this.parentForm.form.controls['generalDetails'] as FormGroup
     this.imageGuid.subscribe((x) => generalDetails.patchValue({image: x}))
+  }
 
-    if(this.companyId != null) {
-      // this.convertBinaryToImage()
-      this.companyService.getCompanyLogoEdit(this.companyId).subscribe((res) => {
-        if(res != null) {
-          this.convertBinaryToImage(res.imageData)
-        }
-      })
-    }
-    // generalDetails.valueChanges.subscribe((b) => {
-    //   if(this.imageB64 == null) {
-    //     this.convertBinaryToImage()
-    //   }
-    // })
+  ngOnChanges(changes: SimpleChanges): void {
+      if (changes['companyLogoData'] != null && changes['companyLogoData'].previousValue == null && changes['companyLogoData'].currentValue != null) {
+        this.convertBinaryToImage(changes['companyLogoData'].currentValue)
+      }
   }
 
   imageB64?: string | null
@@ -89,8 +81,6 @@ export class CompanyGeneralDetailsComponent implements OnInit {
   }
 
   compressBase64Image = (file: Blob, base64Image: string) => {
-    debugger
-    console.log(base64Image, file)
     const size = file.size
     let ratio = 80
     let quality = 80

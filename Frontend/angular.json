@@ -34,7 +34,8 @@
               "src/styles.scss",
               "src/assets/theme/main.scss",
               "src/assets/styles/transitions.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/app/lib/toastr/toast.scss"
             ],
             "scripts": []
           },

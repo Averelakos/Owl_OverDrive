@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/core/services/layout.service';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
+import { ToastrService } from 'src/app/lib/toastr/toastr.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -13,7 +14,7 @@ export class AdminLayoutComponent implements OnInit {
 
   sidebarIsToggled = false;
   responsiveSizes = ResponsizeSize
-  constructor(public responsiveService: ResponsiveService, public layoutService: LayoutService, private readonly lookupsService: LookupsService) {
+  constructor(public responsiveService: ResponsiveService, public layoutService: LayoutService, private readonly lookupsService: LookupsService, private toastr: ToastrService) {
     this.lookupsService.init()
     this.layoutService.sidebarMenuTrigger.next(false)
   }
@@ -26,6 +27,10 @@ export class AdminLayoutComponent implements OnInit {
 
   toggleSideBar(){
     this.sidebarIsToggled = !this.sidebarIsToggled;
+  }
+
+  show(){
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 
 }

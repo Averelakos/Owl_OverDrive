@@ -9,6 +9,7 @@ import { SharedComponentsModule } from "src/app/shared/shared.module";
 import { AdminHeaderComponent } from "./components/admin-header/admin-header.component";
 import { AdminFooterComponent } from "./components/admin-footer/admin-footer.component";
 import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/admin-sidebar-mobile.component';
+import { ResultBannerComponent } from "src/app/common/result-banner/result-banner.component";
 // import { SharedComponentsModule } from "src/app/shared/shared.module";
 
 
@@ -16,7 +17,8 @@ import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/a
     imports:[
         BrowserModule,
         RouterModule,
-        SharedComponentsModule
+        SharedComponentsModule,
+        ResultBannerComponent
     ],
     providers:[],
     declarations:[
@@ -25,7 +27,7 @@ import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/a
         AdminHeaderComponent,
         AdminSidebarComponent,
         AdminFooterComponent,
-        AdminSidebarMobileComponent
+        AdminSidebarMobileComponent,
         // ClickOutsideDirective
     ],
     exports:[

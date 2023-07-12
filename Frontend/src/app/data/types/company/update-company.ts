@@ -1,5 +1,5 @@
-export interface CreateCompanyDto{
-    id: number | null
+export interface UpdateCompanyDto{
+    id: number,
     name: string
     description: string
     parentCompany: number
@@ -9,5 +9,6 @@ export interface CreateCompanyDto{
     changedDate: Date
     officialWebsite: string
     twitter: string
-    imageGuid:number
+    newCompanyLogoId:string | null
+    companyLogoId: number | null
 }

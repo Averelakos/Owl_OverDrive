@@ -20,7 +20,7 @@
     
     
     <form class="form_group_add_edit" [formGroup]="companyForm">
-        <app-company-general-details style="width: inherit;" [companyId]="companyId"></app-company-general-details>
+        <app-company-general-details style="width: inherit;" [companyLogoData]="companyLogoData"></app-company-general-details>
         <app-company-info></app-company-info>
     </form>
  
@@ -30,8 +30,8 @@
     </div>
     <div *ngIf="companyId != null" class="add_edit_buttons">
         <a class="btn btn-default" (click)="clickToReturnBack()">Back</a>
-        <button (click)="clickToUpdateCompany()" class="btn btn-primary">Update</button>
+        <button (click)="updateCompany()" class="btn btn-primary">Update</button>
     </div>
     <!-- <app-standar-loader></app-standar-loader> -->
 </div>
-<app-standar-loader [loading]="loading$ | async"></app-standar-loader>
+<app-standar-loader [loading]="loading$ | async" [inner]="(responsiveService.responsiveSize | async) === deviceType.Desktop"></app-standar-loader>
