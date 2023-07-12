@@ -33,6 +33,9 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("ChangedDate")
                         .HasColumnType("datetime2(7)");
 
+                    b.Property<long?>("CompanyLogoId")
+                        .HasColumnType("bigint");
+
                     b.Property<long?>("CountryId")
                         .HasColumnType("bigint");
 
@@ -79,6 +82,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyLogoId")
+                        .IsUnique()
+                        .HasFilter("[CompanyLogoId] IS NOT NULL");
+
                     b.HasIndex("CountryId");
 
                     b.HasIndex("CreatedById");
@@ -99,9 +106,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("CompanyId")
-                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -128,9 +132,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId")
-                        .IsUnique();
 
                     b.HasIndex("CreatedById");
 
@@ -3867,11 +3868,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.ImageDraft", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -3880,10 +3880,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
                     b.Property<long?>("CreatedById")
                         .HasColumnType("bigint");
-
-                    b.Property<Guid>("GuiId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<byte[]>("ImageData")
                         .IsRequired()
@@ -3981,6 +3977,11 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Company.Company", b =>
                 {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Company.CompanyLogo", "CompanyLogo")
+                        .WithOne()
+                        .HasForeignKey("Owl.Overdrive.Domain.Entities.Company.Company", "CompanyLogoId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("Owl.Overdrive.Domain.Entities.CountryCode", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
@@ -4006,6 +4007,8 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.SetNull);
 
+                    b.Navigation("CompanyLogo");
+
                     b.Navigation("Country");
 
                     b.Navigation("CreatedBy");
@@ -4019,12 +4022,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Company.CompanyLogo", b =>
                 {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Company.Company", "Company")
-                        .WithOne()
-                        .HasForeignKey("Owl.Overdrive.Domain.Entities.Company.CompanyLogo", "CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
@@ -4034,8 +4031,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("LastUpdatedById")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Company");
 
                     b.Navigation("CreatedBy");
 

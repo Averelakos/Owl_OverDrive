@@ -24,11 +24,11 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             builder.ToTable("CompanyLogos");
 
             // Properties parameters
-            builder.HasOne(x => x.Company)
-                .WithOne()
-                .HasForeignKey<CompanyLogo>(x => x.CompanyId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(x => x.Company)
+            //    .WithOne()
+            //    .HasForeignKey<CompanyLogo>(x => x.CompanyId)
+            //    .IsRequired()
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
 
         private static void Seed(EntityTypeBuilder<User> builder)

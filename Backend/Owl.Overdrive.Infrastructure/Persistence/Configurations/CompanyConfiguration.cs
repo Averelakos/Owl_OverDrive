@@ -41,6 +41,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
                 .WithMany()
                 .HasForeignKey(e => e.StatusId)
                 .OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(e => e.CompanyLogo)
+                .WithOne()
+                .HasForeignKey<Company>(e => e.CompanyLogoId)
+                .OnDelete(DeleteBehavior.SetNull);
 
         }
     }

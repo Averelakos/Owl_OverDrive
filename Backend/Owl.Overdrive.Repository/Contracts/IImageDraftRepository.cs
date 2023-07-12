@@ -10,8 +10,8 @@ namespace Owl.Overdrive.Repository.Contracts
         /// <param name="company">The company.</param>
         /// <returns></returns>
         Task<Guid> Insert(ImageDraft imageDraft);
-        Task<ImageDraft?> GetImageByGuid(Guid guid);
-        Task DeleteImageDraft(Guid guid);
+        Task<ImageDraft?> GetImageByGuid(Guid? guid);
+        Task DeleteImageDraft(Guid? guid);
 
     }
 }

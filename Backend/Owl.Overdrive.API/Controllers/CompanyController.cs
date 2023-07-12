@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.LookupsDtos;
+using Owl.Overdrive.Business.DTOs.ServiceResults;
+using Owl.Overdrive.Domain.Entities.Company;
 using System.Reflection.Metadata;
 
 namespace Owl.Overdrive.Controllers
@@ -18,10 +20,10 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("AddCompany")]
-        public async Task<ActionResult> AddCompany([FromBody] CreateCompanyDto createCompanyDto)
+        public async Task<ActionResult<ServiceResult<CreateCompanyDto>>> AddCompany([FromBody] CreateCompanyDto createCompanyDto)
         {
-            await _companyFacade.Create(createCompanyDto);
-            return Ok();
+            var result = await _companyFacade.Create(createCompanyDto);
+            return Ok(result);
         }
 
         [HttpPost("SearchParent")]
@@ -35,13 +37,6 @@ namespace Owl.Overdrive.Controllers
         public async Task<ActionResult<List<ListCompanyDto>>> List()
         {
             var result = await _companyFacade.GetAll();
-            return Ok(result);
-        }
-
-        [HttpGet("ViewCompany")]
-        public async Task<ActionResult<SimpleCompanyDto>> GetCompanyInfo([FromQuery]long companyId)
-        {
-            var result = await _companyFacade.GetCompanyInfoById(companyId);
             return Ok(result);
         }
 
@@ -60,10 +55,10 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("UpdateCompany")]
-        public async Task<ActionResult<UpdateCompanyDto>> UpdateCompany([FromForm] UpdateCompanyDto updateCompanyDto)
+        public async Task<ActionResult<ServiceResult<UpdateCompanyDto>>> UpdateCompany([FromBody] UpdateCompanyDto updateCompanyDto)
         {
-            //var result = await _companyFacade.GetLogoByCompanyId(companyId);
-            return Ok();
+            var result = await _companyFacade.UpdateCompany(updateCompanyDto);
+            return Ok(result);
         }
     }
 }

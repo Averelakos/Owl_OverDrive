@@ -49,6 +49,8 @@
         /// <summary>
         /// Gets or sets the image identifier.
         /// </summary>
-        public Guid CompanyLogoId { get; set; }
+        public long? CompanyLogoId { get; set; }
+        public Guid? NewCompanyLogoId { get; set; }
+        
     }
 }

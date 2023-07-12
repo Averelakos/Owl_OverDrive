@@ -13,8 +13,8 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
 
         public void Configure(EntityTypeBuilder<ImageDraft> builder)
         {
-            ApplyConfiguration(builder);
             ConfigurationBase(builder);
+            ApplyConfiguration(builder);
         }
 
         public static void ApplyConfiguration(EntityTypeBuilder<ImageDraft> builder)
@@ -23,8 +23,9 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             builder.ToTable("ImageDrafts");
 
             // Properties parameters
-            builder.HasKey(x => x.GuiId);
-            builder.Property(x => x.GuiId).HasDefaultValueSql("newsequentialid()");
+            //builder.HasKey(x => x.GuidId);
+            builder.HasKey(x => x.Id );
+            builder.Property(x => x.Id).HasDefaultValueSql("newsequentialid()");
         }
 
         private static void Seed(EntityTypeBuilder<User> builder)

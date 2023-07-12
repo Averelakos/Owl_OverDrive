@@ -50,5 +50,8 @@ namespace Owl.Overdrive.Repository.Contracts
         /// Save changes
         /// </summary>
         Task SaveChangesAsync();
+        Task BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollBackTransactionAsync();
     }
 }

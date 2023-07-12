@@ -1,10 +1,12 @@
 ﻿using Owl.Overdrive.Domain.Entities.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace Owl.Overdrive.Domain.Entities
 {
     public class ImageDraft : BaseEntity
     {
-        public Guid GuiId { get; set; }
+
+        public new Guid Id { get; set; }
         /// <summary>
         /// Image File name.
         /// </summary>

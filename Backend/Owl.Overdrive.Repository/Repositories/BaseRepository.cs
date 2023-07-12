@@ -127,7 +127,7 @@ namespace Owl.Overdrive.Repository.Repositories
             var entry = _dbContext.Entry(dbitem);
             if (entry.State != EntityState.Unchanged)
             {
-                //entry.OriginalValues[nameof(dbitem.ChangesNo)] = dbitem.ChangesNo;
+
                 await SaveChangesAsync();
             }
 
@@ -149,9 +149,24 @@ namespace Owl.Overdrive.Repository.Repositories
         /// <summary>
         /// Save changes
         /// </summary>
-        public async Task SaveChangesAsync()
+        public virtual async Task SaveChangesAsync()
         {
             await _dbContext.SaveChangesAsync();
+        }
+
+        public virtual async Task BeginTransactionAsync()
+        {
+            await _dbContext.Database.BeginTransactionAsync();
+        }
+
+        public virtual async Task CommitTransactionAsync()
+        {
+            await _dbContext.Database.CommitTransactionAsync();
+        }
+
+        public virtual async Task RollBackTransactionAsync()
+        {
+            await _dbContext.Database.RollbackTransactionAsync();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
@@ -10,6 +11,11 @@ namespace Owl.Overdrive.Repository.Repositories
     {
         public CompanyRepository(OwlOverdriveDbContext dbContext) : base(dbContext)
         {
+        }
+
+        private IQueryable<Company> GetCompany()
+        {
+            return _DbSet;
         }
 
         /// <summary>
@@ -51,22 +57,42 @@ namespace Owl.Overdrive.Repository.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<Company> GetCompanyInfoById(long id)
-        {
-            return await _DbSet
-                .Include(x => x.ParentCompany)
-                .AsNoTracking()
-                .FirstAsync(x => x.Id == id);
-        }
-
-        /// <summary>
-        /// Gets the company by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<Company?> GetCompanyById(long id)
         {
+            return await GetCompany()
+                .Include(x => x.ParentCompany)
+                .AsNoTracking()
+                .FirstAsync(x => x.Id == id)!;
+        }
+
+        public override async Task<Company?> GetById(long id)
+        {
             return await base.GetById(id);
+        }
+
+        public async Task<Company> UpdateCompany(Company company)
+        {
+            return await base.Update(company);
+        }
+
+        public override async Task SaveChangesAsync()
+        {
+            await base.SaveChangesAsync();
+        }
+
+        public override async Task BeginTransactionAsync()
+        {
+            await _dbContext.Database.BeginTransactionAsync();
+        }
+
+        public override async Task CommitTransactionAsync()
+        {
+            await _dbContext.Database.CommitTransactionAsync();
+        }
+
+        public override async Task RollBackTransactionAsync()
+        {
+            await _dbContext.Database.RollbackTransactionAsync();
         }
     }
 }

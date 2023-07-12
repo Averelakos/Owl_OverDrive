@@ -16,9 +16,6 @@ namespace Owl.Overdrive.Domain.Entities.Company
         /// <summary>
         /// Image data.
         /// </summary>
-        public byte[] ImageData { get; set; } = null!;
-
-        public long CompanyId { get; set; }
-        public virtual Company Company { get; set; } = null!;
+        public byte[] ImageData { get; set; } = null!; 
     }
 }

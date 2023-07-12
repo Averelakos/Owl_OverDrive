@@ -1,4 +1,5 @@
 ﻿using Owl.Overdrive.Business.DTOs.CompanyDtos;
+using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Domain.Entities.Company;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Owl.Overdrive.Business.Contracts
         /// </summary>
         /// <param name="createCompanyDto">The create company dto.</param>
         /// <returns></returns>
-        Task Create(CreateCompanyDto createCompanyDto);
+        Task<ServiceResult<CreateCompanyDto>> Create(CreateCompanyDto createCompanyDto);
         /// <summary>
         /// Searches the specified search input.
         /// </summary>
@@ -23,8 +24,9 @@ namespace Owl.Overdrive.Business.Contracts
         /// <returns></returns>
         Task<List<SearchParentCompanyDto>> Search(string searchInput);
         Task<List<ListCompanyDto>> GetAll();
-        Task<SimpleCompanyDto> GetCompanyInfoById(long companyId);
-        Task<UpdateCompanyDto> GetCompanyById(long companyId);
+        Task<SimpleCompanyDto> GetCompanyById(long companyId);
+        Task<UpdateCompanyDto> GetCompanyForUpdate(long companyId);
         Task<UpdateCompanyLogoDto> GetLogoByCompanyId(long companyId);
+        Task<ServiceResult<UpdateCompanyDto>> UpdateCompany(UpdateCompanyDto updateCompanyDto);
     }
 }

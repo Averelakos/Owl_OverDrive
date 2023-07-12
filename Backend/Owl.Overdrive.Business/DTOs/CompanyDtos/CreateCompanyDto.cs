@@ -11,6 +11,7 @@ namespace Owl.Overdrive.Business.DTOs.CompanyDtos
     /// </summary>
     public class CreateCompanyDto
     {
+        public long? Id { get; set; }
         /// <summary>
         /// Company name
         /// </summary>

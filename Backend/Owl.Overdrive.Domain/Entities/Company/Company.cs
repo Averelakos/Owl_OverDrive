@@ -40,11 +40,13 @@ namespace Owl.Overdrive.Domain.Entities.Company
         /// Company official twitter page
         /// </summary>
         public string? Twitter { get; set; }
+        public long? CompanyLogoId { get; set; }
 
 
         // Refernce table
         public virtual CountryCode? Country { get; set; }
         public virtual Company? ParentCompany { get; set; }
         public virtual CompanyStatus? Status { get; set; }
+        public virtual CompanyLogo? CompanyLogo { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace Owl.Overdrive.Repository.Repositories
         {
         }
 
-        public async Task Insert(CompanyLogo companyLogo)
+        public async Task<CompanyLogo> Insert(CompanyLogo companyLogo)
         {
-            await base.Insert(companyLogo);
+            return await base.Insert(companyLogo);
         }
 
-        public async Task<CompanyLogo?> GetCompanyLogo(long companyId)
+        public async Task<CompanyLogo?> GetCompanyLogo(long id)
         {
             try
             {
                 return await _DbSet
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.CompanyId == companyId);
+                .FirstOrDefaultAsync(x => x.Id == id);
             }
             catch (Exception ex)
             {
@@ -32,18 +32,9 @@ namespace Owl.Overdrive.Repository.Repositories
             
         }
 
-        public async Task<CompanyLogo?> GetLogoByCompanyId(long companyId)
+        public override async Task<CompanyLogo?> GetById(long id)
         {
-            try
-            {
-                return await _DbSet
-                .FirstOrDefaultAsync(x => x.CompanyId == companyId);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
-            }
-
+            return await base.GetById(id);
         }
 
     }
