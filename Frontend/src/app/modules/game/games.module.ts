@@ -7,6 +7,7 @@ import { GameInfoTabAccordioComponent } from './add-edit/components/game-info-ta
 import { GeneralInfoComponent } from './add-edit/components/general-info/general-info.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GameService } from "src/app/data/services/game.service";
+import { LocalizationComponent } from "./add-edit/components/localization/localization.component";
 
 const routes: Routes = [
     {path:'', component:AddEditGameComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         FormsModule,
         ReactiveFormsModule,
-        GeneralInfoComponent
+        GeneralInfoComponent,
+        LocalizationComponent
 
     ],
     providers:[GameService],

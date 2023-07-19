@@ -1,13 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { CreateCompanyDto} from "../types/company/new-company";
 import { environment } from "src/environments/environment";
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { ListCompaniesComponent } from "src/app/modules/company/list/container/list-companies.component";
-import { ListCompanyDto } from "../types/company/list-companies";
-import { SimpleCompany } from "../types/company/simple-company";
-import { UpdateCompanyDto } from "../types/company/update-company";
-import { ServiceResult } from "../types/service-results/service-result";
+import { HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class GameService{
@@ -31,7 +25,8 @@ export class GameService{
               editionTitle: [null]
             }),
             gameAlternativeNames:this.formBuilder.array([])
-          })
+          }),
+          localization: this.formBuilder.array([])
         })
     }
 

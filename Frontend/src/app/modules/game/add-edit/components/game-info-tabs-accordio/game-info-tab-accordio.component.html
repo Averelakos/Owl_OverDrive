@@ -25,7 +25,7 @@
                 <a (click)="toggleActive(tabInfo.localization.id)">Localization</a>
             </div>
             <div *ngIf="tabInfo.localization.active" class="tab-content">
-                test2
+                <app-localization></app-localization>
             </div>
         </div>
         <div class="tab">
