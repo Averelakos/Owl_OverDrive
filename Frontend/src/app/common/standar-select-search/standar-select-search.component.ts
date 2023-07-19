@@ -41,7 +41,6 @@ export class StandarSelectSearchComponent implements  OnInit {
 
   constructor(public parentForm: FormGroupDirective){
     // this.filteredInputValues = this.listOfInputValues
-    console.log(this.filteredInputValues)
   }
 
   ngOnInit(): void {
