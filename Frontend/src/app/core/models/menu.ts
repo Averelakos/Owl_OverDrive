@@ -64,9 +64,17 @@ export const Home: Menu = {
     subMenu:[]
 }
 
+export const Game: Menu = {
+    mainPageLabel: 'Game',
+    route:'/Game',
+    icon:'fa-solid fa-ghost',
+    subMenu:[]
+}
+
 
 export const menu: Array<Menu> = [
     Home,
+    Game,
     Company,
     Test,
 ]

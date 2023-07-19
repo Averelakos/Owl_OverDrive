@@ -1,0 +1,30 @@
+<div class="game-container">
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/Game']">Games</a></li>
+        <ng-container *ngIf="true">
+            <li>New Game</li>
+        </ng-container>
+        <!-- <ng-container *ngIf="companyId != null">
+            <li><a [routerLink]="['/Company/view/'+companyForm.get('generalDetails')?.get('name')?.value,{id: companyId} ]">
+                {{companyForm.get('generalDetails')?.get('name')?.value}}</a></li>
+            <li>Edit</li>
+        </ng-container> -->
+    </ol>
+    
+    <div class="page_title">
+        <h1>Game 
+            <!-- <small *ngIf="companyId == null">(Add new information)</small>
+            <small *ngIf="companyId != null">(Edit information)</small> -->
+        </h1>
+    </div>
+
+
+    <form class="form_group_add_edit" [formGroup]="gameForm">
+        <app-game-info-tab-accordio></app-game-info-tab-accordio>
+    </form>
+
+    <div  class="add_edit_buttons">
+        <a class="btn btn-default" >Back</a>
+        <button (click)="createGame()" class="btn btn-primary">Create</button>
+    </div>
+</div>

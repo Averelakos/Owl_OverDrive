@@ -18,7 +18,8 @@ const routes: Routes = [
       {path:'',redirectTo:'Home', pathMatch:'full'},
       {path:'Home', loadChildren:() => import('./modules/home/home.module').then(m => m.HomeModule)},
       {path:'Test', loadChildren:()=> import('./modules/test/test-page.module').then(m => m.TestPageModule)},
-      {path: 'Company', loadChildren:() => import('./modules/company/companies.module').then(m => m.CompanyModule)}
+      {path: 'Company', loadChildren:() => import('./modules/company/companies.module').then(m => m.CompanyModule)},
+      {path: 'Game', loadChildren:() => import('./modules/game/games.module').then(m => m.GamesModule)}
     ]
   },
 ];
