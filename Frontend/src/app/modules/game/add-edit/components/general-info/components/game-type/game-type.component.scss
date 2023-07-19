@@ -1,0 +1,44 @@
+:host {
+    display: contents;
+}
+
+.game-type-container {
+    margin-top: 25px;
+}
+
+.game-type-container > label {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 1px;
+    // margin-top: 25px;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    line-height: 1.428571429;
+    color: #34373b;
+}
+
+.horizontal-line {
+    margin: 10px 0;
+    height: 1px;
+    background-color: #dddddd;
+}
+
+.type-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.type-list > div {
+    flex-grow: 1;
+    width: 36%;
+}
+
+.mobile {
+    flex-direction: column;
+}
+
+.type-list.mobile > div {
+    width: 100%;
+    margin-bottom: 10px;
+}

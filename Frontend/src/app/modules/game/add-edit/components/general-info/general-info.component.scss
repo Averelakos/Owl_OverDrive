@@ -1,0 +1,42 @@
+:host{
+    display: contents;
+}
+
+.general-details-container{
+    display: flex; 
+    flex-direction: row; 
+    width: 100%;
+}
+
+.mobile{
+    flex-direction: column;
+}
+
+.general-details-input{
+    display: flex; 
+    flex-direction: column; 
+    width: inherit;
+}
+
+.general-details-image-input{
+    display: flex; 
+    flex-direction: column; 
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+
+.general-details-image-input > div {
+    display: flex; 
+    flex-direction: column; 
+    margin-bottom: 20px;
+}
+
+.general-details-image-input > div > img {
+    height: 160px; 
+    width: 120px;
+    object-fit: contain;
+}
+
+.page-container {
+    width: 100%;
+}

@@ -1,0 +1,27 @@
+<div class="game-alternative-titles-container" [formGroup]="general()">
+    <label>Alternative titles:</label>
+    <ng-container [formArrayName]="'gameAlternativeNames'">
+        <div class="list" *ngFor="let title of alternativeTitles().controls; let i=index" [formGroupName]="i">
+            <div [ngClass]="{'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile, 'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile}">
+                <div class="item">
+                    <app-standar-input
+                    [controlName]="'title'"
+                    [subGroup]="'gameAlternativeNames.'+i"
+                    ></app-standar-input>
+                </div>
+                <div class="item">
+                    <app-standar-select-search
+                        [controlName]="'type'"
+                        [subGroup]="'gameAlternativeNames.'+i" 
+                        [listOfInputValues]="listOfStatuses"
+                    ></app-standar-select-search>
+                </div>
+            </div>
+            <div class="remove-alternative" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
+                <button (click)="removeTitle(i)">X</button>
+            </div>
+        </div>
+    </ng-container>
+    <button class="add-alternative" (click)="addNewTitle()">Add alternative title</button>
+    <hr class="horizontal-line">
+</div>

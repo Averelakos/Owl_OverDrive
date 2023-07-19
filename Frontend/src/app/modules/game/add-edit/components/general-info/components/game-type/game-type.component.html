@@ -1,0 +1,24 @@
+<div class="game-type-container">
+    <label>Type</label>
+    <div style="margin-top: 10px;">
+        <app-standar-checkbox-button [isChecked]="main.checked" [label]="main.type" [dissableUncheck]="true" (clickEvent)="clickMainGame()"></app-standar-checkbox-button>
+    </div>
+    <hr class="horizontal-line">
+    <div class="type-list" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
+        <div *ngFor="let option of gameTypeOptions">
+            <app-standar-checkbox-button 
+                [label]="option.type" 
+                (clickEvent)="onClick(option, $event)"
+                [isChecked]="option.isChecked"
+                [dissableUncheck]="true"
+            ></app-standar-checkbox-button>
+        </div>
+    </div>
+    <div *ngIf="!main.checked">
+        <app-standar-select-search
+            [controlName]="'baseGame'"
+            [subGroup]="'general.gameType'"
+            ></app-standar-select-search>
+    </div>
+    <hr class="horizontal-line">
+</div>

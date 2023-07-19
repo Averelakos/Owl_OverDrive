@@ -1,0 +1,56 @@
+:host {
+    display: contents;
+}
+
+.game-status-container {
+    margin-top: 10px;
+}
+
+.game-status-container > .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.game-status-container > .title > label {
+    font-size: 12.992px;
+    line-height: 1.428571429;
+    color: #34373b;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.game-status-container > .title > span {
+    color: #858585;
+    font-size: 12.992px;
+    line-height: 1.428571429;
+} 
+
+.horizontal-line {
+    margin: 10px 0;
+    height: 1px;
+    background-color: #dddddd;
+}
+
+.type-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.type-list > div {
+    flex-grow: 1;
+    width: 36%;
+}
+
+.mobile {
+    flex-direction: column;
+}
+
+.type-list.mobile > div {
+    width: 100%;
+    margin-bottom: 10px;
+}

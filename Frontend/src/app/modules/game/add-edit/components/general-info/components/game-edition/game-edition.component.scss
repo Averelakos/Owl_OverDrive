@@ -1,0 +1,21 @@
+:host {
+    display: contents;
+}
+
+.game-edition-container {
+    margin-top: 10px;
+}
+
+.game-edition-container > column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.horizontal-line {
+    margin: 10px 0;
+    height: 1px;
+    background-color: #dddddd;
+}

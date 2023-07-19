@@ -1,0 +1,18 @@
+<div class="game-edition-container">
+    <app-check-mark-checkbox-button [label]="'This game is an edition.'" (clickEvent)="onClick($event)"></app-check-mark-checkbox-button>
+    <div class="column" *ngIf="isEdition">
+        <app-standar-select-search 
+            [listOfInputValues]="listOfStatuses"
+            [subGroup]="'general.gameEdition'"
+            [controlName]="'baseGame'"
+        >
+        </app-standar-select-search>
+        <app-standar-input
+            [label]="'Edition Title'"
+            [subGroup]="'general.gameEdition'"
+            [controlName]="'editionTitle'"
+         >
+        </app-standar-input>
+    </div>
+    <hr class="horizontal-line">
+</div>
