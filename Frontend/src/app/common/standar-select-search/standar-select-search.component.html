@@ -16,7 +16,7 @@
             <i class="fa-solid fa-caret-up" [ngClass]="{'fa-caret-up':openSelectField, 'fa-caret-down':!openSelectField}"></i>
         </span>
     </div>
-    <div class="select-dropdown-search-options" [ngClass]="{'openSelectSearchOptions':openSelectField}">
+    <div class="select-dropdown-search-options" [ngClass]="{'openSelectSearchOptions':openSelectField, 'noLabel': (label === '')}">
         <div>
             <input id="inputSearchOption" type="text" (input)="inputSearchOptions($event)">
         </div>

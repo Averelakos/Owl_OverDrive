@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
@@ -41,7 +41,7 @@ export class StandarSelectSearchComponent implements  OnInit {
 
   constructor(public parentForm: FormGroupDirective){
     // this.filteredInputValues = this.listOfInputValues
-    // console.log(this.filteredInputValues)
+    console.log(this.filteredInputValues)
   }
 
   ngOnInit(): void {
@@ -50,7 +50,8 @@ export class StandarSelectSearchComponent implements  OnInit {
       this.formGroup = this.parentForm.form 
     }
     else {
-      this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
+      // this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
+      this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
     }
 
    this.unsubscribe =  this.formGroup.get(this.controlName)?.valueChanges.subscribe((b) => {
