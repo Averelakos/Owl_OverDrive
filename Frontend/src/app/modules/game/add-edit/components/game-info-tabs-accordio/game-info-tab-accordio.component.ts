@@ -11,7 +11,8 @@ export class GameInfoTabAccordioComponent {
   tabInfo = {
     general: {id:1, title: 'General', active: true},
     localization: {id:2, title: 'Localiazation', active: false},
-    categorization: {id:3, title: 'Categorization', active: false}
+    categorization: {id:3, title: 'Categorization', active: false},
+    story: {id:9, title: 'Story', active: false}
   }
 
   constructor(public responsiveService: ResponsiveService, ){}

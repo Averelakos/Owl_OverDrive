@@ -18,6 +18,11 @@ export class StandarTextareaComponent {
   constructor(public parentForm: FormGroupDirective){}
 
   ngOnInit(): void {
-    this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
+    if (this.subGroup !== '') {
+      this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
+    } 
+    else {
+      this.formGroup = this.parentForm.form
+    }
   }
 }

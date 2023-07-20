@@ -1,20 +1,23 @@
 <div class="div-tab-accordio-container">
     <ul *ngIf="(responsiveService.responsiveSize | async) === deviceType.Desktop" class="tabs-menu">
         <li class="tab-button" [ngClass]="{'active': tabInfo.general.active}">
-            <a (click)="toggleActive(tabInfo.general.id)">General</a>
+            <a (click)="toggleActive(tabInfo.general.id)">{{tabInfo.general.title}}</a>
         </li>
         <li class="tab-button" [ngClass]="{'active': tabInfo.localization.active}">
-            <a (click)="toggleActive(tabInfo.localization.id)">Localization</a>
+            <a (click)="toggleActive(tabInfo.localization.id)">{{tabInfo.localization.title}}</a>
         </li>
         <li class="tab-button" [ngClass]="{'active': tabInfo.categorization.active}">
-            <a (click)="toggleActive(tabInfo.categorization.id)">Categorization</a>
+            <a (click)="toggleActive(tabInfo.categorization.id)">{{tabInfo.categorization.title}}</a>
+        </li>
+        <li class="tab-button" [ngClass]="{'active': tabInfo.story.active}">
+            <a (click)="toggleActive(tabInfo.story.id)">{{tabInfo.story.title}}</a>
         </li>
     </ul>
 
     <div class="tabs">
         <div class="tab">
             <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.general.active}">
-                <a (click)="toggleActive(tabInfo.general.id)">General</a>
+                <a (click)="toggleActive(tabInfo.general.id)">{{tabInfo.general.title}}</a>
             </div>
             <div *ngIf="tabInfo.general.active" class="tab-content">
                 <app-general-info></app-general-info>
@@ -22,7 +25,7 @@
         </div>
         <div class="tab">
             <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.localization.active}">
-                <a (click)="toggleActive(tabInfo.localization.id)">Localization</a>
+                <a (click)="toggleActive(tabInfo.localization.id)">{{tabInfo.localization.title}}</a>
             </div>
             <div *ngIf="tabInfo.localization.active" class="tab-content">
                 <app-localization></app-localization>
@@ -30,10 +33,18 @@
         </div>
         <div class="tab">
             <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.categorization.active}">
-                <a (click)="toggleActive(tabInfo.categorization.id)">Categorization</a>
+                <a (click)="toggleActive(tabInfo.categorization.id)">{{tabInfo.categorization.title}}</a>
             </div>
             <div *ngIf="tabInfo.categorization.active" class="tab-content">
                 <span >test3</span>
+            </div>
+        </div>
+        <div class="tab">
+            <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.story.active}">
+                <a (click)="toggleActive(tabInfo.story.id)">{{tabInfo.story.title}}</a>
+            </div>
+            <div *ngIf="tabInfo.story.active" class="tab-content">
+                <app-game-story></app-game-story>
             </div>
         </div>
     </div>

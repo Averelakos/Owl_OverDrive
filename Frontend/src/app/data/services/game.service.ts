@@ -26,7 +26,8 @@ export class GameService{
             }),
             gameAlternativeNames:this.formBuilder.array([])
           }),
-          localization: this.formBuilder.array([])
+          localization: this.formBuilder.array([]),
+          storyline: [null]
         })
     }
 

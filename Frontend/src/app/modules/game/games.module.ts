@@ -8,6 +8,7 @@ import { GeneralInfoComponent } from './add-edit/components/general-info/general
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GameService } from "src/app/data/services/game.service";
 import { LocalizationComponent } from "./add-edit/components/localization/localization.component";
+import { GameStoryComponent } from "./add-edit/components/game-story/game-story.component";
 
 const routes: Routes = [
     {path:'', component:AddEditGameComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         GeneralInfoComponent,
-        LocalizationComponent
+        LocalizationComponent,
+        GameStoryComponent
 
     ],
     providers:[GameService],

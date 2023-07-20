@@ -1,0 +1,122 @@
+.panel {
+    border-radius: 0px;
+    background-color: #FFF;
+    box-shadow: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.panel-header {
+    background: #ECF0F1;
+    padding: 12px 15px;
+    border-radius: 0px;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 13.02px;
+    font-weight: 600;
+    text-transform: inherit;
+    letter-spacing: 0;
+    color: inherit;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.panel-body {
+    display: flex;
+    padding: 15px;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.panel-inputs {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.panel-image{
+    display: flex; 
+    flex-direction: column; 
+    padding: 0 10px;
+    width: 195px;
+}
+
+.panel-image > .image {
+    display: flex; 
+    flex-direction: column; 
+    margin-bottom: 20px;
+}
+
+.panel-image > .image > img {
+    height: 160px; 
+    width: 120px;
+    object-fit: contain;
+}
+
+
+.btn-default {
+    background-color: #f7f8fa;
+    border-color: #dde3e8;
+    color: #4E4E4E;
+}
+
+.btn-default:hover {
+    background-color: #d8d9dc;
+    border-color: #ced4d8;
+    color: #4E4E4E;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #e91916;;
+    border-color: #d21714;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #e91916;
+    border-color: #d21714;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    // padding: 6px 12px;
+    // font-size: 14px;
+    // line-height: 1.428571429;
+    // border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 133px;
+    height: 30px;
+
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.remove-button {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}

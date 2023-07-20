@@ -1,0 +1,29 @@
+<div class="panel">
+    <div class="panel-header">
+        <h3 class="panel-title text-bold">Localization</h3>
+    </div>
+    <div class="panel-body row" [ngClass]="{'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile, 'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
+        <div class="panel-inputs">
+            <app-standar-select-search
+                [label]="'Region:'"
+                [controlName]="'region'"
+                [subGroup]="'localization.'+index"
+            ></app-standar-select-search>
+            <app-standar-input
+                [label]="'Localized title:'"
+                [controlName]="'localizedTitle'"
+                [subGroup]="'localization.'+index"
+            ></app-standar-input>
+        </div>
+        <div class="panel-image">
+            <div class="image">
+                <label>Game cover:</label>
+                <img [src]="'assets/img/nocover.png'" alt="">
+            </div>
+            <input type="file">
+        </div>
+    </div>
+    <div class="remove-button">
+        <button (click)="removeLocalization()" class="btn btn-primary">Remove Localization</button>
+    </div>
+</div>

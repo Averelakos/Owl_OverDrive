@@ -1,1 +1,8 @@
-<p>localization works!</p>
+<div [formGroup]="parentForm.form">
+    <button (click)="addNewLocalization()" class="btn btn-primary">Add Localization</button>
+    <div [formArrayName]="'localization'">
+        <ng-container *ngFor="let item of localizations().controls; let i=index" [formGroupName]="i">
+            <app-localization-panel (remove)="removeIndex($event)" [index]="i"></app-localization-panel>
+        </ng-container>
+    </div>
+</div>
