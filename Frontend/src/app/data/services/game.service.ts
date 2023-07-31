@@ -27,6 +27,31 @@ export class GameService{
             gameAlternativeNames:this.formBuilder.array([])
           }),
           localization: this.formBuilder.array([]),
+          categorization: this.formBuilder.group({
+            genre:[null],
+            theme:[null],
+            perspectives:[null],
+            gameMode:[null],
+            multiplayerModes: this.formBuilder.array([])
+          }),
+          releaseDates: this.formBuilder.array([]),
+          websites: this.formBuilder.group({
+            steam: [null],
+            epic: [null],
+            appStorePhone: [null],
+            itch: [null],
+            gog:[null],
+            googlePlay:[null],
+            appStoreTablet: [null],
+            official: [null],
+            twitch: [null],
+            youtube: [null],
+            facebook: [null],
+            twitter:[null],
+            instagram:[null],
+            discord: [null],
+            reddit:[null]
+          }),
           storyline: [null]
         })
     }

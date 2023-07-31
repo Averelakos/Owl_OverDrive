@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GameService } from "src/app/data/services/game.service";
 import { LocalizationComponent } from "./add-edit/components/localization/localization.component";
 import { GameStoryComponent } from "./add-edit/components/game-story/game-story.component";
+import { GameWebsitesComponent } from "./add-edit/components/game-websites/game-websites.component";
+import { GameCategorizationComponent } from "./add-edit/components/game-categorization/game-categorization.component";
+import { GameReleaseDatesComponent } from "./add-edit/components/game-release-dates/game-release-dates.component";
 
 const routes: Routes = [
     {path:'', component:AddEditGameComponent},
@@ -22,7 +25,10 @@ const routes: Routes = [
         ReactiveFormsModule,
         GeneralInfoComponent,
         LocalizationComponent,
-        GameStoryComponent
+        GameStoryComponent,
+        GameWebsitesComponent,
+        GameCategorizationComponent,
+        GameReleaseDatesComponent
 
     ],
     providers:[GameService],
