@@ -47,5 +47,12 @@ namespace Owl.Overdrive.Repository.Contracts
         /// The company logo repository.
         /// </value>
         ICompanyLogoRepository CompanyLogoRepository { get; }
+        /// <summary>
+        /// Gets the platform repository.
+        /// </summary>
+        /// <value>
+        /// The platform repository.
+        /// </value>
+        IPlatformRepository PlatformRepository { get; }
     }
 }

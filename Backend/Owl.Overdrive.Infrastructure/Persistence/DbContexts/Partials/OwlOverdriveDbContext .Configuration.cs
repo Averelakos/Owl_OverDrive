@@ -19,6 +19,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new CountryCodeConfiguration());
             modelBuilder.ApplyConfiguration(new ImagesDraftConfiguration());
             modelBuilder.ApplyConfiguration(new CompanyLogoConfiguration());
+            modelBuilder.ApplyConfiguration(new PlatformConfiguration());
         }
     }
 }

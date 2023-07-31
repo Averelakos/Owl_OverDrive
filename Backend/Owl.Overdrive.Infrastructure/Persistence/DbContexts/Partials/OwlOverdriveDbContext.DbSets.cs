@@ -12,5 +12,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<CountryCode> CountryCodes => Set<CountryCode>();
         public DbSet<ImageDraft> ImageDrafts => Set<ImageDraft>();
         public DbSet<CompanyLogo> CompanyLogo => Set<CompanyLogo>();
+        public DbSet<Platform> Platforms => Set<Platform>();
     }
 }
