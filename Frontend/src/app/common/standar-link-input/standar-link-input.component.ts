@@ -16,13 +16,14 @@ export class StandarLinkInputComponent implements OnInit {
   @Input() subGroup: string = ''
   @Input() iconStyle:string = ''
   @Input() icon: string = ''
+  @Input() imagePath: string;
   formGroup!: FormGroup
 
 
   constructor(public parentForm: FormGroupDirective){}
 
   ngOnInit(): void {
-    this.formGroup = this.parentForm.form.controls[this.subGroup] as FormGroup
+    this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
   }
 
   
