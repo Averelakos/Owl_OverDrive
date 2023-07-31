@@ -1,0 +1,23 @@
+:host{
+    display: contents;
+}
+
+.game-categorization-container{
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+}
+
+.flex {
+    width: 100%;
+    display: flex;
+}
+
+
+.mobile {
+    flex-direction: column;
+}
+
+.desktop-tablet {
+    flex-direction: row;
+}

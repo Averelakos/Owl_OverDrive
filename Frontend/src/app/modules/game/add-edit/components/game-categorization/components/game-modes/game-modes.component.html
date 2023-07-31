@@ -1,0 +1,11 @@
+<div class="mode-container">
+    <label>Game modes</label>
+    <ul class="list">
+        <li *ngFor="let item of gamemode">
+            <app-check-mark-checkbox-button
+            [label]="item.name"
+            (clickEvent)="checkBoxClicked($event, item)"
+            ></app-check-mark-checkbox-button>
+        </li>
+    </ul>
+</div>

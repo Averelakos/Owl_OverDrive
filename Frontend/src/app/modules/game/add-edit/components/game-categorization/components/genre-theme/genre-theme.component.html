@@ -1,0 +1,18 @@
+<div class="genre-theme-container" [ngClass]="{'column': (responsiveService.responsiveSize | async) === deviceType.Mobile}">
+    <div [ngClass]="{'desktop-tablet':(responsiveService.responsiveSize | async) !== deviceType.Mobile, 'mobile':(responsiveService.responsiveSize | async) === deviceType.Mobile}">
+        <app-standar-select-search
+            [label]="'Genre:'"
+            [controlName]="'genre'"
+            [subGroup]="'categorization'"
+            [listOfInputValues]="listOfGenre"
+        ></app-standar-select-search>
+    </div>
+    <div [ngClass]="{'desktop-tablet':(responsiveService.responsiveSize | async) !== deviceType.Mobile, 'mobile':(responsiveService.responsiveSize | async) === deviceType.Mobile}">
+        <app-standar-select-search
+            [label]="'Theme:'"
+            [controlName]="'theme'"
+            [subGroup]="'categorization'"
+            [listOfInputValues]="listOfThemes"
+        ></app-standar-select-search>
+    </div>
+</div>

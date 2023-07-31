@@ -1,0 +1,27 @@
+:host{
+    display: contents;
+}
+
+.mode-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 5px;
+    width: 50%;
+}
+
+.mode-container label {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+
+.list {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.list > li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

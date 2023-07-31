@@ -1,0 +1,12 @@
+<div class="game-categorization-container">
+    <div>
+        <app-genre-theme></app-genre-theme>
+    </div>
+    <div class="flex" [ngClass]="{'mobile':(responsiveService.responsiveSize | async) === deviceType.Mobile,'desktop-tablet':(responsiveService.responsiveSize | async) !== deviceType.Mobile}">
+        <app-player-perspective></app-player-perspective>
+        <app-game-modes></app-game-modes>
+    </div>
+    <div>
+        <app-multiplayer-mode></app-multiplayer-mode>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="multiplayer-mode-container">
+    <label>Multiplayer Modes</label>
+    <div [formGroup]="categorization()">
+        <div>
+            <button class="btn btn-primary" (click)="addNewIndex()">Add Game Multiplayer Mode</button>
+        </div>
+        <div [formArrayName]="'multiplayerModes'">
+            <ng-container *ngFor="let item of multiplayerModes().controls; let i=index" [formGroupName]="i">
+                <app-multiplayer-mode-panel [index]="i" (remove)="removeIndex($event)"></app-multiplayer-mode-panel>
+            </ng-container>
+        </div>
+    </div>
+</div>

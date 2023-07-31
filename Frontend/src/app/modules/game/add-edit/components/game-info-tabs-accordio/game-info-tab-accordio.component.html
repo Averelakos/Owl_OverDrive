@@ -9,6 +9,12 @@
         <li class="tab-button" [ngClass]="{'active': tabInfo.categorization.active}">
             <a (click)="toggleActive(tabInfo.categorization.id)">{{tabInfo.categorization.title}}</a>
         </li>
+        <li class="tab-button" [ngClass]="{'active': tabInfo.releaseDates.active}">
+            <a (click)="toggleActive(tabInfo.releaseDates.id)">{{tabInfo.releaseDates.title}}</a>
+        </li>
+        <li class="tab-button" [ngClass]="{'active': tabInfo.websites.active}">
+            <a (click)="toggleActive(tabInfo.websites.id)">{{tabInfo.websites.title}}</a>
+        </li>
         <li class="tab-button" [ngClass]="{'active': tabInfo.story.active}">
             <a (click)="toggleActive(tabInfo.story.id)">{{tabInfo.story.title}}</a>
         </li>
@@ -36,7 +42,23 @@
                 <a (click)="toggleActive(tabInfo.categorization.id)">{{tabInfo.categorization.title}}</a>
             </div>
             <div *ngIf="tabInfo.categorization.active" class="tab-content">
-                <span >test3</span>
+                <app-game-categorization></app-game-categorization>
+            </div>
+        </div>
+        <div class="tab">
+            <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.releaseDates.active}">
+                <a (click)="toggleActive(tabInfo.releaseDates.id)">{{tabInfo.releaseDates.title}}</a>
+            </div>
+            <div *ngIf="tabInfo.releaseDates.active" class="tab-content">
+                <app-game-release-dates></app-game-release-dates>
+            </div>
+        </div>
+        <div class="tab">
+            <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.websites.active}">
+                <a (click)="toggleActive(tabInfo.websites.id)">{{tabInfo.websites.title}}</a>
+            </div>
+            <div *ngIf="tabInfo.websites.active" class="tab-content">
+                <app-game-websites></app-game-websites>
             </div>
         </div>
         <div class="tab">

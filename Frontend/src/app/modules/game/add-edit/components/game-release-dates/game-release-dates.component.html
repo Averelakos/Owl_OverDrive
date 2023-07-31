@@ -1,0 +1,12 @@
+<div class="multiplayer-mode-container">
+    <div [formGroup]="parentForm.form">
+        <div [formArrayName]="'releaseDates'">
+            <ng-container *ngFor="let item of releaseDates().controls; let i=index" [formGroupName]="i">
+                <app-platform-release [index]="i" (remove)="removeIndex($event)"></app-platform-release>
+            </ng-container>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" (click)="addNewIndex()">Add a platform release date</button>
+    </div>
+</div>

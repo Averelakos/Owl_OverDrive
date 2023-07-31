@@ -1,0 +1,45 @@
+.panel {
+    border-radius: 0px;
+    background-color: #FFF;
+    box-shadow: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.panel-header {
+    background: #ECF0F1;
+    padding: 12px 15px;
+    border-radius: 0px;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 13.02px;
+    font-weight: 600;
+    text-transform: inherit;
+    letter-spacing: 0;
+    color: inherit;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.panel-body {
+    display: flex;
+    padding: 15px;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.panel-inputs {
+    width: 100%;
+    padding: 0 10px;
+}

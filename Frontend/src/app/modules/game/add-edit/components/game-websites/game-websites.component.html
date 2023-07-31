@@ -1,0 +1,133 @@
+<div>
+    <div class="panel">
+        <div class="panel-header">
+            <h3 class="panel-title text-bold">Store links</h3>
+        </div>
+        <div class="panel-body row" [ngClass]="{'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile, 'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
+            <div class="panel-inputs">
+                <app-standar-link-input
+                [label]="'Steam:'"
+                [imagePath]="'assets/icons/steam.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'steam'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Epic:'"
+                [imagePath]="'assets/icons/epic.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'epic'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'App Store (iPhone):'"
+                [imagePath]="'assets/icons/ios-iphone.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'appStorePhone'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Itch:'"
+                [imagePath]="'assets/icons/itch.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'itch'"
+                >
+                </app-standar-link-input>
+            </div>
+
+            <div class="panel-inputs">
+                <app-standar-link-input
+                [label]="'GOG:'"
+                [imagePath]="'assets/icons/gog.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'steam'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Google play:'"
+                [imagePath]="'assets/icons/play-store.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'epic'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'App Store (iPad):'"
+                [imagePath]="'assets/icons/ios-iphone.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'appStorePhone'"
+                >
+                </app-standar-link-input>
+            </div>
+            
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header">
+            <h3 class="panel-title text-bold">Social links</h3>
+        </div>
+        <div class="panel-body row" [ngClass]="{'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile, 'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
+           
+            <div class="panel-inputs">
+                <app-standar-link-input
+                [label]="'Official Website:'"
+                [imagePath]="'assets/icons/official-site.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'official'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Twitch:'"
+                [imagePath]="'assets/icons/twitch.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'twitch'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'YouTube:'"
+                [imagePath]="'assets/icons/youtube.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'youtube'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Facebook:'"
+                [imagePath]="'assets/icons/facebook.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'facebook'"
+                >
+                </app-standar-link-input>
+            </div>
+                
+            <div class="panel-inputs">
+                <app-standar-link-input
+                [label]="'Twitter:'"
+                [imagePath]="'assets/icons/twitter.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'twitter'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Instagram:'"
+                [imagePath]="'assets/icons/instagram.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'instagram'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Discord:'"
+                [imagePath]="'assets/icons/discord.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'discord'"
+                >
+                </app-standar-link-input>
+                <app-standar-link-input
+                [label]="'Subreddit:'"
+                [imagePath]="'assets/icons/reddit.svg'"
+                [subGroup]="'websites'"
+                [controlName]="'reddit'"
+                >
+                </app-standar-link-input>
+            </div>
+        </div>
+    </div>
+</div>

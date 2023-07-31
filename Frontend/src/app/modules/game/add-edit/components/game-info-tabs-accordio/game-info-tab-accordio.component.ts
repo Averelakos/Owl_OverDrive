@@ -12,6 +12,8 @@ export class GameInfoTabAccordioComponent {
     general: {id:1, title: 'General', active: true},
     localization: {id:2, title: 'Localiazation', active: false},
     categorization: {id:3, title: 'Categorization', active: false},
+    releaseDates: {id:4, title: 'Release Dates', active: false},
+    websites: {id:6, title: 'Websites', active: false},
     story: {id:9, title: 'Story', active: false}
   }
 

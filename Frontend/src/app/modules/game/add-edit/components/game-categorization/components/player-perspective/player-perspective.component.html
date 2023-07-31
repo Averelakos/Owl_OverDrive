@@ -1,0 +1,11 @@
+<div class="perpectives-container">
+    <label>Player perspectives</label>
+    <ul class="list">
+        <li *ngFor="let item of perpectives">
+            <app-check-mark-checkbox-button
+            [label]="item.name"
+            (clickEvent)="checkBoxClicked($event, item)"
+            ></app-check-mark-checkbox-button>
+        </li>
+    </ul>
+</div>
