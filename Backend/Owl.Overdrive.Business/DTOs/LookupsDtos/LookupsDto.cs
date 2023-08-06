@@ -25,5 +25,20 @@ namespace Owl.Overdrive.Business.DTOs.LookupsDtos
         /// The country code lookup.
         /// </value>
         public List<CountryCodeLookupDto> CountryCode { get; set; } = null!;
+        /// <summary>
+        /// Gets or sets the regions.
+        /// </summary>
+        /// <value>
+        /// The regions.
+        /// </value>
+        public List<RegionLookupDto> Regions { get; set; } = null!;
+        /// <summary>
+        /// Gets or sets the game statuses.
+        /// </summary>
+        /// <value>
+        /// The game statuses.
+        /// </value>
+        public List<GameStatusLookupDto> GameStatuses { get; set; } = null!;
+
     }
 }

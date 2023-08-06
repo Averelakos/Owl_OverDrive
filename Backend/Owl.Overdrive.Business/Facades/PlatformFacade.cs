@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Owl.Overdrive.Business.Contracts;
+using Owl.Overdrive.Business.DTOs.PlatformDtos;
 using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Repository.Contracts;
 
@@ -11,13 +12,16 @@ namespace Owl.Overdrive.Business.Facades
         {
         }
 
-        public async Task<List<dynamic>> SearchPlatform(string searchInput)
+        public async Task<List<SearchPlatformDto>> SearchPlatform(string? searchInput)
         {
-            List<dynamic> result = new List<dynamic>();
+            List<SearchPlatformDto> result = new List<SearchPlatformDto>();
             if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
             {
-                var list = await _repoUoW.CompanyRepository.Search(searchInput);
-                //result = _mapper.Map<List<SearchParentCompanyDto>>(list);
+                var platforms = await _repoUoW.PlatformRepository.GetAllPlatforms();
+
+                var searchResult = platforms.Where(x => x.Name.ToUpper().Contains(searchInput.ToUpper()));
+                
+                result = _mapper.Map<List<SearchPlatformDto>>(searchResult);
             }
 
             return result;

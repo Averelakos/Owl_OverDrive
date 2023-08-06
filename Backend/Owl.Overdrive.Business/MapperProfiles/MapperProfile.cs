@@ -13,6 +13,7 @@ namespace Owl.Overdrive.Business.MapperProfiles
         {
             MapCompany();
             MapLookups();
+            MapPlatforms();
         }
     }
 }

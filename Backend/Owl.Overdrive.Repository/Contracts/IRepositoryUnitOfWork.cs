@@ -54,5 +54,19 @@ namespace Owl.Overdrive.Repository.Contracts
         /// The platform repository.
         /// </value>
         IPlatformRepository PlatformRepository { get; }
+        /// <summary>
+        /// Gets the region repository.
+        /// </summary>
+        /// <value>
+        /// The region repository.
+        /// </value>
+        IRegionRepository RegionRepository { get; }
+        /// <summary>
+        /// Gets the game status repository.
+        /// </summary>
+        /// <value>
+        /// The game status repository.
+        /// </value>
+        IGameStatusRepository GameStatusRepository { get; }
     }
 }

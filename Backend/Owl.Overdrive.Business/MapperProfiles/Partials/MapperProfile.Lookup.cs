@@ -2,6 +2,7 @@
 using Owl.Overdrive.Business.DTOs.LookupsDtos;
 using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Company;
+using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Business.MapperProfiles
 {
@@ -12,6 +13,8 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<CompanyStatus, CompanyStatusLookupDto>();
             CreateMap<CountryCode, CountryCodeLookupDto>()
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.CountryName));
+            CreateMap<Region, RegionLookupDto>();
+            CreateMap<GameStatus, GameStatusLookupDto>();
         }
     }
 }

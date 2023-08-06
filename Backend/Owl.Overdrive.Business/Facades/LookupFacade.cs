@@ -27,11 +27,15 @@ namespace Owl.Overdrive.Business.Facades
         {
             var companyStatus = await GetLookupValues<CompanyStatusLookupDto>();
             var countryCodes = await GetLookupValues<CountryCodeLookupDto>();
+            var regions = await GetLookupValues<RegionLookupDto>();
+            var gameStatuses = await GetLookupValues<GameStatusLookupDto>();
 
             LookupsDto result = new LookupsDto() 
             {
                 CompanyStatus = companyStatus,
-                CountryCode = countryCodes
+                CountryCode = countryCodes,
+                Regions = regions,
+                GameStatuses = gameStatuses
             };
 
             return result;
@@ -62,6 +66,10 @@ namespace Owl.Overdrive.Business.Facades
                     return await GetCompanyStatuses();
                 case Type type when type == typeof(CountryCodeLookupDto):
                     return await GetCountryCodes();
+                case Type type when type == typeof(RegionLookupDto):
+                    return await GetRegions();
+                case Type type when type == typeof(GameStatusLookupDto):
+                    return await GetGameStatuses();
                 default: 
                     throw new NotImplementedException();
             }
@@ -88,6 +96,30 @@ namespace Owl.Overdrive.Business.Facades
             return await _repoUoW.CountryCodeRepository
                 .GetCoutriesCodes()
                 .ProjectTo<CountryCodeLookupDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the regions.
+        /// </summary>
+        /// <returns></returns>
+        private async Task<List<RegionLookupDto>> GetRegions()
+        {
+            return await _repoUoW.RegionRepository
+                .GetRegions()
+                .ProjectTo<RegionLookupDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the regions.
+        /// </summary>
+        /// <returns></returns>
+        private async Task<List<GameStatusLookupDto>> GetGameStatuses()
+        {
+            return await _repoUoW.GameStatusRepository
+                .GetGameStatuses()
+                .ProjectTo<GameStatusLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
     }

@@ -19,6 +19,8 @@ namespace Owl.Overdrive.Repository.UnitOfWork
         public IImageDraftRepository ImageDraftRepository { get; }
         public ICompanyLogoRepository CompanyLogoRepository { get; }
         public IPlatformRepository PlatformRepository { get; }
+        public IRegionRepository RegionRepository { get; }
+        public IGameStatusRepository GameStatusRepository { get; }
         #endregion Properties
 
         public RepositoryUnitOfWork(
@@ -28,7 +30,9 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             ICountryCodeRepository countryCodeRepository,
             IImageDraftRepository imageDraftRepository,
             ICompanyLogoRepository companyLogoRepository,
-            IPlatformRepository platformRepository
+            IPlatformRepository platformRepository,
+            IRegionRepository regionRepository,
+            IGameStatusRepository gameStatusRepository
             )
         {
             _dbContext = dbContext;
@@ -38,6 +42,8 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             ImageDraftRepository = imageDraftRepository;
             CompanyLogoRepository = companyLogoRepository;
             PlatformRepository = platformRepository;
+            RegionRepository = regionRepository; 
+            GameStatusRepository = gameStatusRepository;
         }
     }
 }

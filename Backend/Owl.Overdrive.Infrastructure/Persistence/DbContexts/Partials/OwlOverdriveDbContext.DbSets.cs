@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Company;
+using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
 {
@@ -13,5 +14,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<ImageDraft> ImageDrafts => Set<ImageDraft>();
         public DbSet<CompanyLogo> CompanyLogo => Set<CompanyLogo>();
         public DbSet<Platform> Platforms => Set<Platform>();
+        public DbSet<Region> Regions => Set<Region>();
+        public DbSet<GameStatus> GameStatuses => Set<GameStatus>();
     }
 }

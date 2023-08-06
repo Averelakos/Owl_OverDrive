@@ -42,6 +42,9 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ICountryCodeRepository, CountryCodeRepository>()
                 .AddScoped<IImageDraftRepository, ImageDraftRepository>()
                 .AddScoped<ICompanyLogoRepository, CompanyLogoRepository>()
+                .AddScoped<IPlatformRepository,  PlatformRepository>()
+                .AddScoped<IRegionRepository, RegionRepository>()
+                .AddScoped<IGameStatusRepository, GameStatusRepository>()
                 ;
         }
         /// <summary>
@@ -55,6 +58,7 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ICompanyFacade, CompanyFacade>()
                 .AddScoped<ILookupFacade, LookupFacade>()
                 .AddScoped<IImageDraftFacade, ImageDraftFacade>()
+                .AddScoped<IPlatformFacade, PlatformFacade>()
                 ;
         }
 

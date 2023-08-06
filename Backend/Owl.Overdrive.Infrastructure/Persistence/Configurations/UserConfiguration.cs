@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Owl.Overdrive.Domain.Entities;
 
+
 namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
 {
     public class UserConfiguration :BaseEntityConfiguration, IEntityTypeConfiguration<User>

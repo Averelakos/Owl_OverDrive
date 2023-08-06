@@ -1,4 +1,5 @@
 ﻿using Owl.Overdrive.Business.DTOs.CompanyDtos;
+using Owl.Overdrive.Business.DTOs.PlatformDtos;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Domain.Entities.Company;
 using System;
@@ -11,6 +12,6 @@ namespace Owl.Overdrive.Business.Contracts
 {
     public interface IPlatformFacade
     {
-
+        Task<List<SearchPlatformDto>> SearchPlatform(string? searchInput);
     }
 }
