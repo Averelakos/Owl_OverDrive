@@ -1,0 +1,19 @@
+<div class="standar-dropdown" [formGroup]="formGroup" (clickOutside)="clickOutside()">
+    <label>{{label}}</label>
+    <input [formControlName]="controlName" readonly type="text" [value]=" (inputValue !== undefined? inputValue.value: '')" (click)="clickToOpenDropDownMenu()">
+
+    <div class="icon-option">
+        <i *ngIf="inputValue !== undefined" class="fa-solid fa-x mr-2" (click)="removeValue()"></i>
+        <i class="fa-solid fa-caret-down mr-1" [ngClass]="{'rotate': rotateIcon}"></i>
+    </div>
+
+    <ul class="dropdown-menu" [ngClass]="{'open': openMenu}">
+        <ng-container *ngFor="let option of options">
+            <li [ngClass]="{'active':(inputValue !== undefined && inputValue.id === option.id)}">
+                <a (click)="setOption(option)"><span class="option-text">{{option.value}}</span></a>
+            </li>    
+        </ng-container>
+    </ul>
+    
+</div>
+
