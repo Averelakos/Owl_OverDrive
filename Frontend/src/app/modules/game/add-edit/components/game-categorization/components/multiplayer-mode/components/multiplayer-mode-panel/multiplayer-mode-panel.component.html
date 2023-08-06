@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-header">
-        <!-- <button class="btn btn-primary margin-right ">Copy previews settings</button> -->
+        <h3 class="panel-title text-bold">Multiplayer mode</h3>
         <button (click)="removeLocalization()" class="btn btn-error">Remove</button>
     </div>
     <div class="panel-body row" [ngClass]="{'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile, 'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">

@@ -9,6 +9,11 @@
     background: #ECF0F1;
     padding: 12px 15px;
     border-radius: 0px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .panel-title {
@@ -76,13 +81,13 @@
     color: #4E4E4E;
 }
 
-.btn-primary {
+.btn-error {
     color: #fff;
     background-color: #e91916;;
     border-color: #d21714;
 }
 
-.btn-primary:hover {
+.btn-error:hover {
     color: #fff;
     background-color: #e91916;
     border-color: #d21714;
@@ -107,7 +112,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 133px;
     height: 30px;
 
     padding: 5px 10px;
