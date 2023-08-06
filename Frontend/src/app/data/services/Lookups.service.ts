@@ -4,6 +4,8 @@ import { HttpClient } from "@angular/common/http";
 import { LookupsDto } from "../types/lookups/lookupsDto";
 import { CompanyStatusLookupDto } from "../types/lookups/company-status-lookup-dto";
 import { CountryCodeLookupDto } from "../types/lookups/country-code-lookup-dto";
+import { RegionLookupDto } from "../types/lookups/region-lookup-dto";
+import { GameStatusLookupDto } from "../types/lookups/game-statuses-lookup-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,8 @@ export class LookupsService{
   key: string = 'Lookups'
   companyStatus!: Array<CompanyStatusLookupDto>
   countryCodes!: Array<CountryCodeLookupDto>
+  regions!: Array<RegionLookupDto>
+  gameStatuses!: Array<GameStatusLookupDto>
 
   constructor(private http: HttpClient){}
 
@@ -23,6 +27,8 @@ export class LookupsService{
       const lookups = JSON.parse(savedLookUpString)
       this.companyStatus = lookups.companyStatus
       this.countryCodes = lookups.countryCode
+      this.regions = lookups.regions
+      this.gameStatuses = lookups.gameStatuses
     } 
     else {
       this.getLookUps()
@@ -40,6 +46,8 @@ export class LookupsService{
     localStorage.setItem(this.key,JSON.stringify(lookups))
     this.companyStatus = lookups.companyStatus
     this.countryCodes = lookups.countryCode
+    this.regions = lookups.regions
+    this.gameStatuses = lookups.gameStatuses
   }
 
   getCountryById(countryId: number| undefined) {
@@ -56,5 +64,13 @@ export class LookupsService{
     })
     
     return status;
+  }
+
+  getRegionById(regionId: number| undefined) {
+    const region = this.regions.find((obj) => {
+      return obj.id === regionId
+    })
+    
+    return region;
   }
 }

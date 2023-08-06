@@ -9,6 +9,9 @@
                 [label]="'Platform:'"
                 [controlName]="'platform'"
                 [subGroup]="'multiplayerModes.'+index"
+                [listOfInputValues]="listOfPlatforms"
+                (searchInput)="searchPlatform($event)"
+                [apiSearchEnable]="true"
             ></app-standar-select-search>
             <div class="flex column mt-3">
                 <app-standar-input

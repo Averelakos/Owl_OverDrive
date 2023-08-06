@@ -1,37 +1,22 @@
-<div class="panel">
+<div class="panel" [formGroup]="releaseDates()">
     <div class="panel-header">
         <!-- <button class="btn btn-primary margin-right ">Copy previews settings</button> -->
-        <button (click)="removeLocalization()" class="btn btn-error">Remove</button>
+        <button (click)="removePlatformRelease()" class="btn btn-error">Remove</button>
     </div>
     <div class="panel-body row" [ngClass]="{'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile, 'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
-        <div class="panel-inputs">
+        <div class="panel-inputs" [formArrayName]="'releases'">
             <app-standar-select-search
                 [label]="'Platform:'"
                 [controlName]="'platform'"
-                [subGroup]="'releaseDates.'+index"
+                [listOfInputValues]="listOfPlatforms"
+                (searchInput)="searchPlatform($event)"
+                [apiSearchEnable]="true"
             ></app-standar-select-search>
-            <div class="flex column mt-3">
-                <app-release></app-release>
-                <!-- <app-standar-input
-                    [label]="'Online Co-op max players:'"
-                    [controlName]="'onlineCoOpMax'"
-                    [subGroup]="'multiplayerModes.'+index"
-                ></app-standar-input>
-                <app-standar-input
-                    [label]="'Offline Co-op max players:'"
-                    [controlName]="'offlineCoOpMax'"
-                    [subGroup]="'multiplayerModes.'+index"
-                ></app-standar-input>
-                <app-standar-input
-                    [label]="'Online max players:'"
-                    [controlName]="'onlineMax'"
-                    [subGroup]="'multiplayerModes.'+index"
-                ></app-standar-input>
-                <app-standar-input
-                    [label]="'Offline max players:'"
-                    [controlName]="'offlineMax'"
-                    [subGroup]="'multiplayerModes.'+index"
-                ></app-standar-input> -->
+            <div class="flex column mt-3" *ngFor="let item of release().controls; let i=index" [formGroupName]="i">
+                <app-release [index]="i" (remove)="removeIndex($event)" [listOfRegions]="listOfRegions" [listOfStatuses]="listOfGameStatues"></app-release>
+            </div>
+            <div class="release-btn">
+                <button (click)="addNewIndex()" class="btn btn-primary">Add a release</button>
             </div>
         </div>
     </div>
