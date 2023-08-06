@@ -1,0 +1,44 @@
+<div class="panel">
+    <div class="panel-header">
+        <h3 class="panel-title text-bold">Company</h3>
+        <button (click)="removeCompany()" class="btn btn-error">Remove</button>
+    </div>
+    <div class="panel-body row" [ngClass]="{'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile, 'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
+        <div class="panel-inputs">
+            <div class="inputs">
+                <app-standar-select-search
+                    [controlName]="'company'"
+                    [subGroup]="'companies.'+index"
+                    [listOfInputValues]="listOfCompanies"
+                    (searchInput)="searchPlatform($event)"
+                    [apiSearchEnable]="true"
+                ></app-standar-select-search>
+            </div>
+           <div class="inputs">
+                <app-standar-select-search
+                    [label]="'Platform:'"
+                    [controlName]="'platform'"
+                    [subGroup]="'companies.'+index"
+                    [listOfInputValues]="listOfPlatforms"
+                    (searchInput)="searchPlatform($event)"
+                    [apiSearchEnable]="true"
+                ></app-standar-select-search>
+           </div>
+            <div>
+                <div class="type-text">
+                    <span >What type? (required)</span>
+                </div>
+                <!-- <div class="panel-list"> -->
+                    <ul class="list">
+                        <li *ngFor="let item of types">
+                            <app-check-mark-checkbox-button
+                            [label]="item.name"
+                            (clickEvent)="checkBoxClicked($event, item)"
+                            ></app-check-mark-checkbox-button>
+                        </li>
+                    </ul>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

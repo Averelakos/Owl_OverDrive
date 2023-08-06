@@ -1,0 +1,12 @@
+<div class="companies-container">
+    <div [formGroup]="parentForm.form">
+        <div [formArrayName]="'companies'">
+            <ng-container *ngFor="let item of companies().controls; let i=index" [formGroupName]="i">
+                <app-company [index]="i" (remove)="removeIndex($event)"></app-company>
+            </ng-container>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" (click)="addNewIndex()">Add a company</button>
+    </div>
+</div>

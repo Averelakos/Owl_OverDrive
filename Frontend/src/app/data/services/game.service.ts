@@ -52,6 +52,7 @@ export class GameService{
             discord: [null],
             reddit:[null]
           }),
+          companies: this.formBuilder.array([]),
           storyline: [null]
         })
     }

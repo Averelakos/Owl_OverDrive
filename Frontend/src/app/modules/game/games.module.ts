@@ -12,6 +12,7 @@ import { GameStoryComponent } from "./add-edit/components/game-story/game-story.
 import { GameWebsitesComponent } from "./add-edit/components/game-websites/game-websites.component";
 import { GameCategorizationComponent } from "./add-edit/components/game-categorization/game-categorization.component";
 import { GameReleaseDatesComponent } from "./add-edit/components/game-release-dates/game-release-dates.component";
+import { CompaniesComponent } from "./add-edit/components/companies/companies.component";
 
 const routes: Routes = [
     {path:'', component:AddEditGameComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
         GameStoryComponent,
         GameWebsitesComponent,
         GameCategorizationComponent,
-        GameReleaseDatesComponent
+        GameReleaseDatesComponent,
+        CompaniesComponent
 
     ],
     providers:[GameService],

@@ -15,6 +15,9 @@
         <li class="tab-button" [ngClass]="{'active': tabInfo.websites.active}">
             <a (click)="toggleActive(tabInfo.websites.id)">{{tabInfo.websites.title}}</a>
         </li>
+        <li class="tab-button" [ngClass]="{'active': tabInfo.companies.active}">
+            <a (click)="toggleActive(tabInfo.companies.id)">{{tabInfo.companies.title}}</a>
+        </li>
         <li class="tab-button" [ngClass]="{'active': tabInfo.story.active}">
             <a (click)="toggleActive(tabInfo.story.id)">{{tabInfo.story.title}}</a>
         </li>
@@ -59,6 +62,14 @@
             </div>
             <div *ngIf="tabInfo.websites.active" class="tab-content">
                 <app-game-websites></app-game-websites>
+            </div>
+        </div>
+        <div class="tab">
+            <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.companies.active}">
+                <a (click)="toggleActive(tabInfo.companies.id)">{{tabInfo.companies.title}}</a>
+            </div>
+            <div *ngIf="tabInfo.companies.active" class="tab-content">
+                <app-companies></app-companies>
             </div>
         </div>
         <div class="tab">
