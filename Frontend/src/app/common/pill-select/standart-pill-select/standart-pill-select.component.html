@@ -1,0 +1,20 @@
+<div class="standart-input-pill-container">
+    <label>{{label}}</label>
+
+    <div class="input-pill-container" [ngClass]="{'focus':open}" (click)="clickOpenOptions()" (clickOutside)="clickToClose()">
+        <div #inputForPills class="input-for-pills">
+            <input #inputForPillFirstChild type="text" (input)="inputFilter($event)">
+        </div>
+
+        <hr class="list-input-dif" [ngClass]="{'block':open}">
+
+        <ul class="dropdown-menu" [ngClass]="{'block':open}">
+            <ng-container *ngFor="let option of filteredInputValue">
+                <li *ngIf="option?.isVisible " [ngClass]="{'active':(inputValue !== undefined && inputValue.id === option.id)}">
+                    <a (click)="setOption(option)"><span class="option-text">{{option.value}}</span></a>
+                </li>    
+            </ng-container>
+        </ul>
+
+    </div>
+</div>

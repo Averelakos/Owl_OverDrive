@@ -1,0 +1,128 @@
+.standart-input-pill-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.standart-input-pill-container > label {
+    font-weight: 700;
+    font-size: 14.56px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    line-height: 1.428571429;
+    color: #34373b;
+}
+
+.input-pill-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #DDD;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 2p;
+    align-items: center;
+    flex: 1 1 0%;
+    transition: all 100ms ease 0s;
+}
+
+.focus {
+    border: 2px solid #c15375;
+}
+
+.input-for-pills {
+    width:100%;
+    min-height: 38px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 2px 8px 2px 8px;
+    align-items: center;
+}
+
+.input-for-pills input {
+    flex: 1 1 auto;
+    margin: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    visibility: visible;
+    border: 0px;
+}
+
+.input-for-pills input:focus {
+    outline: none;
+}
+
+.list-input-dif {
+    width: 100%;
+    border-top: 1px solid #DDD;
+    display: none;
+}
+
+
+.dropdown-menu {
+    list-style: none;
+    background: #fff;
+    width: 100%;
+    min-height: 25px;
+    max-height: 100px;
+    overflow-y: scroll;
+    box-shadow: 1px 6px 5px -5px rgba(0,0,0,1);
+    cursor: pointer;
+    z-index: 100;
+    margin-top: 5px;
+    display: none;
+}
+
+.block{
+    display: block;
+    transform-origin:top;
+    transition: all 1s ease-in-out;
+}
+
+.dropdown-menu > li {
+    width: 100%;
+    display: block;
+}
+
+.dropdown-menu > li:hover {
+    background: #ddd;
+}
+
+a {
+    width: 100%;
+    display: block;
+}
+
+a > .option-text {
+    padding: 15px;
+}
+.option-text {
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333;
+}
+
+.active {
+    background: #c78c9f7c;
+}
+
+.standarPill {
+    border-radius: 4px;
+    font-size: 12px;
+    background: #c15375;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 3px 6px;
+    margin: 5px 2px 5px 6px ;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.remove-pill-icon{
+    position: relative;
+    top: 1px;
+    margin-left: 4px;
+}

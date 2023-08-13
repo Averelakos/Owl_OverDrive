@@ -6,8 +6,7 @@
         [type]="type" 
         readonly 
         placeholder="Type your selection..." 
-        [value]="this.inputValue?.value"
-        [formControlName]="controlName"
+        [value]="this.inputValue"
         >
         <span class="standar-select-search-icon" *ngIf="this.inputValue != null" (click)="clickToRemoveSelectedOption()">
             <i class="fa-solid fa-xmark"></i>

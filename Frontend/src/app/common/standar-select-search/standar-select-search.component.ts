@@ -32,7 +32,7 @@ export class StandarSelectSearchComponent implements  OnInit {
   @Input() apiSearchEnable: boolean = false
   @Output() searchInput = new EventEmitter<string>()
 
-  inputValue: SelectSearchInputValue | null = null;
+  inputValue: string | null = null;
   selectIsFocused: boolean = false;
   filteredInputValues: Array<SelectSearchInputValue> = []
   openSelectField:boolean = false;
@@ -75,7 +75,7 @@ export class StandarSelectSearchComponent implements  OnInit {
     }
     this.unsubscribe?.unsubscribe()
     this.formGroup.get(this.controlName)?.setValue(selected[0].id)
-    this.inputValue = selected[0]
+    this.inputValue = selected[0].value
   }
 
   clickToRemoveSelectedOption(){
