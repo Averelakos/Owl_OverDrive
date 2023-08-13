@@ -15,7 +15,8 @@ export class GameInfoTabAccordioComponent {
     releaseDates: {id:4, title: 'Release Dates', active: false},
     websites: {id:6, title: 'Websites', active: false},
     companies: {id:7, title: 'Companies', active: false},
-    story: {id:9, title: 'Story', active: false}
+    story: {id:9, title: 'Story', active: false},
+    languages: {id:10, title: 'Supported Languages', active: false}
   }
 
   constructor(public responsiveService: ResponsiveService, ){}

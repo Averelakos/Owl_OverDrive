@@ -1,0 +1,32 @@
+<div class="language-container" [formGroup]="parentForm.form">
+    
+    <div class="form-item">
+        <app-standart-pill-select
+            [label]="'Audio'"
+            [controlName]="'audio'"
+            [subGroup]="'supportedLanguage'"
+            [options]="languagesList"
+        ></app-standart-pill-select>
+    </div>
+
+    <div class="form-item">
+        <app-standart-pill-select
+            [label]="'Subtitles'"
+            [controlName]="'subtitles'"
+            [subGroup]="'supportedLanguage'"
+            [options]="languagesList"
+        ></app-standart-pill-select>
+    </div>
+
+    <div class="form-item">
+        <app-standart-pill-select
+            [label]="'Interface'"
+            [controlName]="'interface'"
+            [subGroup]="'supportedLanguage'"
+            [options]="languagesList"
+        ></app-standart-pill-select>
+    </div>
+    
+</div>
+
+

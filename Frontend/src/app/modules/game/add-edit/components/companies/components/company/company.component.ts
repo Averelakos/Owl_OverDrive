@@ -50,7 +50,7 @@ export class CompanyComponent {
     return this.parentForm.control.get('companies.' + this.index) as FormGroup
   }
 
-  searchCompanies(input){
+  searchPlatforms(input){
     if (input.length > 0) {
       this.platformService
       .searchPlatform(input)
@@ -70,7 +70,7 @@ export class CompanyComponent {
     }
   }
 
-  searchPlatform(input){
+  searchCompanies(input){
     if (input.length > 0) {
       this.companyService
       .searchParentCompany(input)

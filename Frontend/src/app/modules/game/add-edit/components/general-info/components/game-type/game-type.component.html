@@ -16,8 +16,10 @@
     </div>
     <div *ngIf="!main.checked">
         <app-standar-select-search
-            [controlName]="'baseGame'"
-            [subGroup]="'general.gameType'"
+            [controlName]="'updatedGame'"
+            [subGroup]="'general'"
+            [apiSearchEnable]="true"
+            (searchInput)="searchGames($event)"
             ></app-standar-select-search>
     </div>
     <hr class="horizontal-line">

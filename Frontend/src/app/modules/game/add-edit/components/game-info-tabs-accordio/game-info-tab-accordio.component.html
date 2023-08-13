@@ -21,6 +21,9 @@
         <li class="tab-button" [ngClass]="{'active': tabInfo.story.active}">
             <a (click)="toggleActive(tabInfo.story.id)">{{tabInfo.story.title}}</a>
         </li>
+        <li class="tab-button" [ngClass]="{'active': tabInfo.languages.active}">
+            <a (click)="toggleActive(tabInfo.languages.id)">{{tabInfo.languages.title}}</a>
+        </li>
     </ul>
 
     <div class="tabs">
@@ -78,6 +81,14 @@
             </div>
             <div *ngIf="tabInfo.story.active" class="tab-content">
                 <app-game-story></app-game-story>
+            </div>
+        </div>
+        <div class="tab">
+            <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.languages.active}">
+                <a (click)="toggleActive(tabInfo.languages.id)">{{tabInfo.languages.title}}</a>
+            </div>
+            <div *ngIf="tabInfo.languages.active" class="tab-content">
+                <app-languages></app-languages>
             </div>
         </div>
     </div>

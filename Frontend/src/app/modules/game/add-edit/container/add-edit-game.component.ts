@@ -15,6 +15,8 @@ export class AddEditGameComponent {
   }
 
   createGame() {
-    console.log(this.gameForm)
+    let model = this.gameService.createModel(this.gameForm)
+    this.gameService.createNewGame(model).subscribe()
+    console.log(model)
   }
 }

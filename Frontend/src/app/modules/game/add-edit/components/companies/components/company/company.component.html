@@ -10,7 +10,7 @@
                     [controlName]="'company'"
                     [subGroup]="'companies.'+index"
                     [listOfInputValues]="listOfCompanies"
-                    (searchInput)="searchPlatform($event)"
+                    (searchInput)="searchCompanies($event)"
                     [apiSearchEnable]="true"
                 ></app-standar-select-search>
             </div>
@@ -20,7 +20,7 @@
                     [controlName]="'platform'"
                     [subGroup]="'companies.'+index"
                     [listOfInputValues]="listOfPlatforms"
-                    (searchInput)="searchPlatform($event)"
+                    (searchInput)="searchPlatforms($event)"
                     [apiSearchEnable]="true"
                 ></app-standar-select-search>
            </div>

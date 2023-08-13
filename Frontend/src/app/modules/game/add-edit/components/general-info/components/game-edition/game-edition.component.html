@@ -2,9 +2,11 @@
     <app-check-mark-checkbox-button [label]="'This game is an edition.'" (clickEvent)="onClick($event)"></app-check-mark-checkbox-button>
     <div class="column" *ngIf="isEdition">
         <app-standar-select-search 
-            [listOfInputValues]="listOfStatuses"
+            [listOfInputValues]="listOfGames"
             [subGroup]="'general.gameEdition'"
             [controlName]="'baseGame'"
+            [apiSearchEnable]="true"
+            (searchInput)="searchGames($event)"
         >
         </app-standar-select-search>
         <app-standar-input

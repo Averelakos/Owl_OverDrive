@@ -6,6 +6,7 @@ import { StandarInputComponent } from 'src/app/common/standar-input/standar-inpu
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
+import { EAlternativeTitleType } from 'src/app/core/enums/enum-alternative-title-type';
 
 @Component({
   selector: 'app-game-alternative-titles',
@@ -16,53 +17,16 @@ import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-butt
 })
 export class GameAlternativeTitleComponent {
   deviceType = ResponsizeSize
-  listOfStatuses: Array<SelectSearchInputValue> = []
   isEdition: boolean = false
-  listOfAlternativeTitles
-
-  gameTitleType: Array<SelectSearchInputValue> = [
-    {id:1, value: 'Abbreviation'},
-    {id:2, value: 'Acronym'},
-    {id:3, value: 'Alternative spelling'},
-    {id:4, value: 'Alternative title'},
-    {id:5, value: 'Chinese title - simplified'},
-    {id:6, value: 'Chinese title - traditional'},
-    {id:7, value: 'European title'},
-    {id:8, value: 'French title'},
-    {id:9, value: 'German title'},
-    {id:10, value: 'Italian title'},
-    {id:11, value: 'Japanese title - original'},
-    {id:12, value: 'Japanese title - romanization'},
-    {id:13, value: 'Japanese title - stylized'},
-    {id:14, value: 'Japanese title - translated'},
-    {id:15, value: 'Korean title'},
-    {id:16, value: 'Korean title - romanization'},
-    {id:17, value: 'Korean title - translated'},
-    {id:18, value: 'Polish title'},
-    {id:19, value: 'Portuguese title'},
-    {id:20, value: 'Russian title'},
-    {id:21, value: 'Spanish title'},
-    {id:22, value: 'Stylized title'},
-    {id:23, value: 'Working title'},
-  ]
+  alternativeTypes = EAlternativeTitleType
+  alternativeTitleTypes: Array<SelectSearchInputValue> = []
 
   constructor(
     public responsiveService: ResponsiveService, 
     public parentForm: FormGroupDirective, 
-    private readonly lookupService: LookupsService,
     private readonly formBuilder: FormBuilder
   ){   
-    this.convertForSearchSelect()
-  }
-
-  convertForSearchSelect() {
-    this.gameTitleType.forEach((item) => {
-      let newItem: SelectSearchInputValue = {
-        id: item.id,
-        value: item.value
-      } 
-      this.listOfStatuses.push(newItem)
-    })
+    this.convertEnumToArray()
   }
 
   general() : FormGroup {
@@ -75,8 +39,8 @@ export class GameAlternativeTitleComponent {
 
   newAlternativeTitle(): FormGroup {
     return this.formBuilder.group({
-      title: [null],
-      type: [null]
+      alternativeName: [null],
+      alternativeTitleType: [null]
     })
   }
 
@@ -86,5 +50,15 @@ export class GameAlternativeTitleComponent {
 
   removeTitle(index: number) {
     this.alternativeTitles().removeAt(index)
+  }
+
+  convertEnumToArray() {
+    const temp = Object.keys(this.alternativeTypes).filter((x) =>isNaN(Number(x)) )
+    let count = 0
+    temp.forEach((item) => {
+      let temp: SelectSearchInputValue = {id:count, value:EAlternativeTitleType[item]}
+      this.alternativeTitleTypes.push(temp)
+      count++
+    })
   }
 }

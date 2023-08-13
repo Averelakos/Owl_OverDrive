@@ -6,6 +6,7 @@ import { CompanyStatusLookupDto } from "../types/lookups/company-status-lookup-d
 import { CountryCodeLookupDto } from "../types/lookups/country-code-lookup-dto";
 import { RegionLookupDto } from "../types/lookups/region-lookup-dto";
 import { GameStatusLookupDto } from "../types/lookups/game-statuses-lookup-dto";
+import { LanguageLookupDto } from "../types/lookups/language-lookup-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class LookupsService{
   countryCodes!: Array<CountryCodeLookupDto>
   regions!: Array<RegionLookupDto>
   gameStatuses!: Array<GameStatusLookupDto>
+  languages!: Array<LanguageLookupDto>
 
   constructor(private http: HttpClient){}
 
@@ -29,6 +31,7 @@ export class LookupsService{
       this.countryCodes = lookups.countryCode
       this.regions = lookups.regions
       this.gameStatuses = lookups.gameStatuses
+      this.languages = lookups.languages
     } 
     else {
       this.getLookUps()
@@ -48,6 +51,7 @@ export class LookupsService{
     this.countryCodes = lookups.countryCode
     this.regions = lookups.regions
     this.gameStatuses = lookups.gameStatuses
+    this.languages = lookups.languages
   }
 
   getCountryById(countryId: number| undefined) {

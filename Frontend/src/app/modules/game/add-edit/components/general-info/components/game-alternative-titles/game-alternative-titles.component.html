@@ -5,15 +5,15 @@
             <div [ngClass]="{'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile, 'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile}">
                 <div class="item">
                     <app-standar-input
-                    [controlName]="'title'"
+                    [controlName]="'alternativeName'"
                     [subGroup]="'gameAlternativeNames.'+i"
                     ></app-standar-input>
                 </div>
                 <div class="item">
                     <app-standar-select-search
-                        [controlName]="'type'"
+                        [controlName]="'alternativeTitleType'"
                         [subGroup]="'gameAlternativeNames.'+i" 
-                        [listOfInputValues]="listOfStatuses"
+                        [listOfInputValues]="alternativeTitleTypes"
                     ></app-standar-select-search>
                 </div>
             </div>
