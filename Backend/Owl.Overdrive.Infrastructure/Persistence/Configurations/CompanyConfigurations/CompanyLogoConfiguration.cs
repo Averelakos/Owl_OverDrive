@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Company;
 
-namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
+namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.CompanyConfigurations
 {
-    public class CompanyLogoConfiguration :BaseEntityConfiguration, IEntityTypeConfiguration<CompanyLogo>
+    public class CompanyLogoConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<CompanyLogo>
     {
         public CompanyLogoConfiguration() : base()
         {
-            
+
         }
 
         public void Configure(EntityTypeBuilder<CompanyLogo> builder)

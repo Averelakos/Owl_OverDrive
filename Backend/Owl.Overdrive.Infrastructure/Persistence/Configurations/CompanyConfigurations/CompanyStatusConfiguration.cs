@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
+namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.CompanyConfigurations
 {
     public class CompanyStatusConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<CompanyStatus>
     {
-        public CompanyStatusConfiguration():base()
+        public CompanyStatusConfiguration() : base()
         {
-            
+
         }
 
         public void Configure(EntityTypeBuilder<CompanyStatus> builder)

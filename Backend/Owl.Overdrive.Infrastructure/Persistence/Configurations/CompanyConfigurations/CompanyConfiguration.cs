@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Owl.Overdrive.Domain.Entities.Company;
 
-namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
+namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.CompanyConfigurations
 {
     public class CompanyConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<Company>
     {
-        public CompanyConfiguration():base()
+        public CompanyConfiguration() : base()
         {
-            
+
         }
 
         public void Configure(EntityTypeBuilder<Company> builder)

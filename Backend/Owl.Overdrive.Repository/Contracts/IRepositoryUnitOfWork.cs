@@ -68,5 +68,26 @@ namespace Owl.Overdrive.Repository.Contracts
         /// The game status repository.
         /// </value>
         IGameStatusRepository GameStatusRepository { get; }
+        /// <summary>
+        /// Gets the language repository.
+        /// </summary>
+        /// <value>
+        /// The language repository.
+        /// </value>
+        ILanguageRepository LanguageRepository { get; }
+        /// <summary>
+        /// Gets the game repository.
+        /// </summary>
+        /// <value>
+        /// The game repository.
+        /// </value>
+        IGameRepository GameRepository { get; }
+        /// <summary>
+        /// Gets the game title repository.
+        /// </summary>
+        /// <value>
+        /// The game title repository.
+        /// </value>
+        IAlternativeGameTitleRepository AlternativeGameTitleRepository { get; }
     }
 }

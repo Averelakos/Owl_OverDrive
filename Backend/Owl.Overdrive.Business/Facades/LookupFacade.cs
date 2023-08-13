@@ -29,13 +29,15 @@ namespace Owl.Overdrive.Business.Facades
             var countryCodes = await GetLookupValues<CountryCodeLookupDto>();
             var regions = await GetLookupValues<RegionLookupDto>();
             var gameStatuses = await GetLookupValues<GameStatusLookupDto>();
+            var languages = await GetLookupValues<LanguageLookupDto>();
 
             LookupsDto result = new LookupsDto() 
             {
                 CompanyStatus = companyStatus,
                 CountryCode = countryCodes,
                 Regions = regions,
-                GameStatuses = gameStatuses
+                GameStatuses = gameStatuses,
+                Languages = languages
             };
 
             return result;
@@ -70,6 +72,8 @@ namespace Owl.Overdrive.Business.Facades
                     return await GetRegions();
                 case Type type when type == typeof(GameStatusLookupDto):
                     return await GetGameStatuses();
+                case Type type when type == typeof(LanguageLookupDto):
+                    return await GetLanguages();
                 default: 
                     throw new NotImplementedException();
             }
@@ -112,7 +116,7 @@ namespace Owl.Overdrive.Business.Facades
         }
 
         /// <summary>
-        /// Gets the regions.
+        /// Gets the game statuses.
         /// </summary>
         /// <returns></returns>
         private async Task<List<GameStatusLookupDto>> GetGameStatuses()
@@ -120,6 +124,18 @@ namespace Owl.Overdrive.Business.Facades
             return await _repoUoW.GameStatusRepository
                 .GetGameStatuses()
                 .ProjectTo<GameStatusLookupDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the languages.
+        /// </summary>
+        /// <returns></returns>
+        private async Task<List<LanguageLookupDto>> GetLanguages()
+        {
+            return await _repoUoW.LanguageRepository
+                .GetAllNotTracking()
+                .ProjectTo<LanguageLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
     }

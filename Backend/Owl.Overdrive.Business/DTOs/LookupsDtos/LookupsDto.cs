@@ -39,6 +39,13 @@ namespace Owl.Overdrive.Business.DTOs.LookupsDtos
         /// The game statuses.
         /// </value>
         public List<GameStatusLookupDto> GameStatuses { get; set; } = null!;
+        /// <summary>
+        /// Gets or sets the languages.
+        /// </summary>
+        /// <value>
+        /// The languages.
+        /// </value>
+        public List<LanguageLookupDto> Languages { get; set; } = null!;
 
     }
 }

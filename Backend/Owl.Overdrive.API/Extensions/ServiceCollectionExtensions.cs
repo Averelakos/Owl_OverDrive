@@ -45,6 +45,9 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<IPlatformRepository,  PlatformRepository>()
                 .AddScoped<IRegionRepository, RegionRepository>()
                 .AddScoped<IGameStatusRepository, GameStatusRepository>()
+                .AddScoped<ILanguageRepository, LanguageRepository>()
+                .AddScoped<IGameRepository, GameRepository>()
+                .AddScoped<IAlternativeGameTitleRepository, AlternativeGameTitleRepository>()
                 ;
         }
         /// <summary>
@@ -59,6 +62,7 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ILookupFacade, LookupFacade>()
                 .AddScoped<IImageDraftFacade, ImageDraftFacade>()
                 .AddScoped<IPlatformFacade, PlatformFacade>()
+                .AddScoped<IGameFacade, GameFacade>()
                 ;
         }
 

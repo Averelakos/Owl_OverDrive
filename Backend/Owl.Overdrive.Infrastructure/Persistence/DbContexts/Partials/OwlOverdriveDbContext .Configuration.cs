@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Infrastructure.Persistence.Configurations;
+using Owl.Overdrive.Infrastructure.Persistence.Configurations.CompanyConfigurations;
+using Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurations;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
 {
@@ -22,6 +24,12 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new PlatformConfiguration());
             modelBuilder.ApplyConfiguration(new RegionConfiguration());
             modelBuilder.ApplyConfiguration(new GameStatusConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageConfiguration());
+
+            // Game
+            modelBuilder.ApplyConfiguration(new GameConfiguration());
+            modelBuilder.ApplyConfiguration(new GameEditionConfiguration());
+            modelBuilder.ApplyConfiguration(new AlternativeGameTitleConfiguration());
         }
     }
 }
