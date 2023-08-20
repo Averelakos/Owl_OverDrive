@@ -21,6 +21,13 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         // Game
         public DbSet<Game> Games => Set<Game>();
         public DbSet<GameEdition> GameEditions => Set<GameEdition>();
-        public DbSet<AlternativeGameTitle> AlternativeGameTitles => Set<AlternativeGameTitle>();
+        public DbSet<AlternativeName> AlternativeGameTitles => Set<AlternativeName>();
+        public DbSet<GameLocalization> GameLocalization => Set<GameLocalization>();
+        public DbSet<ReleaseDate> ReleaseDate => Set<ReleaseDate>();
+        public DbSet<Websites> Websites => Set<Websites>();
+        public DbSet<InvolvedCompany> InvolvedCompanies => Set<InvolvedCompany>();
+        public DbSet<InvolvedCompanyPlatform> InvolvedCompanyPlatforms => Set<InvolvedCompanyPlatform>();
+        public DbSet<LanguageSupport> LanguageSupport => Set<LanguageSupport>();
+        public DbSet<LanguageSupportType> LanguageSupportTypes  => Set<LanguageSupportType>();
     }
 }

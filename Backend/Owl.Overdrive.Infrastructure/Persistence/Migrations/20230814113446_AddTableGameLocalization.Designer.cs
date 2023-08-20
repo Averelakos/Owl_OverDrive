@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 
@@ -11,9 +12,11 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    partial class OwlOverdriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230814113446_AddTableGameLocalization")]
+    partial class AddTableGameLocalization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4035,9 +4038,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Property<long?>("CreatedById")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("GameId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("LastUpdated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2(7)")
@@ -4057,8 +4057,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
-
-                    b.HasIndex("GameId");
 
                     b.HasIndex("LastUpdatedById");
 
@@ -7590,9 +7588,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany("AlternativeGameTitles")
+                        .WithMany()
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
                         .WithMany()
@@ -7676,12 +7675,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
                         .WithMany()
                         .HasForeignKey("LastUpdatedById")
@@ -7694,8 +7687,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("CreatedBy");
-
-                    b.Navigation("Game");
 
                     b.Navigation("LastUpdatedBy");
 
@@ -7802,11 +7793,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("LastUpdatedBy");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
-                {
-                    b.Navigation("AlternativeGameTitles");
                 });
 #pragma warning restore 612, 618
         }

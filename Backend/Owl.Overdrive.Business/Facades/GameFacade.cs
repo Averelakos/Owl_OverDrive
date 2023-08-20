@@ -37,14 +37,24 @@ namespace Owl.Overdrive.Business.Facades
 
                 var result = await _repoUoW.GameRepository.Insert(newGame);
 
-                if (createGameDto.AlternativeNames is not null && createGameDto.AlternativeNames.Any())
-                {
-                    var altNames = _mapper.Map<List<AlternativeGameTitle>>(createGameDto.AlternativeNames);
+                // Add alternative names if they exists
+                //if (createGameDto.AlternativeNames is not null && createGameDto.AlternativeNames.Any())
+                //{
+                //    var altNames = _mapper.Map<List<AlternativeGameTitle>>(createGameDto.AlternativeNames);
 
-                    altNames.ForEach(x => x.GameId = newGame.Id);
+                //    altNames.ForEach(x => x.GameId = newGame.Id);
 
-                    await _repoUoW.AlternativeGameTitleRepository.InsertRange(altNames);
-                }
+                //    await _repoUoW.AlternativeGameTitleRepository.InsertRange(altNames);
+                //}
+
+                //if (createGameDto.GameLocalizations is not null && createGameDto.GameLocalizations.Any())
+                //{
+                //    var localNames = _mapper.Map<List<GameLocalization>>(createGameDto.GameLocalizations);
+
+                //    localNames.ForEach(x => x.GameId = newGame.Id);
+
+                //    await _repoUoW.GameLocalizationRepository.InsertRange(localNames);
+                //}
 
                 await _repoUoW.GameRepository.CommitTransactionAsync();
 

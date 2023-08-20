@@ -29,7 +29,15 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             // Game
             modelBuilder.ApplyConfiguration(new GameConfiguration());
             modelBuilder.ApplyConfiguration(new GameEditionConfiguration());
-            modelBuilder.ApplyConfiguration(new AlternativeGameTitleConfiguration());
+            modelBuilder.ApplyConfiguration(new AlternativeNameConfiguration());
+            modelBuilder.ApplyConfiguration(new GameLocalizationConfiguration());
+            modelBuilder.ApplyConfiguration(new ReleaseDateConfiguration());
+            modelBuilder.ApplyConfiguration(new WebsitesConfiguration());
+            modelBuilder.ApplyConfiguration(new InvovlvedCompanyConfiguration());
+            modelBuilder.ApplyConfiguration(new InvolvedCompanyPlatformConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageSupportConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageSupportTypeConfiguration());
+            
         }
     }
 }

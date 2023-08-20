@@ -48,6 +48,7 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ILanguageRepository, LanguageRepository>()
                 .AddScoped<IGameRepository, GameRepository>()
                 .AddScoped<IAlternativeGameTitleRepository, AlternativeGameTitleRepository>()
+                .AddScoped<IGameLocalizationRepository, GameLocalizationRepository>()
                 ;
         }
         /// <summary>

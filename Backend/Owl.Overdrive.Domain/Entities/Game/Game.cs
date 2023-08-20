@@ -13,7 +13,8 @@ namespace Owl.Overdrive.Domain.Entities.Game
         public EGameStatus? GameStatus { get; set; }
 
         public virtual GameEdition? GameEdition { get; set; }
-        //public virtual List<AlternativeGameTitle>? AlternativeGameTitles { get; set; }
         public virtual Game? UpdatedGame { get; set; }
+        public virtual List<AlternativeName> AlternativeGameTitles { get; set; } = new ();
+        public virtual List<LanguageSupport> LanguageSupports { get; set; } = new ();
     }
 }
