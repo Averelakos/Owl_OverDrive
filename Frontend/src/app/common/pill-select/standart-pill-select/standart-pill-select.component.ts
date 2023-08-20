@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
@@ -23,11 +23,16 @@ export class StandartPillSelectComponent implements OnInit {
   @Input() label:string = ''
   @Input() controlName = ''
   @Input() subGroup: string = ''
+  @Input() apiSearchEnable: boolean = false
+  @Output() searchInput = new EventEmitter<string>()
+  
   filteredInputValue: Array<StadarInputPillOption> = []
   inputValue!: StadarInputPillOption | undefined
   formGroup!: FormGroup
   selectedOptions: Array<number> = []
   open:boolean = false
+  noResults: boolean = false
+  loader: boolean = false
 
   constructor(private renderer: Renderer2,public parentForm: FormGroupDirective){}
 
@@ -85,15 +90,45 @@ export class StandartPillSelectComponent implements OnInit {
     })
   }
 
+  clickToClear(){
+    let children = this.inputElement.nativeElement.children
+    for(let child of children) {
+      if (child.classList.contains('standarPill')) {
+        this.renderer.removeChild(this.inputElement.nativeElement, child);
+      }
+    }
+    this.selectedOptions = []
+  }
+
   inputFilter(e) {
     let searchInput = e.target.value
-    this.filteredInputValue = this.options
-    .map((option) => option)
-    .filter( (x) => x.value.toLowerCase().includes(searchInput.toLowerCase()))
+
+    if (this.apiSearchEnable) {
+      this.searchInput.emit(searchInput)
+
+      if (searchInput.length > 0){
+        this.loader = true
+        setTimeout(()=>{
+            this.loader = false
+            this.noResults = true
+        }, 3000);
+
+      }
+      else {
+        this.noResults = false
+      }
+    }
+    else {
+      this.filteredInputValue = this.options
+      .map((option) => option)
+      .filter( (x) => x.value.toLowerCase().includes(searchInput.toLowerCase()))
+    }
+
   }
 
   clickOpenOptions() {
     this.open = true
+    console.log(this.filteredInputValue.length === 0)
   }
 
   clickToClose(){

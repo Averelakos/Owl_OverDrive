@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropDownOption } from 'src/app/common/dropdown-input/standar-dropdown-menu/standar-dropdown-menu.component';
+import { DropDownOption, StandarDropdownMenuComponent } from 'src/app/common/dropdown-input/standar-dropdown-menu/standar-dropdown-menu.component';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
@@ -8,11 +8,12 @@ import { PlatformService } from 'src/app/data/services/platform.service';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { CompanyService } from 'src/app/data/services/company.service';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
+import { StadarInputPillOption, StandartPillSelectComponent } from 'src/app/common/pill-select/standart-pill-select/standart-pill-select.component';
 
 @Component({
   selector: 'app-company',
   standalone: true,
-  imports: [CommonModule, StandarSelectSearchComponent, CheckMarkCheckBoxButtonComponent], 
+  imports: [CommonModule, StandarSelectSearchComponent, CheckMarkCheckBoxButtonComponent, StandartPillSelectComponent], 
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.scss'],
   providers:[PlatformService, CompanyService]
@@ -21,7 +22,7 @@ export class CompanyComponent {
   @Input() index!: number
   @Output() remove = new EventEmitter<number>
   deviceType = ResponsizeSize
-  listOfPlatforms: Array<SelectSearchInputValue> = []
+  listOfPlatforms: Array<StadarInputPillOption> = []
   listOfCompanies: Array<SelectSearchInputValue> = []
 
   types = [
@@ -60,7 +61,8 @@ export class CompanyComponent {
           response.forEach(element => {
             this.listOfPlatforms.push({
               id:element.id,
-              value: element.name
+              value: element.name,
+              isVisible: true
             })
           });
         } 

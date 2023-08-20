@@ -2,18 +2,36 @@
     <label>{{label}}</label>
 
     <div class="input-pill-container" [ngClass]="{'focus':open}" (click)="clickOpenOptions()" (clickOutside)="clickToClose()">
-        <div #inputForPills class="input-for-pills">
-            <input #inputForPillFirstChild type="text" (input)="inputFilter($event)">
+        <div class="input-container">
+            <div #inputForPills class="input-for-pills">
+                <input #inputForPillFirstChild type="text" (input)="inputFilter($event)">
+            </div>
+            <i *ngIf="this.selectedOptions.length > 0" class="fa-solid fa-xmark clear-icon"  (click)="clickToClear()"></i>
         </div>
 
         <hr class="list-input-dif" [ngClass]="{'block':open}">
 
         <ul class="dropdown-menu" [ngClass]="{'block':open}">
-            <ng-container *ngFor="let option of filteredInputValue">
-                <li *ngIf="option?.isVisible " [ngClass]="{'active':(inputValue !== undefined && inputValue.id === option.id)}">
-                    <a (click)="setOption(option)"><span class="option-text">{{option.value}}</span></a>
+            <ng-container *ngIf="filteredInputValue.length > 0">
+                <ng-container *ngFor="let option of filteredInputValue">
+                    <li *ngIf="option?.isVisible " [ngClass]="{'active':(inputValue !== undefined && inputValue.id === option.id)}">
+                        <a (click)="setOption(option)"><span class="option-text">{{option.value}}</span></a>
+                    </li>    
+                </ng-container>
+            </ng-container>
+            
+            <ng-container *ngIf="filteredInputValue.length === 0">
+                <li *ngIf="!noResults && !loader">
+                    <span class="option-text">Please enter 2 or more characters</span>
+                </li>
+                <li *ngIf="noResults">
+                    <span class="option-text">No results...</span>
+                </li> 
+                <li *ngIf="loader">
+                    <span class="option-text">Searching </span>
                 </li>    
             </ng-container>
+
         </ul>
 
     </div>

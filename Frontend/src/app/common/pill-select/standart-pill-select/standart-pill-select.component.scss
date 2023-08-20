@@ -28,11 +28,13 @@
 
 .focus {
     border: 2px solid #c15375;
+    box-shadow: 15px 18px 8px -8px rgba(92,83,83,0.76);
+    z-index: 3;
 }
 
 .input-for-pills {
     width:100%;
-    min-height: 38px;
+    // min-height: 38px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -42,6 +44,8 @@
 
 .input-for-pills input {
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
     margin: 2px;
     padding-bottom: 2px;
     padding-top: 2px;
@@ -67,9 +71,8 @@
     min-height: 25px;
     max-height: 100px;
     overflow-y: scroll;
-    box-shadow: 1px 6px 5px -5px rgba(0,0,0,1);
     cursor: pointer;
-    z-index: 100;
+    // z-index: 100;
     margin-top: 5px;
     display: none;
 }
@@ -101,6 +104,8 @@ a > .option-text {
     font-weight: 400;
     line-height: 1.6;
     color: #333;
+    font-size: 12.56px;
+    margin-left: 5px;
 }
 
 .active {
@@ -125,4 +130,15 @@ a > .option-text {
     position: relative;
     top: 1px;
     margin-left: 4px;
+}
+
+.input-container {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    width: 100%;
+}
+
+.clear-icon{
+    margin-right: 10px
 }

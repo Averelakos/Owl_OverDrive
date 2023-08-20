@@ -1,6 +1,6 @@
-<div class="standar-select-search-container"  (clickOutside)="clickOutSide()">
+<div class="standar-select-search-container" (clickOutside)="clickOutSide()">
     <label>{{label}}</label>
-    <div [formGroup]="formGroup"  class="select" [ngClass]="{'focused': this.selectIsFocused}" (click)="clickSelectSearchField()">
+    <div [formGroup]="formGroup"  class="select" [ngClass]="{'focused': this.selectIsFocused}" (click)="clickSelectSearchField()" >
         <input 
 
         [type]="type" 

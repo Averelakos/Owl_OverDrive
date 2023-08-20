@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { lookupService } from 'dns';
-import { ClickOutsideDirective } from 'src/app/shared/directives/outside.directive';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 
 export interface DropDownOption {

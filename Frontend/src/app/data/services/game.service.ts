@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams} from "@angular/common/http";
-import { CreateGameDto } from "../types/game/create-game";
-import { ServiceResult } from "../types/service-results/service-result";
+import { CreateGameDto, CreateReleaseDateDto } from "../types/game/create-game";
 
 @Injectable()
 export class GameService{
@@ -66,6 +65,10 @@ export class GameService{
     return gameForm.get('general') as FormGroup
   }
 
+  releaseDates(gameForm: FormGroup) {
+    return gameForm.get('releaseDates') as FormArray
+  }
+
   gameEdition(gameForm: FormGroup) {
     return this.general(gameForm).get('gameEdition') as FormGroup
   }
@@ -78,7 +81,9 @@ export class GameService{
       updateGameType: this.general(gameForm).get('updateGameType')?.value,
       updatedGameId : this.general(gameForm).get('updatedGameId')?.value, 
       gameEdition:null,
-      alternativeNames: []
+      alternativeNames: [],
+      releaseDates: this.converToCreateReleaseDateDto(this.releaseDates(gameForm)),
+      websites: []
     }
 
     // General game edition
@@ -95,6 +100,26 @@ export class GameService{
     }
 
     return model;
+  }
+
+  converToCreateReleaseDateDto(list: FormArray) {
+    let convertedResults: Array<CreateReleaseDateDto> = []
+    let arrayTempValues = list.value
+    if (arrayTempValues != null && arrayTempValues.length > 0) {
+      arrayTempValues.forEach((entry) => {
+        entry.releases.forEach(release => {
+          let tempReleaseDate: CreateReleaseDateDto = {
+            platformId: entry.platform,
+            date: release.date,
+            regionId: release.region,
+            status: release.status
+          }
+
+          convertedResults.push(tempReleaseDate)
+        });
+      });
+    }
+    return convertedResults;
   }
 
   searchParentGame(searchInput: string){

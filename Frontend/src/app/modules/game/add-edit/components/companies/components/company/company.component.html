@@ -15,14 +15,15 @@
                 ></app-standar-select-search>
             </div>
            <div class="inputs">
-                <app-standar-select-search
+                <app-standart-pill-select
                     [label]="'Platform:'"
                     [controlName]="'platform'"
                     [subGroup]="'companies.'+index"
-                    [listOfInputValues]="listOfPlatforms"
+                    [options]="listOfPlatforms"
                     (searchInput)="searchPlatforms($event)"
                     [apiSearchEnable]="true"
-                ></app-standar-select-search>
+                >
+                </app-standart-pill-select>
            </div>
             <div>
                 <div class="type-text">
