@@ -4,34 +4,36 @@ using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurations
 {
-    public class InvolvedCompanyPlatformConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<InvolvedCompanyPlatform>
+    public class MultiplayerModeConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<MultiplayerMode>
     {
-        public InvolvedCompanyPlatformConfiguration() : base()
+        public MultiplayerModeConfiguration() : base()
         {
 
         }
 
-        public void Configure(EntityTypeBuilder<InvolvedCompanyPlatform> builder)
+        public void Configure(EntityTypeBuilder<MultiplayerMode> builder)
         {
             ApplyConfiguration(builder);
             ConfigurationBase(builder);
         }
 
-        public static void ApplyConfiguration(EntityTypeBuilder<InvolvedCompanyPlatform> builder)
+        public static void ApplyConfiguration(EntityTypeBuilder<MultiplayerMode> builder)
         {
             // Table Name
-            builder.ToTable("InvolvedCompaniesPlatforms");
+            builder.ToTable("MultiplayerModes");
 
             // Properties parameters
-            builder.HasOne(e => e.InvolvedCompany)
+            builder.HasOne(e => e.Game)
                 .WithMany()
-                .HasForeignKey(e => e.InvolvedCompanyId)
+                .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(e => e.Platform)
                 .WithMany()
-                .HasForeignKey(e =>e.PlatformId)
+                .HasForeignKey(e => e.PlatformId)
                 .OnDelete(DeleteBehavior.Restrict);
+
         }
+
     }
 }

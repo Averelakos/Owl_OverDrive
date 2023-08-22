@@ -5,20 +5,20 @@ using Owl.Overdrive.Domain.Enums;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurations
 {
-    public class WebsitesConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<Websites>
+    public class WebsitesConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<Website>
     {
         public WebsitesConfiguration() : base()
         {
 
         }
 
-        public void Configure(EntityTypeBuilder<Websites> builder)
+        public void Configure(EntityTypeBuilder<Website> builder)
         {
             ApplyConfiguration(builder);
             ConfigurationBase(builder);
         }
 
-        public static void ApplyConfiguration(EntityTypeBuilder<Websites> builder)
+        public static void ApplyConfiguration(EntityTypeBuilder<Website> builder)
         {
             // Table Name
             builder.ToTable("Websites");
@@ -26,7 +26,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
             // Properties parameters
             builder.HasOne(e => e.Game)
                 .WithOne()
-                .HasForeignKey<Websites>(e => e.GameId)
+                .HasForeignKey<Website>(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(p => p.Url).HasColumnType("varchar(255)");

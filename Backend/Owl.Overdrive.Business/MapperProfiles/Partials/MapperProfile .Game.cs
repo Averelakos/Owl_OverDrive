@@ -13,6 +13,16 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<CreateGameEditionDto, GameEdition>();
             CreateMap<CreativeAlternativeNameDto, AlternativeName>();
             CreateMap<CreateGameLocalizationDto, GameLocalization>();
+            CreateMap<CreateGameGenreDto, GameGenre>();
+            CreateMap<CreateGameThemeDto, GameTheme>();
+            CreateMap<CreateGameModeDto, GameGameMode>();
+            CreateMap<CreateGamePlayerPerspectiveDto, GamePlayerPerspective>();
+            CreateMap<CreateMultiplayerModeDto, MultiplayerMode>();
+            CreateMap<CreateReleaseDateDto, ReleaseDate>();
+            CreateMap<CreateWebsiteDto, Website>();
+            CreateMap<CreateInvolvedCompanyDto, InvolvedCompany>();
+            CreateMap<CreateLanguageSupportDto, LanguageSupport>();
+
         }
     }
 }

@@ -37,6 +37,15 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new InvolvedCompanyPlatformConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageSupportConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageSupportTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new GameModeConfiguration());
+            modelBuilder.ApplyConfiguration(new GameGameModeConfiguration());
+            modelBuilder.ApplyConfiguration(new GamePlayerPerspectiveConfiguration());
+            modelBuilder.ApplyConfiguration(new PlayerPerspectiveConfiguration());
+            modelBuilder.ApplyConfiguration(new MultiplayerModeConfiguration());
+            modelBuilder.ApplyConfiguration(new ThemeConfiguration());
+            modelBuilder.ApplyConfiguration(new GenreConfiguration());
+            modelBuilder.ApplyConfiguration(new GameThemeConfiguration());
+            modelBuilder.ApplyConfiguration(new GameGenreConfiguration());
             
         }
     }
