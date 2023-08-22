@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams} from "@angular/common/http";
-import { CreateGameDto, CreateReleaseDateDto } from "../types/game/create-game";
+import { CreateGameDto, CreateGameLocalizationDto, CreateMultiplayerModeDto, CreateReleaseDateDto } from "../types/game/create-game";
 
 @Injectable()
 export class GameService{
@@ -69,21 +69,43 @@ export class GameService{
     return gameForm.get('releaseDates') as FormArray
   }
 
+  localization(gameForm: FormGroup) {
+    return gameForm.get('localization') as FormArray
+  }
+
   gameEdition(gameForm: FormGroup) {
     return this.general(gameForm).get('gameEdition') as FormGroup
   }
 
+  categorization(gameForm: FormGroup) {
+    return gameForm.get('categorization') as FormGroup
+  }
+
+  companies(gameForm: FormGroup) {
+    return this.general(gameForm).get('companies') as FormGroup
+  }
+
   createModel(gameForm: FormGroup):CreateGameDto {
+    console.log(gameForm, this.categorization(gameForm))
     let model: CreateGameDto = {
       name: this.general(gameForm).get('name')?.value,
+      story: gameForm.get('storyline')?.value,
       description: this.general(gameForm)?.get('description')?.value,
       gameStatus: this.general(gameForm)?.get('gameStatus')?.value,
       updateGameType: this.general(gameForm).get('updateGameType')?.value,
       updatedGameId : this.general(gameForm).get('updatedGameId')?.value, 
       gameEdition:null,
       alternativeNames: [],
+      gameLocalizations: [],
+      gameGenres:this.categorization(gameForm).get('genre')?.value,
+      gameThemes:this.categorization(gameForm).get('theme')?.value,
+      gameModes:this.categorization(gameForm).get('gameMode')?.value,
+      playerPerspectives:this.categorization(gameForm).get('perspectives')?.value,
+      multiplayerModes:this.converToCreatemultiplayerModeDto(this.categorization(gameForm).get('multiplayerModes') as FormArray),
       releaseDates: this.converToCreateReleaseDateDto(this.releaseDates(gameForm)),
-      websites: []
+      websites: [],
+      involvedCompanies: [],
+      languageSupports:[]
     }
 
     // General game edition
@@ -99,7 +121,43 @@ export class GameService{
       model.alternativeNames = this.general(gameForm).get('gameAlternativeNames')?.value
     }
 
+    // Localization
+    if (this.localization(gameForm).value != null && this.localization(gameForm).value.length > 0) {
+      this.localization(gameForm).value.forEach((entrie) => {
+        let temp: CreateGameLocalizationDto = {
+          regionId : entrie.region,
+          localizedTitle : entrie.localizedTitle
+        }
+        model.gameLocalizations.push(temp)
+      })
+    }
+
     return model;
+  }
+
+  converToCreatemultiplayerModeDto(list: FormArray) {
+    let convertedResults: Array<CreateMultiplayerModeDto> = []
+    let arrayTempValues = list.value
+    if (arrayTempValues != null && arrayTempValues.length > 0) {
+      arrayTempValues.forEach((entry) => {
+          let tempReleaseDate: CreateMultiplayerModeDto = {
+            campaignCoop: entry.coOpCampaign,
+            dropIn: entry.dropInOut,
+            lanCoop: entry.lanCoOp,
+            offlineCoop:entry.offlineCoOp,
+            offlineCoopMax: entry.offlineCoOpMax,
+            offlineMax : entry.offlineMax,
+            onlineCoop: entry.onlineCoOp,
+            onlineCoopMax: entry.onlineCoOpMax,
+            onlineMax : entry.onlineMax,
+            splitScreen: entry.offlineSpliteScreen,
+            splitScreenOnline :entry.onlineSplitScreen,
+            platformId : entry.platform,
+          }
+          convertedResults.push(tempReleaseDate)
+      });
+    }
+    return convertedResults;
   }
 
   converToCreateReleaseDateDto(list: FormArray) {

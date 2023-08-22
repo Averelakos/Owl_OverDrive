@@ -33,13 +33,12 @@ export class GenreThemeComponent {
     {id:14, name: 'Real Time Strategy(RTS)'},
     {id:15, name: 'Shooter'},
     {id:16, name: 'Role-playening(RPG)'},
-    {id:17, name: 'Shooter'},
-    {id:18, name: 'Simulator'},
-    {id:19, name: 'Sport'},
-    {id:20, name: 'Strategy'},
-    {id:21, name: 'Tactical'},
-    {id:22, name: 'Turn-based-strategy(TBS)'},
-    {id:23, name: 'Visual Novel'},
+    {id:17, name: 'Simulator'},
+    {id:18, name: 'Sport'},
+    {id:19, name: 'Strategy'},
+    {id:20, name: 'Tactical'},
+    {id:21, name: 'Turn-based-strategy(TBS)'},
+    {id:22, name: 'Visual Novel'},
   ]
 
   dataTheme = [
