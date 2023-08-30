@@ -7,12 +7,11 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 import { GameTypeComponent } from './components/game-type/game-type.component';
 import { GameStatusComponent } from './components/game-status/game-status.component';
 import { GameEditionComponent } from './components/game-edition/game-edition.component';
-import { GameAlternativeTitleComponent } from './components/game-alternative-titles/game-alternative-titles.component';
 
 @Component({
   selector: 'app-general-info',
   standalone:true,
-  imports:[CommonModule, StandarInputComponent, StandarTextareaComponent, GameTypeComponent, GameStatusComponent, GameEditionComponent, GameAlternativeTitleComponent],
+  imports:[CommonModule, StandarInputComponent, StandarTextareaComponent, GameTypeComponent, GameStatusComponent, GameEditionComponent],
   templateUrl: './general-info.component.html',
   styleUrls: ['./general-info.component.scss']
 })
@@ -22,9 +21,5 @@ export class GeneralInfoComponent {
   formGroup!: FormGroup
   constructor(
     public responsiveService: ResponsiveService, 
-    public parentForm: FormGroupDirective, 
-    )
-    {
-      
-    }
+    public parentForm: FormGroupDirective,){}
 }

@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { FormGroupDirective } from '@angular/forms';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
+import { StadarInputPillOption, StandartPillSelectComponent } from 'src/app/common/pill-select/standart-pill-select/standart-pill-select.component';
 
 @Component({
   selector: 'app-genre-theme',
   standalone: true,
-  imports: [CommonModule, StandarSelectSearchComponent],
+  imports: [CommonModule, StandarSelectSearchComponent, StandartPillSelectComponent],
   templateUrl: './genre-theme.component.html',
   styleUrls: ['./genre-theme.component.scss']
 })
 export class GenreThemeComponent {
   deviceType = ResponsizeSize
-  listOfGenre!: Array<SelectSearchInputValue>
-  listOfThemes!: Array<SelectSearchInputValue>
+  listOfGenre!: Array<StadarInputPillOption>
+  listOfThemes!: Array<StadarInputPillOption>
 
   dataGenre = [
     {id:1, name: 'Adventure'},
@@ -72,12 +73,13 @@ export class GenreThemeComponent {
   }
 
 
-  convertForSearchSelect(data: any): Array<SelectSearchInputValue> {
-    let output: Array<SelectSearchInputValue> = []
+  convertForSearchSelect(data: any): Array<StadarInputPillOption> {
+    let output: Array<StadarInputPillOption> = []
     data.forEach((item) => {
-      let newItem: SelectSearchInputValue = {
+      let newItem: StadarInputPillOption = {
         id: item.id,
-        value: item.name
+        value: item.name,
+        isVisible: true
       } 
       output.push(newItem)
     })

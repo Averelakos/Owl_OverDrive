@@ -51,30 +51,30 @@
     width: 50%;
 }
 
-.remove-alternative {
-    width: 5%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
+// .remove-alternative {
+//     width: 5%;
+//     display: flex;
+//     align-items: center;
+//     text-align: center;
+//     justify-content: center;
+// }
 
-.remove-alternative > button {
-    width: 20px;
-    height: 24px;
-    color: #fff;
-    background-color: #e91916;
-    border-color: #d21714;
+// .remove-alternative > button {
+//     width: 20px;
+//     height: 24px;
+//     color: #fff;
+//     background-color: #e91916;
+//     border-color: #d21714;
 
-    margin-bottom: 0;
-    font-weight: normal;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-}
+//     margin-bottom: 0;
+//     font-weight: normal;
+//     text-align: center;
+//     vertical-align: middle;
+//     touch-action: manipulation;
+//     cursor: pointer;
+//     background-image: none;
+//     border: 1px solid transparent;
+// }
 
 .mobile {
     width: 25px;
@@ -161,4 +161,26 @@
 .add-button-position {
     margin-top: 5px;
     margin-left: 5px;
+}
+
+.remove-alternative{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    color: red;
+    cursor: pointer;
+}
+
+.remove-alternative a {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.remove-alternative a:hover {
+    background: rgba(255, 0, 0, 0.301);
 }

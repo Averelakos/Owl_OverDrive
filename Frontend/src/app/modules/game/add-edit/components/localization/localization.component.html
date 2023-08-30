@@ -1,10 +1,13 @@
-<div [formGroup]="parentForm.form">
-    <div [formArrayName]="'localization'">
-        <ng-container *ngFor="let item of localizations().controls; let i=index" [formGroupName]="i">
-            <app-localization-panel (remove)="removeIndex($event)" [index]="i"></app-localization-panel>
-        </ng-container>
-    </div>
-    <div>
-        <button class="btn btn-primary" (click)="addNewLocalization()">Add a platform release date</button>
+<div class="multiplayer-mode-container">
+    <div [formGroup]="parentForm.form">
+        <div [formArrayName]="'localization'">
+            <ng-container *ngFor="let item of localizations().controls; let i=index" [formGroupName]="i">
+                <app-localization-panel (remove)="removeIndex($event)" [index]="i"></app-localization-panel>
+            </ng-container>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="addNewLocalization()">Add a platform release date</button>
+        </div>
     </div>
 </div>
+

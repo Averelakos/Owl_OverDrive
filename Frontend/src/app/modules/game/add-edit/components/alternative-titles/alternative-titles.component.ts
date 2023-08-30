@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
+import { EAlternativeTitleType } from 'src/app/core/enums/enum-alternative-title-type';
+import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
-import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
-import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
-import { EAlternativeTitleType } from 'src/app/core/enums/enum-alternative-title-type';
 
 @Component({
-  selector: 'app-game-alternative-titles',
+  selector: 'app-alternative-titles',
   standalone: true,
   imports: [CommonModule, StandarSelectSearchComponent, StandarInputComponent, CheckMarkCheckBoxButtonComponent, FormsModule, ReactiveFormsModule],
-  templateUrl: './game-alternative-titles.component.html',
-  styleUrls: ['./game-alternative-titles.component.scss']
+  templateUrl: './alternative-titles.component.html',
+  styleUrls: ['./alternative-titles.component.scss']
 })
-export class GameAlternativeTitleComponent {
+export class AlternativeTitlesComponent {
   deviceType = ResponsizeSize
   isEdition: boolean = false
   alternativeTypes = EAlternativeTitleType

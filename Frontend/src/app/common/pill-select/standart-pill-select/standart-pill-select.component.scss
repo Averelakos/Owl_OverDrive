@@ -1,7 +1,13 @@
+:host{
+    display: contents;
+}
+
 .standart-input-pill-container {
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    min-height: 63.8px;
 }
 
 .standart-input-pill-container > label {
@@ -20,16 +26,21 @@
     border: 2px solid #DDD;
     background-color: rgb(255, 255, 255);
     border-radius: 4px;
-    padding: 2p;
+    padding: 2px;
     align-items: center;
-    flex: 1 1 0%;
+    // flex: 1 1 0%;
     transition: all 100ms ease 0s;
 }
 
 .focus {
     border: 2px solid #c15375;
-    box-shadow: 15px 18px 8px -8px rgba(92,83,83,0.76);
+    position: absolute;
+    // box-shadow: 15px 18px 8px -8px rgba(92,83,83,0.76);
     z-index: 3;
+}
+
+label + .focus {
+    top: 1.8rem;
 }
 
 .input-for-pills {
@@ -72,7 +83,7 @@
     max-height: 100px;
     overflow-y: scroll;
     cursor: pointer;
-    // z-index: 100;
+    z-index: 3;
     margin-top: 5px;
     display: none;
 }

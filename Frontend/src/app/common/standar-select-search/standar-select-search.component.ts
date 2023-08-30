@@ -37,6 +37,8 @@ export class StandarSelectSearchComponent implements  OnInit {
   filteredInputValues: Array<SelectSearchInputValue> = []
   openSelectField:boolean = false;
   searchValue:string = ''
+  noResults: boolean = false
+  loader: boolean = false
   private unsubscribe: Subscription | undefined
 
   constructor(public parentForm: FormGroupDirective){
@@ -76,6 +78,8 @@ export class StandarSelectSearchComponent implements  OnInit {
     this.unsubscribe?.unsubscribe()
     this.formGroup.get(this.controlName)?.setValue(selected[0].id)
     this.inputValue = selected[0].value
+    this.openSelectField = false
+    this.selectIsFocused = false
   }
 
   clickToRemoveSelectedOption(){
@@ -86,6 +90,8 @@ export class StandarSelectSearchComponent implements  OnInit {
   clickOutSide(){
     this.openSelectField = false
     this.selectIsFocused = false
+    this.loader = false
+    this.noResults = false
     // let inputValue = (<HTMLInputElement>document.getElementById('inputSearchOption'));
     // this.filteredInputValues = this.listOfInputValues
     // if (inputValue != null) {
@@ -97,6 +103,18 @@ export class StandarSelectSearchComponent implements  OnInit {
     const searchInput = event.target.value
     if (this.apiSearchEnable) {
       this.searchInput.emit(searchInput)
+      if (searchInput.length > 0){
+        this.loader = true
+        setTimeout(()=>{
+            this.loader = false
+            this.noResults = true
+        }, 3000);
+
+      }
+      else {
+        this.noResults = false
+        this.loader = false
+      }
     } else {
       this.filteredInputValues = this.listOfInputValues
     .map((option) => option)

@@ -98,6 +98,7 @@ export class StandartPillSelectComponent implements OnInit {
       }
     }
     this.selectedOptions = []
+    this.formGroup.controls[this.controlName].patchValue(null)
   }
 
   inputFilter(e) {

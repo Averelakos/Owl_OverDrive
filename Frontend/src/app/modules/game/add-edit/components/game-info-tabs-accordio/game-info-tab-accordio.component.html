@@ -3,6 +3,9 @@
         <li class="tab-button" [ngClass]="{'active': tabInfo.general.active}">
             <a (click)="toggleActive(tabInfo.general.id)">{{tabInfo.general.title}}</a>
         </li>
+        <li class="tab-button" [ngClass]="{'active': tabInfo.alternative.active}">
+            <a (click)="toggleActive(tabInfo.alternative.id)">{{tabInfo.alternative.title}}</a>
+        </li>
         <li class="tab-button" [ngClass]="{'active': tabInfo.localization.active}">
             <a (click)="toggleActive(tabInfo.localization.id)">{{tabInfo.localization.title}}</a>
         </li>
@@ -33,6 +36,14 @@
             </div>
             <div *ngIf="tabInfo.general.active" class="tab-content">
                 <app-general-info></app-general-info>
+            </div>
+        </div>
+        <div class="tab">
+            <div *ngIf="(responsiveService.responsiveSize | async) !== deviceType.Desktop" class="tab-button" [ngClass]="{'active': tabInfo.alternative.active}">
+                <a (click)="toggleActive(tabInfo.alternative.id)">{{tabInfo.alternative.title}}</a>
+            </div>
+            <div *ngIf="tabInfo.alternative.active" class="tab-content">
+                <app-alternative-titles></app-alternative-titles>
             </div>
         </div>
         <div class="tab">

@@ -10,13 +10,14 @@ export class GameInfoTabAccordioComponent {
   deviceType = ResponsizeSize
   tabInfo = {
     general: {id:1, title: 'General', active: true},
-    localization: {id:2, title: 'Localiazation', active: false},
-    categorization: {id:3, title: 'Categorization', active: false},
-    releaseDates: {id:4, title: 'Release Dates', active: false},
-    websites: {id:6, title: 'Websites', active: false},
-    companies: {id:7, title: 'Companies', active: false},
-    story: {id:9, title: 'Story', active: false},
-    languages: {id:10, title: 'Supported Languages', active: false}
+    alternative:{id: 2, title: 'Alternative Titles', active: false},
+    localization: {id:3, title: 'Localiazation', active: false},
+    categorization: {id:4, title: 'Categorization', active: false},
+    releaseDates: {id:5, title: 'Release Dates', active: false},
+    websites: {id:7, title: 'Websites', active: false},
+    companies: {id:8, title: 'Companies', active: false},
+    story: {id:10, title: 'Story', active: false},
+    languages: {id:11, title: 'Supported Languages', active: false}
   }
 
   constructor(public responsiveService: ResponsiveService, ){}

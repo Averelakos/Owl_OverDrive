@@ -40,6 +40,7 @@
     align-items: center;
     text-align: center;
     padding: 6px 12px 6px 12px;
+    background-color: rgb(255, 255, 255);
 }
 
 .standar-select-search-container .select.focused{
@@ -121,4 +122,12 @@
 .select-dropdown-search-options ul .search-options:hover {
     background: #c15375;
     color: #f5f5f5;
+}
+
+.search-options {
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333;
+    font-size: 12.56px;
+    padding-left: 5px;
 }

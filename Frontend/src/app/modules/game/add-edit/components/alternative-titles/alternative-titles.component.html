@@ -1,5 +1,4 @@
 <div class="game-alternative-titles-container" [formGroup]="general()">
-    <label>Alternative titles:</label>
     <ng-container [formArrayName]="'gameAlternativeNames'">
         <div class="list" *ngFor="let title of alternativeTitles().controls; let i=index" [formGroupName]="i">
             <div [ngClass]="{'column': (this.responsiveService.responsiveSize | async) === deviceType.Mobile, 'row': (this.responsiveService.responsiveSize | async) !== deviceType.Mobile}">
@@ -18,12 +17,16 @@
                 </div>
             </div>
             <div class="remove-alternative" [ngClass]="{'mobile': (this.responsiveService.responsiveSize | async) === deviceType.Mobile}">
-                <button (click)="removeTitle(i)">X</button>
+                <!-- <button (click)="removeTitle(i)">X</button> -->
+                <!-- <div class="remove-release"> -->
+                    <a (click)="removeTitle(i)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                <!-- </div> -->
             </div>
         </div>
     </ng-container>
     <div class="add-button-position">
         <button class="btn btn-primary" (click)="addNewTitle()">Add alternative title</button>
     </div>
-    <hr class="horizontal-line">
 </div>
