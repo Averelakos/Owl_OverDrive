@@ -20,11 +20,11 @@
 
 
     <form class="form_group_add_edit" [formGroup]="gameForm">
-        <app-game-info-tab-accordio></app-game-info-tab-accordio>
+        <app-game-info-tab-accordio (create)="createGame()"></app-game-info-tab-accordio>
     </form>
 
-    <div  class="add_edit_buttons">
+    <!-- <div  class="add_edit_buttons">
         <a class="btn btn-default" >Back</a>
         <button (click)="createGame()" class="btn btn-primary">Create</button>
-    </div>
+    </div> -->
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 export class GameInfoTabAccordioComponent {
   deviceType = ResponsizeSize
   currentElement: number = 1
+  @Output() create = new EventEmitter
   tabInfo = {
     general: {id:1, title: 'General', active: true},
     alternative:{id: 2, title: 'Alternative Titles', active: false},
@@ -72,6 +73,10 @@ export class GameInfoTabAccordioComponent {
 
       });
     }
+  }
+
+  clickToCreate() {
+    this.create.emit()
   }
 
 }
