@@ -8,6 +8,7 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 })
 export class GameInfoTabAccordioComponent {
   deviceType = ResponsizeSize
+  currentElement: number = 1
   tabInfo = {
     general: {id:1, title: 'General', active: true},
     alternative:{id: 2, title: 'Alternative Titles', active: false},
@@ -26,10 +27,51 @@ export class GameInfoTabAccordioComponent {
     Object.entries(this.tabInfo).forEach(element => {
       if(element[1].id === id && element[1].active === false) {
         element[1].active = true
+        this.currentElement = element[1].id
       } else {
         element[1].active = false
       }
     });
+  }
+
+  clickToGoBack() {
+    let currentTab = Object.entries(this.tabInfo).find(x => x[1].id == this.currentElement)
+    let previewsTab = Object.entries(this.tabInfo).find(x => x[1].id == this.currentElement - 1)
+    if (previewsTab != undefined && currentTab != undefined) {
+      let previewsIdentifier = previewsTab[1].id
+      let currentIdentifier = currentTab[1].id
+      Object.entries(this.tabInfo).forEach(element => {
+        if(element[1].id === previewsIdentifier) {
+          element[1].active = true
+          this.currentElement = element[1].id
+        } 
+
+        if(element[1].id === currentIdentifier) {
+          element[1].active = false
+        } 
+
+      });
+    }
+  }
+
+  clickToGoNext() {
+    let currentTab = Object.entries(this.tabInfo).find(x => x[1].id == this.currentElement)
+    let nextTab = Object.entries(this.tabInfo).find(x => x[1].id == this.currentElement + 1)
+    if (nextTab != undefined && currentTab != undefined) {
+      let nextIdentifier = nextTab[1].id
+      let currentIdentifier = currentTab[1].id
+      Object.entries(this.tabInfo).forEach(element => {
+        if(element[1].id === nextIdentifier) {
+          element[1].active = true
+          this.currentElement = element[1].id
+        } 
+
+        if(element[1].id === currentIdentifier) {
+          element[1].active = false
+        } 
+
+      });
+    }
   }
 
 }
