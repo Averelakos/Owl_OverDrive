@@ -27,5 +27,12 @@ namespace Owl.Overdrive.Business.Facades
             return result;
         }
 
+        public async Task<SearchPlatformDto?> GetPlatform(long input)
+        {
+            var platform = await _repoUoW.PlatformRepository.GetPlatformById(input);
+            var result = _mapper.Map<SearchPlatformDto>(platform);
+            return result;
+        }
+
     }
 }

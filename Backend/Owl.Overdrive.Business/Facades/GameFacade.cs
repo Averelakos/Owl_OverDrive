@@ -81,8 +81,8 @@ namespace Owl.Overdrive.Business.Facades
             List<SearchGameDto> result = new List<SearchGameDto>();
             if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
             {
-                //var list = await _repoUoW.CompanyRepository.Search(searchInput);
-                //result = _mapper.Map<List<SearchParentCompanyDto>>(list);
+                var list = await _repoUoW.CompanyRepository.Search(searchInput);
+                result = _mapper.Map<List<SearchGameDto>>(list);
             }
 
             return result;

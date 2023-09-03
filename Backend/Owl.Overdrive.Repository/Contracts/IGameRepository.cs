@@ -1,5 +1,4 @@
-﻿using Owl.Overdrive.Domain.Entities.Company;
-using Owl.Overdrive.Domain.Entities.Game;
+﻿using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Repository.Contracts
 {

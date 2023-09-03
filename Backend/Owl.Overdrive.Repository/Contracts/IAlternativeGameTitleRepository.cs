@@ -1,5 +1,4 @@
-﻿using Owl.Overdrive.Domain.Entities.Company;
-using Owl.Overdrive.Domain.Entities.Game;
+﻿using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Repository.Contracts
 {
@@ -10,7 +9,7 @@ namespace Owl.Overdrive.Repository.Contracts
         /// </summary>
         /// <param name="alternativeGameTitles">The alternative game titles.</param>
         /// <returns></returns>
-        Task<List<AlternativeGameTitle>> InsertRange(List<AlternativeGameTitle> alternativeGameTitles);
+        Task<List<AlternativeName>> InsertRange(List<AlternativeName> alternativeGameTitles);
         Task BeginTransactionAsync();
         Task CommitTransactionAsync();
         Task RollBackTransactionAsync();

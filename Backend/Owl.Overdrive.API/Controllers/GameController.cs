@@ -27,7 +27,7 @@ namespace Owl.Overdrive.Controllers
         [HttpPost("Search")]
         public async Task<ActionResult<List<SearchParentCompanyDto>>> Search([FromQuery] string searchInput)
         {
-            var result = await _gameFacade.Search(searchInput);
+           var result = await _gameFacade.Search(searchInput);
             return Ok(result);
         }
 

@@ -16,5 +16,10 @@ namespace Owl.Overdrive.Repository.Repositories
         {
             return new List<Platform>(await base.GetAll());
         }
+
+        public async Task<Platform?> GetPlatformById(long id)
+        {
+            return await base.GetById(id);
+        }
     }
 }

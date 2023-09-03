@@ -31,7 +31,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
             builder.HasOne(e => e.Company)
                 .WithMany()
                 .HasForeignKey(e =>e.CompanyId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

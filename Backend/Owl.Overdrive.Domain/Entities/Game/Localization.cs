@@ -2,7 +2,7 @@
 
 namespace Owl.Overdrive.Domain.Entities.Game
 {
-    public class GameLocalization :  BaseEntity
+    public class Localization :  BaseEntity
     {
         public long RegionId { get; set; }
         public long GameId { get; set; }

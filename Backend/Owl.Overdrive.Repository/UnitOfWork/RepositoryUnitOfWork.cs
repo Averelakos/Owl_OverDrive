@@ -24,6 +24,7 @@ namespace Owl.Overdrive.Repository.UnitOfWork
         public ILanguageRepository LanguageRepository { get; }
         public IGameRepository GameRepository { get; }
         public IAlternativeGameTitleRepository AlternativeGameTitleRepository { get; }
+        public IGameLocalizationRepository GameLocalizationRepository { get; }
         #endregion Properties
 
         public RepositoryUnitOfWork(
@@ -38,7 +39,8 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             IGameStatusRepository gameStatusRepository,
             ILanguageRepository languageRepository,
             IGameRepository gameRepository, 
-            IAlternativeGameTitleRepository alternativeGameTitleRepository
+            IAlternativeGameTitleRepository alternativeGameTitleRepository,
+            IGameLocalizationRepository gameLocalizationRepository
             )
         {
             _dbContext = dbContext;
@@ -53,6 +55,7 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             LanguageRepository = languageRepository;
             GameRepository = gameRepository;
             AlternativeGameTitleRepository = alternativeGameTitleRepository;
+            GameLocalizationRepository = gameLocalizationRepository;    
         }
     }
 }

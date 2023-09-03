@@ -23,14 +23,14 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new CompanyLogoConfiguration());
             modelBuilder.ApplyConfiguration(new PlatformConfiguration());
             modelBuilder.ApplyConfiguration(new RegionConfiguration());
-            modelBuilder.ApplyConfiguration(new GameStatusConfiguration());
+            //modelBuilder.ApplyConfiguration(new GameStatusConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
 
             // Game
             modelBuilder.ApplyConfiguration(new GameConfiguration());
             modelBuilder.ApplyConfiguration(new GameEditionConfiguration());
             modelBuilder.ApplyConfiguration(new AlternativeNameConfiguration());
-            modelBuilder.ApplyConfiguration(new GameLocalizationConfiguration());
+            modelBuilder.ApplyConfiguration(new LocalizationConfiguration());
             modelBuilder.ApplyConfiguration(new ReleaseDateConfiguration());
             modelBuilder.ApplyConfiguration(new WebsitesConfiguration());
             modelBuilder.ApplyConfiguration(new InvovlvedCompanyConfiguration());
@@ -46,7 +46,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new GameThemeConfiguration());
             modelBuilder.ApplyConfiguration(new GameGenreConfiguration());
-            
+
         }
     }
 }

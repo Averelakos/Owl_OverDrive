@@ -13,5 +13,6 @@ namespace Owl.Overdrive.Business.Contracts
     public interface IPlatformFacade
     {
         Task<List<SearchPlatformDto>> SearchPlatform(string? searchInput);
+        Task<SearchPlatformDto?> GetPlatform(long input);
     }
 }

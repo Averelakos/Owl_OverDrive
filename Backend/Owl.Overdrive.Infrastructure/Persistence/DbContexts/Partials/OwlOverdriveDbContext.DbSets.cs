@@ -15,20 +15,20 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<CompanyLogo> CompanyLogo => Set<CompanyLogo>();
         public DbSet<Platform> Platforms => Set<Platform>();
         public DbSet<Region> Regions => Set<Region>();
-        public DbSet<GameStatus> GameStatuses => Set<GameStatus>();
+        //public DbSet<GameStatus> GameStatuses => Set<GameStatus>();
         public DbSet<Language> Languages => Set<Language>();
 
         // Game
         public DbSet<Game> Games => Set<Game>();
         public DbSet<GameEdition> GameEditions => Set<GameEdition>();
         public DbSet<AlternativeName> AlternativeGameTitles => Set<AlternativeName>();
-        public DbSet<GameLocalization> GameLocalization => Set<GameLocalization>();
+        public DbSet<Localization> Localization => Set<Localization>();
         public DbSet<ReleaseDate> ReleaseDate => Set<ReleaseDate>();
         public DbSet<Website> Websites => Set<Website>();
         public DbSet<InvolvedCompany> InvolvedCompanies => Set<InvolvedCompany>();
         public DbSet<InvolvedCompanyPlatform> InvolvedCompanyPlatforms => Set<InvolvedCompanyPlatform>();
         public DbSet<LanguageSupport> LanguageSupport => Set<LanguageSupport>();
-        public DbSet<LanguageSupportType> LanguageSupportTypes  => Set<LanguageSupportType>();
+        public DbSet<LanguageSupportType> LanguageSupportTypes => Set<LanguageSupportType>();
         public DbSet<GameMode> GameModes => Set<GameMode>();
         public DbSet<GameGameMode> GameGameModes => Set<GameGameMode>();
         public DbSet<GamePlayerPerspective> GamePlayers => Set<GamePlayerPerspective>();
@@ -37,6 +37,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<Theme> Theme => Set<Theme>();
         public DbSet<Genre> Genre => Set<Genre>();
         public DbSet<GameTheme> GameThemes => Set<GameTheme>();
-        public DbSet<GameGenre> GameGenres  => Set<GameGenre>();
+        public DbSet<GameGenre> GameGenres => Set<GameGenre>();
     }
 }

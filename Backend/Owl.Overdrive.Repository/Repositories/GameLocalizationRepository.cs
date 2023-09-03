@@ -4,13 +4,13 @@ using Owl.Overdrive.Repository.Contracts;
 
 namespace Owl.Overdrive.Repository.Repositories
 {
-    public class GameLocalizationRepository : BaseRepository<GameLocalization>, IGameLocalizationRepository
+    public class GameLocalizationRepository : BaseRepository<Localization>, IGameLocalizationRepository
     {
         public GameLocalizationRepository(OwlOverdriveDbContext dbContext) : base(dbContext)
         {
         }
 
-        private IQueryable<GameLocalization> GetGameLocalization()
+        private IQueryable<Localization> GetGameLocalization()
         {
             return _DbSet;
         }
@@ -19,7 +19,7 @@ namespace Owl.Overdrive.Repository.Repositories
         /// </summary>
         /// <param name="alternativeGameTitles">The alternative game titles.</param>
         /// <returns></returns>
-        public async Task<List<GameLocalization>> InsertRange(List<GameLocalization> gameLocalizations)
+        public async Task<List<Localization>> InsertRange(List<Localization> gameLocalizations)
         {
             return await base.InsertRange(gameLocalizations);
         }

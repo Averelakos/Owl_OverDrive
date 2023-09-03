@@ -6,5 +6,6 @@ namespace Owl.Overdrive.Repository.Contracts
     public interface IPlatformRepository
     {
         Task<List<Platform>> GetAllPlatforms();
+        Task<Platform?> GetPlatformById(long id);
     }
 }

@@ -4,23 +4,23 @@ using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurations
 {
-    public class GameLocalizationConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<GameLocalization>
+    public class LocalizationConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<Localization>
     {
-        public GameLocalizationConfiguration() : base()
+        public LocalizationConfiguration() : base()
         {
 
         }
 
-        public void Configure(EntityTypeBuilder<GameLocalization> builder)
+        public void Configure(EntityTypeBuilder<Localization> builder)
         {
             ApplyConfiguration(builder);
             ConfigurationBase(builder);
         }
 
-        public static void ApplyConfiguration(EntityTypeBuilder<GameLocalization> builder)
+        public static void ApplyConfiguration(EntityTypeBuilder<Localization> builder)
         {
             // Table Name
-            builder.ToTable("GameLocalizations");
+            builder.ToTable("Localizations");
 
             // Properties parameters
             builder.Property(p => p.LocalizedTitle).HasMaxLength(255);

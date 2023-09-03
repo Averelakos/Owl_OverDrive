@@ -89,5 +89,12 @@ namespace Owl.Overdrive.Repository.Contracts
         /// The game title repository.
         /// </value>
         IAlternativeGameTitleRepository AlternativeGameTitleRepository { get; }
+        /// <summary>
+        /// Gets the game localization repository.
+        /// </summary>
+        /// <value>
+        /// The game localization repository.
+        /// </value>
+        IGameLocalizationRepository GameLocalizationRepository { get; }
     }
 }

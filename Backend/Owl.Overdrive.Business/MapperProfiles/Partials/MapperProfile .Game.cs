@@ -12,7 +12,7 @@ namespace Owl.Overdrive.Business.MapperProfiles
                 .ForMember(m => m.AlternativeGameTitles, opt => opt.MapFrom(m => m.AlternativeNames));
             CreateMap<CreateGameEditionDto, GameEdition>();
             CreateMap<CreativeAlternativeNameDto, AlternativeName>();
-            CreateMap<CreateGameLocalizationDto, GameLocalization>();
+            CreateMap<CreateGameLocalizationDto, Localization>();
             CreateMap<CreateGameGenreDto, GameGenre>();
             CreateMap<CreateGameThemeDto, GameTheme>();
             CreateMap<CreateGameModeDto, GameGameMode>();

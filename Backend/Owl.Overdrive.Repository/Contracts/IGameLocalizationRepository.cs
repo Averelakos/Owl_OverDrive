@@ -9,7 +9,7 @@ namespace Owl.Overdrive.Repository.Contracts
         /// </summary>
         /// <param name="gameLocalizations">The game localizations.</param>
         /// <returns></returns>
-        Task<List<GameLocalization>> InsertRange(List<GameLocalization> gameLocalizations);
+        Task<List<Localization>> InsertRange(List<Localization> gameLocalizations);
         Task BeginTransactionAsync();
         Task CommitTransactionAsync();
         Task RollBackTransactionAsync();
