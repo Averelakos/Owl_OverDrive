@@ -12,16 +12,28 @@ import { FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/f
 })
 export class PlayerPerspectiveComponent {
   perpectives = [
-    {id:1, name:'Auditory'},
-    {id:2, name:'Bird view / Isometric'},
-    {id:3, name:'First person'},
-    {id:4, name:'Side view'},
-    {id:5, name:'Text'},
-    {id:6, name:'Third person'},
-    {id:7, name:'Virtual Reality'},
+    {id:1, name:'Auditory', isChecked: false},
+    {id:2, name:'Bird view / Isometric', isChecked: false},
+    {id:3, name:'First person', isChecked: false},
+    {id:4, name:'Side view', isChecked: false},
+    {id:5, name:'Text', isChecked: false},
+    {id:6, name:'Third person', isChecked: false},
+    {id:7, name:'Virtual Reality', isChecked: false},
   ]
 
   constructor(public parentForm: FormGroupDirective){}
+
+  ngOnInit(): void {
+    if(this.playerPerspectives()?.value != null && this.playerPerspectives()?.value != undefined) {
+      this.playerPerspectives()?.value.forEach((entry) => {
+        this.perpectives.forEach(element => {
+          if(element.id === entry) {
+            element.isChecked = true
+          }
+        });
+      })
+    }
+  }
 
   checkBoxClicked(e: any, item) {
     let temp = this.playerPerspectives()?.value

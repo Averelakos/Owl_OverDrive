@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
-import { FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
@@ -25,7 +25,13 @@ export class GameEditionComponent {
     public responsiveService: ResponsiveService, 
     public parentForm: FormGroupDirective, 
     private gameService: GameService,
-  ){}
+  ){if (this.gameEdition().get('baseGame')?.value != null || this.gameEdition().get('editionTitle')?.value != null){
+    this.isEdition = true
+  }}
+
+  gameEdition(): FormGroup{
+    return this.parentForm.form.get('general')?.get('gameEdition') as FormGroup
+  }
 
   searchGames(input){
     if (input.length > 0) {
@@ -49,5 +55,9 @@ export class GameEditionComponent {
 
   onClick(e: boolean) {
     this.isEdition = e 
+    if (!this.isEdition) {
+      this.gameEdition().get('baseGame')?.patchValue(null) 
+      this.gameEdition().get('editionTitle')?.patchValue(null)
+    }
   }
 }

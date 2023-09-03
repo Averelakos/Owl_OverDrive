@@ -12,7 +12,12 @@ export class PlatformService{
 
   searchPlatform(searchInput: string){
     const params = new HttpParams().set('input', searchInput)
-    return this.http.post<any>(this.baseUrl + '/SearchPlatform', null, { params })
+    return this.http.post<any>(this.baseUrl + '/SearchPlatformByName', null, { params })
+  }
+
+  getPlatformById(searchInput: string){
+    const params = new HttpParams().set('input', searchInput)
+    return this.http.post<any>(this.baseUrl + '/GetPlatformById', null, { params })
   }
 
 }

@@ -5,6 +5,7 @@
             <app-check-mark-checkbox-button
             [label]="item.name"
             (clickEvent)="checkBoxClicked($event, item)"
+            [isChecked]="item.isChecked"
             ></app-check-mark-checkbox-button>
         </li>
     </ul>

@@ -108,4 +108,22 @@ export class PlatformReleaseComponent {
       this.listOfGameStatues.push(temp)
     })
   }
+
+  getExistingValue(input) {
+    if (input.length > 0) {
+      this.platformService
+      .getPlatformById(input)
+      .subscribe((response) => {
+        this.listOfPlatforms.length = 0
+        if (response.length > 0) {
+          response.forEach(element => {
+            this.listOfPlatforms.push({
+              id:element.id,
+              value: element.name
+            })
+          });
+        } 
+      })
+    }
+  }
 }

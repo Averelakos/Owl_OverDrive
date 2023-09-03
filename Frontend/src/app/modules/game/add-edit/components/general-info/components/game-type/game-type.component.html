@@ -8,7 +8,7 @@
         <div *ngFor="let option of gameTypeOptions">
             <app-standar-checkbox-button 
                 [label]="option.type" 
-                (clickEvent)="onClick(option, $event)"
+                (clickEvent)="onClick(option)"
                 [isChecked]="option.isChecked"
                 [dissableUncheck]="true"
             ></app-standar-checkbox-button>

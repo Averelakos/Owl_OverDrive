@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
@@ -16,7 +16,7 @@ export interface StadarInputPillOption {
   templateUrl: './standart-pill-select.component.html',
   styleUrls: ['./standart-pill-select.component.scss']
 })
-export class StandartPillSelectComponent implements OnInit {
+export class StandartPillSelectComponent implements OnInit, AfterViewInit {
   @ViewChild('inputForPills') inputElement:ElementRef;
   @ViewChild('inputForPillFirstChild') firstChildElement:ElementRef;
   @Input() options: Array<StadarInputPillOption> = []
@@ -34,11 +34,28 @@ export class StandartPillSelectComponent implements OnInit {
   noResults: boolean = false
   loader: boolean = false
 
-  constructor(private renderer: Renderer2,public parentForm: FormGroupDirective){}
+  constructor(private renderer: Renderer2,public parentForm: FormGroupDirective, private cdRef: ChangeDetectorRef  ){}
 
   ngOnInit(): void {
     this.filteredInputValue = this.options
     this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
+  }
+
+  ngAfterViewInit(): void {
+    if (this.formGroup.controls[this.controlName]?.value != null && this.formGroup.controls[this.controlName]?.value != undefined && this.formGroup.controls[this.controlName]?.value.length > 0) {
+      this.formGroup.controls[this.controlName].value.forEach((entry) => {
+        console.log(entry)
+        this.options.forEach((option) => {
+          if (option.id === entry) {
+            this.addNewPill(option)
+            this.selectedOptions.push(option.id)
+            option.isVisible = false
+          }
+        })
+      })
+    }
+
+    this.cdRef.detectChanges()
   }
 
   setOption(option: StadarInputPillOption) {
@@ -129,7 +146,6 @@ export class StandartPillSelectComponent implements OnInit {
 
   clickOpenOptions() {
     this.open = true
-    console.log(this.filteredInputValue.length === 0)
   }
 
   clickToClose(){

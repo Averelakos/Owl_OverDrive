@@ -31,6 +31,7 @@ export class StandarSelectSearchComponent implements  OnInit {
   @Input() listOfInputValues: Array<SelectSearchInputValue> = []
   @Input() apiSearchEnable: boolean = false
   @Output() searchInput = new EventEmitter<string>()
+  @Output() retrieveApiValue = new EventEmitter<number>()
 
   inputValue: string | null = null;
   selectIsFocused: boolean = false;
@@ -55,11 +56,15 @@ export class StandarSelectSearchComponent implements  OnInit {
       this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
     }
 
-   this.unsubscribe =  this.formGroup.get(this.controlName)?.valueChanges.subscribe((b) => {
-      if (this.inputValue === null && b != null && this.inputValue !== b) {
-        this.clickSelectOption(this.formGroup.get(this.controlName)?.value)
+    let existingValue = this.formGroup.get(this.controlName)?.value
+    
+    if (this.inputValue === null && existingValue != null && this.inputValue !== existingValue) {
+      if(this.apiSearchEnable) {
+        this.retrieveApiValue.emit(existingValue)
       }
-    })
+      this.clickSelectOption(existingValue)
+    }
+
   }
 
   clickSelectSearchField(){
@@ -75,7 +80,7 @@ export class StandarSelectSearchComponent implements  OnInit {
     if (selected != null && selected.length > 1){
       return
     }
-    this.unsubscribe?.unsubscribe()
+    // this.unsubscribe?.unsubscribe()
     this.formGroup.get(this.controlName)?.setValue(selected[0].id)
     this.inputValue = selected[0].value
     this.openSelectField = false

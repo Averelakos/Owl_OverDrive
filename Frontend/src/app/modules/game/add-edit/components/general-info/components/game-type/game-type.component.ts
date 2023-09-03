@@ -28,7 +28,15 @@ export class GameTypeComponent {
     private gameService: GameService,
   ){
     this.convertEnumToArray() 
-    this.clickMainGame()
+    if (this.parentForm.form.get('general')?.get('updateGameType')?.value != null) {
+      this.gameTypeOptions.forEach((item) => {
+        if (item.type === this.parentForm.form.get('general')?.get('updateGameType')?.value) {
+          this.onClick(item)
+        }
+      })
+    } else {
+      this.clickMainGame()
+    }
   }
 
   clickMainGame() {
@@ -40,7 +48,7 @@ export class GameTypeComponent {
     this.parentForm.form.get('general')?.get('updatedGameId')?.patchValue(null)
   }
 
-  onClick(option: any, e: any){
+  onClick(option: any){
     this.main.checked = false
       this.gameTypeOptions.forEach((item) => {
         if (item.id === option.id) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroupDirective } from '@angular/forms';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
@@ -10,21 +10,32 @@ import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-butt
   templateUrl: './game-modes.component.html',
   styleUrls: ['./game-modes.component.scss']
 })
-export class GameModesComponent {
+export class GameModesComponent implements OnInit{
   gamemode = [
-    {id:1, name:'Battle Royale'},
-    {id:2, name:'Co-operative'},
-    {id:3, name:'Massively Multiplayer Online(MMO)'},
-    {id:4, name:'Multiplayer'},
-    {id:5, name:'Single player'},
-    {id:6, name:'Split screen'},
+    {id:1, name:'Battle Royale', isChecked: false},
+    {id:2, name:'Co-operative', isChecked: false},
+    {id:3, name:'Massively Multiplayer Online(MMO)', isChecked: false},
+    {id:4, name:'Multiplayer', isChecked: false},
+    {id:5, name:'Single player', isChecked: false},
+    {id:6, name:'Split screen', isChecked: false},
   ]
 
   constructor(public parentForm: FormGroupDirective){}
 
+  ngOnInit(): void {
+    if(this.gameModes()?.value != null && this.gameModes()?.value != undefined) {
+      this.gameModes()?.value.forEach((entry) => {
+        this.gamemode.forEach(element => {
+          if(element.id === entry) {
+            element.isChecked = true
+          }
+        });
+      })
+    }
+  }
+
   checkBoxClicked(e: any, item) {
     let temp = this.gameModes()?.value
-    console.log(temp)
     let valueExists = false 
     if (temp != null) {
       temp.forEach(element => {
