@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 
@@ -11,9 +12,11 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    partial class OwlOverdriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230907200709_AddTableGameThemes")]
+    partial class AddTableGameThemes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3913,47 +3916,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.ToTable("AlternativeNames", (string)null);
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Cover", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<byte[]>("ImageData")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("ImageTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.ToTable("Covers", (string)null);
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
                 {
                     b.Property<long>("Id")
@@ -3961,9 +3923,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long?>("CoverId")
-                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -4002,10 +3961,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CoverId")
-                        .IsUnique()
-                        .HasFilter("[CoverId] IS NOT NULL");
 
                     b.HasIndex("CreatedById");
 
@@ -4059,49 +4014,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.HasIndex("LastUpdatedById");
 
                     b.ToTable("GamesGameModes", (string)null);
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameGenre", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GameId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GenreId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.ToTable("GameGenres", (string)null);
                 });
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameMode", b =>
@@ -8631,30 +8543,8 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("LastUpdatedBy");
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Cover", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastUpdatedBy");
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
                 {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Cover", "Cover")
-                        .WithOne()
-                        .HasForeignKey("Owl.Overdrive.Domain.Entities.Game.Game", "CoverId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
@@ -8669,8 +8559,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .WithOne()
                         .HasForeignKey("Owl.Overdrive.Domain.Entities.Game.Game", "UpdatedGameId")
                         .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Cover");
 
                     b.Navigation("CreatedBy");
 
@@ -8708,39 +8596,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("Game");
 
                     b.Navigation("GameMode");
-
-                    b.Navigation("LastUpdatedBy");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameGenre", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany("GameGenres")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("Game");
-
-                    b.Navigation("Genre");
 
                     b.Navigation("LastUpdatedBy");
                 });
@@ -9224,8 +9079,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("AlternativeGameTitles");
 
                     b.Navigation("GameGameModes");
-
-                    b.Navigation("GameGenres");
 
                     b.Navigation("GamePlayerPerspectives");
 

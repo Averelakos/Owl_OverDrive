@@ -23,29 +23,30 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new CompanyLogoConfiguration());
             modelBuilder.ApplyConfiguration(new PlatformConfiguration());
             modelBuilder.ApplyConfiguration(new RegionConfiguration());
-            //modelBuilder.ApplyConfiguration(new GameStatusConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
 
             // Game
             modelBuilder.ApplyConfiguration(new GameConfiguration());
-            modelBuilder.ApplyConfiguration(new GameEditionConfiguration());
+            //modelBuilder.ApplyConfiguration(new GameEditionConfiguration());
             modelBuilder.ApplyConfiguration(new AlternativeNameConfiguration());
             modelBuilder.ApplyConfiguration(new LocalizationConfiguration());
             modelBuilder.ApplyConfiguration(new ReleaseDateConfiguration());
             modelBuilder.ApplyConfiguration(new WebsitesConfiguration());
             modelBuilder.ApplyConfiguration(new InvovlvedCompanyConfiguration());
             modelBuilder.ApplyConfiguration(new InvolvedCompanyPlatformConfiguration());
-            modelBuilder.ApplyConfiguration(new LanguageSupportConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageSupportTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageSupportConfiguration());
             modelBuilder.ApplyConfiguration(new GameModeConfiguration());
             modelBuilder.ApplyConfiguration(new GameGameModeConfiguration());
-            modelBuilder.ApplyConfiguration(new GamePlayerPerspectiveConfiguration());
             modelBuilder.ApplyConfiguration(new PlayerPerspectiveConfiguration());
+            modelBuilder.ApplyConfiguration(new GamePlayerPerspectiveConfiguration());
             modelBuilder.ApplyConfiguration(new MultiplayerModeConfiguration());
             modelBuilder.ApplyConfiguration(new ThemeConfiguration());
             modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new GameThemeConfiguration());
             modelBuilder.ApplyConfiguration(new GameGenreConfiguration());
+            modelBuilder.ApplyConfiguration(new CoverConfiguration());
+            //modelBuilder.ApplyConfiguration(new ScreenshotConfiguration());
 
         }
     }

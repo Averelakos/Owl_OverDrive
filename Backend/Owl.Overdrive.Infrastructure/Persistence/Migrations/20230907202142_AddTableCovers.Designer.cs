@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 
@@ -11,9 +12,11 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    partial class OwlOverdriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230907202142_AddTableCovers")]
+    partial class AddTableCovers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

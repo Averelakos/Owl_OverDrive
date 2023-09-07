@@ -32,7 +32,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
                 .WithMany(x => x.AlternativeGameTitles)
                 .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict)
-                .IsRequired(false);
+                .IsRequired(true);
 
         }
     }

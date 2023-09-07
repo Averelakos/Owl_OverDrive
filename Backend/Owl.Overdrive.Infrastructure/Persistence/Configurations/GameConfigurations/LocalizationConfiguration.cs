@@ -30,7 +30,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
                 .HasForeignKey(e => e.RegionId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(e => e.Game)
-              .WithMany()
+              .WithMany(e => e.Localizations)
               .HasForeignKey(e => e.GameId)
               .OnDelete(DeleteBehavior.Restrict);
         }

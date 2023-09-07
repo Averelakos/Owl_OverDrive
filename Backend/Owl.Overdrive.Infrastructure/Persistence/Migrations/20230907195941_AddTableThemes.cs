@@ -8,19 +8,18 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddRegionTable : Migration
+    public partial class AddTableThemes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Regions",
+                name: "Themes",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    RegionCode = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Name = table.Column<string>(type: "varchar(MAX)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     LastUpdated = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     CreatedById = table.Column<long>(type: "bigint", nullable: true),
@@ -28,15 +27,15 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Regions", x => x.Id);
+                    table.PrimaryKey("PK_Themes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Regions_Users_CreatedById",
+                        name: "FK_Themes_Users_CreatedById",
                         column: x => x.CreatedById,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Regions_Users_LastUpdatedById",
+                        name: "FK_Themes_Users_LastUpdatedById",
                         column: x => x.LastUpdatedById,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -44,30 +43,42 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Regions",
-                columns: new[] { "Id", "CreatedById", "LastUpdatedById", "Name", "RegionCode" },
+                table: "Themes",
+                columns: new[] { "Id", "CreatedById", "LastUpdatedById", "Name" },
                 values: new object[,]
                 {
-                    { 1L, null, null, "Worldwide", "WW" },
-                    { 2L, null, null, "Europe", "EU" },
-                    { 3L, null, null, "North America", "NA" },
-                    { 4L, null, null, "Australia", "AU" },
-                    { 5L, null, null, "New Zealand", "NZ" },
-                    { 6L, null, null, "Japan", "JP" },
-                    { 7L, null, null, "China", "CH" },
-                    { 8L, null, null, "Asia", "AS" },
-                    { 9L, null, null, "Korea", "KR" },
-                    { 10L, null, null, "Brazil", "BR" }
+                    { 1L, null, null, "Adventure" },
+                    { 2L, null, null, "Arcade" },
+                    { 3L, null, null, "Card & Board Game" },
+                    { 4L, null, null, "Fighting" },
+                    { 5L, null, null, "Hack and slash/ Beat 'em up" },
+                    { 6L, null, null, "Indie" },
+                    { 7L, null, null, "Music" },
+                    { 8L, null, null, "Pinball" },
+                    { 9L, null, null, "Platform" },
+                    { 10L, null, null, "Point-and-click" },
+                    { 11L, null, null, "Puzzle" },
+                    { 12L, null, null, "Quiz/Trivia" },
+                    { 13L, null, null, "Racing" },
+                    { 14L, null, null, "Real Time Strategy(RTS)" },
+                    { 15L, null, null, "Shooter" },
+                    { 16L, null, null, "Role-playening(RPG)" },
+                    { 17L, null, null, "Simulator" },
+                    { 18L, null, null, "Sport" },
+                    { 19L, null, null, "Strategy" },
+                    { 20L, null, null, "Tactical" },
+                    { 21L, null, null, "Turn-based-strategy(TBS)" },
+                    { 22L, null, null, "Visual Novel" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Regions_CreatedById",
-                table: "Regions",
+                name: "IX_Themes_CreatedById",
+                table: "Themes",
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Regions_LastUpdatedById",
-                table: "Regions",
+                name: "IX_Themes_LastUpdatedById",
+                table: "Themes",
                 column: "LastUpdatedById");
         }
 
@@ -75,7 +86,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Regions");
+                name: "Themes");
         }
     }
 }

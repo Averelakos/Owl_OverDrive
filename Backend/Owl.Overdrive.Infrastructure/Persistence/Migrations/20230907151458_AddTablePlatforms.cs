@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddPlatform : Migration
+    public partial class AddTablePlatforms : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

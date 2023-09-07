@@ -12,8 +12,8 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    [Migration("20230830103042_UpdateRegionTable")]
-    partial class UpdateRegionTable
+    [Migration("20230907185948_AddTableLanguageSupportTypes")]
+    partial class AddTableLanguageSupportTypes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -3869,6 +3869,416 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.AlternativeName", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.ToTable("AlternativeNames", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("GameStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Story")
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("UpdateGameType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("UpdatedGameId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.HasIndex("UpdatedGameId")
+                        .IsUnique()
+                        .HasFilter("[UpdatedGameId] IS NOT NULL");
+
+                    b.ToTable("Games", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.InvolvedCompany", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CompanyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Developer")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Porting")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Publisher")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Supporting")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.ToTable("InvolvedCompanies", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.InvolvedCompanyPlatform", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("InvolvedCompanyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("PlatformId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("InvolvedCompanyId");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.HasIndex("PlatformId");
+
+                    b.ToTable("InvolvedCompaniesPlatforms", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.LanguageSupportType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.ToTable("LanguageSupportTypes", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Audio"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Subtitles"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Interface"
+                        });
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Localization", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LocalizedTitle")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<long>("RegionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.HasIndex("RegionId");
+
+                    b.ToTable("Localizations", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.ReleaseDate", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2(7)");
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("PlatformId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("RegionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.HasIndex("PlatformId");
+
+                    b.HasIndex("RegionId");
+
+                    b.ToTable("ReleaseDates", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Website", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.ToTable("Websites", (string)null);
+                });
+
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.ImageDraft", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3907,6 +4317,241 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.HasIndex("LastUpdatedById");
 
                     b.ToTable("ImageDrafts", (string)null);
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Language", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("CreatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2(7)")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<long?>("LastUpdatedById")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastUpdatedById");
+
+                    b.ToTable("Languages", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "German"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Ukrainian"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Arabic"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Chinese (Simplified)"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Chinese (Traditional)"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Czech"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Danish"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Dutch"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "English"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "English (UK)"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Spanish (Spain)"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Spanish (Mexico)"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "French"
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Finnish"
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Hungarian"
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Italian"
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Hebrew"
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Japanese"
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Korean"
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Norwegian"
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Portuguese (Portugal)"
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Polish"
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Portuguese (Brazil)"
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Russian"
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Thai"
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Turkish"
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Vietnamese"
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Swedish"
+                        });
                 });
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Platform", b =>
@@ -7065,7 +7710,255 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("LastUpdatedBy");
                 });
 
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.AlternativeName", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
+                        .WithMany("AlternativeGameTitles")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Game");
+
+                    b.Navigation("LastUpdatedBy");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "UpdatedGame")
+                        .WithOne()
+                        .HasForeignKey("Owl.Overdrive.Domain.Entities.Game.Game", "UpdatedGameId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LastUpdatedBy");
+
+                    b.Navigation("UpdatedGame");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.InvolvedCompany", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Company.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
+                        .WithMany("InvolvedCompanies")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Company");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Game");
+
+                    b.Navigation("LastUpdatedBy");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.InvolvedCompanyPlatform", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.InvolvedCompany", "InvolvedCompany")
+                        .WithMany("GameInvolvedCompanyPlatforms")
+                        .HasForeignKey("InvolvedCompanyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Platform", "Platform")
+                        .WithMany()
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("InvolvedCompany");
+
+                    b.Navigation("LastUpdatedBy");
+
+                    b.Navigation("Platform");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.LanguageSupportType", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LastUpdatedBy");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Localization", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
+                        .WithMany("Localizations")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Region", "Region")
+                        .WithMany()
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Game");
+
+                    b.Navigation("LastUpdatedBy");
+
+                    b.Navigation("Region");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.ReleaseDate", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
+                        .WithMany("ReleaseDates")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Platform", "Platform")
+                        .WithMany()
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Region", "Region")
+                        .WithMany()
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Game");
+
+                    b.Navigation("LastUpdatedBy");
+
+                    b.Navigation("Platform");
+
+                    b.Navigation("Region");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Website", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
+                        .WithMany("Websites")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Game");
+
+                    b.Navigation("LastUpdatedBy");
+                });
+
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.ImageDraft", b =>
+                {
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("LastUpdatedById")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LastUpdatedBy");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Language", b =>
                 {
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
                         .WithMany()
@@ -7131,6 +8024,24 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("LastUpdatedBy");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
+                {
+                    b.Navigation("AlternativeGameTitles");
+
+                    b.Navigation("InvolvedCompanies");
+
+                    b.Navigation("Localizations");
+
+                    b.Navigation("ReleaseDates");
+
+                    b.Navigation("Websites");
+                });
+
+            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.InvolvedCompany", b =>
+                {
+                    b.Navigation("GameInvolvedCompanyPlatforms");
                 });
 #pragma warning restore 612, 618
         }

@@ -36,6 +36,11 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
                 .HasForeignKey<Game>(e => e.UpdatedGameId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder.HasOne(e => e.Cover)
+                .WithOne()
+                .HasForeignKey<Game>(e => e.CoverId)
+                .OnDelete(DeleteBehavior.SetNull);
+
         }
     }
 }

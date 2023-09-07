@@ -35,7 +35,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(e => e.Game)
-                .WithMany()
+                .WithMany(e => e.ReleaseDates)
                 .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
 
@@ -43,12 +43,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
               .WithMany()
               .HasForeignKey(e => e.PlatformId)
               .OnDelete(DeleteBehavior.Restrict);
-
-            //builder.HasOne(e => e.GameReleaseDate)
-            //    .WithMany(x => x.ReleaseDates)
-            //    .HasForeignKey(e => e.GameReleaseId)
-            //    .OnDelete(DeleteBehavior.Restrict)
-            //    .IsRequired(false);
 
         }
     }

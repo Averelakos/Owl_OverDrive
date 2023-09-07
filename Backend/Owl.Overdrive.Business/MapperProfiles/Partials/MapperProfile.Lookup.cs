@@ -14,7 +14,6 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<CountryCode, CountryCodeLookupDto>()
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.CountryName));
             CreateMap<Region, RegionLookupDto>();
-            CreateMap<GameStatus, GameStatusLookupDto>();
             CreateMap<Language, LanguageLookupDto>();
         }
     }

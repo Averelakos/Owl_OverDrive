@@ -24,7 +24,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
 
             // Properties parameters
             builder.HasOne(e => e.Game)
-                .WithMany()
+                .WithMany(e => e.LanguageSupports)
                 .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(e => e.Language)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 
@@ -11,9 +12,11 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    partial class OwlOverdriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230907195103_AddTablePlayerPerspectives")]
+    partial class AddTablePlayerPerspectives
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3913,47 +3916,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.ToTable("AlternativeNames", (string)null);
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Cover", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<byte[]>("ImageData")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("ImageTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.ToTable("Covers", (string)null);
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
                 {
                     b.Property<long>("Id")
@@ -3961,9 +3923,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long?>("CoverId")
-                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -4002,10 +3961,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CoverId")
-                        .IsUnique()
-                        .HasFilter("[CoverId] IS NOT NULL");
 
                     b.HasIndex("CreatedById");
 
@@ -4059,49 +4014,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.HasIndex("LastUpdatedById");
 
                     b.ToTable("GamesGameModes", (string)null);
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameGenre", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GameId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GenreId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.ToTable("GameGenres", (string)null);
                 });
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameMode", b =>
@@ -4182,285 +4094,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Split screen"
-                        });
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GamePlayerPerspective", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GameId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("PlayerPerspectiveId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.HasIndex("PlayerPerspectiveId");
-
-                    b.ToTable("GamePlayerPerspectives", (string)null);
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameTheme", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GameId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ThemeId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.HasIndex("ThemeId");
-
-                    b.ToTable("GameThemes", (string)null);
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Genre", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.ToTable("Genres", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "4X(explore, expand, exploit and exterminate)"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Action"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bussiness"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Comedy"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Drama"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Educational"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Erotic"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Fantasy"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Historical"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Horror"
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Kids"
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Mystery"
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Non-fiction"
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Open world"
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Party"
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Romance"
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sandbox"
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Science fiction"
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Stealth"
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Survival"
-                        },
-                        new
-                        {
-                            Id = 21L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Thriller"
-                        },
-                        new
-                        {
-                            Id = 22L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Warfare"
                         });
                 });
 
@@ -4718,82 +4351,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.ToTable("Localizations", (string)null);
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.MultiplayerMode", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<bool>("CampaignCoop")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("DropIn")
-                        .HasColumnType("bit");
-
-                    b.Property<long>("GameId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("LanCoop")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("OfflineCoop")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("OfflineCoopMax")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OfflineMax")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("OnlineCoop")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("OnlineCoopMax")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OnlineMax")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("PlatformId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("SplitScreen")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("SplitScreenOnline")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.HasIndex("PlatformId");
-
-                    b.ToTable("MultiplayerModes", (string)null);
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.PlayerPerspective", b =>
                 {
                     b.Property<long>("Id")
@@ -4934,199 +4491,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("ReleaseDates", (string)null);
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Theme", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.ToTable("Themes", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Adventure"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Arcade"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Card & Board Game"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Fighting"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Hack and slash/ Beat 'em up"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Indie"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Music"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pinball"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Platform"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Point-and-click"
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Puzzle"
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Quiz/Trivia"
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Racing"
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Real Time Strategy(RTS)"
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Shooter"
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Role-playening(RPG)"
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Simulator"
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sport"
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Strategy"
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tactical"
-                        },
-                        new
-                        {
-                            Id = 21L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Turn-based-strategy(TBS)"
-                        },
-                        new
-                        {
-                            Id = 22L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Visual Novel"
-                        });
                 });
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Website", b =>
@@ -8631,30 +7995,8 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("LastUpdatedBy");
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Cover", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastUpdatedBy");
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Game", b =>
                 {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Cover", "Cover")
-                        .WithOne()
-                        .HasForeignKey("Owl.Overdrive.Domain.Entities.Game.Game", "CoverId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
@@ -8669,8 +8011,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .WithOne()
                         .HasForeignKey("Owl.Overdrive.Domain.Entities.Game.Game", "UpdatedGameId")
                         .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Cover");
 
                     b.Navigation("CreatedBy");
 
@@ -8712,123 +8052,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("LastUpdatedBy");
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameGenre", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany("GameGenres")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("Game");
-
-                    b.Navigation("Genre");
-
-                    b.Navigation("LastUpdatedBy");
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameMode", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastUpdatedBy");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GamePlayerPerspective", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany("GamePlayerPerspectives")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.PlayerPerspective", "PlayerPerspective")
-                        .WithMany()
-                        .HasForeignKey("PlayerPerspectiveId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("Game");
-
-                    b.Navigation("LastUpdatedBy");
-
-                    b.Navigation("PlayerPerspective");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.GameTheme", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany("GameThemes")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Theme", "Theme")
-                        .WithMany()
-                        .HasForeignKey("ThemeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("Game");
-
-                    b.Navigation("LastUpdatedBy");
-
-                    b.Navigation("Theme");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Genre", b =>
                 {
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
                         .WithMany()
@@ -9002,38 +8226,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("Region");
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.MultiplayerMode", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Game.Game", "Game")
-                        .WithMany("MultiplayerModes")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Platform", "Platform")
-                        .WithMany()
-                        .HasForeignKey("PlatformId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("Game");
-
-                    b.Navigation("LastUpdatedBy");
-
-                    b.Navigation("Platform");
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.PlayerPerspective", b =>
                 {
                     b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
@@ -9090,23 +8282,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("Platform");
 
                     b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Theme", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastUpdatedBy");
                 });
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Game.Website", b =>
@@ -9225,19 +8400,11 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
                     b.Navigation("GameGameModes");
 
-                    b.Navigation("GameGenres");
-
-                    b.Navigation("GamePlayerPerspectives");
-
-                    b.Navigation("GameThemes");
-
                     b.Navigation("InvolvedCompanies");
 
                     b.Navigation("LanguageSupports");
 
                     b.Navigation("Localizations");
-
-                    b.Navigation("MultiplayerModes");
 
                     b.Navigation("ReleaseDates");
 

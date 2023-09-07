@@ -25,8 +25,8 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
 
             // Properties parameters
             builder.HasOne(e => e.Game)
-                .WithOne()
-                .HasForeignKey<Website>(e => e.GameId)
+                .WithMany(e => e.Websites)
+                .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(p => p.Url).HasColumnType("varchar(255)");

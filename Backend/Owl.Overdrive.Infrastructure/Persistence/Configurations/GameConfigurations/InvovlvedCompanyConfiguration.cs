@@ -20,11 +20,11 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
         public static void ApplyConfiguration(EntityTypeBuilder<InvolvedCompany> builder)
         {
             // Table Name
-            builder.ToTable("InvolvedCompanys");
+            builder.ToTable("InvolvedCompanies");
 
             // Properties parameters
             builder.HasOne(e => e.Game)
-                .WithMany()
+                .WithMany(e => e.InvolvedCompanies)
                 .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
 

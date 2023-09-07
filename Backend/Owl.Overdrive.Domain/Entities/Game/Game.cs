@@ -11,10 +11,20 @@ namespace Owl.Overdrive.Domain.Entities.Game
         public long? UpdatedGameId { get; set; }
         public EGameType? UpdateGameType{ get; set; }
         public EGameStatus? GameStatus { get; set; }
+        public long? CoverId { get; set; }
 
-        public virtual GameEdition? GameEdition { get; set; }
         public virtual Game? UpdatedGame { get; set; }
-        public virtual List<AlternativeName> AlternativeGameTitles { get; set; } = new ();
-        public virtual List<LanguageSupport> LanguageSupports { get; set; } = new ();
+        public virtual List<AlternativeName> AlternativeGameTitles { get; set; } = new();
+        public virtual List<Localization> Localizations { get; set; } = new();
+        public virtual List<ReleaseDate> ReleaseDates { get; set; } = new();
+        public virtual List<Website> Websites { get; set; } = new();
+        public virtual List<InvolvedCompany> InvolvedCompanies { get; set;} = new();
+        public virtual List<LanguageSupport> LanguageSupports { get; set; } = new();
+        public virtual List<GameGameMode> GameGameModes { get; set; } = new();
+        public virtual List<GamePlayerPerspective> GamePlayerPerspectives { get; set; } = new();
+        public virtual List<MultiplayerMode> MultiplayerModes { get; set; } = new();
+        public virtual List<GameTheme> GameThemes { get; set; } = new();
+        public virtual List<GameGenre> GameGenres { get; set; } = new();
+        public virtual Cover? Cover { get; set; }
     }
 }

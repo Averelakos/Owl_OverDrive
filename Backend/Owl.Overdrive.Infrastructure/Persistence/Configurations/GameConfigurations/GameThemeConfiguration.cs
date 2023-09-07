@@ -4,36 +4,35 @@ using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurations
 {
-    public class GameGameModeConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<GameGameMode>
+    public class GameThemeConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<GameTheme>
     {
-        public GameGameModeConfiguration() : base()
+        public GameThemeConfiguration() : base()
         {
 
         }
 
-        public void Configure(EntityTypeBuilder<GameGameMode> builder)
+        public void Configure(EntityTypeBuilder<GameTheme> builder)
         {
             ApplyConfiguration(builder);
             ConfigurationBase(builder);
         }
 
-        public static void ApplyConfiguration(EntityTypeBuilder<GameGameMode> builder)
+        public static void ApplyConfiguration(EntityTypeBuilder<GameTheme> builder)
         {
             // Table Name
-            builder.ToTable("GamesGameModes");
+            builder.ToTable("GameThemes");
 
             // Properties parameters
             builder.HasOne(e => e.Game)
-                .WithMany(e => e.GameGameModes)
+                .WithMany(e => e.GameThemes)
                 .HasForeignKey(e => e.GameId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(e => e.GameMode)
+            builder.HasOne(e => e.Theme)
                 .WithMany()
-                .HasForeignKey(e => e.GameModeId)
+                .HasForeignKey(e => e.ThemeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         }
-
     }
 }

@@ -9,9 +9,11 @@ namespace Owl.Overdrive.Business.MapperProfiles
         public void MapGame()
         {
             CreateMap<CreateGameDto, Game>()//;
-                .ForMember(m => m.AlternativeGameTitles, opt => opt.MapFrom(m => m.AlternativeNames));
+                .ForMember(m => m.AlternativeGameTitles, opt => opt.MapFrom(m => m.AlternativeNames))
+                .ForMember(m => m.Cover, opt => opt.Ignore());
             CreateMap<CreateGameEditionDto, GameEdition>();
-            CreateMap<CreativeAlternativeNameDto, AlternativeName>();
+            CreateMap<CreativeAlternativeNameDto, AlternativeName>()
+                .ForMember(m => m.Name, opt => opt.MapFrom(m => m.AlternativeName));
             CreateMap<CreateGameLocalizationDto, Localization>();
             CreateMap<CreateGameGenreDto, GameGenre>();
             CreateMap<CreateGameThemeDto, GameTheme>();

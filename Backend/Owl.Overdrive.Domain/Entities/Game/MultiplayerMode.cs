@@ -59,9 +59,9 @@ namespace Owl.Overdrive.Domain.Entities.Game
         /// <summary>
         /// The platform this multiplayer mode refers to
         /// </summary>
-        public long PlatformId { get; set; }
+        public long? PlatformId { get; set; }
 
         public virtual Game Game { get; set; } = null!;
-        public virtual Platform Platform { get; set; } = null!;
+        public virtual Platform? Platform { get; set; }
     }
 }

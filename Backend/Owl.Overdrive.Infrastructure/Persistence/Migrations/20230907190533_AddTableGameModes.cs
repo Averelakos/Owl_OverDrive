@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddLanguageTableAndSeedData : Migration
+    public partial class AddTableGameModes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Languages",
+                name: "GameModes",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -27,15 +27,15 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Languages", x => x.Id);
+                    table.PrimaryKey("PK_GameModes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Languages_Users_CreatedById",
+                        name: "FK_GameModes_Users_CreatedById",
                         column: x => x.CreatedById,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Languages_Users_LastUpdatedById",
+                        name: "FK_GameModes_Users_LastUpdatedById",
                         column: x => x.LastUpdatedById,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -43,48 +43,26 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Languages",
+                table: "GameModes",
                 columns: new[] { "Id", "CreatedById", "LastUpdatedById", "Name" },
                 values: new object[,]
                 {
-                    { 1L, null, null, "German" },
-                    { 2L, null, null, "Ukrainian" },
-                    { 3L, null, null, "Arabic" },
-                    { 4L, null, null, "Chinese (Simplified)" },
-                    { 5L, null, null, "Chinese (Traditional)" },
-                    { 6L, null, null, "Czech" },
-                    { 7L, null, null, "Danish" },
-                    { 8L, null, null, "Dutch" },
-                    { 9L, null, null, "English" },
-                    { 10L, null, null, "English (UK)" },
-                    { 11L, null, null, "Spanish (Spain)" },
-                    { 12L, null, null, "Spanish (Mexico)" },
-                    { 13L, null, null, "French" },
-                    { 14L, null, null, "Finnish" },
-                    { 15L, null, null, "Hungarian" },
-                    { 16L, null, null, "Italian" },
-                    { 17L, null, null, "Hebrew" },
-                    { 18L, null, null, "Japanese" },
-                    { 19L, null, null, "Korean" },
-                    { 20L, null, null, "Norwegian" },
-                    { 21L, null, null, "Portuguese (Portugal)" },
-                    { 22L, null, null, "Polish" },
-                    { 23L, null, null, "Portuguese (Brazil)" },
-                    { 24L, null, null, "Russian" },
-                    { 25L, null, null, "Thai" },
-                    { 26L, null, null, "Turkish" },
-                    { 27L, null, null, "Vietnamese" },
-                    { 28L, null, null, "Swedish" }
+                    { 1L, null, null, "Battle Royale" },
+                    { 2L, null, null, "Co-operative" },
+                    { 3L, null, null, "Massively Multiplayer Online(MMO)" },
+                    { 4L, null, null, "Multiplayer" },
+                    { 5L, null, null, "Single player" },
+                    { 6L, null, null, "Split screen" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Languages_CreatedById",
-                table: "Languages",
+                name: "IX_GameModes_CreatedById",
+                table: "GameModes",
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Languages_LastUpdatedById",
-                table: "Languages",
+                name: "IX_GameModes_LastUpdatedById",
+                table: "GameModes",
                 column: "LastUpdatedById");
         }
 
@@ -92,7 +70,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Languages");
+                name: "GameModes");
         }
     }
 }

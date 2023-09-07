@@ -24,7 +24,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
 
             // Properties parameters
             builder.HasOne(e => e.InvolvedCompany)
-                .WithMany()
+                .WithMany(e => e.GameInvolvedCompanyPlatforms)
                 .HasForeignKey(e => e.InvolvedCompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
 
