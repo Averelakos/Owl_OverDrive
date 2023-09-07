@@ -1,4 +1,5 @@
-﻿using Owl.Overdrive.Domain.Enums;
+﻿using Microsoft.AspNetCore.Http;
+using Owl.Overdrive.Domain.Enums;
 
 namespace Owl.Overdrive.Business.DTOs.GameDtos.Create
 {
@@ -22,5 +23,6 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos.Create
         public List<CreateWebsiteDto>? Websites { get; set; }
         public List<CreateInvolvedCompanyDto>? InvolvedCompanies { get; set; }
         public List<CreateLanguageSupportDto>? LanguageSupports { get; set; }
+        public Guid? Cover { get; set; }
     }
 }

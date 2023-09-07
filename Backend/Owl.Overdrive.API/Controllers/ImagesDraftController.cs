@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
-using Owl.Overdrive.Domain.Entities;
 
 namespace Owl.Overdrive.Controllers
 {
@@ -20,6 +19,13 @@ namespace Owl.Overdrive.Controllers
         {
             var result = await _imageDraftFacade.UpLoadImage(image);
             return Ok(result);
+        }
+
+        [HttpPost("DeleteImage")]
+        public async Task<ActionResult<Guid>> Delete(Guid guid)
+        {
+            await _imageDraftFacade.DeleteImage(guid);
+            return Ok();
         }
     }
 }

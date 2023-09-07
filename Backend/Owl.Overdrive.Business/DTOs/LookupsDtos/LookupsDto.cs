@@ -33,13 +33,6 @@ namespace Owl.Overdrive.Business.DTOs.LookupsDtos
         /// </value>
         public List<RegionLookupDto> Regions { get; set; } = null!;
         /// <summary>
-        /// Gets or sets the game statuses.
-        /// </summary>
-        /// <value>
-        /// The game statuses.
-        /// </value>
-        public List<GameStatusLookupDto> GameStatuses { get; set; } = null!;
-        /// <summary>
         /// Gets or sets the languages.
         /// </summary>
         /// <value>

@@ -62,13 +62,6 @@ namespace Owl.Overdrive.Repository.Contracts
         /// </value>
         IRegionRepository RegionRepository { get; }
         /// <summary>
-        /// Gets the game status repository.
-        /// </summary>
-        /// <value>
-        /// The game status repository.
-        /// </value>
-        IGameStatusRepository GameStatusRepository { get; }
-        /// <summary>
         /// Gets the language repository.
         /// </summary>
         /// <value>
@@ -96,5 +89,19 @@ namespace Owl.Overdrive.Repository.Contracts
         /// The game localization repository.
         /// </value>
         IGameLocalizationRepository GameLocalizationRepository { get; }
+        /// <summary>
+        /// Gets the cover repository.
+        /// </summary>
+        /// <value>
+        /// The cover repository.
+        /// </value>
+        ICoverRepository CoverRepository { get; }
+        /// <summary>
+        /// Gets the screenshot repository.
+        /// </summary>
+        /// <value>
+        /// The screenshot repository.
+        /// </value>
+        IScreenshotRepository ScreenshotRepository { get; }
     }
 }

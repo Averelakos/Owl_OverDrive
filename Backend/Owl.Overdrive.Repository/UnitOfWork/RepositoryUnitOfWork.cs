@@ -20,11 +20,12 @@ namespace Owl.Overdrive.Repository.UnitOfWork
         public ICompanyLogoRepository CompanyLogoRepository { get; }
         public IPlatformRepository PlatformRepository { get; }
         public IRegionRepository RegionRepository { get; }
-        public IGameStatusRepository GameStatusRepository { get; }
         public ILanguageRepository LanguageRepository { get; }
         public IGameRepository GameRepository { get; }
         public IAlternativeGameTitleRepository AlternativeGameTitleRepository { get; }
         public IGameLocalizationRepository GameLocalizationRepository { get; }
+        public ICoverRepository CoverRepository { get; }
+        public IScreenshotRepository ScreenshotRepository { get; }
         #endregion Properties
 
         public RepositoryUnitOfWork(
@@ -36,11 +37,12 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             ICompanyLogoRepository companyLogoRepository,
             IPlatformRepository platformRepository,
             IRegionRepository regionRepository,
-            IGameStatusRepository gameStatusRepository,
             ILanguageRepository languageRepository,
             IGameRepository gameRepository, 
             IAlternativeGameTitleRepository alternativeGameTitleRepository,
-            IGameLocalizationRepository gameLocalizationRepository
+            IGameLocalizationRepository gameLocalizationRepository,
+            ICoverRepository coverRepository,
+            IScreenshotRepository screenshotRepository
             )
         {
             _dbContext = dbContext;
@@ -51,11 +53,12 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             CompanyLogoRepository = companyLogoRepository;
             PlatformRepository = platformRepository;
             RegionRepository = regionRepository; 
-            GameStatusRepository = gameStatusRepository;
             LanguageRepository = languageRepository;
             GameRepository = gameRepository;
             AlternativeGameTitleRepository = alternativeGameTitleRepository;
-            GameLocalizationRepository = gameLocalizationRepository;    
+            GameLocalizationRepository = gameLocalizationRepository;
+            CoverRepository = coverRepository;
+            ScreenshotRepository = screenshotRepository;
         }
     }
 }

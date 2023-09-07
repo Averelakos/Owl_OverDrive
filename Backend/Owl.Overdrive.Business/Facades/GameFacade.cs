@@ -37,24 +37,25 @@ namespace Owl.Overdrive.Business.Facades
 
                 var result = await _repoUoW.GameRepository.Insert(newGame);
 
-                // Add alternative names if they exists
-                //if (createGameDto.AlternativeNames is not null && createGameDto.AlternativeNames.Any())
-                //{
-                //    var altNames = _mapper.Map<List<AlternativeGameTitle>>(createGameDto.AlternativeNames);
+                if(createGameDto.Cover is not null && result is not null) 
+                {
+                    var imageResult = await _repoUoW.ImageDraftRepository.GetImageByGuid(createGameDto.Cover);
 
-                //    altNames.ForEach(x => x.GameId = newGame.Id);
+                    if (imageResult is null)
+                        throw new ArgumentNullException();
 
-                //    await _repoUoW.AlternativeGameTitleRepository.InsertRange(altNames);
-                //}
+                    Cover newCover = new Cover
+                    {
+                        ImageData = imageResult.ImageData,
+                        ImageTitle = imageResult.ImageTitle,
+                    };
 
-                //if (createGameDto.GameLocalizations is not null && createGameDto.GameLocalizations.Any())
-                //{
-                //    var localNames = _mapper.Map<List<GameLocalization>>(createGameDto.GameLocalizations);
+                    await _repoUoW.CoverRepository.Insert(newCover);
 
-                //    localNames.ForEach(x => x.GameId = newGame.Id);
+                    result.CoverId = newCover.Id;
 
-                //    await _repoUoW.GameLocalizationRepository.InsertRange(localNames);
-                //}
+                    await _repoUoW.GameRepository.SaveChangesAsync();
+                }
 
                 await _repoUoW.GameRepository.CommitTransactionAsync();
 

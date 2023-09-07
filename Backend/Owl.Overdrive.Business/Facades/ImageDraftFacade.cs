@@ -25,5 +25,10 @@ namespace Owl.Overdrive.Business.Facades
 
             return await _repoUoW.ImageDraftRepository.Insert(imageDraft);
         }
+
+        public async Task DeleteImage(Guid guid)
+        {
+            await _repoUoW.ImageDraftRepository.DeleteImageDraft(guid);
+        }
     }
 }

@@ -44,11 +44,12 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<ICompanyLogoRepository, CompanyLogoRepository>()
                 .AddScoped<IPlatformRepository,  PlatformRepository>()
                 .AddScoped<IRegionRepository, RegionRepository>()
-                .AddScoped<IGameStatusRepository, GameStatusRepository>()
                 .AddScoped<ILanguageRepository, LanguageRepository>()
                 .AddScoped<IGameRepository, GameRepository>()
                 .AddScoped<IAlternativeGameTitleRepository, AlternativeGameTitleRepository>()
                 .AddScoped<IGameLocalizationRepository, GameLocalizationRepository>()
+                .AddScoped<ICoverRepository, CoverRepository>()
+                .AddScoped<IScreenshotRepository, ScreenshotRepository>()
                 ;
         }
         /// <summary>
