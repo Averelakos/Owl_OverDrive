@@ -18,14 +18,14 @@
     <div class="general-details-image-input">
         <div>
             <label>Game cover:</label>
-            <img [src]="imageB64?? 'assets/img/nocover.png'" alt="">
+            <img [src]="imageB64?? 'assets/img/nocover.png'" alt="" >
         </div>
-        <input type="file">
+        <input type="file" (change)="fileSelected($event)">
     </div>
 </div>
 
 <div class="page-container">
     <app-game-type></app-game-type>
     <app-game-status></app-game-status>
-    <app-game-edition></app-game-edition>
+    <!-- <app-game-edition></app-game-edition> -->
 </div>

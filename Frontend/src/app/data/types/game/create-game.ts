@@ -7,7 +7,7 @@ export interface CreateGameDto{
     story: string
     updateGameType: string | null
     updatedGameId : number | null
-    gameEdition: CreateGameEditionDto | null
+    //gameEdition: CreateGameEditionDto | null
     alternativeNames: Array<CreateAlternativeTitleDto>
     gameLocalizations: Array<CreateGameLocalizationDto>
     gameGenres:Array<CreateGameGenreDto>
@@ -19,6 +19,7 @@ export interface CreateGameDto{
     websites : Array<CreateWebsite>
     involvedCompanies: Array<CreateInvolvedCompanyDto>
     languageSupports:Array<CreateLanguageSupportDto>
+    cover: number
 }
 
 export interface CreateGameEditionDto {

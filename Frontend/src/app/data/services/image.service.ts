@@ -33,4 +33,9 @@ export class ImageService{
 
         return this.http.post<any>(this.baseUrl + '/UploadImage', content_)
     }
+
+    deleteImage(guid: number){
+        return this.http.post<any>(this.baseUrl + '/DeleteImage',guid)
+    }
+    
 }

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams} from "@angular/common/http";
-import { CreateGameDto, CreateGameLocalizationDto, CreateMultiplayerModeDto, CreateReleaseDateDto } from "../types/game/create-game";
+import { CreateGameDto, CreateGameGenreDto, CreateGameLocalizationDto, CreateGameModeDto, CreateGamePlayerPerspectiveDto, CreateGameThemeDto, CreateMultiplayerModeDto, CreateReleaseDateDto } from "../types/game/create-game";
 
 @Injectable()
 export class GameService{
@@ -19,6 +19,7 @@ export class GameService{
           updateGameType: [null],
           updatedGameId:[null],
           gameStatus:[null],
+          cover: [null],
           gameEdition:this.formBuilder.group({
             baseGame: [null],
             editionTitle: [null]
@@ -94,27 +95,28 @@ export class GameService{
       gameStatus: this.general(gameForm)?.get('gameStatus')?.value,
       updateGameType: this.general(gameForm).get('updateGameType')?.value,
       updatedGameId : this.general(gameForm).get('updatedGameId')?.value, 
-      gameEdition:null,
+      //gameEdition:null,
       alternativeNames: [],
       gameLocalizations: [],
-      gameGenres:this.categorization(gameForm).get('genre')?.value,
-      gameThemes:this.categorization(gameForm).get('theme')?.value,
-      gameModes:this.categorization(gameForm).get('gameMode')?.value,
-      playerPerspectives:this.categorization(gameForm).get('perspectives')?.value,
+      gameGenres:[],
+      gameThemes:[],
+      gameModes:[],
+      playerPerspectives:[],
       multiplayerModes:this.converToCreatemultiplayerModeDto(this.categorization(gameForm).get('multiplayerModes') as FormArray),
       releaseDates: this.converToCreateReleaseDateDto(this.releaseDates(gameForm)),
       websites: [],
       involvedCompanies: [],
-      languageSupports:[]
+      languageSupports:[],
+      cover: this.general(gameForm).get('cover')?.value
     }
 
     // General game edition
-    if (this.gameEdition(gameForm).get('editionTitle')?.value!= null && this.gameEdition(gameForm).get('baseGame')?.value != null) {
-      model.gameEdition = {
-        editionTitle: this.gameEdition(gameForm).get('editionTitle')?.value,
-        parentGameId: this.gameEdition(gameForm).get('baseGame')?.value,
-      }
-    }
+    // if (this.gameEdition(gameForm).get('editionTitle')?.value!= null && this.gameEdition(gameForm).get('baseGame')?.value != null) {
+    //   model.gameEdition = {
+    //     editionTitle: this.gameEdition(gameForm).get('editionTitle')?.value,
+    //     parentGameId: this.gameEdition(gameForm).get('baseGame')?.value,
+    //   }
+    // }
 
     // General game alternative name
     if (this.general(gameForm).get('gameAlternativeNames')?.value.length > 0) {
@@ -130,6 +132,42 @@ export class GameService{
         }
         model.gameLocalizations.push(temp)
       })
+    }
+
+    if (this.categorization(gameForm).get('genre')?.value != null ) {
+      this.categorization(gameForm).get('genre')?.value.forEach((x) => {
+        const temp: CreateGameGenreDto = {
+          genreId: x
+        }
+        model.gameGenres.push(temp)
+      }) 
+    }
+
+    if (this.categorization(gameForm).get('theme')?.value != null ) {
+      this.categorization(gameForm).get('theme')?.value.forEach((x) => {
+        const temp: CreateGameThemeDto = {
+          themeId: x
+        }
+        model.gameThemes.push(temp)
+      }) 
+    }
+
+    if (this.categorization(gameForm).get('gameMode')?.value != null ) {
+      this.categorization(gameForm).get('gameMode')?.value.forEach((x) => {
+        const temp: CreateGameModeDto = {
+          gameModeId: x
+        }
+        model.gameModes.push(temp)
+      }) 
+    }
+
+    if (this.categorization(gameForm).get('perspectives')?.value != null ) {
+      this.categorization(gameForm).get('perspectives')?.value.forEach((x) => {
+        const temp: CreateGamePlayerPerspectiveDto = {
+          playerPerspectiveId: x
+        }
+        model.playerPerspectives.push(temp)
+      }) 
     }
 
     return model;

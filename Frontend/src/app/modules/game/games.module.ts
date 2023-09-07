@@ -15,9 +15,11 @@ import { GameReleaseDatesComponent } from "./add-edit/components/game-release-da
 import { CompaniesComponent } from "./add-edit/components/companies/companies.component";
 import { LanguagesComponent } from "./add-edit/components/languages/languages.component";
 import { AlternativeTitlesComponent } from "./add-edit/components/alternative-titles/alternative-titles.component";
+import { ListGamesComponent } from "./list/container/list-games.component";
 
 const routes: Routes = [
-    {path:'', component:AddEditGameComponent},
+    {path:'', component: ListGamesComponent},
+    {path:'add', component:AddEditGameComponent},
 ]
 
 @NgModule({
