@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormsHelper } from '../helpers/forms-helper';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-standar-input',
@@ -16,7 +16,7 @@ export class StandarInputComponent implements OnInit{
   @Input() controlName = ''
   @Input() subGroup: string = ''
   formGroup!: FormGroup
-  formHelper = new FormsHelper
+
 
   constructor(public parentForm: FormGroupDirective){}
 
