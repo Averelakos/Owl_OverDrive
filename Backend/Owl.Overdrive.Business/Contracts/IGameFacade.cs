@@ -1,6 +1,7 @@
 ﻿using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Domain.Entities.Company;
 using System;
@@ -25,6 +26,11 @@ namespace Owl.Overdrive.Business.Contracts
         /// <param name="searchInput">The search input.</param>
         /// <returns></returns>
         Task<List<SearchGameDto>> Search(string searchInput);
+        /// <summary>
+        /// Lists this instance.
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<GameSimpleDto> List();
 
     }
 }

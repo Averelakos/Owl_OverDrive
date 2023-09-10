@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Domain.Entities.Game;
@@ -87,6 +90,14 @@ namespace Owl.Overdrive.Business.Facades
             }
 
             return result;
+        }
+
+        public IQueryable<GameSimpleDto> List()
+        {
+            return _repoUoW.GameRepository
+                .QueryGame()
+                .AsNoTracking()
+                .ProjectTo<GameSimpleDto>(_mapper.ConfigurationProvider);
         }
     }
 }

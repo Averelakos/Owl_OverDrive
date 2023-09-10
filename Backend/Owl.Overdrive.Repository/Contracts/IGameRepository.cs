@@ -5,6 +5,11 @@ namespace Owl.Overdrive.Repository.Contracts
     public interface IGameRepository
     {
         /// <summary>
+        /// Queries the game.
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<Game> QueryGame();
+        /// <summary>
         /// Inserts the specified game.
         /// </summary>
         /// <param name="company">The company.</param>

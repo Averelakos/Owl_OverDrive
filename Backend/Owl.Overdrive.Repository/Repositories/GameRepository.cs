@@ -12,7 +12,7 @@ namespace Owl.Overdrive.Repository.Repositories
         {
         }
 
-        private IQueryable<Game> GetGame()
+        public IQueryable<Game> QueryGame()
         {
             return _DbSet;
         }

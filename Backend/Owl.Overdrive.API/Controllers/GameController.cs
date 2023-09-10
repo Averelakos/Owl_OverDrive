@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 
 namespace Owl.Overdrive.Controllers
@@ -28,6 +30,13 @@ namespace Owl.Overdrive.Controllers
         public async Task<ActionResult<List<SearchParentCompanyDto>>> Search([FromQuery] string searchInput)
         {
            var result = await _gameFacade.Search(searchInput);
+            return Ok(result);
+        }
+
+        [HttpGet("GetAllGames")]
+        public async Task<ActionResult<List<GameSimpleDto>>> GetAllGames()
+        {
+            var result = await _gameFacade.List().ToListAsync();
             return Ok(result);
         }
 
