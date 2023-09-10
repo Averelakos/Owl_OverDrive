@@ -16,6 +16,8 @@ import { CompaniesComponent } from "./add-edit/components/companies/companies.co
 import { LanguagesComponent } from "./add-edit/components/languages/languages.component";
 import { AlternativeTitlesComponent } from "./add-edit/components/alternative-titles/alternative-titles.component";
 import { ListGamesComponent } from "./list/container/list-games.component";
+import { SearchFilterHeaderComponent } from "./list/components/search-filter-header/search-filter-header.component";
+import { QueryableGameListComponent } from "./list/components/search-result/queryable-game-list.component";
 
 const routes: Routes = [
     {path:'', component: ListGamesComponent},
@@ -36,13 +38,16 @@ const routes: Routes = [
         GameReleaseDatesComponent,
         CompaniesComponent,
         LanguagesComponent,
-        AlternativeTitlesComponent
+        AlternativeTitlesComponent,
+        SearchFilterHeaderComponent,
+        QueryableGameListComponent
 
     ],
     providers:[GameService],
     declarations:[
     AddEditGameComponent,
     GameInfoTabAccordioComponent,
+    ListGamesComponent
   ],
     exports:[
         RouterModule,

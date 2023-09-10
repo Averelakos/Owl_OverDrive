@@ -1,0 +1,18 @@
+<div class="filter-search-header-container" 
+    [ngClass]="{'column':(responsiveService.responsiveSize | async) === deviceType.Mobile, 'row':(responsiveService.responsiveSize | async) !== deviceType.Mobile}"
+>
+    <div>
+        <app-search></app-search>
+    </div>
+    
+    <ul class="button-list">
+        <li>
+            <button class="btn-primary btn">
+                <span>Advance Search</span>
+            </button>
+        </li>
+        <li>
+            <a class="btn-primary btn">Add Game</a>
+        </li>
+    </ul>
+</div>

@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams} from "@angular/common/http";
 import { CreateGameDto, CreateGameGenreDto, CreateGameLocalizationDto, CreateGameModeDto, CreateGamePlayerPerspectiveDto, CreateGameThemeDto, CreateMultiplayerModeDto, CreateReleaseDateDto } from "../types/game/create-game";
+import { GameSimpleDto } from "../types/game/GameSimpleDto";
 
 @Injectable()
 export class GameService{
@@ -226,6 +227,10 @@ export class GameService{
 
   createNewGame(model: CreateGameDto){
     return this.http.post<any>(this.baseUrl + '/AddGame',model)
+  }
+
+  listGame(){
+    return this.http.get<Array<GameSimpleDto>>(this.baseUrl + '/GetAllGames')
   }
 
 }
