@@ -17,7 +17,7 @@ import { LanguagesComponent } from "./add-edit/components/languages/languages.co
 import { AlternativeTitlesComponent } from "./add-edit/components/alternative-titles/alternative-titles.component";
 import { ListGamesComponent } from "./list/container/list-games.component";
 import { SearchFilterHeaderComponent } from "./list/components/search-filter-header/search-filter-header.component";
-import { QueryableGameListComponent } from "./list/components/search-result/queryable-game-list.component";
+import { QueryableGameListComponent } from "./list/components/queryable-game-list/queryable-game-list.component";
 
 const routes: Routes = [
     {path:'', component: ListGamesComponent},

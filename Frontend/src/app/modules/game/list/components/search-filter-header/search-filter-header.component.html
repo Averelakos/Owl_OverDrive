@@ -5,8 +5,8 @@
         <app-search></app-search>
     </div>
     
-    <ul class="button-list">
-        <li>
+    <ul class="button-list" [ngClass]="{'mobile-list':(responsiveService.responsiveSize | async) === deviceType.Mobile}">
+        <li >
             <button class="btn-primary btn">
                 <span>Advance Search</span>
             </button>

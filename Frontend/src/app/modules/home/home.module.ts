@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./container/home.component";
-import { StandarLoaderComponent } from "src/app/common/standar-loader/standar-loader.component";
+import { StandarLoaderComponent } from "src/app/common/loaders/standar-loader/standar-loader.component";
 
 
 const routes: Routes = [

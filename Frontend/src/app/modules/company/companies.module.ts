@@ -13,7 +13,7 @@ import { FoundedComponent } from './add-edit/components/company-info/components/
 import { StatusComponent } from './add-edit/components/company-info/components/status/status.component';
 import { CommonModule } from "@angular/common";
 import { LinksComponent } from "./add-edit/components/company-info/components/links/links.component";
-import { StandarLoaderComponent } from "src/app/common/standar-loader/standar-loader.component";
+import { StandarLoaderComponent } from "src/app/common/loaders/standar-loader/standar-loader.component";
 import { CompanyService } from "src/app/data/services/company.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDatetimePickerComponent } from "src/app/shared/components/mat-datetime-picker/mat-datetime-picker.component";
