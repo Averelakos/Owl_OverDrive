@@ -7,6 +7,8 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
+using Owl.Overdrive.Business.Services;
+using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Domain.Entities.Game;
 using Owl.Overdrive.Repository.Contracts;
 
@@ -91,13 +93,78 @@ namespace Owl.Overdrive.Business.Facades
 
             return result;
         }
-
-        public IQueryable<GameSimpleDto> List()
+        private IQueryable<T> List<T>()
         {
             return _repoUoW.GameRepository
-                .QueryGame()
-                .AsNoTracking()
-                .ProjectTo<GameSimpleDto>(_mapper.ConfigurationProvider);
+                    .QueryGame()
+                    .AsNoTracking()
+                    .ProjectTo<T>(_mapper.ConfigurationProvider);
+        }
+
+        private async Task<IQueryable<GameSimpleDto>> SearchFilter(string searchInput)
+        {
+            List<GameSimpleDto> results = new();
+            var resultExact = await _repoUoW.GameRepository
+                    .QueryGame()
+                    .Where(x => x.Name.Equals(searchInput))
+                    .AsNoTracking()
+                    .ProjectTo<GameSimpleDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+            ;
+
+            results.AddRange(resultExact);
+
+            var resultStartsWith = await _repoUoW.GameRepository
+                    .QueryGame()
+                    .AsNoTracking()
+                    .Where(x => x.Name.StartsWith(searchInput) && !results.Select(r => r.Id).Contains(x.Id))
+                    .ProjectTo<GameSimpleDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+
+            results.AddRange(resultStartsWith);
+
+            var resultContains = await _repoUoW.GameRepository
+                    .QueryGame()
+                    .AsNoTracking()
+                    .Where(x => x.Name.Contains(searchInput) && !results.Select(r => r.Id).Contains(x.Id))
+                    .ProjectTo<GameSimpleDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+
+            results.AddRange(resultContains);
+
+            return results.AsQueryable<GameSimpleDto>();
+        }
+
+        public async Task<ServiceSearchResultData<List<GameSimpleDto>>> List(DataLoaderOptions options)
+        {
+            IQueryable<GameSimpleDto> source;
+
+            if (options.SearchString is not null && options.SearchString.Length > 0)
+            {
+                source = await SearchFilter(options.SearchString);
+            }
+            else
+            {
+                 source = List<GameSimpleDto>();
+            }
+            
+
+            var dataDesult = await new DataLoaderService<GameSimpleDto>(source, options).LoadResult();
+
+            ServiceSearchResultData<List<GameSimpleDto>> result = new();
+
+            if (dataDesult.Data is not null)
+            {
+                result.Result = dataDesult.Data.ToList();
+                result.TotalCount = dataDesult.TotalCount;
+                result.TotalPages = dataDesult.TotalPages;
+                return result;
+            }
+            else
+            {
+                result.Result = new List<GameSimpleDto>();
+                return result;
+            } 
         }
     }
 }

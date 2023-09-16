@@ -3,6 +3,7 @@ using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
+using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Domain.Entities.Company;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Owl.Overdrive.Business.Contracts
         /// Lists this instance.
         /// </summary>
         /// <returns></returns>
-        IQueryable<GameSimpleDto> List();
+        Task<ServiceSearchResultData<List<GameSimpleDto>>> List(DataLoaderOptions options);
 
     }
 }
