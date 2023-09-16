@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from '../search/search.component';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-filter-header',
@@ -12,5 +13,8 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 })
 export class SearchFilterHeaderComponent {
   deviceType = ResponsizeSize
-  constructor(public responsiveService: ResponsiveService){}
+  constructor(public responsiveService: ResponsiveService, private router: Router){}
+  clickAddGame() {
+    this.router.navigate(['Game/add']);
+  }
 }

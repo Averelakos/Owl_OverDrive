@@ -6,13 +6,13 @@
     </div>
     
     <ul class="button-list" [ngClass]="{'mobile-list':(responsiveService.responsiveSize | async) === deviceType.Mobile}">
-        <li >
+        <!-- <li >
             <button class="btn-primary btn">
                 <span>Advance Search</span>
             </button>
-        </li>
+        </li> -->
         <li>
-            <a class="btn-primary btn">Add Game</a>
+            <a class="btn-primary btn" (click)="clickAddGame()">Add Game</a>
         </li>
     </ul>
 </div>

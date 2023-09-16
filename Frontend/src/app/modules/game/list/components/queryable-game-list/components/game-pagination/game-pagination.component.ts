@@ -12,10 +12,11 @@ import { CommonModule } from '@angular/common';
 export class GamePaginationComponent implements AfterViewInit {
   @ViewChild('gamePagination') paginationElement: ElementRef
   @Input() pages: number = 25
+  @Input() currentPage: number = 1
   @Output() selectedPage = new EventEmitter<number>
   constructor(public renderer: Renderer2){}
   ngAfterViewInit(): void {
-    this.createPagination(this.pages,1)
+    this.createPagination(this.pages,this.currentPage)
   }
 
   createPagination(pages, page){

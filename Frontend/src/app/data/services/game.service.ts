@@ -4,11 +4,16 @@ import { environment } from "src/environments/environment";
 import { HttpClient, HttpParams} from "@angular/common/http";
 import { CreateGameDto, CreateGameGenreDto, CreateGameLocalizationDto, CreateGameModeDto, CreateGamePlayerPerspectiveDto, CreateGameThemeDto, CreateMultiplayerModeDto, CreateReleaseDateDto } from "../types/game/create-game";
 import { GameSimpleDto } from "../types/game/GameSimpleDto";
+import { ServiceSearchResultData } from "../types/service-results/service-searc-result-data";
+import { DataLoaderOptions } from "../types/data-loader/data-loader-options";
+import { BehaviorSubject } from "rxjs";
+
 
 @Injectable()
 export class GameService{
   uri: string = 'Game'
   baseUrl = environment.apiUrl+this.uri;
+  searchString: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null)
   constructor(private readonly formBuilder: FormBuilder, private http: HttpClient){}
 
   initForm(): FormGroup {
@@ -229,8 +234,8 @@ export class GameService{
     return this.http.post<any>(this.baseUrl + '/AddGame',model)
   }
 
-  listGame(){
-    return this.http.get<Array<GameSimpleDto>>(this.baseUrl + '/GetAllGames')
+  listGame(options: DataLoaderOptions){
+    return this.http.post<ServiceSearchResultData<Array<GameSimpleDto>>>(this.baseUrl + '/GetAllGames', options)
   }
 
 }

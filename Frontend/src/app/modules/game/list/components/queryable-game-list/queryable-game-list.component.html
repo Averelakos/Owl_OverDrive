@@ -1,10 +1,15 @@
 <div class="cards-container">
-    <app-logo-loader [imageSRC]="'../../../../../assets/img/owl_logo.png'" [isLoading]="loading$|async"></app-logo-loader>
+    <app-logo-loader [imageSRC]="'../../../../../assets/img/owl_logo.png'" [isLoading]="(loading$ | async)"></app-logo-loader>
     <ng-container *ngIf="gameList != null && gameList.length > 0">
         <app-game-card *ngFor="let game of gameList" [item]="game"></app-game-card>
     </ng-container>
 </div>
 
 <div *ngIf="gameList != null && gameList.length > 0" class="pagination-container">
-    <app-game-pagination (selectedPage)=" changePage($event)"></app-game-pagination>
+    <app-game-pagination 
+        (selectedPage)=" changePage($event)"
+        [pages]="totalPages"
+        [currentPage]="currentPage"
+        >
+    </app-game-pagination>
 </div>
