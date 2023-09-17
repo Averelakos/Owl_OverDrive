@@ -17,4 +17,14 @@ export class SearchComponent {
   search(){
     this.gameService.searchString.next(this.searchInput)
   }
+
+  onSearchValueChange(){
+      let trimmedInput = this.searchInput?.trim()
+      if (trimmedInput != null && trimmedInput.length > 2) {
+        this.gameService.searchString.next(this.searchInput)
+      }
+      else if (trimmedInput == null || trimmedInput.length === 0) {
+        this.gameService.searchString.next(null)
+      }
+  }
 }

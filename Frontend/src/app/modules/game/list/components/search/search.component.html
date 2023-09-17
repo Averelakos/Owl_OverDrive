@@ -1,7 +1,6 @@
 <div class="search-container">
     <div class="search-form">
-        <label for="search">Search for stuff</label>
-       <input type="search" placeholder="Search..." autofocus required [(ngModel)]="this.searchInput">
-        <button type="submit" (click)="search()">Go</button> 
+        <input  placeholder="Search..."  [(ngModel)]="this.searchInput" (ngModelChange)="onSearchValueChange()">
+        <i class="fa-solid fa-magnifying-glass"></i>
     </div>
 </div>
