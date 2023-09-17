@@ -18,10 +18,12 @@ import { AlternativeTitlesComponent } from "./add-edit/components/alternative-ti
 import { ListGamesComponent } from "./list/container/list-games.component";
 import { SearchFilterHeaderComponent } from "./list/components/search-filter-header/search-filter-header.component";
 import { QueryableGameListComponent } from "./list/components/queryable-game-list/queryable-game-list.component";
+import { GameDetailsComponent } from './game-details/container/game-details.component';
 
 const routes: Routes = [
     {path:'', component: ListGamesComponent},
     {path:'add', component:AddEditGameComponent},
+    {path:'view/:game', component: GameDetailsComponent},
 ]
 
 @NgModule({
@@ -47,7 +49,8 @@ const routes: Routes = [
     declarations:[
     AddEditGameComponent,
     GameInfoTabAccordioComponent,
-    ListGamesComponent
+    ListGamesComponent,
+    GameDetailsComponent
   ],
     exports:[
         RouterModule,
