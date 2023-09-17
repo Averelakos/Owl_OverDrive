@@ -12,6 +12,7 @@ import { BannerResultActionService } from 'src/app/core/services/result-banner-a
 import { ServiceSearchResultData } from 'src/app/data/types/service-results/service-searc-result-data';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { ServiceResultBase } from 'src/app/data/types/service-results/service-result-base';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-queryable-game-list',
@@ -34,7 +35,8 @@ export class QueryableGameListComponent implements AfterContentChecked, OnDestro
     private toastr: ToastrService,
     private resultBannerActionService: BannerResultActionService,
     public responsiveService: ResponsiveService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
+    private router: Router
     )
   {
    this.options = {
@@ -45,11 +47,18 @@ export class QueryableGameListComponent implements AfterContentChecked, OnDestro
    this.fetchGame()
 
    this.searchInputSubscription =  this.gameService.searchString.subscribe((x) => {
-    if(x != null) {
+    if(x) {
       this.options =  {
         take: this.pageSize,
         skip: 0,
         searchString: x
+       }
+       this.fetchGame()
+    } else {
+      this.options =  {
+        take: this.pageSize,
+        skip: 0,
+        searchString: null
        }
        this.fetchGame()
     }
@@ -98,5 +107,9 @@ export class QueryableGameListComponent implements AfterContentChecked, OnDestro
         }
       }
     })
+  }
+
+  openDetails(game: GameSimpleDto) {
+    this.router.navigate(['Game/view/' + game.name, {id:game.id} ])
   }
 }
