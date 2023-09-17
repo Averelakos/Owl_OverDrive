@@ -19,6 +19,8 @@ import { ListGamesComponent } from "./list/container/list-games.component";
 import { SearchFilterHeaderComponent } from "./list/components/search-filter-header/search-filter-header.component";
 import { QueryableGameListComponent } from "./list/components/queryable-game-list/queryable-game-list.component";
 import { GameDetailsComponent } from './game-details/container/game-details.component';
+import { GameDetailsDesktopComponent } from "./game-details/components/game-details-desktop/game-details-desktop.component";
+import { GameDetailsMobileComponent } from "./game-details/components/game-details-mobile/game-details-mobile.component";
 
 const routes: Routes = [
     {path:'', component: ListGamesComponent},
@@ -42,7 +44,9 @@ const routes: Routes = [
         LanguagesComponent,
         AlternativeTitlesComponent,
         SearchFilterHeaderComponent,
-        QueryableGameListComponent
+        QueryableGameListComponent,
+        GameDetailsDesktopComponent,
+        GameDetailsMobileComponent
 
     ],
     providers:[GameService],

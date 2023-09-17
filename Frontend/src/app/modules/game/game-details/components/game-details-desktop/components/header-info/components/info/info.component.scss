@@ -1,0 +1,90 @@
+:host{
+    display: contents;
+}
+
+.header-info-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.title{
+    color: #ffffff;
+    margin-left: 25px;
+}
+
+.title h2 {
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    line-height: 1.1;
+    opacity: 0.8;
+    margin: 0.40em 0;   
+}
+
+.title > h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    line-height: 1.1;
+    margin: 0.40em 0;   
+}
+
+.title > a > h3 {
+    font-size: 18px;
+    font-style: italic;
+    opacity: 0.8;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    cursor: pointer;
+}
+
+.btn-default {
+    background-color: #f7f8fa;
+    border-color: #dde3e8;
+    color: #4E4E4E;
+    text-shadow: none;
+    margin-left: 10px;
+    opacity: 0.65;
+    padding: 1px 5px;
+    
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+
+    text-shadow: none;
+    margin-left: 10px;
+    opacity: 0.65;
+}
+
+.btn, a {
+    touch-action: manipulation;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
