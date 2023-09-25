@@ -7,7 +7,7 @@ import { ResponsiveService, ResponsizeSize } from "src/app/core/services/respons
     standalone: true,
     imports:[CommonModule],
     template: `
-    <div class="spinner-container" [ngClass]="{'desktop':((this.responsiveService.responsiveSize | async) === responsiveSizes.Desktop)}">
+    <div class="spinner-container" [ngClass]="{'desktop':((this.responsiveService.responsiveSize | async) === responsiveSizes.Desktop)}" *ngIf="loading">
         <div class="loader-background">
             <div class="loader"></div>
             <div class="loader-image">
@@ -29,20 +29,23 @@ import { ResponsiveService, ResponsizeSize } from "src/app/core/services/respons
         justify-content: center;
     }
     .desktop{
-        left: 270px;
+        /* left: 270px; */
     }
     .loader-background {
-        width:110px;
+        width:200px;
         padding: 5px;
         background-color: #222; 
         border-radius: 5px;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .loader {
-        width: 100px;
+        width: 160px;
         aspect-ratio: 1;
         border-radius: 50%;
-        border: 8px solid #c15375;
+        border: 15px solid #c15375;
         animation:
         l20-1 0.8s infinite linear alternate,
         l20-2 1.6s infinite linear;
@@ -50,13 +53,13 @@ import { ResponsiveService, ResponsizeSize } from "src/app/core/services/respons
     }
     .loader-image{
         position: absolute;
-        top: 30px;
-        left: 30px;
+        top: 55px;
+        left: 65px;
     }
 
     .imageSize{
-        width:50px;
-        height:50px;
+        width:65px;
+        height:65px;
     }
 
     @keyframes l20-1{
