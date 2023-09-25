@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 
 
@@ -19,7 +19,7 @@ export interface SelectSearchInputValue {
   // changeDetection: ChangeDetectionStrategy.OnPush,
   
 })
-export class StandarSelectSearchComponent implements  OnInit {
+export class StandarSelectSearchComponent implements  OnInit, OnDestroy {
 
 
   @Input() label:string = ''
@@ -40,10 +40,16 @@ export class StandarSelectSearchComponent implements  OnInit {
   searchValue:string = ''
   noResults: boolean = false
   loader: boolean = false
-  private unsubscribe: Subscription | undefined
+  @Input() retrievedApiValue: BehaviorSubject<SelectSearchInputValue | null> = new BehaviorSubject<SelectSearchInputValue | null>(null)
+  private unsubscribe: Subscription 
 
   constructor(public parentForm: FormGroupDirective){
     // this.filteredInputValues = this.listOfInputValues
+  }
+  ngOnDestroy(): void {
+    if (this.unsubscribe != null) {
+      this.unsubscribe.unsubscribe()
+    }
   }
 
   ngOnInit(): void {
@@ -61,8 +67,16 @@ export class StandarSelectSearchComponent implements  OnInit {
     if (this.inputValue === null && existingValue != null && this.inputValue !== existingValue) {
       if(this.apiSearchEnable) {
         this.retrieveApiValue.emit(existingValue)
+        this.unsubscribe = this.retrievedApiValue.subscribe(x => {
+          if (x) {
+            this.inputValue = x.value
+          }
+        })
+        
+      } 
+      else {
+        this.clickSelectOption(existingValue)
       }
-      this.clickSelectOption(existingValue)
     }
 
   }

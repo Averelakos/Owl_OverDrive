@@ -33,12 +33,20 @@ export class StandarDropdownMenuComponent implements OnInit{
   
   ngOnInit(): void {
     this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
-
-    this.unsubscribe =  this.formGroup.get(this.controlName)?.valueChanges.subscribe((b) => {
-      if (this.inputValue === null && b != null && this.inputValue !== b) {
-        // this.clickSelectOption(this.formGroup.get(this.controlName)?.value)
-      }
-    })
+    let valueExists = this.formGroup.get(this.controlName)?.value
+    console.log
+    if(valueExists != null) {
+      this.options.forEach((x) => {
+        if (x.id === valueExists) {
+          this.inputValue = x
+        }
+      })
+    }
+    // this.unsubscribe =  this.formGroup.get(this.controlName)?.valueChanges.subscribe((b) => {
+    //   if (this.inputValue === null && b != null && this.inputValue !== b) {
+    //     // this.clickSelectOption(this.formGroup.get(this.controlName)?.value)
+    //   }
+    // })
   }
 
   setOption(option: DropDownOption) {

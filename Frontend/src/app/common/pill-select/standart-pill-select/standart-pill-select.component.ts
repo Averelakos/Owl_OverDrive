@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedComponentsModule } from 'src/app/shared/shared.module';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 export interface StadarInputPillOption {
   id: number
@@ -16,7 +17,7 @@ export interface StadarInputPillOption {
   templateUrl: './standart-pill-select.component.html',
   styleUrls: ['./standart-pill-select.component.scss']
 })
-export class StandartPillSelectComponent implements OnInit, AfterViewInit {
+export class StandartPillSelectComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('inputForPills') inputElement:ElementRef;
   @ViewChild('inputForPillFirstChild') firstChildElement:ElementRef;
   @Input() options: Array<StadarInputPillOption> = []
@@ -25,7 +26,9 @@ export class StandartPillSelectComponent implements OnInit, AfterViewInit {
   @Input() subGroup: string = ''
   @Input() apiSearchEnable: boolean = false
   @Output() searchInput = new EventEmitter<string>()
-  
+  @Output() retrieveApiValue = new EventEmitter<number>()
+  @Input() retrievedApiValue: BehaviorSubject<StadarInputPillOption | null> = new BehaviorSubject<StadarInputPillOption | null>(null)
+  private unsubscribe: Subscription 
   filteredInputValue: Array<StadarInputPillOption> = []
   inputValue!: StadarInputPillOption | undefined
   formGroup!: FormGroup
@@ -41,17 +44,36 @@ export class StandartPillSelectComponent implements OnInit, AfterViewInit {
     this.formGroup = this.parentForm.control.get(this.subGroup) as FormGroup
   }
 
+  ngOnDestroy(): void {
+    if (this.unsubscribe != null) {
+      this.unsubscribe.unsubscribe()
+    }
+  }
+
   ngAfterViewInit(): void {
+
+    this.unsubscribe = this.retrievedApiValue.subscribe(x => {
+      if (x) {
+        this.addNewPill(x)
+        this.selectedOptions.push(x.id)
+        x.isVisible = false
+      }
+    })
+
     if (this.formGroup.controls[this.controlName]?.value != null && this.formGroup.controls[this.controlName]?.value != undefined && this.formGroup.controls[this.controlName]?.value.length > 0) {
       this.formGroup.controls[this.controlName].value.forEach((entry) => {
-        console.log(entry)
-        this.options.forEach((option) => {
-          if (option.id === entry) {
-            this.addNewPill(option)
-            this.selectedOptions.push(option.id)
-            option.isVisible = false
-          }
-        })
+        if (this.apiSearchEnable) {
+          this.retrieveApiValue.emit(entry)
+        }else {
+          this.options.forEach((option) => {
+            if (option.id === entry) {
+              this.addNewPill(option)
+              this.selectedOptions.push(option.id)
+              option.isVisible = false
+            }
+          })
+        }
+        
       })
     }
 
