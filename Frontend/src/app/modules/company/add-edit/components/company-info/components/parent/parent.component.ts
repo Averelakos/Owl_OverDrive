@@ -33,4 +33,16 @@ export class ParentComponent {
       this.listOfparentCompanies.length = 0
     }
   }
+
+  retrieveSearchCompany(input){
+      this.companyService
+      .retrieveSearchCompany(input)
+      .subscribe((response) => {
+        this.listOfparentCompanies.length = 0
+            this.listOfparentCompanies.push({
+              id:response.id,
+              value: response.name
+            })
+      })
+  }
 }

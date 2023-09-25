@@ -8,6 +8,7 @@ import { ReleaseComponent } from '../release/release.component';
 import { PlatformService } from 'src/app/data/services/platform.service';
 import { DropDownOption } from 'src/app/common/dropdown-input/standar-dropdown-menu/standar-dropdown-menu.component';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-platform-release',
@@ -24,6 +25,7 @@ export class PlatformReleaseComponent {
   listOfPlatforms: Array<SelectSearchInputValue> = []
   listOfRegions: Array<DropDownOption> = []
   listOfGameStatues: Array<DropDownOption> = []
+  platform$: BehaviorSubject<SelectSearchInputValue | null> =  new BehaviorSubject<SelectSearchInputValue | null>(null)
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -71,6 +73,20 @@ export class PlatformReleaseComponent {
     }
   }
 
+  retrieveSearchPlatforms(input){
+    
+    this.platformService
+    .getPlatformById(input)
+    .subscribe((response) => {
+      this.listOfPlatforms.length = 0
+      this.platform$.next({
+        id:response.id,
+        value: response.name,
+      })
+    })
+  
+}
+
   releaseForm(): FormGroup {
     return this.formBuilder.group({
       date:[null],
@@ -80,8 +96,6 @@ export class PlatformReleaseComponent {
   }
 
   addNewIndex() {
-    console.log(this.release())
-    console.log(this.releaseDates())
     this.release().push(this.releaseForm())
   }
 
@@ -109,21 +123,4 @@ export class PlatformReleaseComponent {
     })
   }
 
-  getExistingValue(input) {
-    if (input.length > 0) {
-      this.platformService
-      .getPlatformById(input)
-      .subscribe((response) => {
-        this.listOfPlatforms.length = 0
-        if (response.length > 0) {
-          response.forEach(element => {
-            this.listOfPlatforms.push({
-              id:element.id,
-              value: element.name
-            })
-          });
-        } 
-      })
-    }
-  }
 }

@@ -1,12 +1,13 @@
 import { EWebsites } from "src/app/core/enums/enum-websites"
+import { FileParameter } from "../image/file-parameter"
 
 export interface CreateGameDto{
     name: string
     description: string
     gameStatus: number
     story: string
-    updateGameType: string | null
-    updatedGameId : number | null
+    gameType: string | null
+    parentGameId : number | null
     //gameEdition: CreateGameEditionDto | null
     alternativeNames: Array<CreateAlternativeTitleDto>
     gameLocalizations: Array<CreateGameLocalizationDto>
@@ -19,7 +20,12 @@ export interface CreateGameDto{
     websites : Array<CreateWebsite>
     involvedCompanies: Array<CreateInvolvedCompanyDto>
     languageSupports:Array<CreateLanguageSupportDto>
-    cover: number
+    cover: CreateImageDto | null
+}
+
+export interface CreateImageDto{
+    imageTitle:string
+    imageData: Array<number>
 }
 
 export interface CreateGameEditionDto {

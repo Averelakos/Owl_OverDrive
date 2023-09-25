@@ -9,6 +9,7 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 export class GameInfoTabAccordioComponent {
   deviceType = ResponsizeSize
   currentElement: number = 1
+  isForCreate: boolean = true
   @Output() create = new EventEmitter
   tabInfo = {
     general: {id:1, title: 'General', active: true},

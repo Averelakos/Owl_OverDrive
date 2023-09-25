@@ -12,7 +12,8 @@
                 [listOfInputValues]="listOfPlatforms"
                 (searchInput)="searchPlatform($event)"
                 [apiSearchEnable]="true"
-                (retrieveApiValue)="getExistingValue($event)"
+                (retrieveApiValue)="retrieveSearchPlatforms($event)"
+                [retrievedApiValue]="platform$"
             ></app-standar-select-search>
             <div class="flex column mt-3" *ngFor="let item of release().controls; let i=index" [formGroupName]="i">
                 <app-release [index]="i" (remove)="removeIndex($event)" [listOfRegions]="listOfRegions" [listOfStatuses]="listOfGameStatues"></app-release>

@@ -12,6 +12,8 @@
                     [listOfInputValues]="listOfCompanies"
                     (searchInput)="searchCompanies($event)"
                     [apiSearchEnable]="true"
+                    (retrieveApiValue)="retrieveSearchCompany($event)"
+                    [retrievedApiValue]="company$"
                 ></app-standar-select-search>
             </div>
            <div class="inputs">
@@ -22,6 +24,8 @@
                     [options]="listOfPlatforms"
                     (searchInput)="searchPlatforms($event)"
                     [apiSearchEnable]="true"
+                    (retrieveApiValue)="retrieveSearchPlatforms($event)"
+                    [retrievedApiValue]="platform$"
                 >
                 </app-standart-pill-select>
            </div>
@@ -35,6 +39,7 @@
                             <app-check-mark-checkbox-button
                             [label]="item.name"
                             (clickEvent)="checkBoxClicked($event, item)"
+                            [isChecked]="item.isChecked"
                             ></app-check-mark-checkbox-button>
                         </li>
                     </ul>

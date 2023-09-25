@@ -1,20 +1,20 @@
 <div class="game-container">
     <ol class="breadcrumb">
         <li><a [routerLink]="['/Game']">Games</a></li>
-        <ng-container *ngIf="true">
+        <ng-container *ngIf="isForCreate">
             <li>New Game</li>
         </ng-container>
-        <!-- <ng-container *ngIf="companyId != null">
-            <li><a [routerLink]="['/Company/view/'+companyForm.get('generalDetails')?.get('name')?.value,{id: companyId} ]">
-                {{companyForm.get('generalDetails')?.get('name')?.value}}</a></li>
+        <ng-container *ngIf="!isForCreate">
+            <li><a [routerLink]="['/Game/view/'+gameForm.get('general')?.get('name')?.value,{id: gameId} ]">
+                {{gameForm.get('general')?.get('name')?.value}}</a></li>
             <li>Edit</li>
-        </ng-container> -->
+        </ng-container>
     </ol>
     
     <div class="page_title">
         <h1>Game 
-            <!-- <small *ngIf="companyId == null">(Add new information)</small>
-            <small *ngIf="companyId != null">(Edit information)</small> -->
+            <small *ngIf="isForCreate == null">(Add new information)</small>
+            <small *ngIf="!isForCreate != null">(Edit information)</small>
         </h1>
     </div>
 

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { GameService } from 'src/app/data/services/game.service';
 
 @Component({
@@ -7,16 +8,34 @@ import { GameService } from 'src/app/data/services/game.service';
   templateUrl: './add-edit-game.component.html',
   styleUrls: ['./add-edit-game.component.scss']
 })
-export class AddEditGameComponent {
+export class AddEditGameComponent implements OnInit {
   gameForm!: FormGroup
-
-  constructor(private gameService: GameService){
+  gameId: number | null
+  isForCreate: boolean = true
+  constructor(
+    private gameService: GameService, 
+    private readonly route: ActivatedRoute
+    ){
     this.gameForm = gameService.initForm()
+  }
+
+  ngOnInit(): void {
+    this.gameId = this.route.snapshot.params['id']
+    if (this.gameId != null) {
+      this.isForCreate = false
+      this.getDataForEdit()
+    }
   }
 
   createGame() {
     let model = this.gameService.createModel(this.gameForm)
     this.gameService.createNewGame(model).subscribe()
-    console.log(model)
+  }
+
+  getDataForEdit() {
+    this.gameService.getGameByIdForEdit(this.gameId).subscribe((res) => {
+      console.log(res)
+      this.gameService.populateForm(this.gameForm, res)
+    })
   }
 }

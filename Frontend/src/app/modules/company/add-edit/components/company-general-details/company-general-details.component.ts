@@ -98,7 +98,6 @@ export class CompanyGeneralDetailsComponent implements OnInit, OnChanges {
         data: file,
         fileName: file['name'],
       }
-      console.log(fileParameter)
       this.uploadFile(fileParameter)
       return
     }

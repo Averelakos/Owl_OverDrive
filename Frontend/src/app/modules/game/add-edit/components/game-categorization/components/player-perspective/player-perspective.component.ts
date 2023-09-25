@@ -37,7 +37,6 @@ export class PlayerPerspectiveComponent {
 
   checkBoxClicked(e: any, item) {
     let temp = this.playerPerspectives()?.value
-    console.log(temp)
     let valueExists = false 
     if (temp != null) {
       temp.forEach(element => {
@@ -55,7 +54,6 @@ export class PlayerPerspectiveComponent {
       }
       )
 
-      console.log(changedTemp)
       this.playerPerspectives()?.patchValue(changedTemp)
     } else {
       temp.push(item.id)

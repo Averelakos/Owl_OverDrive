@@ -36,6 +36,7 @@ export class GameModesComponent implements OnInit{
 
   checkBoxClicked(e: any, item) {
     let temp = this.gameModes()?.value
+    console.log(temp)
     let valueExists = false 
     if (temp != null) {
       temp.forEach(element => {
@@ -53,7 +54,6 @@ export class GameModesComponent implements OnInit{
       }
       )
 
-      console.log(changedTemp)
       this.gameModes()?.patchValue(changedTemp)
     } else {
       temp.push(item.id)
