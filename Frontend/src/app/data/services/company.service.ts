@@ -47,10 +47,15 @@ export class CompanyService{
     }
 
     searchParentCompany(searchInput: string){
-      // console.log(input)
       const body = JSON.stringify(searchInput)
       const params = new HttpParams().set('searchInput', searchInput)
       return this.http.post<any>(this.baseUrl + '/SearchParent', null, { params })
+    }
+
+    retrieveSearchCompany(searchInput: number){
+      const body = JSON.stringify(searchInput)
+      const params = new HttpParams().set('searchInput', searchInput)
+      return this.http.post<any>(this.baseUrl + '/RetrieveSearchCompany', null, { params })
     }
 
     getAllCompanies() {
