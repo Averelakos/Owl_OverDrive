@@ -10,6 +10,7 @@ import { BehaviorSubject } from "rxjs";
 import { GameDetailsDto } from "../types/game/game-details-dto";
 import { UpdateGameDto } from "../types/game/update-game";
 import { EWebsites } from "src/app/core/enums/enum-websites";
+import { ServiceResult } from "../types/service-results/service-result";
 
 
 @Injectable()
@@ -75,43 +76,15 @@ export class GameService{
     this.general(gameForm).get('name')?.patchValue(response.name)
     this.general(gameForm)?.get('description')?.patchValue(response.description)
     this.general(gameForm)?.get('gameStatus')?.patchValue(response.gameStatus)
-    this.general(gameForm).get('updateGameType')?.patchValue(response.updateGameType)
-    this.general(gameForm).get('updatedGameId')?.patchValue(response.updatedGameId)
+    this.general(gameForm).get('updateGameType')?.patchValue(response.gameType)
+    this.general(gameForm).get('updatedGameId')?.patchValue(response.parentGameId)
+    this.general(gameForm).get('cover')?.patchValue(response.cover)
 
     gameForm.get('storyline')?.patchValue(response.story)
   }
 
-  general(gameForm: FormGroup) {
-    return gameForm.get('general') as FormGroup
-  }
 
-  releaseDates(gameForm: FormGroup) {
-    return gameForm.get('releaseDates') as FormArray
-  }
-
-  localization(gameForm: FormGroup) {
-    return gameForm.get('localization') as FormArray
-  }
-
-  gameEdition(gameForm: FormGroup) {
-    return this.general(gameForm).get('gameEdition') as FormGroup
-  }
-
-  categorization(gameForm: FormGroup) {
-    return gameForm.get('categorization') as FormGroup
-  }
-
-  companies(gameForm: FormGroup) {
-    return gameForm.get('companies') as FormArray
-  }
-
-  websites(gameForm: FormGroup) {
-    return gameForm.get('websites') as FormGroup
-  }
-
-  languages(gameForm: FormGroup){
-    return gameForm.get('supportedLanguage') as FormGroup
-  }
+  //#region Create
 
   createModel(gameForm: FormGroup):CreateGameDto {
     let model: CreateGameDto = {
@@ -209,6 +182,23 @@ export class GameService{
     return model;
   }
 
+  updateModel(gameForm: FormGroup, gameId: number):UpdateGameDto {
+    let model: UpdateGameDto = {
+      id: gameId,
+      name: this.general(gameForm).get('name')?.value,
+      story: gameForm.get('storyline')?.value,
+      description: this.general(gameForm)?.get('description')?.value,
+      gameStatus: this.general(gameForm)?.get('gameStatus')?.value,
+      gameType: this.general(gameForm).get('updateGameType')?.value,
+      parentGameId : this.general(gameForm).get('updatedGameId')?.value, 
+      //gameEdition:null,
+      
+      cover: this.general(gameForm).get('cover')?.value,
+    }
+
+    return model;
+  }
+
   convertToListCreatelanguageDto(formGroup: FormGroup): Array<CreateLanguageSupportDto>{
     let model: Array<CreateLanguageSupportDto> = []
     if(this.languages(formGroup)?.get('audio')?.value != null){
@@ -244,6 +234,41 @@ export class GameService{
       return model
   }
 
+  convertToListLanguage<T>(formGroup: FormGroup): Array<T>{
+    let model: Array<T> = []
+    if(this.languages(formGroup)?.get('audio')?.value != null){
+      this.languages(formGroup)?.get('audio')?.value.forEach((entry) => {
+        let temp = {
+          languageId: entry,
+          languageSupportTypeId: 1
+        }
+        model.push(temp as T)
+      })
+    }
+
+    if(this.languages(formGroup)?.get('subtitle')?.value != null){
+      this.languages(formGroup)?.get('subtitle')?.value.forEach((entry) => {
+        let temp = {
+          languageId: entry,
+          languageSupportTypeId: 2
+        }
+        model.push(temp as T)
+      })
+    }
+
+    if(this.languages(formGroup)?.get('interface')?.value != null){
+      this.languages(formGroup)?.get('interface')?.value.forEach((entry) => {
+        let temp = {
+          languageId: entry,
+          languageSupportTypeId: 3
+        }
+        model.push(temp as T)
+      })
+    }
+
+      return model
+  }
+
   convertToListCreateWebsiteDto(formGroup: FormGroup){
     let websites : Array<CreateWebsite> = []
     Object.entries(this.websites(formGroup).value).forEach((entry) => {
@@ -260,31 +285,16 @@ export class GameService{
 
     return websites
   }
+
   convertToCreateWebsiteDto(formGroup: FormGroup) {
     if(this.websites(formGroup).get('steam')?.value != null) {
       let item: CreateWebsite = {
         url:this.websites(formGroup).get('steam')?.value,
         category: EWebsites.steam
       }
-      // websites.push(item)
     }    
   }
 
-  // steam: [null],
-  //         epic: [null],
-  //         appStorePhone: [null],
-  //         itch: [null],
-  //         gog:[null],
-  //         googlePlay:[null],
-  //         appStoreTablet: [null],
-  //         official: [null],
-  //         twitch: [null],
-  //         youtube: [null],
-  //         facebook: [null],
-  //         twitter:[null],
-  //         instagram:[null],
-  //         discord: [null],
-  //         reddit:[null]
 
   convertToCreateInvolvedCompaniesModelDto(list: FormArray) {
     let convertedResults: Array<CreateInvolvedCompanyDto> = []
@@ -351,6 +361,38 @@ export class GameService{
     return convertedResults;
   }
 
+  general(gameForm: FormGroup) {
+    return gameForm.get('general') as FormGroup
+  }
+
+  releaseDates(gameForm: FormGroup) {
+    return gameForm.get('releaseDates') as FormArray
+  }
+
+  localization(gameForm: FormGroup) {
+    return gameForm.get('localization') as FormArray
+  }
+
+  gameEdition(gameForm: FormGroup) {
+    return this.general(gameForm).get('gameEdition') as FormGroup
+  }
+
+  categorization(gameForm: FormGroup) {
+    return gameForm.get('categorization') as FormGroup
+  }
+
+  companies(gameForm: FormGroup) {
+    return gameForm.get('companies') as FormArray
+  }
+
+  websites(gameForm: FormGroup) {
+    return gameForm.get('websites') as FormGroup
+  }
+
+  languages(gameForm: FormGroup){
+    return gameForm.get('supportedLanguage') as FormGroup
+  }
+
   searchParentGame(searchInput: string){
     const body = JSON.stringify(searchInput)
     const params = new HttpParams().set('searchInput', searchInput)
@@ -365,12 +407,16 @@ export class GameService{
     return this.http.post<ServiceSearchResultData<Array<GameSimpleDto>>>(this.baseUrl + '/GetAllGames', options)
   }
 
-  getGameById(gameId) {
+  getGameById(gameId:number) {
     return this.http.get<GameDetailsDto>(this.baseUrl + `/GetGame?gameId=${gameId}`)
   }
 
   getGameByIdForEdit(gameId) {
     return this.http.get<UpdateGameDto>(this.baseUrl + `/GetGameForEdit?gameId=${gameId}`)
+  }
+
+  updateGame(model: UpdateGameDto){
+    return this.http.post<ServiceResult<UpdateGameDto>>(this.baseUrl + '/UpdateGame',model)
   }
 
 }

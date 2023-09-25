@@ -21,6 +21,7 @@ import { QueryableGameListComponent } from "./list/components/queryable-game-lis
 import { GameDetailsComponent } from './game-details/container/game-details.component';
 import { GameDetailsDesktopComponent } from "./game-details/components/game-details-desktop/game-details-desktop.component";
 import { GameDetailsMobileComponent } from "./game-details/components/game-details-mobile/game-details-mobile.component";
+import { SpinneroaderComponent } from "src/app/common/loaders/spinner-loader/spinner-loader";
 
 const routes: Routes = [
     {path:'', component: ListGamesComponent},
@@ -47,7 +48,8 @@ const routes: Routes = [
         SearchFilterHeaderComponent,
         QueryableGameListComponent,
         GameDetailsDesktopComponent,
-        GameDetailsMobileComponent
+        GameDetailsMobileComponent,
+        SpinneroaderComponent
 
     ],
     providers:[GameService],
