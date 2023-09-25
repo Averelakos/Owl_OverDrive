@@ -53,6 +53,5 @@ export class AdminSidebarMobileComponent{
   changeContainerCss(){
     const el = document.getElementById('mobile-sidebar-container')
     el?.classList.add('close')
-    console.log(el)
   }
 }
