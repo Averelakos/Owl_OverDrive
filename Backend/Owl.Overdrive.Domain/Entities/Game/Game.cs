@@ -9,7 +9,7 @@ namespace Owl.Overdrive.Domain.Entities.Game
         public string? Description { get; set; }
         public string? Story { get; set; }
         public long? ParentGameId { get; set; }
-        public EGameType GameType{ get; set; }
+        public EGameType? GameType{ get; set; }
         public EGameStatus? GameStatus { get; set; }
         public long? CoverId { get; set; }
 

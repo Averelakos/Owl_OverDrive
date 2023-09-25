@@ -18,21 +18,15 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                 name: "IX_Games_UpdatedGameId",
                 table: "Games");
 
-            migrationBuilder.DropColumn(
-                name: "UpdateGameType",
-                table: "Games");
-
             migrationBuilder.RenameColumn(
                 name: "UpdatedGameId",
                 table: "Games",
                 newName: "ParentGameId");
 
-            migrationBuilder.AddColumn<string>(
-                name: "GameType",
+            migrationBuilder.RenameColumn(
+                name: "UpdateGameType",
                 table: "Games",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                newName: "GameType");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Games_ParentGameId",
@@ -60,20 +54,15 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                 name: "IX_Games_ParentGameId",
                 table: "Games");
 
-            migrationBuilder.DropColumn(
-                name: "GameType",
-                table: "Games");
-
             migrationBuilder.RenameColumn(
                 name: "ParentGameId",
                 table: "Games",
                 newName: "UpdatedGameId");
 
-            migrationBuilder.AddColumn<string>(
-                name: "UpdateGameType",
+            migrationBuilder.RenameColumn(
+                name: "GameType",
                 table: "Games",
-                type: "nvarchar(max)",
-                nullable: true);
+                newName: "UpdateGameType");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Games_UpdatedGameId",

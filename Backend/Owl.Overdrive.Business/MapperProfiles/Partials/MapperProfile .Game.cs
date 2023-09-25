@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using Owl.Overdrive.Business.DTOs.CompanyDtos;
+using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
+using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Business.MapperProfiles
@@ -33,6 +36,9 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<CreateLanguageSupportDto, LanguageSupport>();
             CreateMap<CreateImageDto, Cover>();
 
+            // Search 
+            CreateMap<Game, SearchParentGameDto>();
+
             // List Game
             CreateMap<Game, GameSimpleDto>()
                 .ForMember(m => m.ImageTitle, opt => opt.MapFrom(m => m.Cover != null && !string.IsNullOrEmpty( m.Cover.ImageTitle)? m.Cover.ImageTitle : null))
@@ -47,6 +53,10 @@ namespace Owl.Overdrive.Business.MapperProfiles
 
             //Game => Update Game Dto
             CreateMap<Game, UpdateGameDto>();
+            CreateMap<Cover, UpdateGameCoverDto>();
+            //Update Game Dto => Game
+            CreateMap<UpdateGameDto, Game>();
+            CreateMap<UpdateGameCoverDto, Cover>();
         }
     }
 }

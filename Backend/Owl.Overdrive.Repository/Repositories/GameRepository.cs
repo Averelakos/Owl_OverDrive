@@ -61,7 +61,7 @@ namespace Owl.Overdrive.Repository.Repositories
             return await QueryGame()
                 .Include(x =>x.ReleaseDates)
                 .AsNoTracking()
-                .FirstAsync(x => x.Id == id);
+                .FirstAsync(x => x.Id == id)!;
         }
 
         public async Task<Game?> GetGameById(long id)
@@ -69,7 +69,7 @@ namespace Owl.Overdrive.Repository.Repositories
             return await base.GetById(id);
         }
 
-        public async Task<Game> UpdateCompany(Game game)
+        public async Task<Game> UpdateGame(Game game)
         {
             return await base.Update(game);
         }

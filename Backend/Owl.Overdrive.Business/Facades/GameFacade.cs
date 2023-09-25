@@ -13,6 +13,7 @@ using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Business.Services;
 using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Domain.Entities.Game;
 using Owl.Overdrive.Repository.Contracts;
 using System.Text;
@@ -47,33 +48,6 @@ namespace Owl.Overdrive.Business.Facades
 
                 var result = await _repoUoW.GameRepository.Insert(newGame);
 
-                //if(createGameDto.Image is not null && result is not null) 
-                //{
-                //var imageResult = await _repoUoW.ImageDraftRepository.GetImageByGuid(createGameDto.Cover);
-
-                //if (imageResult is null)
-                //    throw new ArgumentNullException();
-                //    if (imageFile is not null)
-                //{
-                //    Cover newCover = new Cover
-                //    {
-                //        ImageData = imageFile as byte[],
-                //        ImageTitle = createGameDto.Image.FileName,
-                //    };
-                //}
-                //Cover newCover = new Cover
-                //{
-                //    ImageData = imageFile,
-                //    ImageTitle = createGameDto.Image.FileName,
-                //};
-
-                //await _repoUoW.CoverRepository.Insert(newCover);
-
-                //result.CoverId = newCover.Id;
-
-                //await _repoUoW.GameRepository.SaveChangesAsync();
-                ////}
-
                 await _repoUoW.GameRepository.CommitTransactionAsync();
 
                 return response;
@@ -89,20 +63,57 @@ namespace Owl.Overdrive.Business.Facades
 
         }
 
-        
+        public async Task<ServiceResult<UpdateGameDto>> UpdateGame(UpdateGameDto updateGameDto)
+        {
+            ServiceResult<UpdateGameDto> response = new()
+            {
+                Result = updateGameDto
+            };
+
+            await _repoUoW.CompanyRepository.BeginTransactionAsync();
+            try
+            {
+                var game = await _repoUoW.GameRepository.GetById(updateGameDto.Id);
+
+                if (game is null)
+                {
+                    throw new Exception();
+                }
+
+                _mapper.Map<UpdateGameDto, Game>(updateGameDto, game);
+
+                // TODO: REMOVE IMAGE
+
+                await _repoUoW.GameRepository.UpdateGame(game);
+                await _repoUoW.GameRepository.CommitTransactionAsync();
+
+                //TODO: RETURN SUCCESS RESPONSE
+                return response;
+            }
+            catch (Exception ex)
+            {
+                await _repoUoW.GameRepository.RollBackTransactionAsync();
+                //TODO: RETURN ERROR RESPONSE
+                response.Success = false;
+                response.Error = ex.Message;
+                return response;
+            }
+        }
+
+
 
         /// <summary>
         /// Searches the specified game based on  search input.
         /// </summary>
         /// <param name="searchInput">The search input.</param>
         /// <returns></returns>
-        public async Task<List<SearchGameDto>> Search(string searchInput)
+        public async Task<List<SearchParentGameDto>> Search(string searchInput)
         {
-            List<SearchGameDto> result = new List<SearchGameDto>();
+            List<SearchParentGameDto> result = new List<SearchParentGameDto>();
             if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
             {
-                var list = await _repoUoW.CompanyRepository.Search(searchInput);
-                result = _mapper.Map<List<SearchGameDto>>(list);
+                var list = await _repoUoW.GameRepository.Search(searchInput);
+                result = _mapper.Map<List<SearchParentGameDto>>(list);
             }
 
             return result;

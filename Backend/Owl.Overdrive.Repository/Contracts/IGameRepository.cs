@@ -33,7 +33,7 @@ namespace Owl.Overdrive.Repository.Contracts
         /// <returns></returns>
         Task<Game?> GetGameByIdNoTacking(long id);
         Task<Game?> GetById(long id);
-        Task<Game> UpdateCompany(Game company);
+        Task<Game> UpdateGame(Game game);
 
         Task BeginTransactionAsync();
         Task CommitTransactionAsync();

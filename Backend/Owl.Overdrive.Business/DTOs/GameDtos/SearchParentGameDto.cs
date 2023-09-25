@@ -9,7 +9,7 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos
     /// <summary>
     /// Search game Dto
     /// </summary>
-    public class SearchGameDto
+    public class SearchParentGameDto
     {
         /// <summary>
         /// Gets or sets the identifier.

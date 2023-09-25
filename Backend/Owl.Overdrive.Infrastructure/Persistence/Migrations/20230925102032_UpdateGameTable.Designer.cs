@@ -12,7 +12,7 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    [Migration("20230925070406_UpdateGameTable")]
+    [Migration("20230925102032_UpdateGameTable")]
     partial class UpdateGameTable
     {
         /// <inheritdoc />
@@ -3983,7 +3983,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GameType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastUpdated")
