@@ -23,6 +23,7 @@ namespace Owl.Overdrive.Business.Contracts
         /// <param name="searchInput">The search input.</param>
         /// <returns></returns>
         Task<List<SearchParentCompanyDto>> Search(string searchInput);
+        Task<SearchParentCompanyDto> RetrieveSearchValue(long searchInput);
         Task<List<ListCompanyDto>> GetAll();
         Task<SimpleCompanyDto> GetCompanyById(long companyId);
         Task<UpdateCompanyDto> GetCompanyForUpdate(long companyId);

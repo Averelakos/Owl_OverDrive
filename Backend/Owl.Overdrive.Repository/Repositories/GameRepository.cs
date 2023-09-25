@@ -56,16 +56,15 @@ namespace Owl.Overdrive.Repository.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<Game?> GetCompanyById(long id)
+        public async Task<Game?> GetGameByIdNoTacking(long id)
         {
-            //return await GetCompany()
-            //    .Include(x => x.ParentCompany)
-            //    .AsNoTracking()
-            //    .FirstAsync(x => x.Id == id)!;
-            return new Game();
+            return await QueryGame()
+                .Include(x =>x.ReleaseDates)
+                .AsNoTracking()
+                .FirstAsync(x => x.Id == id);
         }
 
-        public override async Task<Game?> GetById(long id)
+        public async Task<Game?> GetGameById(long id)
         {
             return await base.GetById(id);
         }

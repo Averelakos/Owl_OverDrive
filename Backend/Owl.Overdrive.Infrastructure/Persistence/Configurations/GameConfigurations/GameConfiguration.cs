@@ -28,12 +28,12 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
             builder.Property(p => p.Name).HasMaxLength(255);
             builder.Property(p => p.Description).HasColumnType("varchar(MAX)");
             builder.Property(p => p.Story).HasColumnType("varchar(MAX)");
-            builder.Property(p => p.UpdateGameType).HasConversion(c => c.ToString(), c => Enum.Parse<EGameType>(c));
+            builder.Property(p => p.GameType).HasConversion(c => c.ToString(), c => Enum.Parse<EGameType>(c));
             builder.Property(p => p.GameStatus).HasConversion(c => c.ToString(), c => Enum.Parse<EGameStatus>(c));
 
-            builder.HasOne(e => e.UpdatedGame)
+            builder.HasOne(e => e.ParentGame)
                 .WithOne()
-                .HasForeignKey<Game>(e => e.UpdatedGameId)
+                .HasForeignKey<Game>(e => e.ParentGameId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(e => e.Cover)

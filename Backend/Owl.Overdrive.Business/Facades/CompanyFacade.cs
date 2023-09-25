@@ -15,6 +15,7 @@ namespace Owl.Overdrive.Business.Facades
         {
         }
 
+        #region Create
         public async Task<ServiceResult<CreateCompanyDto>> Create(CreateCompanyDto createCompanyDto)
         {
             ServiceResult<CreateCompanyDto> response = new ();
@@ -59,7 +60,8 @@ namespace Owl.Overdrive.Business.Facades
             }
             
         }
-
+        #endregion Creeate
+        
         public async Task<List<SearchParentCompanyDto>> Search(string searchInput)
         {
             List<SearchParentCompanyDto> result = new List<SearchParentCompanyDto>();
@@ -68,6 +70,13 @@ namespace Owl.Overdrive.Business.Facades
                var list = await _repoUoW.CompanyRepository.Search(searchInput);
                result = _mapper.Map<List<SearchParentCompanyDto>>(list);
             }
+
+            return result;
+        }
+
+        public async Task<SearchParentCompanyDto> RetrieveSearchValue(long searchInput)
+        {
+            var result = _mapper.Map<SearchParentCompanyDto>(await _repoUoW.CompanyRepository.GetCompanyById(searchInput));
 
             return result;
         }

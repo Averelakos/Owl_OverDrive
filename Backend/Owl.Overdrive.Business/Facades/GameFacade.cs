@@ -2,15 +2,20 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Business.Contracts;
+using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
+using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Business.Services;
 using Owl.Overdrive.Business.Services.Models;
+using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Game;
 using Owl.Overdrive.Repository.Contracts;
+using System.Text;
 
 namespace Owl.Overdrive.Business.Facades
 {
@@ -32,7 +37,7 @@ namespace Owl.Overdrive.Business.Facades
             await _repoUoW.GameRepository.BeginTransactionAsync();
             try
             {
-                
+
                 var newGame = _mapper.Map<Game>(createGameDto);
 
                 if ( newGame is null)
@@ -42,25 +47,32 @@ namespace Owl.Overdrive.Business.Facades
 
                 var result = await _repoUoW.GameRepository.Insert(newGame);
 
-                if(createGameDto.Cover is not null && result is not null) 
-                {
-                    var imageResult = await _repoUoW.ImageDraftRepository.GetImageByGuid(createGameDto.Cover);
+                //if(createGameDto.Image is not null && result is not null) 
+                //{
+                //var imageResult = await _repoUoW.ImageDraftRepository.GetImageByGuid(createGameDto.Cover);
 
-                    if (imageResult is null)
-                        throw new ArgumentNullException();
+                //if (imageResult is null)
+                //    throw new ArgumentNullException();
+                //    if (imageFile is not null)
+                //{
+                //    Cover newCover = new Cover
+                //    {
+                //        ImageData = imageFile as byte[],
+                //        ImageTitle = createGameDto.Image.FileName,
+                //    };
+                //}
+                //Cover newCover = new Cover
+                //{
+                //    ImageData = imageFile,
+                //    ImageTitle = createGameDto.Image.FileName,
+                //};
 
-                    Cover newCover = new Cover
-                    {
-                        ImageData = imageResult.ImageData,
-                        ImageTitle = imageResult.ImageTitle,
-                    };
+                //await _repoUoW.CoverRepository.Insert(newCover);
 
-                    await _repoUoW.CoverRepository.Insert(newCover);
+                //result.CoverId = newCover.Id;
 
-                    result.CoverId = newCover.Id;
-
-                    await _repoUoW.GameRepository.SaveChangesAsync();
-                }
+                //await _repoUoW.GameRepository.SaveChangesAsync();
+                ////}
 
                 await _repoUoW.GameRepository.CommitTransactionAsync();
 
@@ -76,6 +88,8 @@ namespace Owl.Overdrive.Business.Facades
             }
 
         }
+
+        
 
         /// <summary>
         /// Searches the specified game based on  search input.
@@ -165,6 +179,38 @@ namespace Owl.Overdrive.Business.Facades
                 result.Result = new List<GameSimpleDto>();
                 return result;
             } 
+        }
+
+        public async Task<GameDetailsDto?> GetGameById(long gameId)
+        {
+            var game = await _repoUoW.GameRepository.GetGameByIdNoTacking(gameId);
+            var result = _mapper.Map<GameDetailsDto>(game);
+
+            if (game?.CoverId is not null)
+            {
+                var coverResult = await _repoUoW.CoverRepository.GetCover((long)game.CoverId);
+                if (coverResult is not null)
+                {
+                    var cover = _mapper.Map<GameCoverDetailsDto>(coverResult);
+                    var background = _mapper.Map<GameBackgroundDetailsDto>(coverResult);
+
+                    result.Cover = cover;
+                    result.Background = background;
+                }
+            }
+                return result;
+
+        }
+
+        public async Task<UpdateGameDto?> GetGameForUpdate(long gameId)
+        {
+            var result = await _repoUoW.GameRepository
+                    .QueryGame()
+                    .AsNoTracking()
+                    .ProjectTo<UpdateGameDto>(_mapper.ConfigurationProvider)
+                    .FirstOrDefaultAsync(x => x.Id == gameId);
+
+            return result;
         }
     }
 }

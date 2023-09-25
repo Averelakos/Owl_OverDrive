@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Owl.Overdrive.Business.Contracts;
+using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.PlatformDtos;
 using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Repository.Contracts;
@@ -23,6 +24,13 @@ namespace Owl.Overdrive.Business.Facades
                 
                 result = _mapper.Map<List<SearchPlatformDto>>(searchResult);
             }
+
+            return result;
+        }
+
+        public async Task<SearchPlatformDto> RetrieveSearchValue(long searchInput)
+        {
+            var result = _mapper.Map<SearchPlatformDto>(await _repoUoW.PlatformRepository.GetPlatformById(searchInput));
 
             return result;
         }

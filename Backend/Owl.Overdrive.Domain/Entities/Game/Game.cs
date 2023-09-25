@@ -8,12 +8,12 @@ namespace Owl.Overdrive.Domain.Entities.Game
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public string? Story { get; set; }
-        public long? UpdatedGameId { get; set; }
-        public EGameType? UpdateGameType{ get; set; }
+        public long? ParentGameId { get; set; }
+        public EGameType GameType{ get; set; }
         public EGameStatus? GameStatus { get; set; }
         public long? CoverId { get; set; }
 
-        public virtual Game? UpdatedGame { get; set; }
+        public virtual Game? ParentGame { get; set; }
         public virtual List<AlternativeName> AlternativeGameTitles { get; set; } = new();
         public virtual List<Localization> Localizations { get; set; } = new();
         public virtual List<ReleaseDate> ReleaseDates { get; set; } = new();

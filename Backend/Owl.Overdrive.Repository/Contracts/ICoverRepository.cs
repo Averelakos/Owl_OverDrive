@@ -5,7 +5,7 @@ namespace Owl.Overdrive.Repository.Contracts
     public interface ICoverRepository
     {
         Task<Cover> Insert(Cover companyLogo);
-        Task<Cover?> GetCompanyLogo(long id);
+        Task<Cover?> GetCover(long id);
         Task<Cover?> GetById(long id);
     }
 }

@@ -16,7 +16,7 @@ namespace Owl.Overdrive.Repository.Repositories
             return await base.Insert(cover);
         }
 
-        public async Task<Cover?> GetCompanyLogo(long id)
+        public async Task<Cover?> GetCover(long id)
         {
             try
             {

@@ -31,7 +31,7 @@ namespace Owl.Overdrive.Repository.Contracts
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        Task<Game?> GetCompanyById(long id);
+        Task<Game?> GetGameByIdNoTacking(long id);
         Task<Game?> GetById(long id);
         Task<Game> UpdateCompany(Game company);
 

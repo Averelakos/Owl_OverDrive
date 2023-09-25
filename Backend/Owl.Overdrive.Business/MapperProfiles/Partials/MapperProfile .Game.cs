@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
+using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Business.MapperProfiles
@@ -12,7 +14,10 @@ namespace Owl.Overdrive.Business.MapperProfiles
             // Create Game
             CreateMap<CreateGameDto, Game>()
                 .ForMember(m => m.AlternativeGameTitles, opt => opt.MapFrom(m => m.AlternativeNames))
-                .ForMember(m => m.Cover, opt => opt.Ignore());
+                .ForMember(m => m.Cover, opt => opt.MapFrom(m => m.Cover))
+                .ForMember(m => m.Localizations, opt => opt.MapFrom(m => m.GameLocalizations))
+                .ForMember(m => m.GameGameModes, opt => opt.MapFrom(m => m.GameModes))
+                .ForMember(m => m.GamePlayerPerspectives, opt => opt.MapFrom(m => m.PlayerPerspectives));
             CreateMap<CreateGameEditionDto, GameEdition>();
             CreateMap<CreativeAlternativeNameDto, AlternativeName>()
                 .ForMember(m => m.Name, opt => opt.MapFrom(m => m.AlternativeName));
@@ -26,6 +31,7 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<CreateWebsiteDto, Website>();
             CreateMap<CreateInvolvedCompanyDto, InvolvedCompany>();
             CreateMap<CreateLanguageSupportDto, LanguageSupport>();
+            CreateMap<CreateImageDto, Cover>();
 
             // List Game
             CreateMap<Game, GameSimpleDto>()
@@ -33,6 +39,14 @@ namespace Owl.Overdrive.Business.MapperProfiles
                 .ForMember(m => m.ImageData, opt => opt.MapFrom(m => m.Cover != null && m.Cover.ImageData != null ? m.Cover.ImageData: null))
                 .ForMember(m => m.ReleaseDate, opt => opt.MapFrom(m => m.ReleaseDates != null && m.ReleaseDates.Where(x => x.Date != null).OrderBy(x => x.Date).FirstOrDefault() != null? m.ReleaseDates.Where(x => x.Date != null).OrderBy(x => x.Date).FirstOrDefault().Date:null));
 
+            // Details
+            CreateMap<Game, GameDetailsDto>()
+                .ForMember(m => m.FirstReleaseDate, opt => opt.MapFrom(m => m.ReleaseDates != null && m.ReleaseDates.Where(x => x.Date != null).OrderBy(x => x.Date).FirstOrDefault() != null ? m.ReleaseDates.Where(x => x.Date != null).OrderBy(x => x.Date).FirstOrDefault().Date : null));
+            CreateMap<Cover, GameCoverDetailsDto>();
+            CreateMap<Cover, GameBackgroundDetailsDto>();
+
+            //Game => Update Game Dto
+            CreateMap<Game, UpdateGameDto>();
         }
     }
 }

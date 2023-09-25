@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Owl.Overdrive.Domain.Enums;
+﻿using Owl.Overdrive.Domain.Enums;
 
 namespace Owl.Overdrive.Business.DTOs.GameDtos.Create
 {
@@ -9,8 +8,8 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos.Create
         public string? Description { get; set; }
         public string? Story { get; set; }
         public EGameStatus? GameStatus { get; set; }
-        public long? UpdatedGameId { get; set; }
-        public EGameType? UpdateGameType { get; set; }
+        public long? ParentGameId { get; set; }
+        public EGameType? GameType { get; set; }
         public CreateGameEditionDto? GameEdition { get; set; }
         public List<CreativeAlternativeNameDto>? AlternativeNames{ get; set; }
         public List<CreateGameLocalizationDto>? GameLocalizations { get; set; }
@@ -23,6 +22,14 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos.Create
         public List<CreateWebsiteDto>? Websites { get; set; }
         public List<CreateInvolvedCompanyDto>? InvolvedCompanies { get; set; }
         public List<CreateLanguageSupportDto>? LanguageSupports { get; set; }
-        public Guid? Cover { get; set; }
+        //public Guid? Cover { get; set; }
+
+        public CreateImageDto? Cover { get; set; }
+    }
+
+    public class CreateImageDto 
+    {
+        public string ImageTitle { get; set; } = null!;
+        public byte[] ImageData { get; set; } = null!;
     }
 }

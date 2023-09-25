@@ -1,10 +1,13 @@
 ﻿using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
+using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Domain.Entities.Company;
+using Owl.Overdrive.Domain.Entities.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +35,8 @@ namespace Owl.Overdrive.Business.Contracts
         /// </summary>
         /// <returns></returns>
         Task<ServiceSearchResultData<List<GameSimpleDto>>> List(DataLoaderOptions options);
+        Task<GameDetailsDto?> GetGameById(long gameId);
+        Task<UpdateGameDto?> GetGameForUpdate(long gameId);
 
     }
 }

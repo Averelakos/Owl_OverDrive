@@ -33,6 +33,13 @@ namespace Owl.Overdrive.Controllers
             return Ok(result);
         }
 
+        [HttpPost("RetrieveSearchCompany")]
+        public async Task<ActionResult<List<SearchParentCompanyDto>>> RetrieveSearchCompany([FromQuery] long searchInput)
+        {
+            var result = await _companyFacade.RetrieveSearchValue(searchInput);
+            return Ok(result);
+        }
+
         [HttpGet("list")]
         public async Task<ActionResult<List<ListCompanyDto>>> List()
         {
