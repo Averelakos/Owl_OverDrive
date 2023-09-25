@@ -1,11 +1,12 @@
 <div class="game-details-container">
     <ol class="breadcrumb">
-        <li><a [routerLink]="['/Game']">Game Search</a></li>
+        <li><a [routerLink]="['/Game']">Games</a></li>
         <li *ngIf="gameModel != null">{{gameModel.name}}</li>
     </ol>
 
     <div class="game-details" *ngIf="gameModel != null">
         <app-game-details-desktop [gameModel]="gameModel"></app-game-details-desktop>
     </div>
-
 </div>
+
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../../assets/img/owl_logo.png'"></spinner-loader>

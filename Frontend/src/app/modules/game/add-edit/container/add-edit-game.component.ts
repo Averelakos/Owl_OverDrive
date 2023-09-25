@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, finalize, first } from 'rxjs';
 import { GameService } from 'src/app/data/services/game.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class AddEditGameComponent implements OnInit {
   gameForm!: FormGroup
   gameId: number | null
   isForCreate: boolean = true
+  loading$ = new BehaviorSubject<boolean>(false)
   constructor(
     private gameService: GameService, 
     private readonly route: ActivatedRoute
@@ -28,14 +30,27 @@ export class AddEditGameComponent implements OnInit {
   }
 
   createGame() {
+    this.loading$.next(true)
     let model = this.gameService.createModel(this.gameForm)
-    this.gameService.createNewGame(model).subscribe()
+    this.gameService.createNewGame(model)
+    .pipe(first(),finalize(()=> this.loading$.next(false)))
+    .subscribe()
   }
 
   getDataForEdit() {
-    this.gameService.getGameByIdForEdit(this.gameId).subscribe((res) => {
-      console.log(res)
+    this.loading$.next(true)
+    this.gameService.getGameByIdForEdit(this.gameId)
+    .pipe(first(),finalize(()=> this.loading$.next(false)))
+    .subscribe((res) => {
       this.gameService.populateForm(this.gameForm, res)
     })
+  }
+
+  updateGame(){
+    this.loading$.next(true)
+    let model = this.gameService.updateModel(this.gameForm, this.gameId!)
+    this.gameService.updateGame(model)
+    .pipe(first(),finalize(()=> this.loading$.next(false)))
+    .subscribe()
   }
 }

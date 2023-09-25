@@ -16,10 +16,13 @@
     </div>
     <div *ngIf="!main.checked">
         <app-standar-select-search
-            [controlName]="'updatedGame'"
+            [controlName]="'updatedGameId'"
             [subGroup]="'general'"
             [apiSearchEnable]="true"
             (searchInput)="searchGames($event)"
+            [listOfInputValues]="listOfGames"
+            (retrieveApiValue)="retrieveSearchGames($event)"
+            [retrievedApiValue]="game$"
             ></app-standar-select-search>
     </div>
     <hr class="horizontal-line">

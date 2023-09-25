@@ -6,6 +6,7 @@ import { FormGroupDirective } from '@angular/forms';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { EGameType } from 'src/app/core/enums/enum-game-type';
 import { GameService } from 'src/app/data/services/game.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-game-type',
@@ -16,6 +17,7 @@ import { GameService } from 'src/app/data/services/game.service';
 })
 export class GameTypeComponent {
   listOfGames: Array<SelectSearchInputValue> = []
+  game$: BehaviorSubject<SelectSearchInputValue | null> =  new BehaviorSubject<SelectSearchInputValue | null>(null)
   deviceType = ResponsizeSize
   gameType = EGameType
   gameTypeOptions: Array<any> = []
@@ -89,4 +91,18 @@ export class GameTypeComponent {
       this.listOfGames.length = 0
     }
   }
+
+  retrieveSearchGames(input){
+    
+    this.gameService
+    .getGameById(input)
+    .subscribe((response) => {
+      this.listOfGames.length = 0
+      this.game$.next({
+        id:response.id,
+        value: response.name,
+      })
+    })
+  
+}
 }
