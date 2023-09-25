@@ -26,6 +26,7 @@ const routes: Routes = [
     {path:'', component: ListGamesComponent},
     {path:'add', component:AddEditGameComponent},
     {path:'view/:game', component: GameDetailsComponent},
+    {path:'edit/:game', component: AddEditGameComponent}
 ]
 
 @NgModule({

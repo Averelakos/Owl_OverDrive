@@ -29,13 +29,9 @@ export class MatInputComponent implements ControlValueAccessor {
 
   constructor() {}
 
-  test() {
-    console.log('test2')
-  }
 
   public onChanged(event: Event): void {
     const value: any = (<HTMLInputElement>event.target).value;
-    console.log(this.changed)
     this.changed(value);
   }
 

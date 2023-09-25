@@ -21,8 +21,6 @@ export class AdminLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.layoutService.sidebarMenuTrigger
-    // console.log(Breakpoints.Tablet)
-    // console.log(this.responsiveService.Desktop)
   }
 
   toggleSideBar(){

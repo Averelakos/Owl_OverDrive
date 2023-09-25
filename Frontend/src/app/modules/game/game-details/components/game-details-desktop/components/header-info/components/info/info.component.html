@@ -1,15 +1,28 @@
 <div class="header-info-container">
     <div class="title">
         <h1>
-            Game Name 
-            <a class="btn btn-default">Edit</a>
+            {{gameModel.name}}
+            <a class="btn btn-default" (click)="clickToEdit()">Edit</a>
         </h1>
-        <h2>25.02.1990</h2>
+        <h2>{{gameModel.firstReleaseDate? (gameModel.firstReleaseDate | date : 'dd.MM.yyyy') : 'N/A'}}</h2>
         <a>
             <h3>Tsikas Entertaiment</h3>
         </a>
     </div>
     <div class="general-info">
-
+        <tabs>
+            <tab [tabTitle]="'Details'">
+                test
+            </tab>
+            <tab [tabTitle]="'Story'">
+                test
+            </tab>
+            <tab [tabTitle]="'Websites'">
+                test2
+            </tab>
+            <tab [tabTitle]="'Releases'">
+                test2
+            </tab>
+        </tabs>
     </div>
 </div>

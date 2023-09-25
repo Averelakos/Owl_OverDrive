@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfoComponent } from './components/info/info.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { GameDetailsDto } from 'src/app/data/types/game/game-details-dto';
 
 @Component({
   selector: 'app-header-info',
@@ -12,5 +13,5 @@ import { RatingComponent } from './components/rating/rating.component';
   styleUrls: ['./header-info.component.scss']
 })
 export class HeaderInfoComponent {
-
+  @Input()gameModel: GameDetailsDto
 }

@@ -38,6 +38,7 @@ export class GameCardComponent implements OnInit{
           'backgroundImage',
           `url(${this.cover})`
       );
+
       }
       reader.readAsDataURL(blob)
     }
