@@ -20,7 +20,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         // Game
         public DbSet<Game> Games => Set<Game>();
         //public DbSet<GameEdition> GameEditions => Set<GameEdition>();
-        public DbSet<AlternativeName> AlternativeGameTitles => Set<AlternativeName>();
+        public DbSet<AlternativeName> AlternativeTitles => Set<AlternativeName>();
         public DbSet<Localization> Localization => Set<Localization>();
         public DbSet<ReleaseDate> ReleaseDate => Set<ReleaseDate>();
         public DbSet<Website> Websites => Set<Website>();
@@ -30,8 +30,8 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<LanguageSupport> LanguageSupport => Set<LanguageSupport>();
         public DbSet<GameMode> GameModes => Set<GameMode>();
         public DbSet<GameGameMode> GameGameModes => Set<GameGameMode>();
-        public DbSet<PlayerPerspective> PlayerPlayers => Set<PlayerPerspective>();
-        public DbSet<GamePlayerPerspective> GamePlayers => Set<GamePlayerPerspective>();
+        public DbSet<PlayerPerspective> PlayerPerspectives => Set<PlayerPerspective>();
+        public DbSet<GamePlayerPerspective> GamePlayerPerspectives => Set<GamePlayerPerspective>();
         public DbSet<MultiplayerMode> MultiplayerModes => Set<MultiplayerMode>();
         public DbSet<Theme> Theme => Set<Theme>();
         public DbSet<Genre> Genre => Set<Genre>();

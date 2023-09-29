@@ -93,5 +93,251 @@ namespace Owl.Overdrive.Repository.Repositories
         {
             await _dbContext.Database.RollbackTransactionAsync();
         }
+
+        public async Task RemoveRangeAltTitles(List<AlternativeName> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.AlternativeTitles.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeLocalizations(List<Localization> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.Localization.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeReleaseDates(List<ReleaseDate> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.ReleaseDate.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeMultiplayerModes(List<MultiplayerMode> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.MultiplayerModes.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeGameThemes(List<GameTheme> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.GameThemes.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeGameGenres(List<GameGenre> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.GameGenres.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeGameModes(List<GameGameMode> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.GameGameModes.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeGamePerspectives(List<GamePlayerPerspective> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.GamePlayerPerspectives.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeWebsites(List<Website> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.Websites.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeInvolvedCompanies(List<InvolvedCompany> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                foreach (InvolvedCompany dbItem in dbItems)
+                {
+                    if(dbItem.GameInvolvedCompanyPlatforms.Count > 0) 
+                        await RemoveRangeInvolvedCompaniesPlatforms(dbItem.GameInvolvedCompanyPlatforms);
+                }
+
+                _dbContext.InvolvedCompanies.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeInvolvedCompaniesPlatforms(List<InvolvedCompanyPlatform> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.InvolvedCompanyPlatforms.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveRangeSupportedLanguagess(List<LanguageSupport> dbItems)
+        {
+            if (dbItems is null || dbItems.Count == 0)
+            {
+                throw new ArgumentNullException("No entities to save in database");
+            }
+
+            try
+            {
+                _dbContext.LanguageSupport.RemoveRange(dbItems);
+
+                await SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+        }
     }
 }

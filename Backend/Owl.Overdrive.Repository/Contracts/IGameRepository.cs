@@ -39,5 +39,16 @@ namespace Owl.Overdrive.Repository.Contracts
         Task CommitTransactionAsync();
         Task RollBackTransactionAsync();
         Task SaveChangesAsync();
+        Task RemoveRangeAltTitles(List<AlternativeName> dbItems);
+        Task RemoveRangeLocalizations(List<Localization> dbItems);
+        Task RemoveRangeReleaseDates(List<ReleaseDate> dbItems);
+        Task RemoveRangeMultiplayerModes(List<MultiplayerMode> dbItems);
+        Task RemoveRangeGameThemes(List<GameTheme> dbItems);
+        Task RemoveRangeGameGenres(List<GameGenre> dbItems);
+        Task RemoveRangeGameModes(List<GameGameMode> dbItems);
+        Task RemoveRangeGamePerspectives(List<GamePlayerPerspective> dbItems);
+        Task RemoveRangeWebsites(List<Website> dbItems);
+        Task RemoveRangeInvolvedCompanies(List<InvolvedCompany> dbItems);
+        Task RemoveRangeSupportedLanguagess(List<LanguageSupport> dbItems);
     }
 }

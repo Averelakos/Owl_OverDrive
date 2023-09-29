@@ -6,6 +6,7 @@ using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
+using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades;
@@ -25,10 +26,10 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("AddGame")]
-        public async Task<ActionResult<ServiceResult<CreateCompanyDto>>> AddGame([FromBody] CreateGameDto createGameDto)
+        public async Task<ActionResult<ServiceResult<CreateGameResponseDto>>> AddGame([FromBody] CreateGameDto createGameDto)
         {
             var result = await _gameFacade.Create(createGameDto);
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPost("Search")]

@@ -2,6 +2,7 @@
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
+using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Services.Models;
@@ -15,7 +16,7 @@ namespace Owl.Overdrive.Business.Contracts
         /// </summary>
         /// <param name="createGameDto">The create game dto.</param>
         /// <returns></returns>
-        Task<ServiceResult<CreateGameDto>> Create(CreateGameDto createGameDto);
+        Task<ServiceResult<CreateGameResponseDto>> Create(CreateGameDto createGameDto);
         Task<ServiceResult<UpdateGameDto>> UpdateGame(UpdateGameDto updateGameDto);
         /// <summary>
         /// Searches the specified game based on  search input.

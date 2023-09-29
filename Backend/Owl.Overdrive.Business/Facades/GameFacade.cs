@@ -7,6 +7,7 @@ using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
+using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
@@ -25,16 +26,16 @@ namespace Owl.Overdrive.Business.Facades
         public GameFacade(IRepositoryUnitOfWork repoUoW, IMapper mapper) : base(repoUoW, mapper)
         {
         }
-
+        #region Create
         /// <summary>
         /// Creates the specified game dto.
         /// </summary>
         /// <param name="createGameDto">The create game dto.</param>
         /// <returns></returns>
-        public async Task<ServiceResult<CreateGameDto>> Create(CreateGameDto createGameDto)
+        public async Task<ServiceResult<CreateGameResponseDto>> Create(CreateGameDto createGameDto)
         {
-            ServiceResult<CreateGameDto> response = new();
-            response.Result = createGameDto;
+            ServiceResult<CreateGameResponseDto> response = new();
+            
             await _repoUoW.GameRepository.BeginTransactionAsync();
             try
             {
@@ -50,6 +51,8 @@ namespace Owl.Overdrive.Business.Facades
 
                 await _repoUoW.GameRepository.CommitTransactionAsync();
 
+                response.Result = new CreateGameResponseDto(result.Id, result.Name);
+
                 return response;
             }
             catch (Exception ex)
@@ -62,7 +65,7 @@ namespace Owl.Overdrive.Business.Facades
             }
 
         }
-
+        #endregion Create
         public async Task<ServiceResult<UpdateGameDto>> UpdateGame(UpdateGameDto updateGameDto)
         {
             ServiceResult<UpdateGameDto> response = new()
@@ -73,17 +76,10 @@ namespace Owl.Overdrive.Business.Facades
             await _repoUoW.CompanyRepository.BeginTransactionAsync();
             try
             {
-                var game = await _repoUoW.GameRepository.GetById(updateGameDto.Id);
-
-                if (game is null)
-                {
-                    throw new Exception();
-                }
-
-                _mapper.Map<UpdateGameDto, Game>(updateGameDto, game);
+                //var game = await _repoUoW.GameRepository.GetById(updateGameDto.Id);
+                Game? game = await UpdateGameInternal(updateGameDto);
 
                 // TODO: REMOVE IMAGE
-
                 await _repoUoW.GameRepository.UpdateGame(game);
                 await _repoUoW.GameRepository.CommitTransactionAsync();
 
@@ -98,6 +94,88 @@ namespace Owl.Overdrive.Business.Facades
                 response.Error = ex.Message;
                 return response;
             }
+        }
+
+        private async Task<Game> UpdateGameInternal(UpdateGameDto updateGameDto)
+        {
+            var game = await _repoUoW.GameRepository.QueryGame()
+                                .Include(x => x.AlternativeGameTitles)
+                                .Include(x => x.Localizations)
+                                .Include(x => x.ReleaseDates)
+                                .Include(x => x.MultiplayerModes)
+                                .Include(x => x.GameGenres)
+                                .Include(x => x.GameThemes)
+                                .Include(x => x.GamePlayerPerspectives)
+                                .Include(x => x.GameGameModes)
+                                .Include(x => x.Websites)
+                                .Include(x =>x.InvolvedCompanies)
+                                .ThenInclude(c => c.GameInvolvedCompanyPlatforms)
+                                .Include(x => x.LanguageSupports)
+                                .FirstOrDefaultAsync(x => x.Id == updateGameDto.Id);
+
+            if (game is null)
+            {
+                throw new Exception();
+            }
+
+            if (game.AlternativeGameTitles?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeAltTitles(game.AlternativeGameTitles);
+            }
+
+            if ( game.Localizations?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeLocalizations(game.Localizations);
+            }
+
+            if (game.ReleaseDates?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeReleaseDates(game.ReleaseDates);
+            }
+
+            if (game.MultiplayerModes?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeMultiplayerModes(game.MultiplayerModes);
+            }
+
+            if (game.GameGenres?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeGameGenres(game.GameGenres);
+            }
+
+            if (game.GameThemes?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeGameThemes(game.GameThemes);
+            }
+
+            if (game.GameGameModes?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeGameModes(game.GameGameModes);
+            }
+
+            if (game.GamePlayerPerspectives?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeGamePerspectives(game.GamePlayerPerspectives);
+            }
+
+            if (game.Websites?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeWebsites(game.Websites);
+            }
+
+            if (game.InvolvedCompanies?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeInvolvedCompanies(game.InvolvedCompanies);
+            }
+
+            if (game.LanguageSupports?.Count > 0)
+            {
+                await _repoUoW.GameRepository.RemoveRangeSupportedLanguagess(game.LanguageSupports);
+            }
+
+            _mapper.Map<UpdateGameDto, Game>(updateGameDto, game);
+
+            return game;
         }
 
 
@@ -219,7 +297,7 @@ namespace Owl.Overdrive.Business.Facades
                     .QueryGame()
                     .AsNoTracking()
                     .ProjectTo<UpdateGameDto>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(x => x.Id == gameId);
+                    .FirstAsync(x => x.Id == gameId);
 
             return result;
         }
