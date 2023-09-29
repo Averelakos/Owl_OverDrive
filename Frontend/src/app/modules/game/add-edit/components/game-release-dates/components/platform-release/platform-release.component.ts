@@ -85,7 +85,7 @@ export class PlatformReleaseComponent {
       })
     })
   
-}
+  }
 
   releaseForm(): FormGroup {
     return this.formBuilder.group({

@@ -9,17 +9,17 @@ export interface UpdateGameDto{
     gameType: string | null
     parentGameId : number | null
     //gameEdition: CreateGameEditionDto | null
-    // alternativeNames: Array<UpdateAlternativeTitleDto>
-    // gameLocalizations: Array<UpdateGameLocalizationDto>
-    // gameGenres:Array<UpdateGameGenreDto>
-    // gameThemes:Array<UpdateGameThemeDto>
-    // gameModes:Array<UpdateGameModeDto>
-    // playerPerspectives:Array<UpdateGamePlayerPerspectiveDto>
-    // multiplayerModes:Array<UpdateMultiplayerModeDto>
-    // releaseDates: Array<UpdateReleaseDateDto>
-    // websites : Array<UpdateWebsite>
-    // involvedCompanies: Array<UpdateInvolvedCompanyDto>
-    // languageSupports:Array<UpdateLanguageSupportDto>
+    alternativeNames: Array<UpdateAlternativeTitleDto>
+    gameLocalizations: Array<UpdateGameLocalizationDto>
+    gameGenres:Array<UpdateGameGenreDto>
+    gameThemes:Array<UpdateGameThemeDto>
+    gameModes:Array<UpdateGameModeDto>
+    playerPerspectives:Array<UpdateGamePlayerPerspectiveDto>
+    multiplayerModes:Array<UpdateMultiplayerModeDto>
+    releaseDates: Array<UpdateReleaseDateDto>
+    websites : Array<UpdateWebsite>
+    involvedCompanies: Array<UpdateInvolvedCompanyDto>
+    languageSupports:Array<UpdateLanguageSupportDto>
     cover: UpdateCoverDto
 }
 
@@ -92,7 +92,7 @@ export interface UpdateInvolvedCompanyDto {
     porting: boolean
     publisher: boolean
     supporting: boolean
-    platform: Array<UpdateInvolvedCompanyPlatformDto>
+    platforms: Array<UpdateInvolvedCompanyPlatformDto>
 }
 
 export interface UpdateInvolvedCompanyPlatformDto {

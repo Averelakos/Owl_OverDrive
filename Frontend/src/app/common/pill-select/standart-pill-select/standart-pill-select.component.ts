@@ -61,7 +61,7 @@ export class StandartPillSelectComponent implements OnInit, AfterViewInit, OnDes
     })
 
     if (this.formGroup.controls[this.controlName]?.value != null && this.formGroup.controls[this.controlName]?.value != undefined && this.formGroup.controls[this.controlName]?.value.length > 0) {
-      this.formGroup.controls[this.controlName].value.forEach((entry) => {
+      this.formGroup.controls[this.controlName]?.value.forEach((entry) => {
         if (this.apiSearchEnable) {
           this.retrieveApiValue.emit(entry)
         }else {

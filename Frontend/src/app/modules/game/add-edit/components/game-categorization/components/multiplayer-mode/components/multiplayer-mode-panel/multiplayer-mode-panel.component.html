@@ -12,6 +12,8 @@
                 [listOfInputValues]="listOfPlatforms"
                 (searchInput)="searchPlatform($event)"
                 [apiSearchEnable]="true"
+                (retrieveApiValue)="retrieveSearchPlatforms($event)"
+                [retrievedApiValue]="platform$"
             ></app-standar-select-search>
             <div class="flex column mt-3">
                 <app-standar-input

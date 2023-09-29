@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
 import { PlatformService } from 'src/app/data/services/platform.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-multiplayer-mode-panel',
@@ -20,6 +21,7 @@ export class MultiplayerModePanelComponent {
   @Output() remove = new EventEmitter<number>
   deviceType = ResponsizeSize
   listOfPlatforms: Array<SelectSearchInputValue> = []
+  platform$: BehaviorSubject<SelectSearchInputValue | null> =  new BehaviorSubject<SelectSearchInputValue | null>(null)
 
   perpectives = [
     {id:1, name:'Online Co-op', control:'onlineCoOp', isChecked: false},
@@ -78,5 +80,19 @@ export class MultiplayerModePanelComponent {
     } else {
       this.listOfPlatforms.length = 0
     }
+  }
+
+  retrieveSearchPlatforms(input){
+    
+    this.platformService
+    .getPlatformById(input)
+    .subscribe((response) => {
+      this.listOfPlatforms.length = 0
+      this.platform$.next({
+        id:response.id,
+        value: response.name,
+      })
+    })
+  
   }
 }

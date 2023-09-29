@@ -1,11 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropDownOption, StandarDropdownMenuComponent } from 'src/app/common/dropdown-input/standar-dropdown-menu/standar-dropdown-menu.component';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
-import { FormArray, FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { PlatformService } from 'src/app/data/services/platform.service';
-import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { CompanyService } from 'src/app/data/services/company.service';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
 import { StadarInputPillOption, StandartPillSelectComponent } from 'src/app/common/pill-select/standart-pill-select/standart-pill-select.component';
@@ -83,18 +81,16 @@ export class CompanyComponent implements OnInit{
   }
 
   retrieveSearchPlatforms(input){
-    
-      this.platformService
-      .getPlatformById(input)
-      .subscribe((response) => {
-        this.listOfPlatforms.length = 0
-        this.platform$.next({
-          id:response.id,
-          value: response.name,
-          isVisible: true
-        })
+    this.platformService
+    .getPlatformById(input)
+    .subscribe((response) => {
+      this.listOfPlatforms.length = 0
+      this.platform$.next({
+        id:response.id,
+        value: response.name,
+        isVisible: true
       })
-    
+    })
   }
 
   searchCompanies(input){
@@ -109,7 +105,7 @@ export class CompanyComponent implements OnInit{
               id:element.id,
               value: element.name
             })
-          });
+          })
         } 
       })
     } else {
@@ -122,16 +118,16 @@ export class CompanyComponent implements OnInit{
     .retrieveSearchCompany(input)
     .subscribe((response) => {
       this.listOfCompanies.length = 0
-this.company$.next({
-  id:response.id,
-  value: response.name
-})
-          // this.listOfCompanies.push({
-          //   id:response.id,
-          //   value: response.name
-          // })
-    })
-}
+      this.company$.next({
+        id:response.id,
+        value: response.name
+      })
+        // this.listOfCompanies.push({
+        //   id:response.id,
+        //   value: response.name
+        // })
+      })
+  }
 
 
   checkBoxClicked($event, item){

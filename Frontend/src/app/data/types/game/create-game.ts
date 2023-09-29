@@ -92,7 +92,7 @@ export interface CreateInvolvedCompanyDto {
     porting: boolean
     publisher: boolean
     supporting: boolean
-    platform: Array<CreateInvolvedCompanyPlatformDto>
+    platforms: Array<CreateInvolvedCompanyPlatformDto>
 }
 
 export interface CreateInvolvedCompanyPlatformDto {
