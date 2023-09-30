@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Business.Contracts;
-using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
@@ -9,7 +7,6 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
-using Owl.Overdrive.Business.Facades;
 using Owl.Overdrive.Business.Services.Models;
 
 namespace Owl.Overdrive.Controllers
