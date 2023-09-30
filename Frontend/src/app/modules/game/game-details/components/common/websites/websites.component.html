@@ -1,0 +1,23 @@
+<div class="websites-container">
+
+    <div *ngIf="isthereStoreLinks" class="links-container">
+        <ng-container *ngFor="let link of storeLinks">
+            <a (click)="goToLink(link.url)">
+                <img [src]="link.image">
+                <span>{{link.name}}</span>
+            </a>
+        </ng-container>
+    </div>
+
+    <hr *ngIf="isthereStoreLinks && isthereSocialLinks" >
+    
+    <div *ngIf="isthereSocialLinks" class="links-container">
+        <ng-container *ngFor="let link of storeLinks">
+            <a>
+                <img [src]="link.image">
+                <span>{{link.name}}</span>
+            </a>
+        </ng-container>
+    </div>
+
+</div>

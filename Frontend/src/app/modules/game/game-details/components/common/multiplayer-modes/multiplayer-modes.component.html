@@ -1,0 +1,76 @@
+<div class="multiplayer-modes-container">
+    <tabs>
+        <ng-container *ngFor="let modes of multiplayerModes">
+            <tab [isTitleVisible]="false" [tabTitle]="modes.platformName">
+                <ul class="mode-list">
+                    <li>
+                        <h4>Offline Co-op Max Players:</h4>
+                        <span>{{modes.offlineCoopMax}}</span>
+                    </li>
+                    <li>
+                        <h4>Online Co-op Max Players:</h4>
+                        <span>{{modes.onlineCoopMax}}</span>
+                    </li>
+                    <li>
+                        <h4>Offline max players:</h4>
+                        <span>{{modes.offlineMax}}</span>
+                    </li>
+                    <li>
+                        <h4>Online max players:</h4>
+                        <span>{{modes.onlineMax}}</span>
+                    </li>
+                    <li>
+                        <h4>Offline Co-op:</h4>
+                        <span>
+                            <i *ngIf="!modes.offlineCoop" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.offlineCoop"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>Online Co-op:</h4>
+                        <span>
+                            <i *ngIf="!modes.onlineCoop" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.onlineCoop"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>LAN Co-op:</h4>
+                        <span>
+                            <i *ngIf="!modes.lanCoop" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.lanCoop"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>Co-op Campaign:</h4>
+                        <span>
+                            <i *ngIf="!modes.campaignCoop" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.campaignCoop"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>Online Split-Screen </h4>
+                        <span>
+                            <i *ngIf="!modes.splitScreenOnline" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.splitScreenOnline"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>Offline Split-Screen</h4>
+                        <span>
+                            <i *ngIf="!modes.splitScreen" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.splitScreen"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>Drop In/Out:</h4>
+                        <span>
+                            <i *ngIf="!modes.dropIn" class="fa-solid fa-check" style="color: green;"></i>
+                            <i *ngIf="modes.dropIn"  class="fa-solid fa-xmark" style="color: red;"></i>
+                        </span>
+                    </li>
+                </ul>
+            </tab>
+        </ng-container>
+    </tabs>
+</div>
+

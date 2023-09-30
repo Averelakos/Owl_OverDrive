@@ -1,0 +1,121 @@
+:host{
+    display: contents;
+}
+
+.details-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.details-container .description{
+    margin-top: 0.5rem;
+}
+
+.details-container .description strong{
+    text-transform: uppercase;
+    color: grey;
+    font-weight: 500;
+}
+
+.details-container .overview {
+    margin-top: 0.5rem;
+}
+
+.details-container .overview h2 {
+    font-size: 1.1rem;
+    line-height: 2rem;
+}
+
+.details-container .overview .details {
+    display: flex;
+    flex-direction: column;
+}
+
+.gameDetails-sectionContainer {
+    margin-top: 1rem;
+    background: #f2f2f2;
+    padding: 0.75rem 1rem;
+}
+
+.gameDetails-sectionContainer-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.gameDetails-sectionContainer-item span{
+    display: inline;
+    font-weight: 700;
+}
+
+.gameDetails-sectionContainer-item ul {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.gameDetails-sectionContainer-item ul li {
+    color: #666;
+}
+
+.gameDetails-sectionContainer-item ul li:after {
+    content: ", ";
+    margin-left: -3px;
+    margin-right: 0.25rem;
+}
+
+.gameDetails-sectionContainer-item ul li:last-child:after {
+    content: "";
+}
+
+.gameDetails-sectionContainer-pills {
+    margin-top: 1rem;
+    background: #f2f2f2;
+    padding: 0.75rem 1rem;
+}
+
+.gameDetails-sectionContainer-pills-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.gameDetails-sectionContainer-pills-item span{
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.gameDetails-sectionContainer-pills-item ul {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.gameDetails-sectionContainer-pills-item ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 0.25rem;
+}
+
+.gameDetails-sectionContainer-pills-item ul li div {
+    border-radius: 4px;
+    background: #c15375;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.gameDetails-sectionContainer-pills-item ul li div a {
+    font-size: 14px;
+    line-height: 1rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 400;
+}

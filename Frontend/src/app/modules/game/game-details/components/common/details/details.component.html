@@ -1,0 +1,114 @@
+<div class="details-container">
+    <div class="description">
+        <strong>Description:</strong>
+        <p>{{gameDetails.description}}</p>
+    </div>
+    <div class="overview">
+        <h2>
+            Overview
+        </h2>
+        <div class="details">
+
+            <div class="gameDetails-sectionContainer">
+                <div class="gameDetails-sectionContainer-item">
+                    <span>Platforms:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.platformsDtos">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="gameDetails-sectionContainer-item">
+                    <span>Initial Release Date:</span>
+                    <ul>
+                        <li>
+                            {{firstReleaseDate? (firstReleaseDate | date : 'dd.MM.yyyy') : "N/A"}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div *ngIf="showCompanies" class="gameDetails-sectionContainer">
+                <div *ngIf="gameDetails.companies.developer != null && gameDetails.companies.developer.length >0" class="gameDetails-sectionContainer-item">
+                    <span>Developer:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.companies.developer">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="gameDetails.companies.publisher != null && gameDetails.companies.publisher.length >0" class="gameDetails-sectionContainer-item">
+                    <span>Publisher:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.companies.publisher">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="gameDetails.companies.porting != null && gameDetails.companies.porting.length >0"  class="gameDetails-sectionContainer-item">
+                    <span>Porting:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.companies.porting">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="gameDetails.companies.supporting != null && gameDetails.companies.supporting.length >0"  class="gameDetails-sectionContainer-item">
+                    <span>Supporting:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.companies.supporting">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div *ngIf="showGenreThemes" class="gameDetails-sectionContainer-pills">
+                <div *ngIf="gameDetails.genres != null && gameDetails.genres.length >0" class="gameDetails-sectionContainer-pills-item">
+                    <span>Genres:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.genres">
+                            <div>
+                                <a>{{item}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="gameDetails.themes != null && gameDetails.themes.length >0" class="gameDetails-sectionContainer-pills-item">
+                    <span>Themes:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.themes">
+                            <div>
+                                <a>{{item}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div *ngIf="showModesPerspectives" class="gameDetails-sectionContainer-pills">
+                <div *ngIf="gameDetails.gameModes != null && gameDetails.gameModes.length >0" class="gameDetails-sectionContainer-pills-item">
+                    <span>Game Modes:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.gameModes">
+                            <div>
+                                <a>{{item}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="gameDetails.playerPerspectives != null && gameDetails.playerPerspectives.length >0" class="gameDetails-sectionContainer-pills-item">
+                    <span>Perspectives:</span>
+                    <ul>
+                        <li *ngFor="let item of gameDetails.playerPerspectives">
+                            <div>
+                                <a>{{item}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -22,8 +22,9 @@ export class GameDetailsComponent {
     this.loading$.next(true)
     this.gameService
     .getGameById(gameId).pipe(first(),finalize(()=> this.loading$.next(false))).subscribe((response) => {
-      console.log(response)
+      // console.log(response)
       this.gameModel = response
+      console.log(this.gameModel)
     })
   }
 }

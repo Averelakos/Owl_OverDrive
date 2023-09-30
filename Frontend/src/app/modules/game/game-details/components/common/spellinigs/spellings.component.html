@@ -1,0 +1,38 @@
+<div class="spelling-container">
+    <div class="title-contents">
+        <h2>
+            Localized Titles
+        </h2>
+        <div class="gameDetails-sectionContainer">
+            <div class="gameDetails-sectionContainer-item">
+                <ng-container *ngFor="let item of spellings.localizedTitles">
+                    <span>{{item.type}}</span>
+                    <ul>
+                        <li>
+                            {{item.title}}
+                        </li>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+    <div class="title-contents">
+        <h2>
+            Alternative Titles
+        </h2>
+        <div class="gameDetails-sectionContainer">
+            <div class="gameDetails-sectionContainer-item">
+                <ng-container *ngFor="let item of spellings.alternativeTitles">
+                    <span>{{item.type}}</span>
+                    <ul>
+                        <li>
+                            {{item.title}}
+                        </li>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+</div>

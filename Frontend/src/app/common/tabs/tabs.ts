@@ -132,7 +132,7 @@ export class TabsComponent{
     imports: [CommonModule],
     template: `
     <div [hidden]="!active">
-        <h3 >{{tabTitle}}</h3>
+        <h3 [hidden]="!isTitleVisible">{{tabTitle}}</h3>
         <ng-content #name></ng-content>
     </div>
     `,
@@ -149,6 +149,7 @@ export class TabsComponent{
 })
 export class TabComponent {
     @Input() tabTitle: string
+    @Input() isTitleVisible: boolean = true
     active: boolean
     constructor(tabs: TabsComponent){
         tabs.addTab(this)

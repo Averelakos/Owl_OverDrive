@@ -1,0 +1,35 @@
+:host{
+    display: contents;
+}
+
+.websites-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.links-container {
+    // background: red;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.links-container a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.links-container a span {
+    margin-left: 0.25rem;
+}
+
+.links-container a span:hover {
+    color: #c15375;
+}
+
+.websites-container hr {
+    margin-top: 1rem;
+}
