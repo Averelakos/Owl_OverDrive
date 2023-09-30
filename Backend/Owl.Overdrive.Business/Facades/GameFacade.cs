@@ -2,7 +2,6 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Business.Contracts;
-using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos;
 using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
@@ -13,11 +12,8 @@ using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Business.Services;
 using Owl.Overdrive.Business.Services.Models;
-using Owl.Overdrive.Domain.Entities;
-using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Domain.Entities.Game;
 using Owl.Overdrive.Repository.Contracts;
-using System.Text;
 
 namespace Owl.Overdrive.Business.Facades
 {
@@ -66,6 +62,19 @@ namespace Owl.Overdrive.Business.Facades
 
         }
         #endregion Create
+
+        #region Update
+        public async Task<UpdateGameDto?> GetGameForUpdate(long gameId)
+        {
+            var result = await _repoUoW.GameRepository
+                    .QueryGame()
+                    .AsNoTracking()
+                    .ProjectTo<UpdateGameDto>(_mapper.ConfigurationProvider)
+                    .FirstAsync(x => x.Id == gameId);
+
+            return result;
+        }
+
         public async Task<ServiceResult<UpdateGameDto>> UpdateGame(UpdateGameDto updateGameDto)
         {
             ServiceResult<UpdateGameDto> response = new()
@@ -177,31 +186,39 @@ namespace Owl.Overdrive.Business.Facades
 
             return game;
         }
+        #endregion Update
 
-
-
-        /// <summary>
-        /// Searches the specified game based on  search input.
-        /// </summary>
-        /// <param name="searchInput">The search input.</param>
-        /// <returns></returns>
-        public async Task<List<SearchParentGameDto>> Search(string searchInput)
+        #region List
+        public async Task<ServiceSearchResultData<List<GameSimpleDto>>> List(DataLoaderOptions options)
         {
-            List<SearchParentGameDto> result = new List<SearchParentGameDto>();
-            if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
+            IQueryable<GameSimpleDto> source;
+
+            if (options.SearchString is not null && options.SearchString.Length > 0)
             {
-                var list = await _repoUoW.GameRepository.Search(searchInput);
-                result = _mapper.Map<List<SearchParentGameDto>>(list);
+                source = await SearchFilter(options.SearchString);
+            }
+            else
+            {
+                source = List<GameSimpleDto>();
             }
 
-            return result;
-        }
-        private IQueryable<T> List<T>()
-        {
-            return _repoUoW.GameRepository
-                    .QueryGame()
-                    .AsNoTracking()
-                    .ProjectTo<T>(_mapper.ConfigurationProvider);
+
+            var dataDesult = await new DataLoaderService<GameSimpleDto>(source, options).LoadResult();
+
+            ServiceSearchResultData<List<GameSimpleDto>> result = new();
+
+            if (dataDesult.Data is not null)
+            {
+                result.Result = dataDesult.Data.ToList();
+                result.TotalCount = dataDesult.TotalCount;
+                result.TotalPages = dataDesult.TotalPages;
+                return result;
+            }
+            else
+            {
+                result.Result = new List<GameSimpleDto>();
+                return result;
+            }
         }
 
         private async Task<IQueryable<GameSimpleDto>> SearchFilter(string searchInput)
@@ -238,38 +255,35 @@ namespace Owl.Overdrive.Business.Facades
             return results.AsQueryable<GameSimpleDto>();
         }
 
-        public async Task<ServiceSearchResultData<List<GameSimpleDto>>> List(DataLoaderOptions options)
+        #endregion List
+
+        #region UI Helper
+        /// <summary>
+        /// Searches the specified game based on  search input.
+        /// </summary>
+        /// <param name="searchInput">The search input.</param>
+        /// <returns></returns>
+        public async Task<List<SearchParentGameDto>> Search(string searchInput)
         {
-            IQueryable<GameSimpleDto> source;
-
-            if (options.SearchString is not null && options.SearchString.Length > 0)
+            List<SearchParentGameDto> result = new List<SearchParentGameDto>();
+            if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
             {
-                source = await SearchFilter(options.SearchString);
+                var list = await _repoUoW.GameRepository.Search(searchInput);
+                result = _mapper.Map<List<SearchParentGameDto>>(list);
             }
-            else
-            {
-                 source = List<GameSimpleDto>();
-            }
-            
 
-            var dataDesult = await new DataLoaderService<GameSimpleDto>(source, options).LoadResult();
-
-            ServiceSearchResultData<List<GameSimpleDto>> result = new();
-
-            if (dataDesult.Data is not null)
-            {
-                result.Result = dataDesult.Data.ToList();
-                result.TotalCount = dataDesult.TotalCount;
-                result.TotalPages = dataDesult.TotalPages;
-                return result;
-            }
-            else
-            {
-                result.Result = new List<GameSimpleDto>();
-                return result;
-            } 
+            return result;
         }
+        private IQueryable<T> List<T>()
+        {
+            return _repoUoW.GameRepository
+                    .QueryGame()
+                    .AsNoTracking()
+                    .ProjectTo<T>(_mapper.ConfigurationProvider);
+        }
+        #endregion UI Helper
 
+        #region Details
         public async Task<GameDetailsDto?> GetGameById(long gameId)
         {
             var game = await _repoUoW.GameRepository.GetGameByIdNoTacking(gameId);
@@ -290,16 +304,8 @@ namespace Owl.Overdrive.Business.Facades
                 return result;
 
         }
+        #endregion Details
 
-        public async Task<UpdateGameDto?> GetGameForUpdate(long gameId)
-        {
-            var result = await _repoUoW.GameRepository
-                    .QueryGame()
-                    .AsNoTracking()
-                    .ProjectTo<UpdateGameDto>(_mapper.ConfigurationProvider)
-                    .FirstAsync(x => x.Id == gameId);
 
-            return result;
-        }
     }
 }

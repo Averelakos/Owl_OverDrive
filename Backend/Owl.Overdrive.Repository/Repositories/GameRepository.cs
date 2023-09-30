@@ -60,6 +60,26 @@ namespace Owl.Overdrive.Repository.Repositories
         {
             return await QueryGame()
                 .Include(x =>x.ReleaseDates)
+                .ThenInclude(x =>x.Platform)
+                .Include(x => x.InvolvedCompanies)
+                .ThenInclude(x =>x.Company)
+                .Include(x => x.GameThemes)
+                .ThenInclude(x => x.Theme)
+                .Include(x => x.GameGenres)
+                .ThenInclude(x => x.Genre)
+                .Include(x => x.GameGameModes)
+                .ThenInclude(x => x.GameMode)
+                .Include(x => x.GamePlayerPerspectives)
+                .ThenInclude(x => x.PlayerPerspective)
+                .Include(x => x.MultiplayerModes)
+                .ThenInclude(x => x.Platform)
+                .Include(x => x.AlternativeGameTitles)
+                .Include(x =>x.Localizations)
+                .ThenInclude(x => x.Region)
+                .Include(x => x.Websites)
+                //.Include(x => x.LanguageSupports)
+                //.ThenInclude(x => x.LanguageSupportType)
+                
                 .AsNoTracking()
                 .FirstAsync(x => x.Id == id)!;
         }
