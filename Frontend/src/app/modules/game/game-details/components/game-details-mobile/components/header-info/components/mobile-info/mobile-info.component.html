@@ -1,0 +1,27 @@
+<div class="header-info-container">
+    <div class="general-info">
+        <tabs>
+            <tab [isTitleVisible]="false" [tabTitle]="'Details'">
+                <app-details [gameDetails]="gameModel.details" [firstReleaseDate]="gameModel.firstReleaseDate"></app-details>
+            </tab>
+            <tab [isTitleVisible]="false" [tabTitle]="'Story'">
+                <app-story [story]="gameModel.story"></app-story>
+            </tab>
+            <tab [isTitleVisible]="false" *ngIf="gameModel.websites.length > 0" [tabTitle]="'Websites'">
+                <app-websites [websites]="gameModel.websites"></app-websites>
+            </tab>
+            <tab [isTitleVisible]="false" *ngIf="gameModel.spellings.localizedTitles.length > 0 && gameModel.spellings.alternativeTitles.length > 0" [tabTitle]="'Spellings'">
+                <app-spellings [spellings]="gameModel.spellings"></app-spellings>
+            </tab>
+            <tab [isTitleVisible]="false" [tabTitle]="'Releases'">
+                <app-platforms-released-dates [platformsReleaseDates]="gameModel.platformsReleaseDates"></app-platforms-released-dates>
+            </tab>
+            <tab [isTitleVisible]="false" *ngIf="gameModel.multiplayerModes.length > 0" [tabTitle]="'Multiplayer Modes'">
+                <app-multiplayer-modes [multiplayerModes]="gameModel.multiplayerModes"></app-multiplayer-modes>
+            </tab>
+            <tab [isTitleVisible]="false" [tabTitle]="'Supported languages'">
+                <app-supported-languages [supportedlanguages]="gameModel.supportedlanguages"></app-supported-languages>
+            </tab>
+        </tabs>
+    </div>
+</div>

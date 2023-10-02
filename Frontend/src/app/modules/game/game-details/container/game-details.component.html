@@ -5,7 +5,8 @@
     </ol>
 
     <div class="game-details" *ngIf="gameModel != null">
-        <app-game-details-desktop [gameModel]="gameModel"></app-game-details-desktop>
+        <app-game-details-desktop *ngIf="(this.responsiveService.responsiveSize | async) === responsiveSizes.Desktop" [gameModel]="gameModel"></app-game-details-desktop>
+        <app-game-details-mobile *ngIf="(this.responsiveService.responsiveSize | async) !== responsiveSizes.Desktop" [gameModel]="gameModel"></app-game-details-mobile>
     </div>
 </div>
 

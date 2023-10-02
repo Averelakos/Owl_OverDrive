@@ -1,0 +1,45 @@
+:host{
+    display: contents;
+}
+
+.header-rating-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    // width: 100%;
+    // margin-top: 5rem;
+    background-color: red;
+    margin: 15px 0;
+}
+
+.rating-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: blue;
+}
+.rating-container .score {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    
+    padding: 10px 10px 15px 10px;
+    color: white;
+    background-color: #10af65;
+}
+
+.fisrt {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.second{
+    font-size: 10px;
+    line-height: 1.428571429;
+}

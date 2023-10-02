@@ -1,0 +1,24 @@
+<div class="logo-container">
+    <div class="cover">
+        <div class="text">
+            <h1>{{gameModel.name}}</h1>
+            <span>{{gameModel.firstReleaseDate? (gameModel.firstReleaseDate | date : 'yyyy') : 'N/A'}}</span>
+        </div>
+        <img class="game-logo-img" [src]="cover ?? 'assets/img/nocover.png'" alt="">
+    </div>
+    <!-- <div class="game-logo">
+        <img class="game-logo-img" [src]="cover ?? 'assets/img/nocover.png'" alt="">
+    </div> -->
+</div>
+
+
+<!-- <div class="title">
+    <h1>
+        {{gameModel.name}}
+        <a class="btn btn-default" (click)="clickToEdit()">Edit</a>
+    </h1>
+    <h2>{{gameModel.firstReleaseDate? (gameModel.firstReleaseDate | date : 'dd.MM.yyyy') : 'N/A'}}</h2>
+    <a>
+        <h3>Tsikas Entertaiment</h3>
+    </a>
+</div> -->
