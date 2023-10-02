@@ -288,7 +288,124 @@ namespace Owl.Overdrive.Business.Facades
         {
             var game = await _repoUoW.GameRepository.GetGameByIdNoTacking(gameId);
             var result = _mapper.Map<GameDetailsDto>(game);
+            await SetGameDetaulsSpelling(gameId, result);
 
+            await SetGameDetailsMultiplayerModes(gameId, result);
+            await GetGameDetailsLanguageSupport(gameId, result);
+            await SetPlatformsReleaseDates(gameId, result);
+            await GetGameDetailsCoverAndBackground(game, result);
+            return result;
+
+        }
+
+        private async Task SetGameDetaulsSpelling(long gameId, GameDetailsDto result)
+        {
+            var altTitles = await _repoUoW.GameRepository
+                            .QueryGame()
+                            .Include(x => x.AlternativeGameTitles)
+                            .Where(x => x.Id == gameId)
+                            .Select(x => x.AlternativeGameTitles)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync();
+
+            if (altTitles is not null && altTitles.Any())
+            {
+                var temp = _mapper.Map<List<GameDetailsTitlesDto>>(altTitles);
+
+                result.Spellings.AlternativeTitles = temp;
+            }
+
+            var localizedTitle = await _repoUoW.GameRepository
+                .QueryGame()
+                .Include(x => x.Localizations)
+                .ThenInclude(x => x.Region)
+                .Where(x => x.Id == gameId)
+                .Select(x => x.Localizations)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            if (localizedTitle is not null && localizedTitle.Any())
+            {
+                var temp = _mapper.Map<List<GameDetailsTitlesDto>>(localizedTitle);
+
+                result.Spellings.LocalizedTitles = temp;
+            }
+        }
+
+        private async Task SetGameDetailsMultiplayerModes(long gameId, GameDetailsDto result)
+        {
+            var multiplayerModes = await _repoUoW.GameRepository
+                            .QueryGame()
+                            .Include(x => x.MultiplayerModes)
+                            .ThenInclude(x => x.Platform)
+                            .Where(x => x.Id == gameId)
+                            .Select(x => x.MultiplayerModes)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync();
+
+            if (multiplayerModes is not null && multiplayerModes.Any())
+            {
+                var temp = _mapper.Map<List<GameDetailsMultiplayerModeDto>>(multiplayerModes);
+
+                result.MultiplayerModes = temp;
+
+            }
+        }
+
+        private async Task SetPlatformsReleaseDates(long gameId, GameDetailsDto result)
+        {
+            var platformReleaseDates = await _repoUoW.GameRepository
+                            .QueryGame()
+                            .Include(x => x.ReleaseDates)
+                            .ThenInclude(x => x.Platform)
+                            .Where(x => x.Id == gameId)
+                            .Select(x => x.ReleaseDates)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync();
+
+            if (platformReleaseDates is not null && platformReleaseDates.Count() > 0)
+            {
+                List<GameDetailsPlatformReleasedDatesDto> listPlatformsReleaseDates = new();
+
+                foreach (var releaseDate in platformReleaseDates)
+                {
+                    if (listPlatformsReleaseDates.Any(x => x.PlatformName == releaseDate.Platform.Name))
+                    {
+                        var temp = listPlatformsReleaseDates.Where(x => x.PlatformName == releaseDate.Platform.Name).First();
+                        listPlatformsReleaseDates.Remove(temp);
+                        temp.ReleaseDates.Add(new GameDetailsReleasedDateDto
+                        {
+                            Date = releaseDate.Date,
+                            RegionId = releaseDate.RegionId,
+                            Status = releaseDate.Status,
+                        });
+
+                        listPlatformsReleaseDates.Add(temp);
+                    }
+                    else
+                    {
+                        var temp = new GameDetailsPlatformReleasedDatesDto()
+                        {
+                            PlatformName = releaseDate.Platform.Name,
+                            ReleaseDates = new()
+                        };
+
+                        temp.ReleaseDates.Add(new GameDetailsReleasedDateDto
+                        {
+                            Date = releaseDate.Date,
+                            RegionId = releaseDate.RegionId,
+                            Status = releaseDate.Status,
+                        });
+
+                        listPlatformsReleaseDates.Add(temp);
+                    }
+                }
+                result.PlatformsReleaseDates = listPlatformsReleaseDates;
+            }
+        }
+
+        private async Task GetGameDetailsCoverAndBackground(Game? game, GameDetailsDto result)
+        {
             if (game?.CoverId is not null)
             {
                 var coverResult = await _repoUoW.CoverRepository.GetCover((long)game.CoverId);
@@ -301,8 +418,25 @@ namespace Owl.Overdrive.Business.Facades
                     result.Background = background;
                 }
             }
-                return result;
+        }
 
+        private async Task GetGameDetailsLanguageSupport(long gameId, GameDetailsDto result)
+        {
+            var languages = await _repoUoW.GameRepository
+                            .QueryGame()
+                            .Include(x => x.LanguageSupports)
+                            .ThenInclude(x => x.LanguageSupportType)
+                            .AsNoTracking()
+                            .Where(x => x.Id == gameId)
+                            .Select(x => x.LanguageSupports)
+                            .FirstOrDefaultAsync();
+
+            var mapLanguages = _mapper.Map<GameDetailsSupportedLanguageDto>(languages);
+
+            if (mapLanguages is not null)
+            {
+                result.Supportedlanguages = mapLanguages;
+            }
         }
         #endregion Details
 

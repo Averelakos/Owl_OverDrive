@@ -34,135 +34,136 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
             builder.HasData(new Theme()
             {
                 Id = 1,
-                Name = "Adventure"
+                Name = "4X(explore, expand, exploit and exterminate)"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 2,
-                Name = "Arcade"
+                Name = "Action"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 3,
-                Name = "Card & Board Game"
+                Name = "Bussiness"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 4,
-                Name = "Fighting"
+                Name = "Comedy"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 5,
-                Name = "Hack and slash/ Beat 'em up"
+                Name = "Drama"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 6,
-                Name = "Indie"
+                Name = "Educational"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 7,
-                Name = "Music"
+                Name = "Erotic"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 8,
-                Name = "Pinball"
+                Name = "Fantasy"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 9,
-                Name = "Platform"
+                Name = "Historical"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 10,
-                Name = "Point-and-click"
+                Name = "Horror"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 11,
-                Name = "Puzzle"
+                Name = "Kids"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 12,
-                Name = "Quiz/Trivia"
+                Name = "Mystery"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 13,
-                Name = "Racing"
+                Name = "Non-fiction"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 14,
-                Name = "Real Time Strategy(RTS)"
+                Name = "Open world"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 15,
-                Name = "Shooter"
+                Name = "Party"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 16,
-                Name = "Role-playening(RPG)"
+                Name = "Romance"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 17,
-                Name = "Simulator"
+                Name = "Sandbox"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 18,
-                Name = "Sport"
+                Name = "Science fiction"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 19,
-                Name = "Strategy"
+                Name = "Stealth"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 20,
-                Name = "Tactical"
+                Name = "Survival"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 21,
-                Name = "Turn-based-strategy(TBS)"
+                Name = "Thriller"
             });
 
             builder.HasData(new Theme()
             {
                 Id = 22,
-                Name = "Visual Novel"
+                Name = "Warfare"
             });
 
         }
+       
     }
 }

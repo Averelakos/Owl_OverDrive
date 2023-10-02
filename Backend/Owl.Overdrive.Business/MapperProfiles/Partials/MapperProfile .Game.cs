@@ -117,13 +117,14 @@ namespace Owl.Overdrive.Business.MapperProfiles
                 .ForPath(dest => dest.Details.Description, opt => opt.MapFrom(m => m.Description))
                 .ForPath(dest => dest.Details.GameModes, opt => opt.MapFrom(m => m.GameGameModes.Select(x => x.GameMode.Name).ToList()))
                 .ForPath(dest => dest.Details.PlayerPerspectives, opt => opt.MapFrom(m => m.GamePlayerPerspectives.Select(x => x.PlayerPerspective.Name).ToList()))
-                .ForPath(dest => dest.MultiplayerModes, opt => opt.MapFrom(m => m.MultiplayerModes.ToList()))
-                .ForPath(dest => dest.Spellings.LocalizedTitles, opt => opt.MapFrom(m => m.Localizations.ToList()))
-                .ForPath(dest => dest.Spellings.AlternativeTitles, opt => opt.MapFrom(m => m.AlternativeGameTitles.ToList()))
+                
+                //.ForPath(dest => dest.MultiplayerModes, opt => opt.MapFrom(m => m.MultiplayerModes.ToList()))
+                //.ForPath(dest => dest.Spellings.LocalizedTitles, opt => opt.MapFrom(m => m.Localizations.ToList()))
+                //.ForPath(dest => dest.Spellings.AlternativeTitles, opt => opt.MapFrom(m => m.AlternativeGameTitles.ToList()))
                 .ForMember(dest => dest.Websites, opt => opt.MapFrom(m => m.Websites))
-                .ForPath(dest => dest.Supportedlanguages.Audio, opt => opt.MapFrom(m => m.LanguageSupports.Where(x => x.LanguageSupportTypeId == 1).Select(x => x.Language.Name)))
-                .ForPath(dest => dest.Supportedlanguages.Subtitles, opt => opt.MapFrom(m => m.LanguageSupports.Where(x => x.LanguageSupportTypeId == 2).Select(x => x.Language.Name)))
-                .ForPath(dest => dest.Supportedlanguages.Interface, opt => opt.MapFrom(m => m.LanguageSupports.Where(x => x.LanguageSupportTypeId == 3).Select(x => x.Language.Name)))
+                //.ForPath(dest => dest.Supportedlanguages.Audio, opt => opt.MapFrom(m => m.LanguageSupports.Where(x => x.LanguageSupportTypeId == 1).Select(x => x.Language.Name)))
+                //.ForPath(dest => dest.Supportedlanguages.Subtitles, opt => opt.MapFrom(m => m.LanguageSupports.Where(x => x.LanguageSupportTypeId == 2).Select(x => x.Language.Name)))
+                //.ForPath(dest => dest.Supportedlanguages.Interface, opt => opt.MapFrom(m => m.LanguageSupports.Where(x => x.LanguageSupportTypeId == 3).Select(x => x.Language.Name)))
                 ;
             CreateMap<Company, GameDetailsGeneralCompany>();
             CreateMap<Platform, GameDetailsGeneralPlatformsDto>();
@@ -137,6 +138,15 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<AlternativeName, GameDetailsTitlesDto>()
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(m => m.Name))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(m => m.Type))
+                ;
+            CreateMap<List<LanguageSupport>, GameDetailsSupportedLanguageDto>()
+                .ForMember(dest => dest.Audio, opt =>
+                {
+                    //opt.PreCondition(m => m.Where() == 1);
+                    opt.MapFrom(m => m.Where(x => x.LanguageSupportTypeId == 1).Select(x => x.LanguageId).ToList());
+                })
+                .ForMember(dest => dest.Subtitles, opt => opt.MapFrom(m => m.Where(x => x.LanguageSupportTypeId == 2).Select(x => x.LanguageId).ToList()))
+                .ForMember(dest => dest.Interface, opt => opt.MapFrom(m => m.Where(x => x.LanguageSupportTypeId == 3).Select(x => x.LanguageId).ToList()))
                 ;
             CreateMap<Website, GameDetailsWebsiteDto>();
             CreateMap<Cover, GameCoverDetailsDto>();

@@ -14,19 +14,12 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos.Display.Details
         public GameDetailsSpellingsDto Spellings { get; set; } = new();
         public List<GameDetailsWebsiteDto> Websites { get; set; } = new();
         public GameDetailsSupportedLanguageDto Supportedlanguages { get; set; } = new();
-        public List<GameDetailsPlatfoemReleasedDatesDto> PlatformsReleaseDates { get; set; } = new();
+        public List<GameDetailsPlatformReleasedDatesDto> PlatformsReleaseDates { get; set; } = new();
         public GameCoverDetailsDto? Cover { get; set; }
         public GameBackgroundDetailsDto? Background { get; set; }
     }
 
-    public class GameDetailsSupportedLanguageDto
-    {
-        public List<string> Audio { get; set; } = new();
-        public List<string> Subtitles { get; set; } = new();
-        public List<string> Interface { get; set; } = new();
-    }
-
-    public class GameDetailsPlatfoemReleasedDatesDto
+    public class GameDetailsPlatformReleasedDatesDto
     {
         public string PlatformName { get; set; } = null!;
         public List<GameDetailsReleasedDateDto> ReleaseDates { get; set; } = new();

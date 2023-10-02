@@ -34,133 +34,133 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurat
             builder.HasData(new Genre()
             {
                 Id = 1,
-                Name = "4X(explore, expand, exploit and exterminate)"
+                Name = "Adventure"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 2,
-                Name = "Action"
+                Name = "Arcade"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 3,
-                Name = "Bussiness"
+                Name = "Card & Board Game"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 4,
-                Name = "Comedy"
+                Name = "Fighting"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 5,
-                Name = "Drama"
+                Name = "Hack and slash/ Beat 'em up"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 6,
-                Name = "Educational"
+                Name = "Indie"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 7,
-                Name = "Erotic"
+                Name = "Music"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 8,
-                Name = "Fantasy"
+                Name = "Pinball"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 9,
-                Name = "Historical"
+                Name = "Platform"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 10,
-                Name = "Horror"
+                Name = "Point-and-click"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 11,
-                Name = "Kids"
+                Name = "Puzzle"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 12,
-                Name = "Mystery"
+                Name = "Quiz/Trivia"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 13,
-                Name = "Non-fiction"
+                Name = "Racing"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 14,
-                Name = "Open world"
+                Name = "Real Time Strategy(RTS)"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 15,
-                Name = "Party"
+                Name = "Shooter"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 16,
-                Name = "Romance"
+                Name = "Role-playening(RPG)"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 17,
-                Name = "Sandbox"
+                Name = "Simulator"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 18,
-                Name = "Science fiction"
+                Name = "Sport"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 19,
-                Name = "Stealth"
+                Name = "Strategy"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 20,
-                Name = "Survival"
+                Name = "Tactical"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 21,
-                Name = "Thriller"
+                Name = "Turn-based-strategy(TBS)"
             });
 
             builder.HasData(new Genre()
             {
                 Id = 22,
-                Name = "Warfare"
+                Name = "Visual Novel"
             });
 
         }

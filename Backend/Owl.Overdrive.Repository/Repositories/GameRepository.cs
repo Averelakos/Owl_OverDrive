@@ -71,15 +71,16 @@ namespace Owl.Overdrive.Repository.Repositories
                 .ThenInclude(x => x.GameMode)
                 .Include(x => x.GamePlayerPerspectives)
                 .ThenInclude(x => x.PlayerPerspective)
-                .Include(x => x.MultiplayerModes)
-                .ThenInclude(x => x.Platform)
-                .Include(x => x.AlternativeGameTitles)
-                .Include(x =>x.Localizations)
-                .ThenInclude(x => x.Region)
+
+                //.Include(x => x.MultiplayerModes)
+                //.ThenInclude(x => x.Platform)
+                //.Include(x => x.AlternativeGameTitles)
+                //.Include(x => x.Localizations)
+                //.ThenInclude(x => x.Region)
                 .Include(x => x.Websites)
                 //.Include(x => x.LanguageSupports)
                 //.ThenInclude(x => x.LanguageSupportType)
-                
+
                 .AsNoTracking()
                 .FirstAsync(x => x.Id == id)!;
         }
