@@ -1,0 +1,27 @@
+:host{
+    display: contents;
+}
+
+.multiplayer-modes-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.7rem;
+    // box-shadow: 5px 5px 5px 0px rgba(193,83,117,0.75);
+    box-shadow: 1px 2px 5px 0px rgba(193,83,117,0.75);
+    // border: 1px solid #c15375;
+}
+
+.mode-list {
+    list-style: none;
+}
+.mode-list > li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.mode-list > li span {
+    margin-left: 0.25rem;
+    line-height: 0.25rem;
+}

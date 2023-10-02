@@ -13,7 +13,9 @@ export enum ResponsizeSize {
 })
 export class ResponsiveService{
 
-    desktopMinWidth: string = '(min-width: 959px)'
+    // desktopMinWidth: string = '(min-width: 959px)'
+    desktopMinWidth: string = '(min-width: 1200px)'
+    tabletMinWidth: string = '(min-width: 1024px)'
     public responsiveSize = new BehaviorSubject<ResponsizeSize>(ResponsizeSize.Mobile)
 
     constructor(private responsive: BreakpointObserver) {
@@ -27,10 +29,15 @@ export class ResponsiveService{
         .pipe(filter((x) => x.matches))
         .subscribe(() => this.responsiveSize.next(ResponsizeSize.Tablet))
 
-        this.responsive
-        .observe([Breakpoints.Handset, Breakpoints.Tablet])
-        .pipe(filter((x) => !x.matches))
-        .subscribe(() => this.responsiveSize.next(ResponsizeSize.Desktop))
+        // this.responsive
+        // .observe(this.tabletMinWidth)
+        // .pipe(filter((x) => x.matches))
+        // .subscribe(() => this.responsiveSize.next(ResponsizeSize.Tablet))
+
+        // this.responsive
+        // .observe([Breakpoints.Handset, Breakpoints.Tablet])
+        // .pipe(filter((x) => !x.matches))
+        // .subscribe(() => this.responsiveSize.next(ResponsizeSize.Desktop))
 
         this.responsive
         .observe(this.desktopMinWidth)

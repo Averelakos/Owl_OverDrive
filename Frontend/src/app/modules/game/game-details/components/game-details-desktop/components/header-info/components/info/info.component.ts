@@ -8,12 +8,25 @@ import { StoryComponent } from '../../../../../common/story/story.component';
 import { WebsitesComponent } from '../../../../../common/websites/websites.component';
 import { SpellingsComponent } from '../../../../../common/spellinigs/spellings.component';
 import { MultiplayerModesComponent } from '../../../../../common/multiplayer-modes/multiplayer-modes.component';
+import { SupportedLanguagesComponent } from '../../../../../common/supported-languages/supported-languages.component';
+import { PlatformsReleasedDatesComponent } from '../../../../../common/platforms-release-dates/platforms-released-dates.component';
 
 
 @Component({
   selector: 'app-info',
   standalone: true,
-  imports: [CommonModule, TabsComponent, TabComponent, DetailsComponent, StoryComponent, WebsitesComponent, SpellingsComponent, MultiplayerModesComponent],
+  imports: [
+    CommonModule, 
+    TabsComponent, 
+    TabComponent, 
+    DetailsComponent, 
+    StoryComponent, 
+    WebsitesComponent, 
+    SpellingsComponent, 
+    MultiplayerModesComponent, 
+    SupportedLanguagesComponent,
+    PlatformsReleasedDatesComponent
+  ],
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.scss']
 })

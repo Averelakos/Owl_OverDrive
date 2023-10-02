@@ -12,8 +12,8 @@
     <hr *ngIf="isthereStoreLinks && isthereSocialLinks" >
     
     <div *ngIf="isthereSocialLinks" class="links-container">
-        <ng-container *ngFor="let link of storeLinks">
-            <a>
+        <ng-container *ngFor="let link of socialLinks">
+            <a (click)="goToLink(link.url)">
                 <img [src]="link.image">
                 <span>{{link.name}}</span>
             </a>

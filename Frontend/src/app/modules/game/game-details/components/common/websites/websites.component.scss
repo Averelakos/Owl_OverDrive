@@ -11,6 +11,8 @@
     // background: red;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 1rem;
 }
 

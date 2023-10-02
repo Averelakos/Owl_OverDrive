@@ -4,16 +4,17 @@
             Localized Titles
         </h2>
         <div class="gameDetails-sectionContainer">
-            <div class="gameDetails-sectionContainer-item">
-                <ng-container *ngFor="let item of spellings.localizedTitles">
-                    <span>{{item.type}}</span>
-                    <ul>
-                        <li>
-                            {{item.title}}
-                        </li>
-                    </ul>
-                </ng-container>
-            </div>
+            <ng-container *ngFor="let item of spellings.localizedTitles">
+                <div class="gameDetails-sectionContainer-item">
+                    
+                        <span>{{item.type}}:</span>
+                        <ul>
+                            <li>
+                                {{item.title}}
+                            </li>
+                        </ul>
+                </div>
+            </ng-container>
         </div>
     </div>
 
@@ -22,16 +23,17 @@
             Alternative Titles
         </h2>
         <div class="gameDetails-sectionContainer">
-            <div class="gameDetails-sectionContainer-item">
-                <ng-container *ngFor="let item of spellings.alternativeTitles">
-                    <span>{{item.type}}</span>
-                    <ul>
-                        <li>
-                            {{item.title}}
-                        </li>
-                    </ul>
-                </ng-container>
-            </div>
+            <ng-container *ngFor="let item of spellings.alternativeTitles">
+                <div class="gameDetails-sectionContainer-item">
+                    
+                        <span>{{item.type}}:</span>
+                        <ul>
+                            <li>
+                                {{item.title}}
+                            </li>
+                        </ul>
+                </div>
+            </ng-container>
         </div>
     </div>
 

@@ -9,6 +9,8 @@ export interface GameDetailsDto {
     multiplayerModes: Array<GameDetailsMultiplayerModeDto>
     spellings: GameDetailsSpellingsDto
     websites: Array<GameDetailsWebsiteDto>
+    supportedlanguages:GameDetailsSupportedLanguageDto
+    platformsReleaseDates: Array<GameDetailsPlatformReleasedDatesDto>
     cover: GameCoverDetailsDto
     background: GameBackgroundDetailsDto
 }
@@ -85,4 +87,24 @@ export interface GameDetailsTitlesDto
 export interface GameDetailsWebsiteDto {
     url: string
     category: EWebsites
+}
+
+export interface GameDetailsSupportedLanguageDto
+{
+    audio:Array<number>
+    subtitles:Array<number>
+    interface:Array<number>
+}
+
+export interface GameDetailsPlatformReleasedDatesDto
+{
+    platformName: string
+    releaseDates: Array<GameDetailsReleasedDateDto>
+}
+
+export interface GameDetailsReleasedDateDto
+{
+    date: Date
+    regionId: number
+    status: number
 }

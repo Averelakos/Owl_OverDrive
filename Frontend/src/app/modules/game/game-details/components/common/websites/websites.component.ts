@@ -156,7 +156,8 @@ export class WebsitesComponent implements OnInit {
               name: 'Subreddit'
             } as WebsiteInfo)
             break
-          
+          default:
+            break
         }
       })
     }

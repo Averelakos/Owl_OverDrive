@@ -1,0 +1,13 @@
+<div class="multiplayer-modes-container">
+    <tabs>
+        <ng-container *ngFor="let modes of platformsReleaseDates">
+            <tab [isTitleVisible]="false" [tabTitle]="modes.platformName">
+                <ul class="mode-list">
+                    <li *ngFor="let release of modes.releaseDates">
+                        <h4>{{release.date? (release.date | date : 'dd.MM.yyyy') : 'N/A'}} - {{getRegion(release.regionId)}}</h4>
+                    </li>
+                </ul>
+            </tab>
+        </ng-container>
+    </tabs>
+</div>

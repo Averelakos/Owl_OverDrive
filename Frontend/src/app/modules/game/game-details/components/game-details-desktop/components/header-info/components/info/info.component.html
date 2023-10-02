@@ -24,13 +24,13 @@
                 <app-spellings [spellings]="gameModel.spellings"></app-spellings>
             </tab>
             <tab [isTitleVisible]="false" [tabTitle]="'Releases'">
-                test2
+                <app-platforms-released-dates [platformsReleaseDates]="gameModel.platformsReleaseDates"></app-platforms-released-dates>
             </tab>
             <tab [isTitleVisible]="false" *ngIf="gameModel.multiplayerModes.length > 0" [tabTitle]="'Multiplayer Modes'">
                 <app-multiplayer-modes [multiplayerModes]="gameModel.multiplayerModes"></app-multiplayer-modes>
             </tab>
             <tab [isTitleVisible]="false" [tabTitle]="'Supported languages'">
-                test2
+                <app-supported-languages [supportedlanguages]="gameModel.supportedlanguages"></app-supported-languages>
             </tab>
         </tabs>
     </div>

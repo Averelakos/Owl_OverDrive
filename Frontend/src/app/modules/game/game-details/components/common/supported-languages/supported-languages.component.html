@@ -1,0 +1,38 @@
+<div class="details-container">
+    <div class="gameDetails-sectionContainer-pills">
+        
+        <div *ngIf="audio != null && audio.length >0" class="gameDetails-sectionContainer-pills-item">
+            <span>Audio:</span>
+            <ul>
+                <li *ngFor="let item of audio">
+                    <div>
+                        <a>{{item}}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div  *ngIf="subtitles != null && subtitles.length >0" class="gameDetails-sectionContainer-pills-item">
+            <span>Subtitles:</span>
+            <ul>
+                <li *ngFor="let item of subtitles">
+                    <div>
+                        <a>{{item}}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div  *ngIf="interface != null && interface.length >0" class="gameDetails-sectionContainer-pills-item">
+            <span>Interface:</span>
+            <ul>
+                <li *ngFor="let item of interface">
+                    <div>
+                        <a>{{item}}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
