@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { AdminLayoutComponent } from "./container/admin-layout.component";
 import { AdminHeaderMobileComponent } from './components/admin-header-mobile/admin-header-mobile.component';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
@@ -10,15 +10,30 @@ import { AdminHeaderComponent } from "./components/admin-header/admin-header.com
 import { AdminFooterComponent } from "./components/admin-footer/admin-footer.component";
 import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/admin-sidebar-mobile.component';
 import { ResultBannerComponent } from "src/app/common/result-banner/result-banner.component";
+import { CommonModule } from "@angular/common";
 // import { SharedComponentsModule } from "src/app/shared/shared.module";
 
+const routes: Routes = [
+    {
+        path:'',
+        component:AdminLayoutComponent,
+        children:[
+        {path:'',redirectTo:'Home', pathMatch:'full'},
+        {path:'Home', loadChildren:() => import('../../modules/home/home.module').then(m => m.HomeModule)},
+        {path:'Test', loadChildren:()=> import('../../modules/test/test-page.module').then(m => m.TestPageModule)},
+        {path: 'Company', loadChildren:() => import('../../modules/company/companies.module').then(m => m.CompanyModule)},
+        {path: 'Game', loadChildren:() => import('../../modules/game/games.module').then(m => m.GamesModule)}
+        ]
+    },
+]
 
 @NgModule({
     imports:[
-        BrowserModule,
+        CommonModule,
         RouterModule,
         SharedComponentsModule,
-        ResultBannerComponent
+        ResultBannerComponent,
+        RouterModule.forChild(routes),
     ],
     providers:[],
     declarations:[

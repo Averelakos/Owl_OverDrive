@@ -1,6 +1,7 @@
 import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { LoginDto } from 'src/app/core/models/Auth/loginDto';
 import { LocalService } from 'src/app/core/services/local.service';
 
@@ -15,7 +16,7 @@ export class SignInComponent implements OnInit, AfterContentInit {
   loginData: LoginDto;
   rememberMeCheckBox: any;
 
-  constructor( private localService: LocalService, private router: Router) {}
+  constructor( private localService: LocalService, private router: Router,private readonly authService: AuthService) {}
   
   ngOnInit(): void {
     this.buildLoginForm();
@@ -31,10 +32,15 @@ export class SignInComponent implements OnInit, AfterContentInit {
       this.rememberMe();
 
       this.loginData = {
-        email: this.loginForm.value.email.toString(),
+        username: this.loginForm.value.email.toString(),
         password: this.loginForm.value.password.toString()
       }
-      console.log(this.loginData)
+
+      this.authService.login(this.loginData).subscribe((res) => {
+        this.authService.loginActions(res)
+        this.router.navigate(['/'], { replaceUrl: true })
+      })
+      // console.log(this.loginData)
     }
     
 
@@ -64,7 +70,7 @@ export class SignInComponent implements OnInit, AfterContentInit {
  */
   buildLoginForm(){
     this.loginForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email] ),
+      'email': new FormControl(null, Validators.required ),
       'password': new FormControl(null, [Validators.required])
     }, 
     {updateOn: 'blur'}

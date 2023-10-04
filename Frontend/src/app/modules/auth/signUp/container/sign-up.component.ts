@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterDto } from 'src/app/core/models/Auth/registerDto';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { JwtHelperService } from 'src/app/lib/jwt/jwt-helper.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,8 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private router: Router) {}
-
+  constructor(private router: Router, private readonly authService: AuthService) {}
   ngOnInit(): void {
     this.buildRegisterForm();
   }
@@ -28,27 +29,31 @@ export class SignUpComponent implements OnInit {
       this.registerData = {
         email: this.registerForm.value.email.toString(),
         password: this.registerForm.value.password.toString(),
-        name: this.registerForm.value.name.toString(),
-        dateOfBirth: moment(Date.parse(birthDate.year+' '+ birthDate.month +' '+ birthDate.day)).format("DD/MM/YYYY")
+        username: this.registerForm.value.name.toString(),
+        // dateOfBirth: moment(Date.parse(birthDate.year+' '+ birthDate.month +' '+ birthDate.day)).format("DD/MM/YYYY")
       };
+
+      this.authService.register(this.registerData).subscribe((res) => {
+        this.authService.loginActions(res)
+      });
 
     }
 
-    //   this.authService.login(loginData).subscribe( 
-    //     responce => { 
-    //       console.log(responce);
+      // this.authService.login(loginData).subscribe( 
+      //   responce => { 
+      //     console.log(responce);
           
-    //       // this.authService.redirectInSuccess(responce);
-    //       this.isLoading = false;
-    //       this.route.navigate(['/Home'])
-    //     }, 
-    //     errorMessage => {
-    //       // console.log(errorMessage);
-    //       // this.toastr.error(errorMessage)
-    //       // this.error = errorMessage;
-    //       this.isLoading = false;
-    //     }
-    //   );
+      //     // this.authService.redirectInSuccess(responce);
+      //     this.isLoading = false;
+      //     this.route.navigate(['/Home'])
+      //   }, 
+      //   errorMessage => {
+      //     // console.log(errorMessage);
+      //     // this.toastr.error(errorMessage)
+      //     // this.error = errorMessage;
+      //     this.isLoading = false;
+      //   }
+      // );
   }
   
   /**
@@ -62,9 +67,9 @@ export class SignUpComponent implements OnInit {
       'name': new FormControl(null,[Validators.required]),
       'password': new FormControl(null, [Validators.required]),
       'dateOfBirth': new FormGroup({
-        'year': new FormControl(null, [Validators.required]),
-        'month': new FormControl(null, [Validators.required]),
-        'day': new FormControl(null, [Validators.required]),
+        'year': new FormControl(null),
+        'month': new FormControl(null),
+        'day': new FormControl(null),
       })
     }, 
     {updateOn: 'blur'}
