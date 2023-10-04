@@ -27,7 +27,10 @@ namespace Owl.Overdrive.API
             services.AddDatabase(Configuration)
                 .AddUnitOfWork()
                 .AddRepositories()
-                .AddFacades();
+                .AddFacades()
+                .AddInfrastuctureServices()
+                .AddConfigurations(Configuration)
+                ;
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddHttpContextAccessor();

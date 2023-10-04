@@ -1,11 +1,6 @@
 ﻿using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
 using Owl.Overdrive.Repository.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Owl.Overdrive.Repository.UnitOfWork
 {
@@ -13,6 +8,7 @@ namespace Owl.Overdrive.Repository.UnitOfWork
     {
         #region Properties
         private readonly OwlOverdriveDbContext _dbContext;
+        public IUserRepository UserRepository { get; }
         public ICompanyRepository CompanyRepository { get; }
         public ICompanyStatusRepository CompanyStatusRepository { get; }
         public ICountryCodeRepository CountryCodeRepository { get; }
@@ -30,6 +26,7 @@ namespace Owl.Overdrive.Repository.UnitOfWork
 
         public RepositoryUnitOfWork(
             OwlOverdriveDbContext dbContext, 
+            IUserRepository userRepository,
             ICompanyRepository companyRepository, 
             ICompanyStatusRepository companyStatusRepository, 
             ICountryCodeRepository countryCodeRepository,
@@ -46,6 +43,7 @@ namespace Owl.Overdrive.Repository.UnitOfWork
             )
         {
             _dbContext = dbContext;
+            UserRepository = userRepository;
             CompanyRepository = companyRepository;
             CompanyStatusRepository = companyStatusRepository;
             CountryCodeRepository = countryCodeRepository;

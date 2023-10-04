@@ -1,17 +1,17 @@
-﻿using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Owl.Overdrive.Repository.Contracts
+﻿namespace Owl.Overdrive.Repository.Contracts
 {
     /// <summary>
     /// The repository unit if work.
     /// </summary>
     public interface IRepositoryUnitOfWork
     {
+        /// <summary>
+        /// Gets the authentication repository.
+        /// </summary>
+        /// <value>
+        /// The authentication repository.
+        /// </value>
+        IUserRepository UserRepository { get; }
         /// <summary>
         /// Gets the company repository.
         /// </summary>

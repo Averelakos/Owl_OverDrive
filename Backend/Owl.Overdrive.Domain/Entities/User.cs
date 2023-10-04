@@ -2,7 +2,7 @@
 
 namespace Owl.Overdrive.Domain.Entities
 {
-    public class User: BaseEntity
+    public class User: BaseEntity//, IdentityUser<long>
     {
         /// <summary>
         /// User name
@@ -36,9 +36,5 @@ namespace Owl.Overdrive.Domain.Entities
         /// Password salt
         /// </summary>
         public byte[] PasswordSalt { get; set; } = null!;
-        /// <summary>
-        /// User photo
-        /// </summary>
-        public long? PhotoId { get; set; }
     }
 }
