@@ -3,42 +3,30 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedComponentsModule } from "src/app/shared/shared.module";
-import { SignInComponent } from "./signIn/container/sign-in.component";
-import { SignUpComponent } from './signUp/container/sign-up.component';
-import { BirthdateSelectorsComponent } from './signUp/components/birthdate-selectors/birthdate-selectors.component';
-import { AuthLayoutComponent } from "src/app/layouts/auth-layout/container/auth-layout.component";
 
+import { LoginComponent } from "./login/container/login.component";
+import { RegisterComponent } from "./register/container/register.component";
+import { MatInputComponent } from "src/app/common/input-fields/mat-text-input/mat-input.component";
+import { SpinnerLoaderComponent } from "src/app/common/loaders/spinner-loader/spinner-loader";
 
 const routes: Routes = [
-    {path:'SignIn', component:SignInComponent},
-    {path:'SignUp', component:SignUpComponent},
+  {path:'login', component:LoginComponent},
+  {path:'register', component:RegisterComponent},
 ]
-
-// {
-  //   path:'',
-  //   component:AdminLayoutComponent,
-  //   children:[
-  //     {path:'',redirectTo:'Home', pathMatch:'full'},
-  //     {path:'Home', loadChildren:() => import('./modules/home/home.module').then(m => m.HomeModule)},
-  //     {path:'Test', loadChildren:()=> import('./modules/test/test-page.module').then(m => m.TestPageModule)},
-  //     {path: 'Company', loadChildren:() => import('./modules/company/companies.module').then(m => m.CompanyModule)},
-  //     {path: 'Game', loadChildren:() => import('./modules/game/games.module').then(m => m.GamesModule)}
-  //   ]
-  // },
 
 @NgModule({
     imports:[
         CommonModule, 
         RouterModule.forChild(routes),
         ReactiveFormsModule,
-        SharedComponentsModule,
+        MatInputComponent,
+        SpinnerLoaderComponent
     ],
     providers:[],
     declarations:[
   
-    SignInComponent,
-    SignUpComponent,
-    BirthdateSelectorsComponent
+    LoginComponent,
+    RegisterComponent,
   ],
     exports:[
         RouterModule

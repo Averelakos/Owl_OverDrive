@@ -11,8 +11,8 @@ export const AuthGuardCanLoad: CanLoadFn = (route, state) => {
     if(authService.isAuthenticated()){
         return true
     } else {
-        router.navigate(['/Auth/SignIn'], { replaceUrl: true })
-        toaster.error('Unauthorized')
+        router.navigate(['/Auth/login'], { replaceUrl: true })
+        // toaster.error('Unauthorized')
         return false
     }
 }

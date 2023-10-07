@@ -16,9 +16,9 @@
 
         <app-mat-input 
             class="form-group" 
-            [formControlName]="'name'"
+            [formControlName]="'username'"
             [parentForm]="registerForm"
-            fieldName="name"
+            fieldName="username"
             [type]="'text'"
             [label]="'User Name'"
             >
@@ -34,11 +34,11 @@
             >
         </app-mat-input>
         
-            <app-birthdate-selectors 
+            <!-- <app-birthdate-selectors 
         style="margin-top: 1rem;"
         [parentFormGroup]="this.registerForm"
         >
-        </app-birthdate-selectors>
+        </app-birthdate-selectors> -->
         
         <button class="login_button" type="submit">Create</button>
     </form>
@@ -46,3 +46,4 @@
         <a (click)="redirectToLoginPage()">Have an account already?</a>
     </div>
 </div>
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../../assets/img/owl_logo.png'"></spinner-loader>

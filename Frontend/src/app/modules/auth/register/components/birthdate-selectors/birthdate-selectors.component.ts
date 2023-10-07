@@ -1,8 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-birthdate-selectors',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './birthdate-selectors.component.html',
   styleUrls: ['./birthdate-selectors.component.scss']
 })

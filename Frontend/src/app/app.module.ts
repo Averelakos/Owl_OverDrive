@@ -10,8 +10,9 @@ import { LocalService } from './core/services/local.service';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ResponsiveService } from './core/services/responsive.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from './lib/toastr/toastr.module';
+import { JwtInterceptor } from './core/auth/jwt.interceptor';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { ToastrModule } from './lib/toastr/toastr.module';
       positionClass:'toast-bottom-right'
     }), // ToastrModule added
   ],
-  providers: [MenuService, LocalService, ResponsiveService],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

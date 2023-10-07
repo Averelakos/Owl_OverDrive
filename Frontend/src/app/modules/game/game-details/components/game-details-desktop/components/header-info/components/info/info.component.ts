@@ -10,6 +10,8 @@ import { SpellingsComponent } from '../../../../../common/spellinigs/spellings.c
 import { MultiplayerModesComponent } from '../../../../../common/multiplayer-modes/multiplayer-modes.component';
 import { SupportedLanguagesComponent } from '../../../../../common/supported-languages/supported-languages.component';
 import { PlatformsReleasedDatesComponent } from '../../../../../common/platforms-release-dates/platforms-released-dates.component';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { EPermission } from 'src/app/core/enums/enum-permissions';
 
 
 @Component({
@@ -33,8 +35,11 @@ import { PlatformsReleasedDatesComponent } from '../../../../../common/platforms
 export class InfoComponent {
   @Input()gameModel: GameDetailsDto
   selectedTab: string
+  canUpdateGame!:boolean
 
-  constructor(private readonly router: Router){}
+  constructor(private readonly router: Router, private readonly authService: AuthService){
+    this.canUpdateGame = this.authService.hasPermission(EPermission.Update_Game)
+  }
 
   clickToEdit() {
     this.router.navigate(['Game/edit/'+this.gameModel?.name,{id:this.gameModel?.id}]);   

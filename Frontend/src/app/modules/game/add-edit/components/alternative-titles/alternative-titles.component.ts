@@ -4,7 +4,7 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 import { EAlternativeTitleType } from 'src/app/core/enums/enum-alternative-title-type';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
+import { StandarInputComponent } from 'src/app/common/input-fields/standar-input/standar-input.component';
 import { CheckMarkCheckBoxButtonComponent } from 'src/app/common/checkboxes-buttons/check-mark-checkbox-button/check-mark-checkbox-button.component';
 
 @Component({

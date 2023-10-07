@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { BehaviorSubject, finalize } from 'rxjs';
-import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
+import { StandarInputComponent } from 'src/app/common/input-fields/standar-input/standar-input.component';
 import { StandarTextareaComponent } from 'src/app/common/standar-textarea/standar-textarea.component';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { CompanyService } from 'src/app/data/services/company.service';

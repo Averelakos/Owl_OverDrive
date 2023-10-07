@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component,OnInit } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
-import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
+import { StandarInputComponent } from 'src/app/common/input-fields/standar-input/standar-input.component';
 import { StandarTextareaComponent } from 'src/app/common/standar-textarea/standar-textarea.component';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { GameTypeComponent } from './components/game-type/game-type.component';

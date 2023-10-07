@@ -12,7 +12,7 @@
             </button>
         </li> -->
         <li>
-            <a class="btn-primary btn" (click)="clickAddGame()">Add Game</a>
+            <a *ngIf="canCreateGame" class="btn-primary btn" (click)="clickAddGame()">Add Game</a>
         </li>
     </ul>
 </div>

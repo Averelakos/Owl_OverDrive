@@ -1,25 +1,29 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject, finalize, first } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { LoginDto } from 'src/app/core/models/Auth/loginDto';
 import { LocalService } from 'src/app/core/services/local.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class SignInComponent implements OnInit, AfterContentInit {
+export class LoginComponent implements OnInit, AfterContentInit {
 
   loginForm: FormGroup;
   loginData: LoginDto;
   rememberMeCheckBox: any;
+  loading$ = new BehaviorSubject<boolean>(false)
 
-  constructor( private localService: LocalService, private router: Router,private readonly authService: AuthService) {}
+  constructor( private localService: LocalService, private router: Router,private readonly authService: AuthService) {
+    this.authService.isAuthorized()
+  }
   
   ngOnInit(): void {
-    this.buildLoginForm();
+    this.loginForm = this.authService.initLoginForm()
   }
 
   ngAfterContentInit(): void {
@@ -28,20 +32,22 @@ export class SignInComponent implements OnInit, AfterContentInit {
   }
 
   onSubmit(){
-    if (this.loginForm.valid) {
+    // if (this.loginForm.valid) {
       this.rememberMe();
 
       this.loginData = {
-        username: this.loginForm.value.email.toString(),
-        password: this.loginForm.value.password.toString()
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password
       }
 
-      this.authService.login(this.loginData).subscribe((res) => {
+      this.authService.login(this.loginData)
+      .pipe(first(),finalize(()=> this.loading$.next(false)))
+      .subscribe((res) => {
         this.authService.loginActions(res)
         this.router.navigate(['/'], { replaceUrl: true })
       })
       // console.log(this.loginData)
-    }
+    // }
     
 
     //TODO: ADD LOADER
@@ -68,14 +74,14 @@ export class SignInComponent implements OnInit, AfterContentInit {
  * that we are going to use in the html
  * file and we assign it in the form group
  */
-  buildLoginForm(){
-    this.loginForm = new FormGroup({
-      'email': new FormControl(null, Validators.required ),
-      'password': new FormControl(null, [Validators.required])
-    }, 
-    {updateOn: 'blur'}
-    );
-  }
+  // buildLoginForm(){
+  //   this.loginForm = new FormGroup({
+  //     username: [null],
+  //     'password': new FormControl(null, [Validators.required])
+  //   }, 
+  //   {updateOn: 'blur'}
+  //   );
+  // }
 
   /**
    * Retrieve from local storage the login
@@ -84,7 +90,7 @@ export class SignInComponent implements OnInit, AfterContentInit {
   retrieveRememberMe() {
     if(this.localService.getData('rememberMeCheckBox') && this.localService.getData('rememberMeCheckBox') !== ''){
       this.rememberMeCheckBox.setAttribute('checked', 'checked');
-      this.loginForm.get('email')?.setValue( this.localService.getData('email'));
+      this.loginForm.get('username')?.setValue( this.localService.getData('email'));
       this.loginForm.get('password')?.setValue( this.localService.getData('password'));
     } else {
       this.rememberMeCheckBox.removeAttribute('checked', 'checked');
@@ -104,6 +110,6 @@ export class SignInComponent implements OnInit, AfterContentInit {
   }
 
   redirectToRegisterPage() {
-    this.router.navigate(['/Auth/SignUp']);
+    this.router.navigate(['/Auth/register']);
   }
 }

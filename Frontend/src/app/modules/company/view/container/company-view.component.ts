@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, finalize, first } from 'rxjs';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { EPermission } from 'src/app/core/enums/enum-permissions';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { CompanyService } from 'src/app/data/services/company.service';
@@ -22,17 +24,20 @@ export class CompanyViewComponent {
   imageSize?: string | null
   loading$ = new BehaviorSubject<boolean>(false)
   deviceType = ResponsizeSize
+  canUpdateCompany!:boolean
 
   constructor(
     private readonly route: ActivatedRoute, 
     private companyService: CompanyService,
     private lookUpService: LookupsService,
     private readonly router: Router,
-    public responsiveService: ResponsiveService
+    public responsiveService: ResponsiveService,
+    private readonly authService: AuthService
     ){
     const companyId = this.route.snapshot.params['id']
     this.getCompany(companyId)
     responsiveService.responsiveSize
+    this.canUpdateCompany = this.authService.hasPermission(EPermission.Update_Company)
   }
 
   getCompany(companyId: number) {

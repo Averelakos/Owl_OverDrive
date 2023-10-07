@@ -28,6 +28,15 @@ import { ResponsiveService, ResponsizeSize } from "src/app/core/services/respons
         align-items: center;
         justify-content: center;
     }
+
+    /* .absolute{
+        position: absolute;
+        height:100%;
+        width: 100%;
+        background: red;
+
+    } */
+
     .desktop{
         /* left: 270px; */
     }
@@ -79,7 +88,7 @@ import { ResponsiveService, ResponsizeSize } from "src/app/core/services/respons
     }
     `]
   })
-  export class SpinneroaderComponent {
+  export class SpinnerLoaderComponent {
     @Input() loading!: boolean | null
     @Input() inner: boolean = false
     @Input() imageSRC: string = ''

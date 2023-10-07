@@ -11,6 +11,7 @@ import { AdminFooterComponent } from "./components/admin-footer/admin-footer.com
 import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/admin-sidebar-mobile.component';
 import { ResultBannerComponent } from "src/app/common/result-banner/result-banner.component";
 import { CommonModule } from "@angular/common";
+import { AuthGuarCanActivateChild } from "src/app/core/auth/guards/auth.can-activate-child.guard";
 // import { SharedComponentsModule } from "src/app/shared/shared.module";
 
 const routes: Routes = [
@@ -19,10 +20,10 @@ const routes: Routes = [
         component:AdminLayoutComponent,
         children:[
         {path:'',redirectTo:'Home', pathMatch:'full'},
-        {path:'Home', loadChildren:() => import('../../modules/home/home.module').then(m => m.HomeModule)},
-        {path:'Test', loadChildren:()=> import('../../modules/test/test-page.module').then(m => m.TestPageModule)},
-        {path: 'Company', loadChildren:() => import('../../modules/company/companies.module').then(m => m.CompanyModule)},
-        {path: 'Game', loadChildren:() => import('../../modules/game/games.module').then(m => m.GamesModule)}
+        {path:'Home', loadChildren:() => import('../../modules/home/home.module').then(m => m.HomeModule), canActivateChild: [AuthGuarCanActivateChild]},
+        {path:'Test', loadChildren:()=> import('../../modules/test/test-page.module').then(m => m.TestPageModule), canActivateChild: [AuthGuarCanActivateChild]},
+        {path: 'Company', loadChildren:() => import('../../modules/company/companies.module').then(m => m.CompanyModule), canActivateChild: [AuthGuarCanActivateChild]},
+        {path: 'Game', loadChildren:() => import('../../modules/game/games.module').then(m => m.GamesModule), canActivateChild: [AuthGuarCanActivateChild]}
         ]
     },
 ]

@@ -5,7 +5,7 @@
     </ol>
 
     <div class="page_title">
-        <h1>{{company?.name}} <span>(Company)</span></h1> <a class="btn btn-default extra" (click)="clickToEdit()">Edit</a>
+        <h1>{{company?.name}} <span>(Company)</span></h1> <a *ngIf="canUpdateCompany"  class="btn btn-default extra" (click)="clickToEdit()">Edit</a>
     </div>
     <div class="company-view-container">
         <div class="general-details">

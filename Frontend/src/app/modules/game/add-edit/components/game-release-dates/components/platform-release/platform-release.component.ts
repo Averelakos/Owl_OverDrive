@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
+import { StandarInputComponent } from 'src/app/common/input-fields/standar-input/standar-input.component';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { ReleaseComponent } from '../release/release.component';
 import { PlatformService } from 'src/app/data/services/platform.service';

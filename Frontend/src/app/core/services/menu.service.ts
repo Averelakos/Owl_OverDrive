@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { Menu } from "../models/menu";
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MenuService{
     menuItem: Array<Menu>;
 

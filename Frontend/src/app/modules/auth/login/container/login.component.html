@@ -6,11 +6,11 @@
         
         <app-mat-input 
             class="form-group" 
-            [formControlName]="'email'"
+            [formControlName]="'username'"
             [parentForm]="loginForm"
-            fieldName="email"
-            [type]="'email'"
-            [label]="'Email'"
+            fieldName="username"
+            [type]="'text'"
+            [label]="'Username'"
             >
         </app-mat-input>
 
@@ -36,3 +36,4 @@
         <a (click)="redirectToRegisterPage()">Create an account.</a>
     </div>
 </div>
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../../assets/img/owl_logo.png'"></spinner-loader>

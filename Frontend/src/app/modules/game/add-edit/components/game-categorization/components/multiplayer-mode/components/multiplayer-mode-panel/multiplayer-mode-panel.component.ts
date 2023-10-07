@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StandarInputComponent } from 'src/app/common/standar-input/standar-input.component';
+import { StandarInputComponent } from 'src/app/common/input-fields/standar-input/standar-input.component';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
 import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';

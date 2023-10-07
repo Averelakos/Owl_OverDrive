@@ -1,8 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { MatFieldErrorsComponent } from '../../error-fields/mat-field-errors/mat-field-errors.component';
 
 @Component({
   selector: 'app-mat-input',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFieldErrorsComponent],
   templateUrl: './mat-input.component.html',
   styleUrls: ['./mat-input.component.scss'],
   providers: [
@@ -83,9 +87,9 @@ export class MatInputComponent implements ControlValueAccessor {
 
   displayFieldCss() {
     return {
-      'has-error': this.isFieldInValid(),
+      'has-error': this.formField.errors != null,
       'has-feedback': this.isFieldInValid(),
-      'valid-input': this.isFieldValid()
+      'valid-input': this.isFieldValid() && this.isValueEmpty()
     };
   }
 

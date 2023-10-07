@@ -21,13 +21,30 @@ import { QueryableGameListComponent } from "./list/components/queryable-game-lis
 import { GameDetailsComponent } from './game-details/container/game-details.component';
 import { GameDetailsDesktopComponent } from "./game-details/components/game-details-desktop/game-details-desktop.component";
 import { GameDetailsMobileComponent } from "./game-details/components/game-details-mobile/game-details-mobile.component";
-import { SpinneroaderComponent } from "src/app/common/loaders/spinner-loader/spinner-loader";
+import { SpinnerLoaderComponent } from "src/app/common/loaders/spinner-loader/spinner-loader";
+import { EPermission } from "src/app/core/enums/enum-permissions";
 
 const routes: Routes = [
-    {path:'', component: ListGamesComponent},
-    {path:'add', component:AddEditGameComponent},
-    {path:'view/:game', component: GameDetailsComponent},
-    {path:'edit/:game', component: AddEditGameComponent}
+    {
+        path:'',
+        component: ListGamesComponent,
+        data:{permissions:[EPermission.Display_Game]}
+    },
+    {
+        path:'add',
+        component:AddEditGameComponent,
+        data:{permissions:[EPermission.Create_Game]}
+    },
+    {
+        path:'view/:game',
+        component: GameDetailsComponent,
+        data:{permissions:[EPermission.Details_Game]}
+    },
+    {
+        path:'edit/:game', 
+        component: AddEditGameComponent,
+        data:{permissions:[EPermission.Update_Game]}
+    }
 ]
 
 @NgModule({
@@ -49,7 +66,7 @@ const routes: Routes = [
         QueryableGameListComponent,
         GameDetailsDesktopComponent,
         GameDetailsMobileComponent,
-        SpinneroaderComponent
+        SpinnerLoaderComponent
 
     ],
     providers:[GameService],

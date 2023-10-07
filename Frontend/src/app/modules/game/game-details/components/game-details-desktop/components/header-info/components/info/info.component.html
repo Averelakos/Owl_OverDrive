@@ -2,7 +2,7 @@
     <div class="title">
         <h1>
             {{gameModel.name}}
-            <a class="btn btn-default" (click)="clickToEdit()">Edit</a>
+            <a *ngIf="canUpdateGame"  class="btn btn-default" (click)="clickToEdit()">Edit</a>
         </h1>
         <h2>{{gameModel.firstReleaseDate? (gameModel.firstReleaseDate | date : 'dd.MM.yyyy') : 'N/A'}}</h2>
         <a>
