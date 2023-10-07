@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
-using Owl.Overdrive.Business.DTOs.CompanyDtos;
-using Owl.Overdrive.Business.DTOs.LookupsDtos;
 using Owl.Overdrive.Business.DTOs.PlatformDtos;
-using Owl.Overdrive.Business.DTOs.ServiceResults;
-using Owl.Overdrive.Domain.Entities.Company;
-using System.Reflection.Metadata;
+using Owl.Overdrive.Infrastructure.Attributes;
 
 namespace Owl.Overdrive.Controllers
 {
@@ -21,6 +17,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("SearchPlatformByName")]
+        [AuthorizeJwt]
         public async Task<ActionResult<List<SearchPlatformDto>>> SearchPlatformByName([FromQuery] string? input)
         {
             var result = await _platformFacade.SearchPlatform(input);
@@ -28,6 +25,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("GetPlatformById")]
+        [AuthorizeJwt]
         public async Task<ActionResult<SearchPlatformDto>> GetPlatform([FromQuery] long input)
         {
             var result = await _platformFacade.GetPlatform(input);

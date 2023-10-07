@@ -1,6 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Owl.Overdrive.Domain.Configurations;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Auth;
 using Owl.Overdrive.Infrastructure.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,11 +12,14 @@ namespace Owl.Overdrive.Infrastructure.Services
     public class TokenProviderService : ITokenProviderService
     {
         private readonly TokenConfiguration _tokenConfiguration;
-        public TokenProviderService(TokenConfiguration tokenConfiguration)
+        private readonly ILogger<TokenProviderService> _logger;
+
+        public TokenProviderService(TokenConfiguration tokenConfiguration, ILogger<TokenProviderService> logger)
         {
             _tokenConfiguration = tokenConfiguration;
+            _logger = logger;
         }
-        public string Create(User user)
+        public string Create(User user, List<string> roles, List<string> permissions)
         {
            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             List<Claim>? claims = new List<Claim>
@@ -23,6 +27,9 @@ namespace Owl.Overdrive.Infrastructure.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Upn, user.Username)
             };
+
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(permissions.Select(permission => new Claim("permission", permission)));
 
             using RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
             RsaSecurityKey securityKey = new RsaSecurityKey(rsa);
@@ -35,7 +42,7 @@ namespace Owl.Overdrive.Infrastructure.Services
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_tokenConfiguration.ExpiresMinutes)),
+                Expires = DateTime.UtcNow.AddDays(Convert.ToInt32(_tokenConfiguration.ExpiresMinutes)),
                 SigningCredentials = credentials
             };
 
@@ -43,6 +50,45 @@ namespace Owl.Overdrive.Infrastructure.Services
             string token = tokenHandler.WriteToken(securityToken);
 
             return token;
+        }
+
+        public ClaimsPrincipal? Validate(string token)
+        {
+            ClaimsPrincipal? result = null;
+
+            if (token is not null)
+            {
+                using RSACryptoServiceProvider rsa = new();
+                rsa.ImportCspBlob(Convert.FromBase64String(_tokenConfiguration.RsaPublickKey));
+                JwtSecurityTokenHandler tokenHandler = new();
+
+                TokenValidationParameters tvps = new()
+                {
+                    ValidAudience = "",
+                    ValidateAudience = false,
+                    ValidIssuer = "",
+                    ValidateIssuer = false,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new RsaSecurityKey(rsa),
+                    CryptoProviderFactory = new CryptoProviderFactory()
+                    {
+                        CacheSignatureProviders = false
+                    }
+                };
+
+                try
+                {
+                    result = tokenHandler.ValidateToken(token, tvps, out SecurityToken validatedToken);
+                }
+                catch(Exception ex) 
+                {
+                    _logger.LogError(ex, "JWT validation failed");
+                    result = null;
+                }
+
+            }
+
+            return result;
         }
     }
 }

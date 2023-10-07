@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Infrastructure.Persistence.Configurations;
+using Owl.Overdrive.Infrastructure.Persistence.Configurations.AuthConfiguration;
 using Owl.Overdrive.Infrastructure.Persistence.Configurations.CompanyConfigurations;
 using Owl.Overdrive.Infrastructure.Persistence.Configurations.GameConfigurations;
 
@@ -15,7 +16,13 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
 
         public void ModelCreating(ModelBuilder modelBuilder)
         {
+            #region Auth
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());
+            #endregion Auth
+
             modelBuilder.ApplyConfiguration(new CompanyConfiguration());
             modelBuilder.ApplyConfiguration(new CompanyStatusConfiguration());
             modelBuilder.ApplyConfiguration(new CountryCodeConfiguration());

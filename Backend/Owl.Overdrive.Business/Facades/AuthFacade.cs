@@ -2,9 +2,11 @@
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.Auth;
 using Owl.Overdrive.Business.Facades.Base;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Auth;
+using Owl.Overdrive.Domain.Enums;
 using Owl.Overdrive.Infrastructure.Contracts;
 using Owl.Overdrive.Repository.Contracts;
+using System.Data;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -37,9 +39,30 @@ namespace Owl.Overdrive.Business.Facades
                 Email = registerDto.Email,
             };
 
-            await _repoUoW.UserRepository.AddNewUser(newUser);
+            await _repoUoW.UserRepository.BeginTransactionAsync();
 
-            return _tokenProviderService.Create(newUser);
+            try
+            {
+                
+                await _repoUoW.UserRepository.AddNewUser(newUser);
+                await _repoUoW.UserRepository.AddUserRole(newUser.Id, ERole.Default);
+
+                await _repoUoW.UserRepository.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _repoUoW.UserRepository.RollBackTransactionAsync();
+                return string.Empty;
+            }
+
+            
+            var roles = await _repoUoW.UserRepository.GetUserRole(newUser.Id);
+
+            var permissionNames = GetRolePermissionNames(roles);
+
+            var roleNames = GetRoleNames(roles);
+
+            return _tokenProviderService.Create(newUser, roleNames, permissionNames);
         }
 
         public async Task<string> Login(LoginDto loginDto)
@@ -48,7 +71,7 @@ namespace Owl.Overdrive.Business.Facades
 
             if (user is null)
             {
-                return null;
+                return string.Empty;
             }
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
@@ -57,10 +80,27 @@ namespace Owl.Overdrive.Business.Facades
 
             for (int i = 0; i < computedHash.Length; i++)
             {
-                if (computedHash[i] != user.PasswordHash[i]) return null;
+                if (computedHash[i] != user.PasswordHash[i]) return string.Empty;
             }
 
-            return _tokenProviderService.Create(user);
+            var roles = await _repoUoW.UserRepository.GetUserRole(user.Id);
+
+            var permissionNames = GetRolePermissionNames(roles);
+
+            var roleNames = GetRoleNames(roles);
+
+            return _tokenProviderService.Create(user, roleNames, permissionNames);
+
+        }
+
+        private static List<string> GetRolePermissionNames(List<Role> roles)
+        {
+            return roles.SelectMany(x => x.RolePermissions).Select(x => x.Permission).Distinct().ToList();
+        }
+
+        private static List<string> GetRoleNames(List<Role> roles)
+        {
+            return roles.Select(x => x.Name).ToList();
         }
     }
 }

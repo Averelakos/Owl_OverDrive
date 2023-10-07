@@ -8,6 +8,7 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Services.Models;
+using Owl.Overdrive.Infrastructure.Attributes;
 
 namespace Owl.Overdrive.Controllers
 {
@@ -23,6 +24,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("AddGame")]
+        [AuthorizeJwt]
         public async Task<ActionResult<ServiceResult<CreateGameResponseDto>>> AddGame([FromBody] CreateGameDto createGameDto)
         {
             var result = await _gameFacade.Create(createGameDto);
@@ -30,6 +32,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("Search")]
+        [AuthorizeJwt]
         public async Task<ActionResult<List<SearchParentGameDto>>> Search([FromQuery] string searchInput)
         {
            var result = await _gameFacade.Search(searchInput);
@@ -37,6 +40,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("GetAllGames")]
+        [AuthorizeJwt]
         public async Task<ActionResult<ServiceSearchResultData<List<GameSimpleDto>>>> GetAllGames([FromBody] DataLoaderOptions options)
         {
             var result = await _gameFacade.List(options);
@@ -44,6 +48,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpGet("GetGame")]
+        [AuthorizeJwt]
         public async Task<ActionResult<GameDetailsDto>> GetGame([FromQuery] long gameId)
         {
             var result = await _gameFacade.GetGameById(gameId);
@@ -51,6 +56,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpGet("GetGameForEdit")]
+        [AuthorizeJwt]
         public async Task<ActionResult<UpdateGameDto>> GetGameForEdit([FromQuery] long gameId)
         {
             var result = await _gameFacade.GetGameForUpdate(gameId);
@@ -58,6 +64,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("UpdateGame")]
+        [AuthorizeJwt]
         public async Task<ActionResult<ServiceResult<UpdateGameDto>>> UpdateGame([FromBody] UpdateGameDto updateGameDto)
         {
             var result = await _gameFacade.UpdateGame(updateGameDto);

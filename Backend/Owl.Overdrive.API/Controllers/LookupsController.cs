@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.LookupsDtos;
+using Owl.Overdrive.Infrastructure.Attributes;
 
 namespace Owl.Overdrive.Controllers
 {
@@ -16,6 +17,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpGet]
+        [AuthorizeJwt]
         public async Task<ActionResult<LookupsDto>> Get()
         {
             var result = await _lookupFacade.Get();

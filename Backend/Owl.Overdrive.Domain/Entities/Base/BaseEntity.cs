@@ -1,4 +1,5 @@
 ﻿using Owl.Overdrive.Domain.Contracts;
+using Owl.Overdrive.Domain.Entities.Auth;
 
 namespace Owl.Overdrive.Domain.Entities.Base
 {

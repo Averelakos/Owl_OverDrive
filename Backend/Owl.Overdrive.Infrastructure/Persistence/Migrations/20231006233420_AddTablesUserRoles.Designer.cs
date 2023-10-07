@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 
@@ -11,9 +12,11 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    partial class OwlOverdriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231006233420_AddTablesUserRoles")]
+    partial class AddTablesUserRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,308 +105,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Default Role",
                             LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Default"
-                        });
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Auth.RolePermission", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2(7)")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<long?>("LastUpdatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Permission")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<long>("RoleId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastUpdatedById");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("RolePermissions", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -8L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Company",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -7L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Company",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -6L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Create_Company",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -5L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Update_Company",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -4L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Game",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -3L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Game",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -2L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Create_Game",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = -1L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Update_Game",
-                            RoleId = -1L
-                        },
-                        new
-                        {
-                            Id = 1L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Company",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Company",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Create_Company",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Update_Company",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Game",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Game",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Create_Game",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Update_Game",
-                            RoleId = 1L
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Company",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Company",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Create_Company",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Update_Company",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Game",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Game",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Create_Game",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Update_Game",
-                            RoleId = 2L
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Company",
-                            RoleId = 3L
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Company",
-                            RoleId = 3L
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Game",
-                            RoleId = 3L
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Game",
-                            RoleId = 3L
-                        },
-                        new
-                        {
-                            Id = 21L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Company",
-                            RoleId = 4L
-                        },
-                        new
-                        {
-                            Id = 22L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Company",
-                            RoleId = 4L
-                        },
-                        new
-                        {
-                            Id = 23L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Display_Game",
-                            RoleId = 4L
-                        },
-                        new
-                        {
-                            Id = 24L,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Permission = "Details_Game",
-                            RoleId = 4L
+                            Name = "Defauls"
                         });
                 });
 
@@ -414,6 +116,9 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -428,6 +133,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("Firstname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<DateTime>("LastUpdated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2(7)")
@@ -436,6 +145,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Property<long?>("LastUpdatedById")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Lastname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
@@ -443,6 +156,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -8937,31 +8654,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("LastUpdatedBy");
                 });
 
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Auth.RolePermission", b =>
-                {
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Auth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Auth.User", "LastUpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("LastUpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Owl.Overdrive.Domain.Entities.Auth.Role", "Role")
-                        .WithMany("RolePermissions")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastUpdatedBy");
-
-                    b.Navigation("Role");
-                });
-
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Auth.User", b =>
                 {
                     b.HasOne("Owl.Overdrive.Domain.Entities.Auth.User", "CreatedBy")
@@ -9702,11 +9394,6 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("LastUpdatedBy");
-                });
-
-            modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Auth.Role", b =>
-                {
-                    b.Navigation("RolePermissions");
                 });
 
             modelBuilder.Entity("Owl.Overdrive.Domain.Entities.Auth.User", b =>

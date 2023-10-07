@@ -4,6 +4,7 @@ using Owl.Overdrive.Business.DTOs.CompanyDtos;
 using Owl.Overdrive.Business.DTOs.LookupsDtos;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Domain.Entities.Company;
+using Owl.Overdrive.Infrastructure.Attributes;
 using System.Reflection.Metadata;
 
 namespace Owl.Overdrive.Controllers
@@ -20,6 +21,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("AddCompany")]
+        [AuthorizeJwt]
         public async Task<ActionResult<ServiceResult<CreateCompanyDto>>> AddCompany([FromBody] CreateCompanyDto createCompanyDto)
         {
             var result = await _companyFacade.Create(createCompanyDto);
@@ -27,6 +29,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("SearchParent")]
+        [AuthorizeJwt]
         public async Task<ActionResult<List<SearchParentCompanyDto>>> SearchParentCompany([FromQuery]string searchInput)
         {
             var result = await _companyFacade.Search(searchInput);
@@ -34,6 +37,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("RetrieveSearchCompany")]
+        [AuthorizeJwt]
         public async Task<ActionResult<List<SearchParentCompanyDto>>> RetrieveSearchCompany([FromQuery] long searchInput)
         {
             var result = await _companyFacade.RetrieveSearchValue(searchInput);
@@ -41,6 +45,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpGet("list")]
+        [AuthorizeJwt]
         public async Task<ActionResult<List<ListCompanyDto>>> List()
         {
             var result = await _companyFacade.GetAll();
@@ -48,6 +53,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpGet("GetCompany")]
+        [AuthorizeJwt]
         public async Task<ActionResult<SimpleCompanyDto>> GetCompany([FromQuery] long companyId)
         {
             var result = await _companyFacade.GetCompanyById(companyId);
@@ -55,6 +61,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpGet("GetCompanyLogo")]
+        [AuthorizeJwt]
         public async Task<ActionResult<UpdateCompanyDto>> GetCompanyLogo([FromQuery] long companyId)
         {
             var result = await _companyFacade.GetLogoByCompanyId(companyId);
@@ -62,6 +69,7 @@ namespace Owl.Overdrive.Controllers
         }
 
         [HttpPost("UpdateCompany")]
+        [AuthorizeJwt]
         public async Task<ActionResult<ServiceResult<UpdateCompanyDto>>> UpdateCompany([FromBody] UpdateCompanyDto updateCompanyDto)
         {
             var result = await _companyFacade.UpdateCompany(updateCompanyDto);

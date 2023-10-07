@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 
@@ -11,9 +12,11 @@ using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OwlOverdriveDbContext))]
-    partial class OwlOverdriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231007171225_AddRolePermisions")]
+    partial class AddRolePermisions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,6 +418,9 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("datetime2(7)");
+
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2(7)")
@@ -428,6 +434,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("Firstname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<DateTime>("LastUpdated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2(7)")
@@ -436,6 +446,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Property<long?>("LastUpdatedById")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Lastname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
@@ -443,6 +457,10 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Username")
                         .IsRequired()

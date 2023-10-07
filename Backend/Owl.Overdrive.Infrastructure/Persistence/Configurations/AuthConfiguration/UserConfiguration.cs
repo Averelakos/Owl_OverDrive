@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Owl.Overdrive.Domain.Entities;
+using Owl.Overdrive.Domain.Entities.Auth;
 
-
-namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
+namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.AuthConfiguration
 {
-    public class UserConfiguration :BaseEntityConfiguration, IEntityTypeConfiguration<User>
+    public class UserConfiguration : BaseEntityConfiguration, IEntityTypeConfiguration<User>
     {
         public UserConfiguration() : base()
         {
-            
+
         }
 
         public void Configure(EntityTypeBuilder<User> builder)
@@ -24,12 +23,12 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations
             builder.ToTable("Users");
 
             // Properties parameters
-            builder.Property(p => p.Firstname).HasMaxLength(255);
-            builder.Property(p => p.Lastname).HasMaxLength(255);
+            //builder.Property(p => p.Firstname).HasMaxLength(255);
+            //builder.Property(p => p.Lastname).HasMaxLength(255);
             builder.Property(p => p.Email).HasMaxLength(255);
             builder.Property(p => p.Username).HasMaxLength(255);
-            builder.Property(p => p.Phone).HasMaxLength(255);
-            builder.Property(p => p.Birthdate).HasColumnType("datetime2(7)");
+            //builder.Property(p => p.Phone).HasMaxLength(255);
+            //builder.Property(p => p.Birthdate).HasColumnType("datetime2(7)");
 
             Seed(builder);
         }
