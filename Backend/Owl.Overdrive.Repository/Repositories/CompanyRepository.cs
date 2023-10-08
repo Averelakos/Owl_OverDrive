@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Infrastructure.Persistence.DbContexts;
 using Owl.Overdrive.Repository.Contracts;
@@ -13,7 +11,7 @@ namespace Owl.Overdrive.Repository.Repositories
         {
         }
 
-        private IQueryable<Company> GetCompany()
+        public IQueryable<Company> QueryCompany()
         {
             return _DbSet;
         }
@@ -59,7 +57,7 @@ namespace Owl.Overdrive.Repository.Repositories
         /// <returns></returns>
         public async Task<Company?> GetCompanyById(long id)
         {
-            return await GetCompany()
+            return await QueryCompany()
                 .Include(x => x.ParentCompany)
                 .AsNoTracking()
                 .FirstAsync(x => x.Id == id)!;

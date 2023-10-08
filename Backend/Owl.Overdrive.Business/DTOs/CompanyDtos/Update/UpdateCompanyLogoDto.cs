@@ -6,7 +6,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Owl.Overdrive.Business.DTOs.CompanyDtos
+namespace Owl.Overdrive.Business.DTOs.CompanyDtos.Update
 {
     /// <summary>
     /// Simple company Dto

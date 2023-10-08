@@ -1,8 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
+using Owl.Overdrive.Business.DTOs.CompanyDtos.Create;
+using Owl.Overdrive.Business.DTOs.CompanyDtos.Display;
+using Owl.Overdrive.Business.DTOs.CompanyDtos.Update;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.LookupsDtos;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
+using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Infrastructure.Attributes;
 using System.Reflection.Metadata;
@@ -44,11 +49,11 @@ namespace Owl.Overdrive.Controllers
             return Ok(result);
         }
 
-        [HttpGet("list")]
+        [HttpPost("list")]
         [AuthorizeJwt]
-        public async Task<ActionResult<List<ListCompanyDto>>> List()
+        public async Task<ActionResult<ServiceSearchResultData<List<CompanySimpleDto>>>> List([FromBody] DataLoaderOptions options)
         {
-            var result = await _companyFacade.GetAll();
+            var result = await _companyFacade.ListCompany(options);
             return Ok(result);
         }
 

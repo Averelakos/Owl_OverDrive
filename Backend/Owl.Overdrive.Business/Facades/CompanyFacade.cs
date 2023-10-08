@@ -1,9 +1,17 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Owl.Overdrive.Business.Contracts;
 using Owl.Overdrive.Business.DTOs.CompanyDtos;
+using Owl.Overdrive.Business.DTOs.CompanyDtos.Create;
+using Owl.Overdrive.Business.DTOs.CompanyDtos.Display;
+using Owl.Overdrive.Business.DTOs.CompanyDtos.Update;
+using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
+using Owl.Overdrive.Business.Services;
+using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Repository.Contracts;
 
@@ -13,6 +21,14 @@ namespace Owl.Overdrive.Business.Facades
     {
         public CompanyFacade(IRepositoryUnitOfWork repoUoW, IMapper mapper) : base(repoUoW, mapper)
         {
+        }
+
+        private IQueryable<T> List<T>()
+        {
+            return _repoUoW.CompanyRepository
+                    .QueryCompany()
+                    .AsNoTracking()
+                    .ProjectTo<T>(_mapper.ConfigurationProvider);
         }
 
         #region Create
@@ -61,7 +77,31 @@ namespace Owl.Overdrive.Business.Facades
             
         }
         #endregion Creeate
-        
+
+        #region Display
+        public async Task<ServiceSearchResultData<List<CompanySimpleDto>>> ListCompany(DataLoaderOptions options)
+        {
+            IQueryable<CompanySimpleDto> source = List<CompanySimpleDto>();
+
+            var dataDesult = await new DataLoaderService<CompanySimpleDto>(source, options).LoadResult();
+
+            ServiceSearchResultData<List<CompanySimpleDto>> result = new();
+
+            if (dataDesult.Data is not null)
+            {
+                result.Result = dataDesult.Data.ToList();
+                result.TotalCount = dataDesult.TotalCount;
+                result.TotalPages = dataDesult.TotalPages;
+                return result;
+            }
+            else
+            {
+                result.Result = new List<CompanySimpleDto>();
+                return result;
+            }
+        }
+        #endregion Display
+
         public async Task<List<SearchParentCompanyDto>> Search(string searchInput)
         {
             List<SearchParentCompanyDto> result = new List<SearchParentCompanyDto>();
@@ -79,11 +119,6 @@ namespace Owl.Overdrive.Business.Facades
             var result = _mapper.Map<SearchParentCompanyDto>(await _repoUoW.CompanyRepository.GetCompanyById(searchInput));
 
             return result;
-        }
-
-        public async Task<List<ListCompanyDto>> GetAll()
-        {
-            return _mapper.Map<List<ListCompanyDto>>(await _repoUoW.CompanyRepository.GetList());
         }
 
         public async Task<SimpleCompanyDto> GetCompanyById(long companyId)

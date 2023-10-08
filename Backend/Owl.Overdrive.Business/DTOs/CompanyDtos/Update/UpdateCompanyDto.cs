@@ -1,4 +1,4 @@
-﻿namespace Owl.Overdrive.Business.DTOs.CompanyDtos
+﻿namespace Owl.Overdrive.Business.DTOs.CompanyDtos.Update
 {
     /// <summary>
     /// Simple company Dto
@@ -51,6 +51,6 @@
         /// </summary>
         public long? CompanyLogoId { get; set; }
         public Guid? NewCompanyLogoId { get; set; }
-        
+
     }
 }

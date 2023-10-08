@@ -4,6 +4,7 @@ namespace Owl.Overdrive.Repository.Contracts
 {
     public interface ICompanyRepository
     {
+        IQueryable<Company> QueryCompany();
         /// <summary>
         /// Inserts the specified company.
         /// </summary>
