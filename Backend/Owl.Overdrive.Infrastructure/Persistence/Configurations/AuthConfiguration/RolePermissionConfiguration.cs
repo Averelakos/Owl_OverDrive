@@ -233,7 +233,22 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.AuthConfigurat
                 RoleId = 4,
                 Permission = "Details_Game",
             });
-           
+
+            builder.HasData(new RolePermission()
+            {
+                Id = 25,
+                RoleId = 1,
+                Permission = "Display_User",
+            });
+            builder.HasData(new RolePermission()
+            {
+                Id = 26,
+                RoleId = 1,
+                Permission = "Update_User",
+            });
+
+
+
         }
     }
 }

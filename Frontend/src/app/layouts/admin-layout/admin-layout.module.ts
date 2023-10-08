@@ -24,7 +24,8 @@ const routes: Routes = [
         {path:'Home', loadChildren:() => import('../../modules/home/home.module').then(m => m.HomeModule), canActivateChild: [AuthGuarCanActivateChild]},
         {path:'Test', loadChildren:()=> import('../../modules/test/test-page.module').then(m => m.TestPageModule), canActivateChild: [AuthGuarCanActivateChild]},
         {path: 'Company', loadChildren:() => import('../../modules/company/companies.module').then(m => m.CompanyModule), canActivateChild: [AuthGuarCanActivateChild]},
-        {path: 'Game', loadChildren:() => import('../../modules/game/games.module').then(m => m.GamesModule), canActivateChild: [AuthGuarCanActivateChild]}
+        {path: 'Game', loadChildren:() => import('../../modules/game/games.module').then(m => m.GamesModule), canActivateChild: [AuthGuarCanActivateChild]},
+        {path: 'User', loadChildren:() => import('../../modules/user/user.module').then(m => m.UserModule), canActivateChild:[AuthGuarCanActivateChild]}
         ]
     },
 ]

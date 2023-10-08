@@ -70,6 +70,7 @@ namespace Owl.Overdrive.API.Extensions
                 .AddScoped<IPlatformFacade, PlatformFacade>()
                 .AddScoped<IGameFacade, GameFacade>()
                 .AddScoped<IAuthFacade, AuthFacade>()
+                .AddScoped<IUserFacade, UserFacade>()
                 ;
         }
         /// <summary>

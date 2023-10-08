@@ -15,6 +15,7 @@ namespace Owl.Overdrive.Business.MapperProfiles
             MapLookups();
             MapPlatforms();
             MapGame();
+            MapUser();
         }
     }
 }

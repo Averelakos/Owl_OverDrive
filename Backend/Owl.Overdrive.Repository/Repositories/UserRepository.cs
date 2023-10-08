@@ -21,6 +21,14 @@ namespace Owl.Overdrive.Repository.Repositories
             return _DbSet;
         }
 
+        public async Task<List<User>> GetAllUserWithRoles()
+        {
+            return await GetQueryableUser()
+                .Include(x => x.Roles)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         /// <summary>
         /// Gets the user by username.
         /// </summary>

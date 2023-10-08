@@ -50,5 +50,15 @@ namespace Owl.Overdrive.Domain.Enums
         [Title("Update Game")]
         [Description("Update Game")]
         Update_Game,
+
+        [Category(PermissionCategories.User)]
+        [Title("Display User")]
+        [Description("Display User")]
+        Display_User,
+
+        [Category(PermissionCategories.User)]
+        [Title("Update User")]
+        [Description("Update User")]
+        Update_User,
     }
 }
