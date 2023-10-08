@@ -1,0 +1,16 @@
+.cards-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.pagination-container{
+  display: flex;
+  background: #FAFAFA;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem auto 1rem auto;
+  border-radius: 3px;
+  justify-content: flex-end;
+}

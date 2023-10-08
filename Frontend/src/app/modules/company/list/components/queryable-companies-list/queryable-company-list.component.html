@@ -1,0 +1,15 @@
+<div class="cards-container">
+    <ng-container *ngIf="companyList != null && companyList.length > 0">
+       <app-company-list [companyList]="companyList" (clickEvent)="openDetails($event)"></app-company-list>
+    </ng-container>
+    <app-logo-loader [imageSRC]="'../../../../../assets/img/owl_logo.png'" [isLoading]="(loading$ | async)"></app-logo-loader>
+</div>
+
+<div *ngIf="companyList != null && companyList.length > 0" class="pagination-container">
+    <app-company-pagination 
+        (selectedPage)=" changePage($event)"
+        [pages]="totalPages"
+        [currentPage]="currentPage"
+        >
+    </app-company-pagination>
+</div>

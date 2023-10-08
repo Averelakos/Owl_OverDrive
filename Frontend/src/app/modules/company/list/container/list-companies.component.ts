@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, finalize, first } from 'rxjs';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { EPermission } from 'src/app/core/enums/enum-permissions';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
 import { CompanyService } from 'src/app/data/services/company.service';
 import { ListCompanyDto } from 'src/app/data/types/company/list-companies';
@@ -14,10 +16,14 @@ export class ListCompaniesComponent implements OnInit {
   listOfCompanies!: Array<ListCompanyDto>;
   loading$ = new BehaviorSubject<boolean>(false)
   deviceType = ResponsizeSize
-  constructor(private readonly companyService: CompanyService, private router: Router, public responsiveService: ResponsiveService){}
+  canCreateCompany!:boolean
+
+  constructor(private readonly companyService: CompanyService, private router: Router, public responsiveService: ResponsiveService, private readonly authService: AuthService){
+    this.canCreateCompany = this.authService.hasPermission(EPermission.Create_Company)
+  }
   
   ngOnInit(): void {
-    this.fetchCompany();  
+    // this.fetchCompany();  
   }
 
   fetchCompany() {

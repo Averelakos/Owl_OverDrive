@@ -8,6 +8,9 @@ import { ListCompanyDto } from "../types/company/list-companies";
 import { SimpleCompany } from "../types/company/simple-company";
 import { UpdateCompanyDto } from "../types/company/update-company";
 import { ServiceResult } from "../types/service-results/service-result";
+import { DataLoaderOptions } from "../types/data-loader/data-loader-options";
+import { ServiceSearchResultData } from "../types/service-results/service-searc-result-data";
+import { CompanySimpleDto } from "../types/company/company-simple-dto";
 
 @Injectable()
 export class CompanyService{
@@ -60,6 +63,10 @@ export class CompanyService{
 
     getAllCompanies() {
       return this.http.get<Array<ListCompanyDto>>(this.baseUrl + '/list')
+    }
+
+    listCompanies(options: DataLoaderOptions){
+      return this.http.post<ServiceSearchResultData<Array<CompanySimpleDto>>>(this.baseUrl + '/list', options)
     }
 
     getCompany(companyId) {

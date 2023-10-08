@@ -2,32 +2,13 @@
     <ol class="breadcrumb">
         <li>Companies</li>
     </ol>
-
+    
     <div class="page_title">
-        <h1>Companies</h1>
+        <h1>Companies Search</h1>
     </div>
 
-    <div class="companies-list-container">
-        <ul class="companies-list-toolbar">
-            <li>
-                <a class="companies-list-toolbar-button btn-primary" (click)="clickNewCompany()">
-                <i class="fa-solid fa-plus icon"></i>
-                Add Company
-            </a>
-            </li>
-        </ul>
-        <div class="company_list_header">
-            <ul>
-                <li>Name</li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li *ngFor="let company of listOfCompanies" class="company_list_item" (click)="clickToViewCompany(company)"> 
-                   <a>{{company.name}}</a>
-                </li>
-            </ul>
-        </div>
+    <div class="result-container">
+        <app-search-filter-header></app-search-filter-header>
+        <app-queryable-company-list></app-queryable-company-list>
     </div>
 </div>
-<app-standar-loader [loading]="loading$ | async" [inner]="(responsiveService.responsiveSize | async) === deviceType.Desktop"></app-standar-loader>

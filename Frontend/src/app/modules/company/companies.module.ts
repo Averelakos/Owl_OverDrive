@@ -22,6 +22,9 @@ import { CompanyViewComponent } from './view/container/company-view.component';
 import { StandarLinkIconComponent } from "src/app/common/standar-link-icon/standar-link-icon.component";
 import { SecureImgPipe } from "src/app/shared/pipes/secure-img.pipe";
 import { EPermission } from "src/app/core/enums/enum-permissions";
+import { QueryableCompanyListComponent } from "./list/components/queryable-companies-list/queryable-company-list.component";
+import { SearchFilterHeaderComponent } from "./list/components/search-filter-header/search-filter-header.component";
+import { SpinnerLoaderComponent } from "src/app/common/loaders/spinner-loader/spinner-loader";
 
 
 const routes: Routes = [
@@ -55,14 +58,16 @@ const routes: Routes = [
         StandarTextareaComponent,
         StandarSelectSearchComponent,
         StandarLinkInputComponent,
-        SharedComponentsModule,
-        StandarLoaderComponent,
+        // SharedComponentsModule,
+        SpinnerLoaderComponent,
         FormsModule,
         ReactiveFormsModule,
         CompanyGeneralDetailsComponent,
         MatDatetimePickerComponent,
         StandarLinkIconComponent,
-        SecureImgPipe
+        SecureImgPipe,
+        QueryableCompanyListComponent,
+        SearchFilterHeaderComponent
     ],
     providers:[CompanyService],
     declarations:[

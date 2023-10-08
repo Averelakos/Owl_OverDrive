@@ -1,0 +1,38 @@
+:host {
+    display: contents;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.search-form{
+    position: relative;
+    min-width: 15rem;
+    background: #fff;
+    border-radius: .7rem;
+    padding: 7px 15px 7px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid #c15375;
+}
+
+.search-form > input {
+    width: 90%;
+    outline: 0;
+    border: none;
+    color: #2f2f2f;
+    font-size: 14px;
+    line-height: 1.428571429;
+    font-weight: normal;
+
+}
+.search-form > i {
+    width: 10%;
+    color: #2f2f2f;
+}

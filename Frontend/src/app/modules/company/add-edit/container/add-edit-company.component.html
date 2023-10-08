@@ -32,6 +32,6 @@
         <a class="btn btn-default" (click)="clickToReturnBack()">Back</a>
         <button (click)="updateCompany()" class="btn btn-primary">Update</button>
     </div>
-    <!-- <app-standar-loader></app-standar-loader> -->
+
 </div>
-<app-standar-loader [loading]="loading$ | async" [inner]="(responsiveService.responsiveSize | async) === deviceType.Desktop"></app-standar-loader>
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../assets/img/owl_logo.png'"></spinner-loader>
