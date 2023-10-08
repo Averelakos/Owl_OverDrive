@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -10,7 +11,7 @@ export class AdminHeaderComponent implements OnInit {
 
   @Input() isSideBarOpen: boolean;
   @Output() toggle = new EventEmitter<boolean>();
-  constructor() { }
+  constructor(private readonly authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,10 @@ export class AdminHeaderComponent implements OnInit {
       iconElement?.classList.remove('fa-ellipsis-vertical')
       iconElement?.classList.add('fa-bars');
     }
+  }
+
+  logout(){
+    this.authService.logout()
   }
 
 }

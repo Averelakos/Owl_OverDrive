@@ -1,0 +1,45 @@
+<div class="menu-container">
+    <div class="menu-content">
+        <div class="menu-navigation-title">
+            Navigation
+        </div>
+        <div class="menu-navigation-list">
+            
+            <ng-container *ngFor="let link of menuItems">
+                <div  *ngIf="link.subMenu?.length === 0"  class="menu-navigation-item" [routerLink]="link.route" routerLinkActive="active-link" (click)="clickToCloseSubMenu()">
+                    <div class="text">
+                        <i class="{{link.icon}}" ></i>
+                        {{link.mainPageLabel}}
+                    </div>
+                </div>
+
+                <div  *ngIf="link.subMenu?.length !== 0"  class="menu-navigation-item"  >
+                    <div class="text" (click)="clickToOpenSubMenu($event)">
+                        <i class="{{link.icon}}" ></i>
+                        {{link.mainPageLabel}}
+                    </div>
+                    <i *ngIf="link.subMenu != null && link.subMenu.length > 0" class="fa-solid fa-xs fa-chevron-up"></i>
+
+                    <div class="sub-menu-navigation">
+                        <div *ngFor="let subLink of link.subMenu" class="sub-button" [routerLink]="subLink.route" routerLinkActive="active-link" >
+                            <div class="sub-text">
+                                <i class="{{subLink.icon}}" ></i>
+                                {{subLink.subPagelabel}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </ng-container>
+            
+        </div>
+        <div class="menu-about" (click)="clickedAbout()">
+            <div>
+                <i class="fa fa-lg fa-power-off fa-fw"></i>
+                Logout
+            </div>
+        </div>
+        
+    </div>
+</div>

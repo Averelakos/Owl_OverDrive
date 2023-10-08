@@ -1,0 +1,137 @@
+// @import '../../../../styles/colors';
+
+:host {
+  display: contents;
+}
+
+.menu-container {
+  border-top: 5px solid #c15375;
+  height: calc(100vh - 5px);
+  overflow: hidden;
+
+  background-color: #424242;
+  color: aliceblue;
+}
+
+.menu-content {
+  padding: 1rem;
+}
+
+.menu-navigation-title {
+  margin: 0.2rem 0 1rem;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.menu-navigation-item {
+    position: relative;
+    justify-content: space-between;
+    display: flex;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    transition:0.3s;
+}
+
+.menu-navigation-item > .text {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+// div.menu-navigation-item:hover {
+//   background-color: #dbebf3;
+// }
+
+.menu-navigation-item.active-link {
+    transform: scale(1.08);
+    background-color: #c15375;
+    color: #f3fbff;
+}
+
+.sub-menu-navigation{
+    position: absolute;
+    background: hsla(47, 15%, 75%, 0.088);
+    padding: 10px;
+    top: 3rem;
+    width: 100%;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sub-menu-navigation .sub-button {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    padding: 0.4rem;
+    margin: 0.2rem 0;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    transition:0.3s;
+}
+
+.sub-text{
+    font-size: 14px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.sub-menu-navigation .sub-button.active-link {
+    transform: scale(1.03);
+    border-radius: 5px;
+    background-color: #c15375;
+    color: #f3fbff;
+}
+
+.open-subMenu{
+    // transform: scale(1.08);
+    background: hsla(47, 15%, 75%, 0.177);
+    color: #f3fbff;
+}
+
+.open-subMenu > i{
+    transform: rotate(180deg);
+}
+
+.open-subMenu > .sub-menu-navigation{
+    display: flex;
+}
+
+div.menu-about {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  > div {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    // gap: 10px;
+  }
+}
+
+div.menu-about:hover {
+  background-color: #c15375;
+}

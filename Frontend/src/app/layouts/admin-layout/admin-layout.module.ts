@@ -12,6 +12,7 @@ import { AdminSidebarMobileComponent } from './components/admin-sidebar-mobile/a
 import { ResultBannerComponent } from "src/app/common/result-banner/result-banner.component";
 import { CommonModule } from "@angular/common";
 import { AuthGuarCanActivateChild } from "src/app/core/auth/guards/auth.can-activate-child.guard";
+import { MobileMenuComponent } from "./components/admin-sidebar-mobile/mobile-menu/mobile-menu.component";
 // import { SharedComponentsModule } from "src/app/shared/shared.module";
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
         SharedComponentsModule,
         ResultBannerComponent,
         RouterModule.forChild(routes),
+        MobileMenuComponent
     ],
     providers:[],
     declarations:[

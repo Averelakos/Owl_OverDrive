@@ -26,7 +26,7 @@ export class AuthService{
         private readonly formBuilder: FormBuilder, 
         private http: HttpClient,
         private router: Router
-        ){}
+    ){}
 
     initRegisterForm(): FormGroup {
         return this.formBuilder.group({
@@ -118,6 +118,33 @@ export class AuthService{
     login(model: LoginDto){
         return this.http.post<any>(this.baseUrl + '/login',model)
     }
+
+   /**
+   * Clear token reset state and redirect for azure logout
+   */
+  logout = () => {
+    this.clear()
+  }
+
+  clear(expired = false) {
+    localStorage.removeItem(tokenKey)
+    this.authenticationState = false
+    this.roles = []
+    this.permissions = []
+    this.username = ''
+    // this.setServerInfo({})
+    // this.name = ''
+    // this.userId = null
+    // this.stationId = null
+    // this.employeeId = ''
+    // this.currentUserStationId = null
+    // this.worldTracerAgentId = ''
+    const route: Array<any> = ['/', 'Auth', 'login']
+    // if (expired) {
+    //   route.push({ expired })
+    // }
+    this.router.navigate(route)
+  }
 
     private fixNullSingleOrlist(value: any): Array<string> {
         let result
