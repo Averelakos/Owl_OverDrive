@@ -1,4 +1,5 @@
 ﻿using Owl.Overdrive.Domain.Entities.Base;
+using Owl.Overdrive.Domain.Entities.Game;
 
 namespace Owl.Overdrive.Domain.Entities.Auth
 {
@@ -38,5 +39,6 @@ namespace Owl.Overdrive.Domain.Entities.Auth
         public byte[] PasswordSalt { get; set; } = null!;
 
         public virtual List<UserRole> Roles { get; set; } = new();
+        public virtual List<UserReview> UserReviews { get; set; } = new();
     }
 }

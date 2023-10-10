@@ -4,6 +4,9 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Create;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Create;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Display;
 using Owl.Overdrive.Domain.Entities;
 using Owl.Overdrive.Domain.Entities.Company;
 using Owl.Overdrive.Domain.Entities.Game;
@@ -151,7 +154,25 @@ namespace Owl.Overdrive.Business.MapperProfiles
             CreateMap<Website, GameDetailsWebsiteDto>();
             CreateMap<Cover, GameCoverDetailsDto>();
             CreateMap<Cover, GameBackgroundDetailsDto>();
-            # endregion Details
+
+            CreateMap<UserReview, GameDetailsUserReviewDto>()
+                .ForMember(dest => dest.PostDate, opt => opt.MapFrom(m => m.Created))
+                .ForMember(dest => dest.Username, opt => opt.MapFrom(m => m.User.Username))
+                ;
+            #endregion Details
+
+            #region User Reviews
+            CreateMap<Game, GameUserReviewsDto>()
+                .ForMember(dest => dest.UsersReviews, opt => opt.MapFrom(m => m.UserReviews))
+                ;
+            CreateMap<Cover, GameUsersReviewsCoverDto>();
+            CreateMap<UserReview, GameUserReviewReviewDto>()
+                 .ForMember(dest => dest.PostDate, opt => opt.MapFrom(m => m.Created))
+                .ForMember(dest => dest.Username, opt => opt.MapFrom(m => m.User.Username))
+                ;
+
+            CreateMap<AddUserReviewDto, UserReview>();
+            #endregion User Reviews
         }
     }
 }

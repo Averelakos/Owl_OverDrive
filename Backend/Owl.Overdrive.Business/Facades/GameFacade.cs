@@ -8,6 +8,8 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Create;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Display;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Facades.Base;
 using Owl.Overdrive.Business.Services;
@@ -257,32 +259,6 @@ namespace Owl.Overdrive.Business.Facades
 
         #endregion List
 
-        #region UI Helper
-        /// <summary>
-        /// Searches the specified game based on  search input.
-        /// </summary>
-        /// <param name="searchInput">The search input.</param>
-        /// <returns></returns>
-        public async Task<List<SearchParentGameDto>> Search(string searchInput)
-        {
-            List<SearchParentGameDto> result = new List<SearchParentGameDto>();
-            if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
-            {
-                var list = await _repoUoW.GameRepository.Search(searchInput);
-                result = _mapper.Map<List<SearchParentGameDto>>(list);
-            }
-
-            return result;
-        }
-        private IQueryable<T> List<T>()
-        {
-            return _repoUoW.GameRepository
-                    .QueryGame()
-                    .AsNoTracking()
-                    .ProjectTo<T>(_mapper.ConfigurationProvider);
-        }
-        #endregion UI Helper
-
         #region Details
         public async Task<GameDetailsDto?> GetGameById(long gameId)
         {
@@ -294,8 +270,30 @@ namespace Owl.Overdrive.Business.Facades
             await GetGameDetailsLanguageSupport(gameId, result);
             await SetPlatformsReleaseDates(gameId, result);
             await GetGameDetailsCoverAndBackground(game, result);
+            await SetGameUserReviews(gameId, result);
+
             return result;
 
+        }
+
+        private async Task SetGameUserReviews(long gameId, GameDetailsDto result)
+        {
+            var listOfUserReviews = await _repoUoW.GameRepository.GetGameUserReviews(gameId);
+
+            if (listOfUserReviews != null && listOfUserReviews.Count > 0)
+            {
+                var count = listOfUserReviews.Count();
+                long totalScore = 0;
+                foreach (var item in listOfUserReviews)
+                {
+                    totalScore += item.Score;
+                }
+
+                result.TotalScore = totalScore/count;
+
+                var temp = _mapper.Map<List<GameDetailsUserReviewDto>>(listOfUserReviews.Take(7));
+                result.UserReviews = temp;
+            }
         }
 
         private async Task SetGameDetaulsSpelling(long gameId, GameDetailsDto result)
@@ -440,6 +438,75 @@ namespace Owl.Overdrive.Business.Facades
         }
         #endregion Details
 
+        #region UI Helper
+        /// <summary>
+        /// Searches the specified game based on  search input.
+        /// </summary>
+        /// <param name="searchInput">The search input.</param>
+        /// <returns></returns>
+        public async Task<List<SearchParentGameDto>> Search(string searchInput)
+        {
+            List<SearchParentGameDto> result = new List<SearchParentGameDto>();
+            if (!string.IsNullOrWhiteSpace(searchInput) && searchInput.Length > 2)
+            {
+                var list = await _repoUoW.GameRepository.Search(searchInput);
+                result = _mapper.Map<List<SearchParentGameDto>>(list);
+            }
 
+            return result;
+        }
+        private IQueryable<T> List<T>()
+        {
+            return _repoUoW.GameRepository
+                    .QueryGame()
+                    .AsNoTracking()
+                    .ProjectTo<T>(_mapper.ConfigurationProvider);
+        }
+        #endregion UI Helper
+
+        #region User Reviews        
+        /// <summary>
+        /// Adds a new user review to a game title.
+        /// </summary>
+        /// <param name="userReviewDto">The user review dto.</param>
+        /// <returns></returns>
+        public async Task<ServiceResult<AddUserReviewDto>> AddUserReview(AddUserReviewDto userReviewDto)
+        {
+            ServiceResult<AddUserReviewDto> response = new ServiceResult<AddUserReviewDto>()
+            {
+                Result = userReviewDto
+            };
+            
+            try
+            {
+                var newReview = _mapper.Map<UserReview>(userReviewDto);
+                await _repoUoW.GameRepository.AddUserReview(newReview);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Error = ex.Message;
+                return response;
+            }
+            
+        }
+
+        public async Task<GameUserReviewsDto> GetAllGameUserReviews(long gameId)
+        {
+            var game = await _repoUoW
+                .GameRepository
+                .QueryGame()
+                .Include(x => x.Cover)
+                .Include(x => x.UserReviews)
+                .ThenInclude(x =>x.User)
+                .AsNoTracking()
+                .ProjectTo<GameUserReviewsDto>(_mapper.ConfigurationProvider)
+                .FirstAsync(x => x.Id == gameId);
+            return game;
+        }
+
+        #endregion User Reviews
     }
 }

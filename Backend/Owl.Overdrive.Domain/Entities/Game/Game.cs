@@ -26,5 +26,6 @@ namespace Owl.Overdrive.Domain.Entities.Game
         public virtual List<GameTheme> GameThemes { get; set; } = new();
         public virtual List<GameGenre> GameGenres { get; set; } = new();
         public virtual Cover? Cover { get; set; }
+        public virtual List<UserReview> UserReviews { get; set; } = new ();
     }
 }

@@ -17,6 +17,8 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos.Display.Details
         public List<GameDetailsPlatformReleasedDatesDto> PlatformsReleaseDates { get; set; } = new();
         public GameCoverDetailsDto? Cover { get; set; }
         public GameBackgroundDetailsDto? Background { get; set; }
+        public List<GameDetailsUserReviewDto> UserReviews { get; set; } = new();
+        public long TotalScore { get; set; }
     }
 
     public class GameDetailsPlatformReleasedDatesDto
@@ -32,5 +34,5 @@ namespace Owl.Overdrive.Business.DTOs.GameDtos.Display.Details
         public EGameStatus? Status { get; set; }
     }
 
-    
+
 }

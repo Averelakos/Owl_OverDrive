@@ -53,6 +53,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new GameThemeConfiguration());
             modelBuilder.ApplyConfiguration(new GameGenreConfiguration());
             modelBuilder.ApplyConfiguration(new CoverConfiguration());
+            modelBuilder.ApplyConfiguration(new UserReviewConfiguration());
             //modelBuilder.ApplyConfiguration(new ScreenshotConfiguration());
 
         }

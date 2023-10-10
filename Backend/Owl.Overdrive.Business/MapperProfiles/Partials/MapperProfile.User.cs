@@ -10,6 +10,8 @@ namespace Owl.Overdrive.Business.MapperProfiles
         {
             CreateMap<User, UserSimpleDto>()
                 .ForMember(dest => dest.RoleId, opt => opt.MapFrom(m => m.Roles[0].RoleId));
+            CreateMap<UserSimpleDto, User>();
+                //.//ForPath(dest => dest.Roles[0].RoleId, opt => opt.MapFrom(m => m.RoleId));
         }
     }
 }

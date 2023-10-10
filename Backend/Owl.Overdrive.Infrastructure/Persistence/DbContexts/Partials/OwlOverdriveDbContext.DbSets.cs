@@ -50,6 +50,7 @@ namespace Owl.Overdrive.Infrastructure.Persistence.DbContexts
         public DbSet<GameTheme> GameThemes => Set<GameTheme>();
         public DbSet<GameGenre> GameGenres => Set<GameGenre>();
         public DbSet<Cover> Covers => Set<Cover>();
+        public DbSet<UserReview> UserReviews => Set<UserReview>();
         //public DbSet<Screenshot> Screenshots => Set<Screenshot>();
         #endregion Game
     }

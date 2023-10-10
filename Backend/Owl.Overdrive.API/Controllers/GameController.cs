@@ -6,6 +6,8 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Create;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Display;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Services.Models;
 using Owl.Overdrive.Infrastructure.Attributes;
@@ -68,6 +70,22 @@ namespace Owl.Overdrive.Controllers
         public async Task<ActionResult<ServiceResult<UpdateGameDto>>> UpdateGame([FromBody] UpdateGameDto updateGameDto)
         {
             var result = await _gameFacade.UpdateGame(updateGameDto);
+            return Ok(result);
+        }
+
+        [HttpPost("AddUserReview")]
+        [AuthorizeJwt]
+        public async Task<ActionResult<ServiceResult<AddUserReviewDto>>> AddUserReview([FromBody] AddUserReviewDto userReviewDto)
+        {
+            var result = await _gameFacade.AddUserReview(userReviewDto);
+            return Ok(result);
+        }
+
+        [HttpGet("GetAllGameUserReviews")]
+        [AuthorizeJwt]
+        public async Task<ActionResult<GameUserReviewsDto>> GetAllGameUserReviews([FromQuery] long gameId)
+        {
+            var result = await _gameFacade.GetAllGameUserReviews(gameId);
             return Ok(result);
         }
     }

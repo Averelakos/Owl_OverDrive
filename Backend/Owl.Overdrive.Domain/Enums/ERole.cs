@@ -2,10 +2,10 @@
 {
     public enum ERole
     {
-        Administrator,
-        Agent,
-        Reviewer,
-        Default
+        Administrator = 1,
+        Agent = 2,
+        Reviewer = 3,
+        Default = 4
     }
 
     

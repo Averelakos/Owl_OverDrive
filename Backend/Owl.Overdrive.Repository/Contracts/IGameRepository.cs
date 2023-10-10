@@ -50,5 +50,10 @@ namespace Owl.Overdrive.Repository.Contracts
         Task RemoveRangeWebsites(List<Website> dbItems);
         Task RemoveRangeInvolvedCompanies(List<InvolvedCompany> dbItems);
         Task RemoveRangeSupportedLanguagess(List<LanguageSupport> dbItems);
+
+        #region User Review
+        Task<UserReview> AddUserReview(UserReview dbItem);
+        Task<List<UserReview>> GetGameUserReviews(long gameId);
+        #endregion User Review
     }
 }

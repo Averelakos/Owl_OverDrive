@@ -90,6 +90,7 @@ namespace Owl.Overdrive.Repository.Repositories
             return await base.GetById(id);
         }
 
+
         public async Task<Game> UpdateGame(Game game)
         {
             return await base.Update(game);
@@ -360,5 +361,37 @@ namespace Owl.Overdrive.Repository.Repositories
                 throw new Exception($"Couldn't retrieve entities: {ex.Message}");
             }
         }
+
+        #region User Review
+        public async Task<UserReview> AddUserReview(UserReview dbItem)
+        {
+            if(dbItem is null)
+                throw new ArgumentNullException("No entities to save in database");
+            try
+            {
+                _dbContext.UserReviews.Add(dbItem);
+                await SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+            }
+
+            return dbItem;
+        }
+
+        public async Task<List<UserReview>> GetGameUserReviews(long gameId)
+        {
+            var listOfReviews = await _dbContext
+                .UserReviews
+                .Include(x => x.User)
+                .Where(x => x.GameId == gameId)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return listOfReviews;
+        }
+
+        #endregion User Review
     }
 }

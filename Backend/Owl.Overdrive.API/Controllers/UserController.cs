@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Owl.Overdrive.Business.Contracts;
+using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.DTOs.User.Display;
 
 namespace Owl.Overdrive.Controllers
@@ -15,10 +16,24 @@ namespace Owl.Overdrive.Controllers
             _userFacade = userFacade;
         }
 
-        [HttpGet("GetAllUsersWithRoles")]
-        public async Task<ActionResult<List<UserSimpleDto>>> GetAllUsersWithRoles()
+        [HttpPost("GetAllUsersWithRoles")]
+        public async Task<ActionResult<ServiceSearchResultData<List<UserSimpleDto>>>> GetAllUsersWithRoles([FromBody] RequestGetUserByRole request)
         {
-            var result = await _userFacade.GetAllUserWithRoles();
+            var result = await _userFacade.GetAllUserWithRoles(request);
+            return Ok(result);
+        }
+
+        [HttpGet("GetUserById")]
+        public async Task<ActionResult<UserSimpleDto>> GetUserById([FromQuery] long userId)
+        {
+            var result = await _userFacade.GetUserById(userId);
+            return Ok(result);
+        }
+
+        [HttpPost("UpdateUserRole")]
+        public async Task<ActionResult<UserSimpleDto>> UpdateUserRole([FromBody] UserSimpleDto userSimpleDto)
+        {
+            var result = await _userFacade.UpdateUserRole(userSimpleDto);
             return Ok(result);
         }
 

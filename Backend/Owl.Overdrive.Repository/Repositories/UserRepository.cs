@@ -21,12 +21,43 @@ namespace Owl.Overdrive.Repository.Repositories
             return _DbSet;
         }
 
+        public async Task<User?> GetUserById(long userId)
+        {
+            return await base.GetById(userId);
+        }
+
+        public async Task<UserRole?> GetUserRoleById(long userId)
+        {
+            return await _dbContext
+                .UserRoles
+                .Where(x => x.UserId == userId)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<List<User>> GetAllUserWithRoles()
         {
             return await GetQueryableUser()
                 .Include(x => x.Roles)
                 .AsNoTracking()
                 .ToListAsync();
+        }
+
+        public async Task<User?> GetUserWithRoleAsNo(long userId)
+        {
+            return await GetQueryableUser()
+                .Include(x => x.Roles)
+                .Where(x => x.Id == userId)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<User?> GetUserWithRole(long userId)
+        {
+            return await GetQueryableUser()
+                .Include(x => x.Roles)
+                .Where(x => x.Id == userId)
+                .FirstOrDefaultAsync();
         }
 
         /// <summary>

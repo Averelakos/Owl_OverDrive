@@ -4,6 +4,8 @@ using Owl.Overdrive.Business.DTOs.GameDtos.Display.Details;
 using Owl.Overdrive.Business.DTOs.GameDtos.Display.Simple;
 using Owl.Overdrive.Business.DTOs.GameDtos.Responses;
 using Owl.Overdrive.Business.DTOs.GameDtos.Update;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Create;
+using Owl.Overdrive.Business.DTOs.ReviewsDtos.Display;
 using Owl.Overdrive.Business.DTOs.ServiceResults;
 using Owl.Overdrive.Business.Services.Models;
 
@@ -31,6 +33,8 @@ namespace Owl.Overdrive.Business.Contracts
         Task<ServiceSearchResultData<List<GameSimpleDto>>> List(DataLoaderOptions options);
         Task<GameDetailsDto?> GetGameById(long gameId);
         Task<UpdateGameDto?> GetGameForUpdate(long gameId);
+        Task<ServiceResult<AddUserReviewDto>> AddUserReview(AddUserReviewDto userReviewDto);
+        Task<GameUserReviewsDto> GetAllGameUserReviews(long gameId);
 
     }
 }

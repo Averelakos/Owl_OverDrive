@@ -5,7 +5,10 @@ namespace Owl.Overdrive.Repository.Contracts
 {
     public interface IUserRepository
     {
+        Task<User?> GetUserById(long userId);
         Task<List<User>> GetAllUserWithRoles();
+        Task<User?> GetUserWithRoleAsNo(long userId);
+        Task<User?> GetUserWithRole(long userId);
         Task<User?> GetUserByUsername(string username);
         Task<User> AddNewUser(User user);
         Task<bool> UserExists(string username);
