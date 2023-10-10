@@ -1,9 +1,12 @@
 <div class="header-rating-container">
     <div class="rating-container">
-        <app-circle-score-progress></app-circle-score-progress>
-        <app-circle-score-progress
+        <app-circle-score-progress [precent]="score*10"></app-circle-score-progress>
+        <!-- <app-circle-score-progress
         [radius]="40"
         [width]="105"
-        ></app-circle-score-progress>
+        ></app-circle-score-progress> -->
+    </div>
+    <div class="add-review-button">
+        <button (click)="addMyReview()"><span>Add My Review</span></button>
     </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="review-header-container">
+    <div class="header">
+        <div class="game-cover-image">
+            <img class="game-logo-img" [src]="this.cover??'assets/img/nocover.png'" alt="">
+        </div>
+        <div class="game-title">
+            <a (click)="clickToCancel()">
+                <i class="fa-solid fa-chevron-left"></i>
+                {{gameModel?.name}}
+            </a>
+            <h3>User Reviews</h3>
+        </div>
+    </div>
+        <div class="productSubpageNavigation">
+            <div class="productSubpageNavigation_menuContainer">
+
+            </div>
+        </div>
+</div>

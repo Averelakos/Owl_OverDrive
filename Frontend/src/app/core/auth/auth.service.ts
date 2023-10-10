@@ -157,4 +157,8 @@ export class AuthService{
         }
         return result
       }
+
+    getUserId(){
+        return this.userId
+    }
 }

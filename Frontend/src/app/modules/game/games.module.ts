@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { CompanyService } from "src/app/data/services/company.service";
 import { AddEditGameComponent } from './add-edit/container/add-edit-game.component';
 import { GameInfoTabAccordioComponent } from './add-edit/components/game-info-tabs-accordio/game-info-tab-accordio.component';
 import { GeneralInfoComponent } from './add-edit/components/general-info/general-info.component';
@@ -23,6 +22,13 @@ import { GameDetailsDesktopComponent } from "./game-details/components/game-deta
 import { GameDetailsMobileComponent } from "./game-details/components/game-details-mobile/game-details-mobile.component";
 import { SpinnerLoaderComponent } from "src/app/common/loaders/spinner-loader/spinner-loader";
 import { EPermission } from "src/app/core/enums/enum-permissions";
+import { ReviewsComponent } from "./reviews/container/reviews.component";
+import { ReviewHeaderComponent } from "./reviews/components/review-header/review-header.component";
+import { ReviewBodyComponent } from "./reviews/components/review-body/review-body.component";
+import { AddReviewsComponent } from "./add-review/container/add-reviews.component";
+
+import { AddReviewBodyComponent } from "./add-review/components/add-review-body/add-review-body.component";
+import { AddReviewHeaderComponent } from "./add-review/components/add-review-header/add-review-header.component";
 
 const routes: Routes = [
     {
@@ -44,6 +50,16 @@ const routes: Routes = [
         path:'edit/:game', 
         component: AddEditGameComponent,
         data:{permissions:[EPermission.Update_Game]}
+    },
+    {
+        path:'reviews/:game', 
+        component: ReviewsComponent,
+        data:{permissions:[EPermission.Details_Game]}
+    },
+    {
+        path:'add-review/:game', 
+        component: AddReviewsComponent,
+        data:{permissions:[EPermission.Details_Game]}
     }
 ]
 
@@ -66,7 +82,11 @@ const routes: Routes = [
         QueryableGameListComponent,
         GameDetailsDesktopComponent,
         GameDetailsMobileComponent,
-        SpinnerLoaderComponent
+        SpinnerLoaderComponent,
+        ReviewHeaderComponent,
+        ReviewBodyComponent,
+        AddReviewHeaderComponent,
+        AddReviewBodyComponent
 
     ],
     providers:[GameService],
@@ -74,7 +94,9 @@ const routes: Routes = [
     AddEditGameComponent,
     GameInfoTabAccordioComponent,
     ListGamesComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    ReviewsComponent,
+    AddReviewsComponent
   ],
     exports:[
         RouterModule,

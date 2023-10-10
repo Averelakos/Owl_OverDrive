@@ -13,6 +13,9 @@ export interface GameDetailsDto {
     platformsReleaseDates: Array<GameDetailsPlatformReleasedDatesDto>
     cover: GameCoverDetailsDto
     background: GameBackgroundDetailsDto
+    userReviews: Array<GameDetailsUserReviewDto>
+    publisher: string
+    totalScore: number
 }
 
 export interface GameCoverDetailsDto {
@@ -107,4 +110,13 @@ export interface GameDetailsReleasedDateDto
     date: Date
     regionId: number
     status: number
+}
+
+
+export interface  GameDetailsUserReviewDto
+{
+    review:string
+    score:number
+    username:number
+    postDate: Date
 }

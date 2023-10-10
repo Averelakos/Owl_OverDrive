@@ -25,6 +25,7 @@ export class GameDetailsComponent {
     this.gameService
     .getGameById(gameId).pipe(first(),finalize(()=> this.loading$.next(false))).subscribe((response) => {
       this.gameModel = response
+      console.log(this.gameModel)
     })
   }
 }

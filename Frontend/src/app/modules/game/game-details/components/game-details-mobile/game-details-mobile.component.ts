@@ -2,11 +2,12 @@ import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { GameDetailsDto } from 'src/app/data/types/game/game-details-dto';
 import { MobileHeaderInfoComponent } from './components/header-info/mobile-header-info.component';
+import { MobileBodyInfoComponent } from './components/body-info/mobile-body-info.component';
 
 @Component({
   selector: 'app-game-details-mobile',
   standalone: true,
-  imports: [CommonModule, MobileHeaderInfoComponent],
+  imports: [CommonModule, MobileHeaderInfoComponent, MobileBodyInfoComponent],
   templateUrl: './game-details-mobile.component.html',
   styleUrls: ['./game-details-mobile.component.scss']
 })

@@ -1,5 +1,5 @@
 export interface UserSimpleDto {
     id: number
-    name: string 
+    userName: string 
     roleId: number
 }

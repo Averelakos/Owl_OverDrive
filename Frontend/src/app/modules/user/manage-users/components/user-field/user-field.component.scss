@@ -1,0 +1,30 @@
+:host{
+    display: contents;
+}
+
+.userList-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    list-style: none;
+    width: 100%;
+}
+
+.userList-container li {
+    width: 100%;
+    // background: red;
+    background: #e3dfdf;
+    padding: 5px 10px;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+}
+
+.userList-container li a {
+    // background: green;
+    width: 100%;
+    cursor: pointer;
+}
+
+.userList-container li:hover {
+    background: #c0bfbf;
+}

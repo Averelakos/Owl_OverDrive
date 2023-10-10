@@ -2,11 +2,12 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChi
 import { CommonModule } from '@angular/common';
 import { HeaderInfoComponent } from './components/header-info/header-info.component';
 import { GameDetailsDto } from 'src/app/data/types/game/game-details-dto';
+import { BodyInfoComponent } from './components/body-info/body-info.component';
 
 @Component({
   selector: 'app-game-details-desktop',
   standalone: true,
-  imports: [CommonModule, HeaderInfoComponent],
+  imports: [CommonModule, HeaderInfoComponent, BodyInfoComponent],
   templateUrl: './game-details-desktop.component.html',
   styleUrls: ['./game-details-desktop.component.scss']
 })

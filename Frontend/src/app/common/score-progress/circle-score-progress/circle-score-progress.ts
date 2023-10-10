@@ -25,7 +25,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChi
             </svg>
             <div class="number">
                 <h2>
-                    87
+                    {{precent}}
                     <span>
                         %
                     </span>

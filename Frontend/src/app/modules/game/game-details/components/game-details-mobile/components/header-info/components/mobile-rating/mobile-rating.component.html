@@ -10,21 +10,25 @@
 
 <div class="header-rating-container">
     <div class="rating-container">
-        <div class="score">
+        <div [ngStyle]="{'background': setColorScore()}" class="score">
             <div class="fisrt">
-                90
+                {{score*10}}
             </div>
-            <div class="second">
+            <!-- <div class="second">
                 based on 71 members
-            </div>
+            </div> -->
         </div>
-        <div class="score">
+        <!-- <div class="score">
             <div class="fisrt">
                 90
             </div>
             <div class="second">
                 based on 11 critics
             </div>
-        </div>
+        </div> -->
     </div>
+</div>
+
+<div class="add-review-button">
+    <button (click)="addMyReview()"><span>Add My Review</span></button>
 </div>

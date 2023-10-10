@@ -1,19 +1,22 @@
 <div class="quarable-user-list-container">
-    <tabs>
-        <tab [tabTitle]="'All'" [isTitleVisible]="false">
+    <filter-tabs [tabList]="filterTabs" (selectedFilter)="tabChange($event)">
+        <!-- <app-user-field></app-user-field> -->
 
-        </tab>
-        <tab [tabTitle]="'Admin'" [isTitleVisible]="false">
+        <div class="cards-container">
+            <ng-container *ngIf="userList != null && userList.length > 0">
+                <app-user-field [userInputList]="userList" (updateSelectedUser)="updateSelectedUser($event)"></app-user-field>
+            </ng-container>
+            <!-- <app-logo-loader [imageSRC]="'../../../../../assets/img/owl_logo.png'" [isLoading]="(loading$ | async)"></app-logo-loader> -->
+        </div>
 
-        </tab>
-        <tab [tabTitle]="'Agent'" [isTitleVisible]="false">
+        <!-- <div *ngIf="userList != null && userList.length > 0" class="pagination-container">
+            <app-user-pagination 
+                (selectedPage)=" changePage($event)"
+                [pages]="totalPages"
+                [currentPage]="currentPage"
+                >
+            </app-user-pagination>
+        </div> -->
 
-        </tab>
-        <tab [tabTitle]="'Reviewer'" [isTitleVisible]="false">
-
-        </tab>
-        <tab [tabTitle]="'User'" [isTitleVisible]="false">
-
-        </tab>
-    </tabs>
+    </filter-tabs>
 </div>

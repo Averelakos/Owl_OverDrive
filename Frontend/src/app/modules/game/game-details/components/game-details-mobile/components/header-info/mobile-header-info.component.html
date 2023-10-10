@@ -1,5 +1,5 @@
 <div class="header-info-container">
     <app-mobile-logo [gameCover]="gameModel.cover" [gameModel]="gameModel"></app-mobile-logo>
     <app-mobile-info [gameModel]="gameModel"></app-mobile-info>
-    <app-mobile-rating></app-mobile-rating>
+    <app-mobile-rating [gameId]="gameModel.id" [gameCover]="gameModel.cover" [gameTitle]="gameModel.name" [score]="gameModel.totalScore"></app-mobile-rating>
 </div>

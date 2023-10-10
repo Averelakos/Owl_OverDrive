@@ -1,0 +1,80 @@
+:host{
+    display: contents;
+}
+
+.review-header-container .header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    // text-align: center;
+}
+
+.game-cover-image{
+    width: fit-content;
+}
+
+.game-logo-img{
+    border-radius: 8px;
+    overflow: hidden;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 2.9375rem!important;
+    height: 4.5rem!important;
+}
+
+.game-title{
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.game-title a {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #000;
+    align-items: center;
+    display: flex;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.game-title a i{
+    color: #000;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+
+.game-title h3{
+    font-size: calc(27.42857px + .59524vw);
+    line-height: calc(30.85714px + 1.19048vw);
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.productSubpageNavigation {
+    align-items: center;
+    margin-bottom: calc(1.5rem - 10px);
+    // overflow-x: hidden;
+    width: 100%;
+}
+
+.productSubpageNavigation_menuContainer {
+    // grid-template-columns: auto;
+    // grid-gap: 0.25rem;
+    // gap: 0.25rem;
+    width: 100%;
+    border-top: 0.0625rem solid #262626;
+}

@@ -1,0 +1,6 @@
+<ul class="userList-container">
+    <li *ngFor="let user of userInputList">
+        <a (click)="clickToUpdateUser(user.id)">{{user.userName}}</a>
+    </li>
+</ul>
+

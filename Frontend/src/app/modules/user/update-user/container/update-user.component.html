@@ -1,0 +1,20 @@
+<div class="manage-users-container">
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/User']">Manage users</a></li>
+        <li>Update User</li>
+    </ol>
+
+    <div class="page_title">
+        <h1>Update user</h1>
+    </div>
+
+    <div class="content">
+        <app-check-mark-checkbox-button [isChecked]="adminCheck" [label]="'Administartor'" (clickEvent)="checkedRole(roles.Administrator)"></app-check-mark-checkbox-button>
+        <app-check-mark-checkbox-button [isChecked]="agentCheck" [label]="'Agent'" (clickEvent)="checkedRole(roles.Agent)"></app-check-mark-checkbox-button>
+        <app-check-mark-checkbox-button [isChecked]="reviewerCheck" [label]="'Reviewer'" (clickEvent)="checkedRole(roles.Reviewer)"></app-check-mark-checkbox-button>
+        <app-check-mark-checkbox-button [isChecked]="defaultCheck" [label]="'Default'" (clickEvent)="checkedRole(roles.Default)"></app-check-mark-checkbox-button>
+    </div>
+
+    <button style="margin-left: 1rem; margin-top: 2rem;" class="btn btn-default right" (click)="updateUserRole()">Update</button>
+</div>
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../../assets/img/owl_logo.png'"></spinner-loader>

@@ -1,0 +1,14 @@
+<div class="game-details-container">
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/Game']">Games</a></li>
+        <li *ngIf="gameModel != null" > <a [routerLink]="['/Game/view'+gameModel.name, {id:this.gameModel.id}]"> {{gameModel.name}}</a></li>
+        <li>Reviews</li>
+    </ol>
+
+    <div class="review-content">
+        <app-review-header [gameModel]="gameModel"></app-review-header>
+        <app-review-body [userRevies]="userRevies"></app-review-body>
+    </div>
+</div>
+
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../../assets/img/owl_logo.png'"></spinner-loader>

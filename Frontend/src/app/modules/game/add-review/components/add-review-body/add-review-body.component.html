@@ -1,0 +1,19 @@
+<form [formGroup]="reviewForm">
+    <div class="review-score">
+        <app-circular-score [score]="score"></app-circular-score>
+        <div *ngIf="(this.responsiveService.responsiveSize | async) === deviceType.Mobile" style="margin-left: 2rem;">
+            <app-rating-scale-bar *ngIf="(this.responsiveService.responsiveSize | async) === deviceType.Mobile" (selectedScore)="clickAddScore($event)" [barWidth]="200"></app-rating-scale-bar>
+        </div>
+        <app-rating-scale-bar *ngIf="(this.responsiveService.responsiveSize | async) !== deviceType.Mobile" (selectedScore)="clickAddScore($event)" ></app-rating-scale-bar>
+    </div>
+    
+    <app-standar-textarea [controlName]="'review'" [label]="'Review'"></app-standar-textarea>
+</form>
+
+<div class="add_edit_buttons">
+    <a class="btn btn-default" (click)="clickToCancel()">Cancel</a>
+    <button (click)="clickToAddReview()" class="btn btn-primary">Post</button>
+</div>
+
+<spinner-loader [loading]="loading$ | async" [imageSRC]="'../../../../../assets/img/owl_logo.png'"></spinner-loader>
+

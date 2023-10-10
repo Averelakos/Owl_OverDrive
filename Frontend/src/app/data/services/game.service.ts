@@ -12,6 +12,8 @@ import { UpdateAlternativeTitleDto, UpdateGameDto, UpdateGameGenreDto, UpdateGam
 import { EWebsites } from "src/app/core/enums/enum-websites";
 import { ServiceResult } from "../types/service-results/service-result";
 import { CreateGameResponseDto } from "../types/game/responses/create-game-response-dto";
+import { AddUserReviewDto } from "../types/game/add-user-review";
+import { GameUserReviewsDto } from "../types/game/game-user-review";
 
 
 @Injectable()
@@ -19,6 +21,7 @@ export class GameService{
   uri: string = 'Game'
   baseUrl = environment.apiUrl+this.uri;
   searchString: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null)
+  gameReviewDetails
   constructor(private readonly formBuilder: FormBuilder, private http: HttpClient){}
 
   initForm(): FormGroup {
@@ -616,6 +619,30 @@ export class GameService{
     return this.http.post<any>(this.baseUrl + '/Search', null, { params })
   }
 
+  addGameReviewDetails(gameId, cover, name){
+    this.gameReviewDetails = {
+      id:gameId,
+      cover: cover,
+      name: name
+    }
+  }
+
+  returnGameReviewDetails(){
+    return this.gameReviewDetails
+  }
+
+  clearGameReviewDetails(){
+    this.gameReviewDetails = null
+  }
+
+  initReviewForm(): FormGroup {
+    return this.formBuilder.group({
+      id:[null],
+      score:[null],
+      review:[null]
+    })
+  }
+
   createNewGame(model: CreateGameDto){
     return this.http.post<ServiceResult<CreateGameResponseDto>>(this.baseUrl + '/AddGame',model)
   }
@@ -638,4 +665,11 @@ export class GameService{
     return this.http.post<ServiceResult<UpdateGameDto>>(this.baseUrl + '/UpdateGame',model)
   }
 
+  addUserReview(model: AddUserReviewDto){
+    return this.http.post<ServiceResult<AddUserReviewDto>>(this.baseUrl + '/AddUserReview',model)
+  }
+
+  getAllGameUserReviews(gameId:number) {
+    return this.http.get<GameUserReviewsDto>(this.baseUrl + `/GetAllGameUserReviews?gameId=${gameId}`)
+  }
 }

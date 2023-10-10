@@ -1,0 +1,23 @@
+<div class="reviews-container">
+    
+    <div>
+        <div class="section-header">
+            <a class="title-link" (click)="openReviews()">
+                <h2>User Reviews</h2>
+            </a>
+            <a class="url-link" (click)="openReviews()">
+                <span>VIEW ALL</span>
+            </a>
+        </div>
+        <div class="reviews-overview">
+            <div class="overview-details"></div>
+        </div>
+    </div>
+    
+    <div>
+        <div class="review-section-carousel">
+           <app-review-card *ngFor="let model of gameModel.userReviews" [model]="model"></app-review-card>
+        </div>
+    </div>
+
+</div>
