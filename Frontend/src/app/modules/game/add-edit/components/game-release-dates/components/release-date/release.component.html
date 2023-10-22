@@ -1,0 +1,28 @@
+<div class="release-container">
+    <div class="input-container" [ngClass]="{'row': ((responsiveService.responsiveSize | async) === deviceType.Desktop), 'column': (responsiveService.responsiveSize | async) !== deviceType.Desktop}">
+        <app-mat-datetime-picker
+            [subGroup]="'releases.'+index" 
+            [controlName]="'date'" 
+            [label]="'Date'" >
+        </app-mat-datetime-picker>
+        <app-standar-dropdown-menu
+        [label]="'Region'"
+        [controlName]="'region'"
+        [subGroup]="'releases.'+index"
+        [options]="listOfRegions"
+        >
+        </app-standar-dropdown-menu>
+        <app-standar-dropdown-menu
+        [label]="'Status'"
+        [controlName]="'status'"
+        [subGroup]="'releases.'+index"
+        [options]="listOfStatuses"
+        >
+        </app-standar-dropdown-menu>
+    </div>
+    <div class="remove-release">
+        <a (click)="removeRelease()">
+            <i class="fa-solid fa-trash-can"></i>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.release-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.input-container {
+    display: flex;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.remove-release {
+    position: relative;
+    top: 28px;
+    left: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.remove-release a {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.remove-release a:hover {
+    background: rgba(255, 0, 0, 0.301);
+}
