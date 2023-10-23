@@ -24,6 +24,8 @@
 
 //app.Run();
 
+using Owl.Overdrive.Infrastructure.Services;
+
 namespace Owl.Overdrive.API
 {
     public class Programm
@@ -33,6 +35,8 @@ namespace Owl.Overdrive.API
             try
             {
                 var host = CreateHostBuilder(args).Build();
+                using var scope = host.Services.CreateScope();
+                await RunMigration(scope);
                 await host.RunAsync(default);
             }
             catch (Exception ex) 
@@ -49,6 +53,12 @@ namespace Owl.Overdrive.API
             {
                 webBuilder.UseStartup<Startup>();
             });
+        }
+
+        private static async Task RunMigration(IServiceScope scope)
+        {
+            var migrations = scope.ServiceProvider.GetRequiredService<MigrationService>();
+            await migrations.StartAsync();
         }
     }
 }

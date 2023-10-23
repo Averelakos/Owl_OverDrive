@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using Owl.Overdrive.API.Extensions;
 using Owl.Overdrive.Business.MapperProfiles;
+using Owl.Overdrive.Domain.Configurations;
+using Owl.Overdrive.Infrastructure.Services;
 
 namespace Owl.Overdrive.API
 {
@@ -31,6 +33,10 @@ namespace Owl.Overdrive.API
                 .AddInfrastuctureServices()
                 .AddConfigurations(Configuration)
                 ;
+            
+            services.Configure<MigrationsSettings>(Configuration.GetSection(nameof(MigrationsSettings)));
+            services.AddTransient<MigrationService>();
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddHttpContextAccessor();
