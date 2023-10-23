@@ -4,11 +4,12 @@ import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/respons
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StandarInputComponent } from 'src/app/common/input-fields/standar-input/standar-input.component';
 import { SelectSearchInputValue, StandarSelectSearchComponent } from 'src/app/common/standar-select-search/standar-select-search.component';
-import { ReleaseComponent } from '../release-date/release.component';
+
 import { PlatformService } from 'src/app/data/services/platform.service';
 import { DropDownOption } from 'src/app/common/dropdown-input/standar-dropdown-menu/standar-dropdown-menu.component';
 import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { BehaviorSubject } from 'rxjs';
+import { ReleaseComponent } from '../release-date/release.component';
 
 @Component({
   selector: 'app-platform-release',
