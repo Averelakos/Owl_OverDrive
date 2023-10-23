@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using Owl.Overdrive.Domain.Configurations;
 using Owl.Overdrive.Domain.Entities.Auth;
+using Owl.Overdrive.Domain.Enums;
 using Owl.Overdrive.Infrastructure.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -52,7 +53,7 @@ namespace Owl.Overdrive.Infrastructure.Services
             return token;
         }
 
-        public ClaimsPrincipal? Validate(string token)
+        public ClaimsPrincipal? Validate(string token, List<EPermission> requiredPermissions)
         {
             ClaimsPrincipal? result = null;
 
@@ -79,6 +80,15 @@ namespace Owl.Overdrive.Infrastructure.Services
                 try
                 {
                     result = tokenHandler.ValidateToken(token, tvps, out SecurityToken validatedToken);
+                    if (requiredPermissions.Any())
+                    {
+                        bool hasPermission = false;
+                        foreach (var requiredPermission in requiredPermissions)
+                            if (result.HasClaim("permission", (requiredPermission).ToString()))
+                                hasPermission = true;
+                        if (!hasPermission)
+                            result = null;
+                    }
                 }
                 catch(Exception ex) 
                 {
