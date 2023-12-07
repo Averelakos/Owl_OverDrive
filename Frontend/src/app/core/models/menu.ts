@@ -80,7 +80,7 @@ export const ManageUser: Menu = {
 
 
 export const menu: Array<Menu> = [
-    Home,
+    // Home,
     Game,
     Company,
     // Test,
