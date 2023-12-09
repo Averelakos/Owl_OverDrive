@@ -81,15 +81,17 @@ export class MatInputComponent implements ControlValueAccessor {
    * @returns boolean
    */
   isFieldValid() {
-    return this.formField.valid;
+    // return this.formField.valid;
+    return !this.formField.valid && this.formField.touched;
   }
 
 
   displayFieldCss() {
     return {
-      'has-error': this.formField.errors != null,
+      // 'has-error': this.formField.errors !== null ,
+      'has-error': this.isFieldValid() ,
       'has-feedback': this.isFieldInValid(),
-      'valid-input': this.isFieldValid() && this.isValueEmpty()
+      'valid-input': this.formField.valid && this.isValueEmpty()
     };
   }
 

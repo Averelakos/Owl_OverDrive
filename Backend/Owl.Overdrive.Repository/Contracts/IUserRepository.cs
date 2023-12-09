@@ -11,7 +11,7 @@ namespace Owl.Overdrive.Repository.Contracts
         Task<User?> GetUserWithRole(long userId);
         Task<User?> GetUserByUsername(string username);
         Task<User> AddNewUser(User user);
-        Task<bool> UserExists(string username);
+        Task<bool> UserExists(string username, string email);
         Task<List<Role>> GetUserRole(long userId);
         Task<List<UserRole>> AddUserRole(long userId, ERole role);
         Task BeginTransactionAsync();

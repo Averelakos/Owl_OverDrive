@@ -4,7 +4,7 @@ import { HttpClient} from "@angular/common/http";
 import { RegisterDto } from "../models/Auth/registerDto";
 import { JwtHelperService } from "src/app/lib/jwt/jwt-helper.service";
 import { LoginDto } from "../models/Auth/loginDto";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { EPermission } from "../enums/enum-permissions";
 
@@ -30,16 +30,16 @@ export class AuthService{
 
     initRegisterForm(): FormGroup {
         return this.formBuilder.group({
-            username:[null],
-            email:[null],
-            password:[null]
+            username:[null, [Validators.required]],
+            email:[null, [Validators.required, Validators.email]],
+            password:[null, [Validators.required]],
         })
     }
 
     initLoginForm(): FormGroup {
         return this.formBuilder.group({
-            username:[null],
-            password:[null]
+            username:[null, [Validators.required]],
+            password:[null, [Validators.required]]
         },
         {updateOn: 'blur'}
         )

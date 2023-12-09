@@ -22,11 +22,11 @@ namespace Owl.Overdrive.Business.Facades
 
         public async Task<string> RegisterUser(RegisterDto registerDto)
         {
-            var userExists = await _repoUoW.UserRepository.UserExists(registerDto.Username.ToLower());
+            var userExists = await _repoUoW.UserRepository.UserExists(registerDto.Username.ToLower(), registerDto.Email);
             
             if (userExists)
             {
-                return "arxidia";
+                return string.Empty;
             }
 
             using var hmac = new HMACSHA512();

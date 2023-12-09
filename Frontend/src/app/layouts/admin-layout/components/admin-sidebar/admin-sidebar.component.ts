@@ -1,5 +1,6 @@
 import { Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { Menu } from 'src/app/core/models/menu';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
@@ -17,8 +18,9 @@ export class AdminSidebarComponent {
   responsiveSizes = ResponsizeSize
 
   @Input()sideBarClosed: boolean = false;
-  constructor(public menuService: MenuService, public responsiveService: ResponsiveService , public router: Router) {
+  constructor(public menuService: MenuService, public responsiveService: ResponsiveService , public router: Router, public authService: AuthService) {
     this.menuItems = menuService.getMenu();
+    this.menuItems = this.menuItems.filter((item) => item.permision? authService.hasPermission(item.permision!) : true)
 
     this.menuItems.forEach((item) => {
       if (item.subMenu?.length !== 0) {

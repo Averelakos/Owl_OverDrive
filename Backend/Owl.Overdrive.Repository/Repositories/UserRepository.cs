@@ -77,11 +77,11 @@ namespace Owl.Overdrive.Repository.Repositories
         /// </summary>
         /// <param name="username">The username.</param>
         /// <returns></returns>
-        public async Task<bool> UserExists(string username)
+        public async Task<bool> UserExists(string username, string email)
         {
             return await GetQueryableUser()
                 .AsNoTracking()
-                .AnyAsync(x => x.Username == username);
+                .AnyAsync(x => x.Username == username  || x.Email == email);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { Menu } from 'src/app/core/models/menu';
 import { LayoutService } from 'src/app/core/services/layout.service';
 import { MenuService } from 'src/app/core/services/menu.service';
@@ -12,8 +13,9 @@ import { MenuService } from 'src/app/core/services/menu.service';
 export class AdminSidebarMobileComponent{
 
   menuItems: Array<Menu>
-  constructor(public layoutService: LayoutService, public menuService: MenuService, public router: Router) {
+  constructor(public layoutService: LayoutService, public menuService: MenuService, public router: Router, public authService: AuthService) {
     this.menuItems = menuService.getMenu();
+    this.menuItems = this.menuItems.filter((item) => item.permision? authService.hasPermission(item.permision!) : true)
   }
 
   clickOuside(){

@@ -32,57 +32,25 @@ export class LoginComponent implements OnInit, AfterContentInit {
   }
 
   onSubmit(){
-    // if (this.loginForm.valid) {
-      this.rememberMe();
-
-      this.loginData = {
-        username: this.loginForm.value.username,
-        password: this.loginForm.value.password
+    this.validateAllFormFields(this.loginForm)
+      if(this.loginForm.valid) {
+        this.loading$.next(true)
+        this.loginData = {
+          username: this.loginForm.value.username,
+          password: this.loginForm.value.password
+        }
+  
+        this.authService.login(this.loginData)
+        .pipe(first(),finalize(()=> this.loading$.next(false)))
+        .subscribe((res) => {
+          this.rememberMe();
+          this.authService.loginActions(res)
+          this.router.navigate(['/'], { replaceUrl: true })
+        })
       }
-
-      this.authService.login(this.loginData)
-      .pipe(first(),finalize(()=> this.loading$.next(false)))
-      .subscribe((res) => {
-        this.authService.loginActions(res)
-        this.router.navigate(['/'], { replaceUrl: true })
-      })
-      // console.log(this.loginData)
-    // }
     
-
-    //TODO: ADD LOADER
-
-    //   this.authService.login(loginData).subscribe( 
-    //     responce => { 
-    //       console.log(responce);
-          
-    //       // this.authService.redirectInSuccess(responce);
-    //       this.isLoading = false;
-    //       this.route.navigate(['/Home'])
-    //     }, 
-    //     errorMessage => {
-    //       // console.log(errorMessage);
-    //       // this.toastr.error(errorMessage)
-    //       // this.error = errorMessage;
-    //       this.isLoading = false;
-    //     }
-    //   );
   }
   
-  /**
- * We create the lofin form and the controls
- * that we are going to use in the html
- * file and we assign it in the form group
- */
-  // buildLoginForm(){
-  //   this.loginForm = new FormGroup({
-  //     username: [null],
-  //     'password': new FormControl(null, [Validators.required])
-  //   }, 
-  //   {updateOn: 'blur'}
-  //   );
-  // }
-
   /**
    * Retrieve from local storage the login
    * values if there are saved there
@@ -111,5 +79,16 @@ export class LoginComponent implements OnInit, AfterContentInit {
 
   redirectToRegisterPage() {
     this.router.navigate(['/Auth/register']);
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
   }
 }

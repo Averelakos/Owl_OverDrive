@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedComponentsModule } from "src/app/shared/shared.module";
 import { AuthLayoutComponent } from './container/auth-layout.component';
+import { ResultBannerComponent } from "src/app/common/result-banner/result-banner.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       ReactiveFormsModule,     
       SharedComponentsModule,
       RouterModule.forChild(routes),
+      ResultBannerComponent,
       
 
     ],

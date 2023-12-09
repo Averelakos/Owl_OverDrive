@@ -1,14 +1,18 @@
+import { EPermission } from "../enums/enum-permissions";
+
 export interface Menu{
     mainPageLabel?:string;
     route?:string;
     subMenu?:Array<SubMenu>;
     icon?:string;
+    permision?: EPermission 
 }
 
 export interface SubMenu{
     subPagelabel?:string;
     route?:string;
     icon?: string;
+    permision?: EPermission  
 }
 
 
@@ -38,12 +42,10 @@ export const xesou: Menu = {
     subMenu: [
         {
             subPagelabel:'Test Area2',
-            
             icon: 'fa-solid fa-vial',
         },
         {
             subPagelabel:'Playground2',
-            
             icon: 'fa-light fa-vials',
         }
     ]
@@ -53,6 +55,7 @@ export const Company: Menu = {
     mainPageLabel:'Companies',
     route:'Company',
     icon: 'fa-solid fa-building',
+    permision: EPermission.Display_Company,
     subMenu: []
 }
 
@@ -68,6 +71,7 @@ export const Game: Menu = {
     mainPageLabel: 'Game',
     route:'/Game',
     icon:'fa-solid fa-ghost',
+    permision: EPermission.Display_Game,
     subMenu:[]
 }
 
@@ -75,6 +79,7 @@ export const ManageUser: Menu = {
     mainPageLabel:'Manage Users',
     route:'User',
     icon: 'fa-solid fa-user',
+    permision: EPermission.Display_User,
     subMenu: []
 }
 
