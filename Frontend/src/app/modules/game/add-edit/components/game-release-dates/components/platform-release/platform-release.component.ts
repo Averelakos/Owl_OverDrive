@@ -10,6 +10,7 @@ import { DropDownOption } from 'src/app/common/dropdown-input/standar-dropdown-m
 import { LookupsService } from 'src/app/data/services/Lookups.service';
 import { BehaviorSubject } from 'rxjs';
 import { ReleaseComponent } from '../release-date/release.component';
+import { EGameStatus } from 'src/app/core/enums/enum-games-status';
 
 @Component({
   selector: 'app-platform-release',
@@ -115,13 +116,16 @@ export class PlatformReleaseComponent {
   }
 
   convertGameStatusesList() {
-    this.lookupsService.gameStatuses.forEach( (item) => {
+    let id  = 0
+    Object.keys(EGameStatus).forEach(element => {
       let temp: DropDownOption = {
-        id: item.id,
-        value: item.name
-      }
-      this.listOfGameStatues.push(temp)
-    })
+          id: id,
+          value: EGameStatus[element]
+        }
+        
+        this.listOfGameStatues.push(temp)
+        id++
+    });
   }
 
 }

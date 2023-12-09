@@ -13,19 +13,37 @@ import { LookupsService } from 'src/app/data/services/Lookups.service';
 })
 export class LanguagesComponent {
   languagesList: Array<StadarInputPillOption> = []
+  audiosList: Array<StadarInputPillOption> = []
+  subtitlessList: Array<StadarInputPillOption> = []
+  interfacesList: Array<StadarInputPillOption> = []
   constructor(public parentForm: FormGroupDirective, private readonly lookupsService: LookupsService){
     this.convertForInputPill()
   }
 
   convertForInputPill() {
     this.lookupsService.languages.forEach((item) => {
-      var tempItem: StadarInputPillOption = {
+      var audioItem: StadarInputPillOption = {
         id:item.id,
         value: item.name,
         isVisible: true
       }
 
-      this.languagesList.push(tempItem)
+      var interItem: StadarInputPillOption = {
+        id:item.id,
+        value: item.name,
+        isVisible: true
+      }
+
+      var subItem: StadarInputPillOption = {
+        id:item.id,
+        value: item.name,
+        isVisible: true
+      }
+
+      this.audiosList.push(audioItem)
+      this.interfacesList.push(interItem)
+      this.subtitlessList.push(subItem)
     })
+
   }
 }

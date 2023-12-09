@@ -30,14 +30,16 @@ import { CompanySimpleDto } from "src/app/data/types/company/company-simple-dto"
             list-style: none;
             padding: 10px;
             box-sizing: border-box;
-            background:rgba(0,0,0,.1);
+            // background:rgba(0,0,0,.1);
+            background: #FAFAFA;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
         }
 
         .company-list-content li {
             padding:10px 20px;
             line-height: 1.428571429;
             cursor: pointer;
-            background: rgba(255,255,255, 0.1);
+            // background: rgba(255,255,255, 0.1);
             margin: 5px 0;
             transition:0.5s;
         }

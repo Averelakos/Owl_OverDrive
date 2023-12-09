@@ -53,7 +53,6 @@ export class RegisterComponent implements OnInit {
             this.authService.loginActions(res)
             this.router.navigate(['/'], { replaceUrl: true })
           } else {
-            debugger
             if (this.responsiveService.responsiveSize.value === this.deviceType.Desktop) {
               this.toastr.error(`Account with this email already exists.`, 'Create Account failed')
             } else {

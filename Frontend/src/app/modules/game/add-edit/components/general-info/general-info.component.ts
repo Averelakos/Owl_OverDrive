@@ -21,6 +21,7 @@ export class GeneralInfoComponent implements OnInit, AfterViewInit{
   uploading$ = new BehaviorSubject<boolean>(false)
   deviceType = ResponsizeSize
   private unsubscribe: Subscription | undefined
+  imageB64?: string | null
 
   constructor(
     public responsiveService: ResponsiveService, 
@@ -36,14 +37,13 @@ export class GeneralInfoComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     this.unsubscribe = this.parentForm.form.get('general')?.get('cover')?.valueChanges.subscribe((x) => {
       if(x) {
-        console.log('test')
         this.convertBinaryToImage(x.imageData)
       }
     })
   }
 
 
-  imageB64?: string | null
+  
   fileSelected(e: any) {
     const file = e.target.files[0]
     this.convertFileToByteArray(file)
@@ -95,13 +95,13 @@ export class GeneralInfoComponent implements OnInit, AfterViewInit{
 
   convertBinaryToImage(imageData) {
     if (imageData != null) {
-      var binary = atob(imageData)
-      var array: any = [];
-      for (var i = 0; i < binary.length; i++) {
-        var byte = binary.charCodeAt(i)
-          array.push(byte);
-      }
-      var blob =  new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+      // var binary = atob(imageData)
+      // var array: any = [];
+      // for (var i = 0; i < binary.length; i++) {
+      //   var byte = binary.charCodeAt(i)
+      //     array.push(byte);
+      // }
+      var blob =  new Blob([new Uint8Array(imageData)], { type: 'image/jpeg' });
       var reader = new FileReader
       reader.onloadend =() => {
         this.imageB64 = reader.result?.toString()
