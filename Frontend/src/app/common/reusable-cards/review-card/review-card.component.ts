@@ -12,7 +12,7 @@ import { CircularScoreComponent } from "../../score-progress/circular-score/circ
                     <div class="review-main">
                         <div class="review-main-header">
                             <app-circular-score [score]="model.score"></app-circular-score>
-                            <a class="user-name">Iraklis</a>
+                            <a class="user-name">{{model.username}}</a>
                             <div class="post-date">{{model.postDate | date}}</div>
                         </div>
                         <div class="review-main-body">

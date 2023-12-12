@@ -24,6 +24,7 @@ namespace Owl.Overdrive.Business.Facades
         public GameFacade(IRepositoryUnitOfWork repoUoW, IMapper mapper) : base(repoUoW, mapper)
         {
         }
+
         #region Create
         /// <summary>
         /// Creates the specified game dto.
@@ -68,12 +69,26 @@ namespace Owl.Overdrive.Business.Facades
         #region Update
         public async Task<UpdateGameDto?> GetGameForUpdate(long gameId)
         {
-            var result = await _repoUoW.GameRepository
-                    .QueryGame()
-                    .AsNoTracking()
-                    .ProjectTo<UpdateGameDto>(_mapper.ConfigurationProvider)
-                    .FirstAsync(x => x.Id == gameId);
-
+            var game = await _repoUoW.GameRepository.QueryGame()
+                                .Include(x => x.AlternativeGameTitles)
+                                .Include(x => x.Localizations)
+                                .Include(x => x.ReleaseDates)
+                                .Include(x => x.MultiplayerModes)
+                                .Include(x => x.GameGenres)
+                                .Include(x => x.GameThemes)
+                                .Include(x => x.GamePlayerPerspectives)
+                                .Include(x => x.GameGameModes)
+                                .Include(x => x.Websites)
+                                .Include(x => x.InvolvedCompanies)
+                                .ThenInclude(c => c.GameInvolvedCompanyPlatforms)
+                                .Include(x => x.LanguageSupports)
+                                .FirstAsync(x => x.Id == gameId);
+            UpdateGameDto result = _mapper.Map<UpdateGameDto>(game);
+            //var result = await _repoUoW.GameRepository
+            //    .QueryGame()
+            //    .AsNoTracking()
+            //    .ProjectTo<UpdateGameDto>(_mapper.ConfigurationProvider)
+            //    .FirstAsync(x => x.Id == gameId);
             return result;
         }
 
