@@ -21,7 +21,7 @@ export class GeneralInfoComponent implements OnInit, AfterViewInit{
   uploading$ = new BehaviorSubject<boolean>(false)
   deviceType = ResponsizeSize
   private unsubscribe: Subscription | undefined
-  imageB64?: string | null
+  imageB64?: any
 
   constructor(
     public responsiveService: ResponsiveService, 
@@ -95,16 +95,17 @@ export class GeneralInfoComponent implements OnInit, AfterViewInit{
 
   convertBinaryToImage(imageData) {
     if (imageData != null) {
-      // var binary = atob(imageData)
-      // var array: any = [];
-      // for (var i = 0; i < binary.length; i++) {
-      //   var byte = binary.charCodeAt(i)
-      //     array.push(byte);
-      // }
-      var blob =  new Blob([new Uint8Array(imageData)], { type: 'image/jpeg' });
+      console.log(imageData)
+      var binary = atob(imageData)
+      var array: any = [];
+      for (var i = 0; i < binary.length; i++) {
+        var byte = binary.charCodeAt(i)
+          array.push(byte);
+      }
+      var blob =  new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
       var reader = new FileReader
       reader.onloadend =() => {
-        this.imageB64 = reader.result?.toString()
+        this.imageB64 = reader.result
       }
 
       reader.readAsDataURL(blob)

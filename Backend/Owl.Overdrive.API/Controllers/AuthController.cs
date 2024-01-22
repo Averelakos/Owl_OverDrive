@@ -27,9 +27,9 @@ namespace Owl.Overdrive.Controllers
         {
             var result = await _authFacade.Login(loginDto);
 
-            if(result is null)
+            if(string.IsNullOrWhiteSpace(result))
             {
-                return Unauthorized();
+                return BadRequest();
             }
 
             return Ok(new { Token = result });

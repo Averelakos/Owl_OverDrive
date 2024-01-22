@@ -30,17 +30,20 @@ namespace Owl.Overdrive.Infrastructure.Persistence.Configurations.AuthConfigurat
             //builder.Property(p => p.Phone).HasMaxLength(255);
             //builder.Property(p => p.Birthdate).HasColumnType("datetime2(7)");
 
-            Seed(builder);
+            //Seed(builder);
         }
 
         private static void Seed(EntityTypeBuilder<User> builder)
         {
-            //builder.HasData(new User()
-            //{
-            //    Id = -1,
-            //    Username = "Admin",
-            //    Email = "Admin@owlo.gr"
-            //});
+            builder.HasData(new User()
+            {
+                Id = 1,
+                Username = "administrator",
+                Email = "admin@owloverdrive.com",
+                //PasswordHash = "",
+                //PasswordSalt = ""
+                
+            });
         }
     }
 }

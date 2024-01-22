@@ -27,7 +27,6 @@ export class LocalizationPanelComponent {
 
   convertRegionToArray(){
     this.lookUpService.regions.forEach((item) => {
-      console.log(item)
       let temp: SelectSearchInputValue = {
         id: item.id,
         value: item.name

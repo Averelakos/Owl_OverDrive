@@ -275,7 +275,6 @@ export class GameService{
         })
 
         this.companies(gameForm).push(tempCompany)
-        console.log(this.companies(gameForm).value)
       })
     }
 

@@ -70,19 +70,22 @@ namespace Owl.Overdrive.Business.Facades
         public async Task<UpdateGameDto?> GetGameForUpdate(long gameId)
         {
             var game = await _repoUoW.GameRepository.QueryGame()
-                                .Include(x => x.AlternativeGameTitles)
-                                .Include(x => x.Localizations)
-                                .Include(x => x.ReleaseDates)
-                                .Include(x => x.MultiplayerModes)
-                                .Include(x => x.GameGenres)
-                                .Include(x => x.GameThemes)
-                                .Include(x => x.GamePlayerPerspectives)
-                                .Include(x => x.GameGameModes)
-                                .Include(x => x.Websites)
-                                .Include(x => x.InvolvedCompanies)
-                                .ThenInclude(c => c.GameInvolvedCompanyPlatforms)
-                                .Include(x => x.LanguageSupports)
-                                .FirstAsync(x => x.Id == gameId);
+                .AsNoTracking()
+                .Include(x => x.AlternativeGameTitles)
+                .Include(x => x.Localizations)
+                .Include(x => x.ReleaseDates)
+                .Include(x => x.MultiplayerModes)
+                .Include(x => x.GameGenres)
+                .Include(x => x.GameThemes)
+                .Include(x => x.GamePlayerPerspectives)
+                .Include(x => x.GameGameModes)
+                .Include(x => x.Websites)
+                .Include(x => x.InvolvedCompanies)
+                .ThenInclude(c => c.GameInvolvedCompanyPlatforms)
+                .Include(x => x.LanguageSupports)
+                .Include(x => x.Cover)
+                .AsSplitQuery()
+                .FirstAsync(x => x.Id == gameId);
             UpdateGameDto result = _mapper.Map<UpdateGameDto>(game);
             //var result = await _repoUoW.GameRepository
             //    .QueryGame()
@@ -137,6 +140,8 @@ namespace Owl.Overdrive.Business.Facades
                                 .Include(x =>x.InvolvedCompanies)
                                 .ThenInclude(c => c.GameInvolvedCompanyPlatforms)
                                 .Include(x => x.LanguageSupports)
+                                .Include(x => x.Cover)
+                                .AsSplitQuery()
                                 .FirstOrDefaultAsync(x => x.Id == updateGameDto.Id);
 
             if (game is null)

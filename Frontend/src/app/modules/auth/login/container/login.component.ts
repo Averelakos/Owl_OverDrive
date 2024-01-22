@@ -5,6 +5,9 @@ import { BehaviorSubject, finalize, first } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { LoginDto } from 'src/app/core/models/Auth/loginDto';
 import { LocalService } from 'src/app/core/services/local.service';
+import { ResponsiveService, ResponsizeSize } from 'src/app/core/services/responsive.service';
+import { BannerResultActionService } from 'src/app/core/services/result-banner-action.service';
+import { ToastrService } from 'src/app/lib/toastr/toastr.service';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +20,16 @@ export class LoginComponent implements OnInit, AfterContentInit {
   loginData: LoginDto;
   rememberMeCheckBox: any;
   loading$ = new BehaviorSubject<boolean>(false)
+  deviceType = ResponsizeSize
 
-  constructor( private localService: LocalService, private router: Router,private readonly authService: AuthService) {
+  constructor( 
+    private localService: LocalService, 
+    private router: Router,
+    private readonly authService: AuthService,
+    public responsiveService: ResponsiveService,
+    private toastr: ToastrService,
+    private resultBannerActionService: BannerResultActionService
+    ) {
     this.authService.isAuthorized()
   }
   
@@ -42,11 +53,25 @@ export class LoginComponent implements OnInit, AfterContentInit {
   
         this.authService.login(this.loginData)
         .pipe(first(),finalize(()=> this.loading$.next(false)))
-        .subscribe((res) => {
+        .subscribe( {next:(response: any) => {
           this.rememberMe();
-          this.authService.loginActions(res)
+          this.authService.loginActions(response)
           this.router.navigate(['/'], { replaceUrl: true })
-        })
+          
+        },
+        error: (error: any) => {
+          if (this.responsiveService.responsiveSize.value === this.deviceType.Desktop) {
+            this.toastr.error( `The Username or password is incorrect`, 'Error')
+          } else {
+            this.resultBannerActionService.error('Error', `The Username or password is incorrect`)
+          }
+        }
+        // (res) => {
+        //   this.rememberMe();
+        //   this.authService.loginActions(res)
+        //   this.router.navigate(['/'], { replaceUrl: true })
+        // }
+      })
       }
     
   }
